@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
-import 'features/screens/splashScreen.dart';
 
 
 
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      home: Splashscreen(),
+      home: SplashScreen(),
     );
   }
 }
