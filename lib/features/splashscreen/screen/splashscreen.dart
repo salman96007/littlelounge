@@ -23,14 +23,14 @@ class SplashScreen extends StatefulWidget {
             children: [
              Image.asset(ImageConstant.modelLogo),
               RichText(text: TextSpan(text: "STYLISH\n",   style: GoogleFonts.firaSans(
-                textStyle : TextStyle(color: ColorConst.primaryColor,
+                textStyle : TextStyle(color: ColorConst.primeryColor,
                   fontSize:width*0.13, ),
 
               ),
                 children: [
                   TextSpan(text:"Find Your Slyle",
                     style:GoogleFonts.sacramento(
-                      textStyle : TextStyle(color: ColorConst.primaryColor,
+                      textStyle : TextStyle(color: ColorConst.primeryColor,
                       fontSize: width*0.12),
 
                     ) )

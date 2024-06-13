@@ -31,12 +31,45 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
             children: [
               Container(
                 width:width*0.85,
-                height:height*0.1,
+                height:height*0.12,
                 color:Colors.red,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment:CrossAxisAlignment.start,
                   children: [
-                    Text("")
+                    Text("Name",style:GoogleFonts.inter(
+                      color: ColorConst.nineth,
+                      fontWeight: FontWeight.w500,
+                      fontSize:width*0.05
+                    ),),
+
+                    TextFormField(
+                      keyboardType:TextInputType.name,
+                      textInputAction:TextInputAction.next,
+                      style:TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize:width*0.04,
+                         ),
+                      decoration: InputDecoration(
+                        constraints:BoxConstraints(
+                            maxHeight:width*0.16
+                        ),
+                        fillColor:ColorConst.eleventh.withOpacity(0.3),
+                        filled: true,
+                        enabledBorder:OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color:ColorConst.eleventh.withOpacity(0.3),
+                            ),
+                            borderRadius:BorderRadius.circular(width*0.03)
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color:ColorConst.eleventh.withOpacity(0.3),
+                            ),
+                            borderRadius:BorderRadius.circular(width*0.03)
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
