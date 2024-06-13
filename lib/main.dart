@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home:Saveaddresspage(),
+        home:HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

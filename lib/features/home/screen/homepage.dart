@@ -24,7 +24,22 @@ class HomePage extends StatefulWidget {
       children:  [
          DrawerHeader(child: ListTile(
            leading: Image.asset(ImageConstant.boy1),
-           title: Text("data"),
+           title: Text("Hemendra",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w500
+           ),), 
+           subtitle: Row(
+              children: [
+                Text("Verified Profile",style: TextStyle(
+                   color: ColorConst.twelthColor,
+                  fontWeight: FontWeight.w400
+                ),),
+                SvgPicture.asset(SvgConstant.badge),
+              ],
+           ),
+           trailing: Container(
+
+           ),
          ))
        
           ],
