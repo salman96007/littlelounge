@@ -1,4 +1,7 @@
 
+
+
+
 import 'dart:ui';
 
 class ColorConst{
@@ -10,5 +13,9 @@ class ColorConst{
   static const sixth=Color(0xffEA4335);
   static const seventh=Color(0xff9775FA);
   static const eighth=Color(0xff8F959E);
+  static const nineth=Color(0xff1D1E20);
+
+
+
 
 }

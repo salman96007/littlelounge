@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:littlelounge/features/auth/screen/forgotpassword.dart';
+import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
-
-import 'features/home/screen/homepage.dart';
 
  var height;
  var width;
@@ -33,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: ForgotPassword(),
+        home: Saveaddresspage(),
         debugShowCheckedModeBanner: false,
       ),
     );
