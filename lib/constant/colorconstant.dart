@@ -7,7 +7,4 @@ class ColorConst{
   static const thirdColor=Color(0xff9775FA);
   static const forth=Color(0xffEE65DB);
 
-
-
-
 }
