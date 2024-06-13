@@ -29,7 +29,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
         child: Center(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width:width*0.85,
                 height:height*0.12,
                 //color:Colors.red,
@@ -42,7 +42,6 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                       fontWeight: FontWeight.w500,
                       fontSize:width*0.05
                     ),),
-
                     TextFormField(
                       keyboardType:TextInputType.name,
                       textInputAction:TextInputAction.next,
@@ -52,19 +51,19 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                          ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
-                            maxHeight:width*0.16
+                            maxHeight:width*0.2
                         ),
-                        fillColor:ColorConst.eleventh.withOpacity(1),
+                        fillColor:ColorConst.twelthColor.withOpacity(0.2),
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color:ColorConst.eleventh.withOpacity(0.3),
+                              color:ColorConst.twelthColor.withOpacity(0.1),
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color:ColorConst.eleventh.withOpacity(0.3),
+                              color:ColorConst.twelthColor.withOpacity(0.1),
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
@@ -72,7 +71,16 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height:height*0.02,
+              ),
+              Container(
+                width:width*0.85,
+                height:height*0.12,
+                color: Colors.red,
               )
+
             ],
           ),
         ),
