@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
     height = MediaQuery.of(context).size.height;
     return  MaterialApp(
       home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
