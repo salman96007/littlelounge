@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home:NewPassword(),
+        home:HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

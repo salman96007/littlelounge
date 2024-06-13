@@ -1,5 +1,6 @@
   import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
 
@@ -13,17 +14,26 @@ class HomePage extends StatefulWidget {
   }
 
   class _HomePageState extends State<HomePage> {
+  bool toggle =false;
     @override
     Widget build(BuildContext context) {
       return Scaffold(
+        backgroundColor: ColorConst.primaryColor,
         appBar: AppBar(
           backgroundColor: ColorConst.primaryColor,
+          actions: [
+            Container(
+                width: width*0.13,
+                child: SvgPicture.asset(SvgConstant.lock1))
+          ],
           elevation: 1,
         ),
         drawer: Drawer(
+          shape: BeveledRectangleBorder(side: BorderSide(color: ColorConst.primaryColor)),
           backgroundColor: ColorConst.primaryColor,
       child: ListView(
-      children:  [
+        children:  [
+          SizedBox(height: height*0.05,),
          ListTile(
            leading: Image.asset(ImageConstant.boy1),
            title: Text("Hemendra",style: TextStyle(
@@ -56,11 +66,153 @@ class HomePage extends StatefulWidget {
                // borderRadius: BorderRadius.circular(radius)
              ),
            ),
-         )
-       
+         ),
+          SizedBox(height: height*0.03,),
+         ListTile(
+          leading: SvgPicture.asset(SvgConstant.darkMode),
+           title: Text("Dark Mode",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400
+           ),),
+           trailing: Stack(
+             children: [
+               InkWell(
+                 onTap: () {
+                   toggle = !toggle;
+                   setState(() {});
+                 },
+                 child: Container(
+                   height: width * 0.08,
+                   width: width * 0.15,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(width * 0.09),
+                     color: toggle == true ? ColorConst.fourtyColor:ColorConst.fourtyColor,
+                   ),
+                 ),
+               ),
+
+               AnimatedPositioned(
+                   top: width*0.005,
+
+                   left: toggle == true ? width*0.07 :width*0.01,
+                   child: InkWell(
+                     onTap: () {
+                       toggle = !toggle;
+                       setState(() {});
+                     },
+                     child: AnimatedContainer(
+                         width: width*0.07,
+                         height: width*0.07,
+
+                         decoration: BoxDecoration(
+                             shape: BoxShape.circle,
+                             color:  toggle == true ? ColorConst.primaryColor:ColorConst.primaryColor),
+                         duration: Duration(
+                           milliseconds: 500,
+                         )),
+                   ),
+                   duration: const Duration(milliseconds: 200)),
+             ],
+           ),
+        ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.account),
+           title: Text("Account Information",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.password),
+           title: Text("Password",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.order),
+           title: Text("Order",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.myCard),
+           title: Text("My Cards",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.wishlist),
+           title: Text("Wishlist",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.settings),
+           title: Text("Settings",style: TextStyle(
+             color: ColorConst.secondary,
+             fontWeight: FontWeight.w400,
+
+           ),),
+         ),
+         SizedBox(height: height*0.09,),
+         ListTile(
+           leading: SvgPicture.asset(SvgConstant.logout),
+           title: Text("Logout",style: TextStyle(
+             color: ColorConst.fifteenColor,
+             fontWeight: FontWeight.w500,
+
+           ),),
+         ),
+
+
+
           ],
          ),
        ),
+        body: Padding(
+          padding:  EdgeInsets.only(top: width*0.13,right: width*0.05,left: width*0.05),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Hemendra",style: TextStyle(
+                  color: ColorConst.secondary,
+                  fontSize: width*0.07,
+                  fontWeight: FontWeight.w600
+              ),),
+              Text("Welcome to Laza.",style: TextStyle(
+                  color: ColorConst.twelthColor,
+                  fontSize: width*0.05,
+                  fontWeight: FontWeight.w400
+              ),),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  hintText: "Search...",
+                  hintStyle: TextStyle(
+                    color: ColorConst.twelthColor
+                  ),
+                  fillColor: ColorConst.sixteenColor,
+                  filled: true,
+                 border: OutlineInputBorder(
+                   borderSide: BorderSide.none
+                   )
+                 )
+                ),
+
+
+            ],
+          ),
+        ),
       );
     }
   }

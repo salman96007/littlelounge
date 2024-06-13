@@ -1,5 +1,10 @@
 
-   class ImageConstant {
+   import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../main.dart';
+
+class ImageConstant {
 
    static const  modelLogo = "assets/images/m logo.png";
    static const  forgotpassimg = "assets/images/IMG.png";
@@ -15,5 +20,13 @@
       static const  badge = "assets/icons/Badge.svg" ;
       static const  twitter = "assets/icons/Twitter.svg";
       static const  google = "assets/icons/Google.svg";
+      static const  darkMode = "assets/icons/darkmode.svg";
+      static const  account = "assets/icons/account.svg";
+      static const  password = "assets/icons/password.svg";
+      static const  order = "assets/icons/order.svg";
+      static const  wishlist = "assets/icons/wishlist.svg";
+      static const  settings = "assets/icons/Setting.svg";
+      static const  myCard = "assets/icons/mycard.svg";
+      static const  logout = "assets/icons/Logout.svg";
 
    }
