@@ -193,21 +193,25 @@ class HomePage extends StatefulWidget {
                   fontSize: width*0.05,
                   fontWeight: FontWeight.w400
               ),),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  hintText: "Search...",
-                  hintStyle: TextStyle(
-                    color: ColorConst.twelthColor
-                  ),
-                  fillColor: ColorConst.sixteenColor,
-                  filled: true,
-                 border: OutlineInputBorder(
-                   borderSide: BorderSide.none
+              Container(
+                width: width*0.0,
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    hintStyle: TextStyle(
+                      color: ColorConst.twelthColor
+                    ),
+                    fillColor: ColorConst.sixteenColor,
+                    filled: true,
+                   border: OutlineInputBorder(
+                     borderSide: BorderSide.none,
+                     borderRadius: BorderRadius.circular(width*0.03)
+                     )
                    )
-                 )
-                ),
+                  ),
+              ),
 
 
             ],
