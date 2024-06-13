@@ -14,6 +14,7 @@ class SplashScreen extends StatefulWidget {
         body: Column(
           children: [
 
+
           ],
 
         ),
