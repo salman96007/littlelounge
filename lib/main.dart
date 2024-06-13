@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
  var height;
@@ -21,9 +22,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
-    return  MaterialApp(
-      home: SplashScreen(),
-      debugShowCheckedModeBanner: false,
+    return  GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus!.unfocus();
+      },
+      child: MaterialApp(
+        theme: ThemeData(
+            textTheme: GoogleFonts.interTextTheme()
+        ),
+        home: SplashScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
