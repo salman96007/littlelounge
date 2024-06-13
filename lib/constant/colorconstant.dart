@@ -9,5 +9,6 @@ class ColorConst{
   static const fifth=Color(0xff1DA1F2);
   static const sixth=Color(0xffEA4335);
   static const seventh=Color(0xff9775FA);
+  static const eighth=Color(0xff8F959E);
 
 }
