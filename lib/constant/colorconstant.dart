@@ -6,5 +6,8 @@ class ColorConst{
   static const secondary=Color(0xff000000);
   static const thirdColor=Color(0xff9775FA);
   static const forth=Color(0xffEE65DB);
+  static const fifth=Color(0xff1DA1F2);
+  static const sixth=Color(0xffEA4335);
+  static const seventh=Color(0xff9775FA);
 
 }
