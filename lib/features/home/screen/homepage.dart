@@ -21,35 +21,15 @@ class HomePage extends StatefulWidget {
         ),
         drawer: Drawer(
       child: ListView(
-      children: const [
-        DrawerHeader(child: Text("Drawer Header",style: TextStyle(
-          fontWeight: FontWeight.bold
-      ),),
-      decoration: BoxDecoration(
-      color: Colors.green,
-      ),),
-      ListTile(
-      leading: Icon(Icons.settings,color: Colors.black,),
-      title: Text("Settings",style: TextStyle(
-      fontSize: 25
-      ),),
-      ),
-      ListTile(
-      leading: Icon(Icons.storage,size: 30,color: Colors.black,),
-      title: Text("Storage",style: TextStyle(
-      fontSize: 23
-      ),),
-      ),
-      ListTile(
-      leading: Icon(Icons.settings,color: Colors.black,),
-      title: Text("Settings",style: TextStyle(
-      fontSize: 25
-      ),),
-      ),
-
-      ],
-      ),
-      ),
+      children:  [
+         DrawerHeader(child: ListTile(
+           leading: Image.asset(ImageConstant.boy1),
+           title: Text("data"),
+         ))
+       
+          ],
+         ),
+       ),
       );
     }
   }
