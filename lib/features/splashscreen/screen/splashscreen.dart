@@ -1,4 +1,8 @@
   import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/main.dart';
 
 class SplashScreen extends StatefulWidget {
     const SplashScreen({super.key});
@@ -11,12 +15,32 @@ class SplashScreen extends StatefulWidget {
     @override
     Widget build(BuildContext context) {
       return Scaffold(
-        body: Column(
-          children: [
+
+        backgroundColor: ColorConst.seventh,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             Image.asset(ImageConstant.modelLogo),
+              RichText(text: TextSpan(text: "STYLISH\n",   style: GoogleFonts.firaSans(
+                textStyle : TextStyle(color: ColorConst.primaryColor,
+                  fontSize:width*0.13, ),
+
+              ),
+                children: [
+                  TextSpan(text:"Find Your Slyle",
+                    style:GoogleFonts.sacramento(
+                      textStyle : TextStyle(color: ColorConst.primaryColor,
+                      fontSize: width*0.12),
+
+                    ) )
+              ],
+             ),textAlign: TextAlign.center,),
 
 
-          ],
+            ],
 
+          ),
         ),
 
       );
