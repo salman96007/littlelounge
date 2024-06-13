@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class ColorConst{
-  static const primeryColor=Color(0xffFFFFFF);
+  static const primaryColor=Color(0xffFFFFFF);
   static const secondary=Color(0xff000000);
   static const thirdColor=Color(0xff9775FA);
   static const forth=Color(0xffEE65DB);
@@ -11,7 +11,8 @@ class ColorConst{
   static const eighth=Color(0xff8F959E);
   static const nineth=Color(0xff1D1E20);
   static const tenth=Color(0xff4267B2);
-  static const eleventh=Color(0xffF5F6FA);
+  static const eleventh=Color(0xff8F959E);
+
 
 
 

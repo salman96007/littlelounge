@@ -32,7 +32,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
               Container(
                 width:width*0.85,
                 height:height*0.12,
-                color:Colors.red,
+                //color:Colors.red,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment:CrossAxisAlignment.start,
@@ -54,7 +54,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.16
                         ),
-                        fillColor:ColorConst.eleventh.withOpacity(0.3),
+                        fillColor:ColorConst.eleventh.withOpacity(1),
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
