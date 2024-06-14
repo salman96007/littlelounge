@@ -242,6 +242,38 @@ class HomePage extends StatefulWidget {
                     color: ColorConst.twelthColor
                   ),),
                 ],
+              ),
+              GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                  childAspectRatio: 0.6,
+                  crossAxisSpacing:width*0.05,
+                  mainAxisSpacing: width*0.09
+              ),
+                  itemBuilder: (context, index) {
+                    return Stack(
+                      alignment: Alignment.topRight,
+                      children: [
+                        Container(
+                          child: Image.asset(SvgConstant.image1),
+                          width: width*0.425,
+                          decoration: BoxDecoration(
+                            color: ColorConst.thirdColor.withOpacity(0.39,),
+                            borderRadius: BorderRadius.circular(width*0.05)
+                      )
+                        ),
+                        Positioned(
+                          right: width*0.05,
+                            top: width*0.04,
+
+                            child: SvgPicture.asset(SvgConstant.heart,width: width*0.07,))
+                      ],
+                    );
+
+
+
+                  },
+                itemCount: 1,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
               )
 
 

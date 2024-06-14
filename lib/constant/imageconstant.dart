@@ -29,5 +29,7 @@ class ImageConstant {
       static const  myCard = "assets/icons/mycard.svg";
       static const  logout = "assets/icons/Logout.svg";
       static const  voice = "assets/icons/voice.svg";
+      static const  heart = "assets/icons/heart.svg";
+      static const  image1 = "assets/images/mydress.PNG";
 
    }
