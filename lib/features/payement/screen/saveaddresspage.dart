@@ -271,7 +271,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         fontSize:width*0.04
                     ),),
                     CupertinoSwitch(
-                      activeColor:,
+                      activeColor:ColorConst.seventeenColor,
                       value: toggle,
                       onChanged: (bool value) {
                         setState(() {
