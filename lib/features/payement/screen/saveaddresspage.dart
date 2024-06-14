@@ -19,7 +19,9 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: ColorConst.primaryColor,
+      resizeToAvoidBottomInset:false,
       appBar: AppBar(
         backgroundColor: ColorConst.primaryColor,
         title: Text("Address",style: GoogleFonts.inter(
@@ -50,9 +52,9 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                       keyboardType:TextInputType.name,
                       textInputAction:TextInputAction.next,
                       style:TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize:width*0.04,
-                         ),
+                        color:ColorConst.eighth,
+                        fontSize:width*0.045
+                      ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
                             maxHeight:width*0.2
@@ -98,8 +100,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize:width*0.04,
+                              color:ColorConst.eighth,
+                              fontSize:width*0.045
                           ),
                           decoration: InputDecoration(
                             constraints:BoxConstraints(
@@ -141,8 +143,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize:width*0.04,
+                              color:ColorConst.eighth,
+                              fontSize:width*0.045
                           ),
                           decoration: InputDecoration(
                             constraints:BoxConstraints(
@@ -187,8 +189,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                       keyboardType:TextInputType.number,
                       textInputAction:TextInputAction.next,
                       style:TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize:width*0.04,
+                          color:ColorConst.eighth,
+                          fontSize:width*0.045
                       ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
@@ -231,8 +233,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                       keyboardType:TextInputType.emailAddress,
                       textInputAction:TextInputAction.done,
                       style:TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize:width*0.04,
+                          color:ColorConst.eighth,
+                          fontSize:width*0.045
                       ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
@@ -258,10 +260,9 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                 ),
               ),
               SizedBox(height:height*0.01,),
-              Container(
+              SizedBox(
                 width:width*0.85,
                 height:height*0.05,
-                color: Colors.red,
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -271,6 +272,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         fontSize:width*0.04
                     ),),
                     CupertinoSwitch(
+                      focusColor:ColorConst.fourtyColor,
                       activeColor:ColorConst.seventeenColor,
                       value: toggle,
                       onChanged: (bool value) {
@@ -279,6 +281,30 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         });
                       },
                     ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width:width*07,
+                height:height*0.2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      child: Center(
+                        child: Text("Save Address",style: TextStyle(
+                          fontSize: width*0.04,
+                          color: ColorConst.primaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),),
+                      ),
+                      height: height*0.07,
+                      width: width*0.88,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(width*0.07),
+                        color: ColorConst.thirdColor,
+                      ),
+                    )
                   ],
                 ),
               )
