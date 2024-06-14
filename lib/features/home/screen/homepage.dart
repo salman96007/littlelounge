@@ -296,12 +296,20 @@ class HomePage extends StatefulWidget {
                           ],
                         ),
                         SizedBox(height: height*0.02,),
-                        Text("fasil",style: TextStyle(
+                        Text("the valuable clothing collectiin",style: TextStyle(
                           color: ColorConst.secondary,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
+                          fontSize: width*0.04
                         ),),
-                        Text("fasil"),
-                        Text("fasil"),
+                        Row(
+                          children: [
+                            SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                            Text("500",style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: width*0.05
+                            ),),
+                          ],
+                        ),
                       ],
                     );
 
