@@ -8,8 +8,13 @@ class ImageConstant {
 
    static const  modelLogo = "assets/images/m logo.png";
    static const  forgotpassimg = "assets/images/IMG.png";
-   static const  boy1 = "assets/images/boy1.png";
+   static const  kid1 = "assets/images/kid1.png";
    static const  facebookImg = "assets/images/Facebook.png";
+   static const  kid2 = "assets/images/kid2.PNG";
+   static const  kid3 = "assets/images/kid3.PNG";
+   static const  kid4 = "assets/images/kid4.PNG";
+   static const  kid5 = "assets/images/kid5.PNG";
+   static const  kid6 = "assets/images/kid6.PNG";
 
 
    }

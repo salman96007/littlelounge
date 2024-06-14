@@ -14,10 +14,18 @@ class HomePage extends StatefulWidget {
   }
 
   class _HomePageState extends State<HomePage> {
+  List dress = [
+    {
+      "img" :ImageConstant.kid1,
+
+    }
+
+  ];
   bool toggle =false;
     @override
     Widget build(BuildContext context) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: ColorConst.primaryColor,
         appBar: AppBar(
           backgroundColor: ColorConst.primaryColor,
@@ -33,10 +41,11 @@ class HomePage extends StatefulWidget {
           shape: BeveledRectangleBorder(side: BorderSide(color: ColorConst.primaryColor)),
           backgroundColor: ColorConst.primaryColor,
       child: ListView(
+
         children:  [
           SizedBox(height: height*0.05,),
          ListTile(
-           leading: Image.asset(ImageConstant.boy1),
+           leading: Image.asset(ImageConstant.kid1),
            title: Text("Hemendra",style: TextStyle(
              color: ColorConst.secondary,
              fontWeight: FontWeight.w500,
@@ -179,11 +188,13 @@ class HomePage extends StatefulWidget {
           ],
          ),
        ),
+
         body: Padding(
-          padding:  EdgeInsets.only(top: width*0.13,right: width*0.05,left: width*0.05),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding:  EdgeInsets.only(right: width*0.05,left: width*0.05),
+          child: ListView(
+            physics: BouncingScrollPhysics(),
             children: [
+              SizedBox(height: height*0.05,),
               Text("Hemendra",style: TextStyle(
                   color: ColorConst.secondary,
                   fontSize: width*0.07,
@@ -194,6 +205,7 @@ class HomePage extends StatefulWidget {
                   fontSize: width*0.05,
                   fontWeight: FontWeight.w400
               ),),
+              SizedBox(height: height*0.04,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -222,12 +234,13 @@ class HomePage extends StatefulWidget {
                     height: height*0.065,
                     child: SvgPicture.asset(SvgConstant.voice,fit: BoxFit.none,),
                     decoration: BoxDecoration(
-                      color:ColorConst.seventeenColor,
+                      color:ColorConst.seventh,
                       borderRadius: BorderRadius.circular(width*0.03),
                     ),
                   )
                 ],
               ),
+              SizedBox(height: height*0.03,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -243,35 +256,59 @@ class HomePage extends StatefulWidget {
                   ),),
                 ],
               ),
-              GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-                  childAspectRatio: 0.6,
-                  crossAxisSpacing:width*0.05,
-                  mainAxisSpacing: width*0.09
+              SizedBox(height: height*0.03,),
+              GridView.builder(
+                physics: BouncingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                  childAspectRatio: 0.5,
+                  crossAxisSpacing:width*0.04,
+                  mainAxisSpacing: width*0.01
               ),
                   itemBuilder: (context, index) {
-                    return Stack(
-                      alignment: Alignment.topRight,
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Image.asset(SvgConstant.image1),
-                          width: width*0.425,
-                          decoration: BoxDecoration(
-                            color: ColorConst.thirdColor.withOpacity(0.39,),
-                            borderRadius: BorderRadius.circular(width*0.05)
-                      )
+                        Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Container(
+                              child: Image.asset(SvgConstant.image1),
+                              width: width*0.425,
+                              decoration: BoxDecoration(
+                                color: ColorConst.forth.withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(width*0.05),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    blurRadius:4,
+                                    spreadRadius: 2,
+                                    offset: Offset(0, 3)
+                        
+                                  )
+                                ]
+                          )
+                            ),
+                            Positioned(
+                              right: width*0.05,
+                                top: width*0.04,
+                        
+                                child: SvgPicture.asset(SvgConstant.heart,width: width*0.07,))
+                          ],
                         ),
-                        Positioned(
-                          right: width*0.05,
-                            top: width*0.04,
-
-                            child: SvgPicture.asset(SvgConstant.heart,width: width*0.07,))
+                        SizedBox(height: height*0.02,),
+                        Text("fasil",style: TextStyle(
+                          color: ColorConst.secondary,
+                          fontWeight: FontWeight.w500
+                        ),),
+                        Text("fasil"),
+                        Text("fasil"),
                       ],
                     );
 
 
 
                   },
-                itemCount: 1,
+                itemCount: 6,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
