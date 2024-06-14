@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
@@ -14,6 +15,7 @@ class Saveaddresspage extends StatefulWidget {
 }
 
 class _SaveaddresspageState extends State<Saveaddresspage> {
+  bool toggle = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -269,7 +271,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         fontSize:width*0.04
                     ),),
                     CupertinoSwitch(
-                      activeColor: ColorConst.primaryColor,
+                      activeColor:ColorConst.seventeenColor,
                       value: toggle,
                       onChanged: (bool value) {
                         setState(() {
