@@ -99,6 +99,7 @@ class CreatAccount extends StatelessWidget {
 
 
               )),
+              SizedBox(height: height*0.02,),
               Container(
                 child: Center(
                   child: Text("Create an Account",style: TextStyle(
