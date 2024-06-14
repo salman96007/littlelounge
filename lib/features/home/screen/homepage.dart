@@ -22,9 +22,10 @@ class HomePage extends StatefulWidget {
         appBar: AppBar(
           backgroundColor: ColorConst.primaryColor,
           actions: [
-            Container(
-                width: width*0.13,
-                child: SvgPicture.asset(SvgConstant.lock1))
+            Padding(
+              padding:  EdgeInsets.only(right :width*0.05),
+              child: SvgPicture.asset(SvgConstant.lock1),
+            )
           ],
           elevation: 1,
         ),
@@ -193,25 +194,55 @@ class HomePage extends StatefulWidget {
                   fontSize: width*0.05,
                   fontWeight: FontWeight.w400
               ),),
-              Container(
-                width: width*0.0,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    hintText: "Search...",
-                    hintStyle: TextStyle(
-                      color: ColorConst.twelthColor
-                    ),
-                    fillColor: ColorConst.sixteenColor,
-                    filled: true,
-                   border: OutlineInputBorder(
-                     borderSide: BorderSide.none,
-                     borderRadius: BorderRadius.circular(width*0.03)
-                     )
-                   )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: width*0.7,
+                    height: height*0.065,
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        hintText: "Search...",
+                        hintStyle: TextStyle(
+                          color: ColorConst.twelthColor
+                        ),
+                        fillColor: ColorConst.sixteenColor,
+                        filled: true,
+                       border: OutlineInputBorder(
+                         borderSide: BorderSide.none,
+                         borderRadius: BorderRadius.circular(width*0.03)
+                         )
+                       )
+                      ),
                   ),
+                  Container(
+                    width: width*0.15,
+                    height: height*0.065,
+                    child: SvgPicture.asset(SvgConstant.voice,fit: BoxFit.none,),
+                    decoration: BoxDecoration(
+                      color:ColorConst.seventeenColor,
+                      borderRadius: BorderRadius.circular(width*0.03),
+                    ),
+                  )
+                ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("New Arraival",style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: width*0.05,
+                    color: ColorConst.secondary
+                  ),),
+                  Text("View All",style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: width*0.04,
+                    color: ColorConst.twelthColor
+                  ),),
+                ],
+              )
 
 
             ],

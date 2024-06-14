@@ -17,6 +17,7 @@ class ColorConst{
   static const fourtyColor=Color(0xffD6D6D6);
   static const fifteenColor=Color(0xffFF5757);
   static const sixteenColor=Color(0xffF5F6FA);
+  static const seventeenColor=Color(0xff9775FA);
 
 
 
