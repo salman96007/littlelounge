@@ -27,7 +27,7 @@ class DetailedDress extends StatefulWidget {
           ],
           elevation: 1, 
         ),
-        body: Column(
+        body: ListView(
           children: [
             Container(
                 child: Image.asset(ImageConstant.image1),
@@ -38,113 +38,138 @@ class DetailedDress extends StatefulWidget {
                 )
             ),
             Padding(
-              padding:  EdgeInsets.only(top: width*0.05,left: width*0.05,right: width*0.05,bottom: width*0.02),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding:  EdgeInsets.all(width*0.05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Men's Printed Pullover Hoodie",style: TextStyle(
-                    color: ColorConst.twelthColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: width*0.04
-                  ),),
-                  Text("Price",style: TextStyle(
-                    color: ColorConst.twelthColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: width*0.04
-                  ),),
-                ],
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.only(right:width*0.05,left: width*0.05,),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Nike Club Fleece",style: TextStyle(
-                    color: ColorConst.secondary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: width*0.07
-                  ),),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
-                      Text("500",style: TextStyle(
+                      Text("Men's Printed Pullover Hoodie",style: TextStyle(
+                          color: ColorConst.twelthColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: width*0.04
+                      ),),
+                      Text("Price",style: TextStyle(
+                          color: ColorConst.twelthColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: width*0.04
+                      ),),
+                    ],
+                  ),
+                  SizedBox(height: height*0.02,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Nike Club Fleece",style: TextStyle(
+                          color: ColorConst.secondary,
                           fontWeight: FontWeight.w600,
+                          fontSize: width*0.07
+                      ),),
+                      Row(
+                        children: [
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          Text("500",style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: width*0.05
+                          ),),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height*0.02,),
+                  Container(
+                    height: height*0.12,
+                    child: ListView.separated(itemBuilder: (context, index) {
+                      return Container(
+                        width: width*0.2,
+                        decoration: BoxDecoration(
+                            color: ColorConst.forth.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(width*0.03)
+                        ),
+                        child: Image.asset(ImageConstant.image1,fit: BoxFit.cover,),
+                      );
+                    },
+                      shrinkWrap: true,
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal, separatorBuilder: (
+                          BuildContext context, int index) {
+                        return SizedBox(
+                          width: width*0.03,
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: height*0.02,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Size",style: TextStyle(
+                          color: ColorConst.secondary,
+                          fontWeight: FontWeight.w600,
+                          fontSize: width*0.05
+                      ),),
+                      Text("Size Guide",style: TextStyle(
+                          color: ColorConst.twelthColor,
+                          fontWeight: FontWeight.w400,
                           fontSize: width*0.05
                       ),),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Container(
-              height: height*0.12,
-              child: ListView.separated(itemBuilder: (context, index) {
-                return Container(
-                    width: width*0.2,
-                  decoration: BoxDecoration(
-                    color: ColorConst.forth.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(width*0.03)
+                  SizedBox(height: height*0.02,),
+                  Container(
+                    height: height*0.09,
+                    child: ListView.separated(itemBuilder: (context, index) {
+                      return Container(
+                          alignment: Alignment.center,
+                          width: width*0.155,
+                          decoration: BoxDecoration(
+                              color: ColorConst.forth.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(width*0.03)
+                          ),
+                          child: Text("S",style: TextStyle(
+                              color: ColorConst.secondary,
+                              fontWeight: FontWeight.w600,
+                              fontSize: width*0.06
+                          ),)
+                      );
+                    },
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal, separatorBuilder: (
+                          BuildContext context, int index) {
+                        return SizedBox(
+                          width: width*0.03,
+                        );
+                      },
+                    ),
                   ),
-                  child: Image.asset(ImageConstant.image1,fit: BoxFit.cover,),
-                  );
-              },
-                shrinkWrap: true,
-                itemCount: 4,
-                scrollDirection: Axis.horizontal, separatorBuilder: (
-                    BuildContext context, int index) {
-                return SizedBox(
-                   width: width*0.03,
-                );
-                },
-              ),
-            ),
-            Padding(
-              padding:  EdgeInsets.only(top: width*0.03,left: width*0.05,right: width*0.05),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Size",style: TextStyle(
-                    color: ColorConst.secondary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: width*0.05
+                  SizedBox(height: height*0.02,),
+                  Text("Description",style: TextStyle(
+                      color: ColorConst.secondary,
+                      fontSize: width*0.05,
+                      fontWeight: FontWeight.w600
                   ),),
-                  Text("Size Guide",style: TextStyle(
-                    color: ColorConst.twelthColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: width*0.05
-                  ),),
+                  SizedBox(height: height*0.02,),
+                  RichText(text: TextSpan(
+                     text: "The Nike Throwback Pullover Hoodie is made\nfrom premium French terry fabric that blends a performance feel with",style: TextStyle(
+                     color: ColorConst.twelthColor,
+                     fontWeight: FontWeight.w400
+                   ),children: [
+                     TextSpan(text: " Read More..",style: TextStyle(
+                       color: ColorConst.secondary,
+                       fontWeight: FontWeight.w600,
+                       fontSize: width*0.045
+                     ))
+                   ]
+                   ),textAlign: TextAlign.start,)
                 ],
               ),
+            ),
 
-            ),
-            Container(
-              height: height*0.09,
-              child: ListView.separated(itemBuilder: (context, index) {
-                return Container(
-                  alignment: Alignment.center,
-                  width: width*0.155,
-                  decoration: BoxDecoration(
-                      color: ColorConst.forth.withOpacity(0.15),
-                      borderRadius: BorderRadius.circular(width*0.03)
-                  ),
-                  child: Text("S",style: TextStyle(
-                    color: ColorConst.secondary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: width*0.06
-                  ),)
-                );
-              },
-                shrinkWrap: true,
-                itemCount: 5,
-                scrollDirection: Axis.horizontal, separatorBuilder: (
-                    BuildContext context, int index) {
-                  return SizedBox(
-                    width: width*0.03,
-                  );
-                },
-              ),
-            ),
+
+
+
 
 
           ],
