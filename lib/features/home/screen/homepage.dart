@@ -272,7 +272,7 @@ class HomePage extends StatefulWidget {
                           alignment: Alignment.topRight,
                           children: [
                             Container(
-                              child: Image.asset(SvgConstant.image1),
+                              child: Image.asset(ImageConstant.image1),
                               width: width*0.425,
                               decoration: BoxDecoration(
                                 color: ColorConst.forth.withOpacity(0.15),

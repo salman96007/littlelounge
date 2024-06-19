@@ -8,6 +8,9 @@ import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/revviews/screen/addreview.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
+import 'features/home/screen/detaileddress.dart';
+import 'features/home/screen/wishlistpage.dart';
+
  var height;
  var width;
 
@@ -36,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             textTheme: GoogleFonts.interTextTheme()
         ),
 
-        home:AddReview(),
+        home:DetailedDress(),
         debugShowCheckedModeBanner: false,
       ),
     );

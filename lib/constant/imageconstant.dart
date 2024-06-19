@@ -15,6 +15,7 @@ class ImageConstant {
    static const  kid4 = "assets/images/kid4.PNG";
    static const  kid5 = "assets/images/kid5.PNG";
    static const  kid6 = "assets/images/kid6.PNG";
+   static const  image1 = "assets/images/mydress.PNG";
 
 
    }
@@ -37,6 +38,7 @@ class ImageConstant {
       static const  heart = "assets/icons/heart.svg";
       static const  image1 = "assets/images/mydress.PNG";
       static const  rupees = "assets/icons/rupee.svg";
+      static const  edit = "assets/icons/edit1.svg";
       static const  greenTick = "assets/icons/green tick.svg";
 
    }
