@@ -116,7 +116,7 @@ class CreatAccount extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
         ],
 
       ),
