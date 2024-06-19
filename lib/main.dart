@@ -5,6 +5,7 @@ import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
+import 'package:littlelounge/features/revviews/screen/addreview.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
  var height;
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             textTheme: GoogleFonts.interTextTheme()
         ),
 
-        home:HomePage(),
+        home:AddReview(),
         debugShowCheckedModeBanner: false,
       ),
     );
