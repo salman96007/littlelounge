@@ -162,7 +162,23 @@ class DetailedDress extends StatefulWidget {
                        fontSize: width*0.045
                      ))
                    ]
-                   ),textAlign: TextAlign.start,)
+                   ),textAlign: TextAlign.start,),
+                  SizedBox(height: height*0.02,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Reviews",style: TextStyle(
+                        color: ColorConst.secondary,
+                        fontWeight: FontWeight.w600,
+                        fontSize: width*0.05
+                      ),),
+                      Text("View All",style: TextStyle(
+                        color: ColorConst.twelthColor,
+                        fontWeight: FontWeight.w400,
+                        fontSize: width*0.045
+                      ),),
+                    ],
+                  )
                 ],
               ),
             ),
