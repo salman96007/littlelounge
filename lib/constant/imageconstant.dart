@@ -16,8 +16,7 @@ class ImageConstant {
    static const  kid5 = "assets/images/kid5.PNG";
    static const  kid6 = "assets/images/kid6.PNG";
    static const  image1 = "assets/images/mydress.PNG";
-   static const  image2 = "assets/images/shoppingContinue.png";
-
+   static const  welcom = "assets/images/welcom.png";
 
 
    }
@@ -38,7 +37,6 @@ class ImageConstant {
       static const  logout = "assets/icons/Logout.svg";
       static const  voice = "assets/icons/voice.svg";
       static const  heart = "assets/icons/heart.svg";
-      static const  image1 = "assets/images/mydress.PNG";
       static const  rupees = "assets/icons/rupee.svg";
       static const  edit = "assets/icons/edit1.svg";
       static const  greenTick = "assets/icons/green tick.svg";
