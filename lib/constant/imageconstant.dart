@@ -45,6 +45,13 @@ class ImageConstant {
       static const  rupees = "assets/icons/rupee.svg";
       static const  edit = "assets/icons/edit1.svg";
       static const  greenTick = "assets/icons/green tick.svg";
+      static const  down = "assets/icons/down.svg";
+      static const  up = "assets/icons/up.svg";
       static const  reviewicon = "assets/icons/review.svg";
+      static const  delete = "assets/icons/delete.svg";
+      static const  forward = "assets/icons/forward.svg";
+      static const  location2 = "assets/icons/location2.svg";
+      static const  root = "assets/icons/root.svg";
+      static const  ellipse = "assets/icons/ellips.svg";
 
    }
