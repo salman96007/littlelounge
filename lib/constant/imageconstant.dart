@@ -41,5 +41,6 @@ class ImageConstant {
       static const  rupees = "assets/icons/rupee.svg";
       static const  edit = "assets/icons/edit1.svg";
       static const  greenTick = "assets/icons/green tick.svg";
+      static const  reviewicon = "assets/icons/review.svg";
 
    }
