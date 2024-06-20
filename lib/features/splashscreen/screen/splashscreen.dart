@@ -21,7 +21,7 @@ class SplashScreen extends StatefulWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             Image.asset(ImageConstant.modelLogo,),
+             Image.asset(ImageConstant.finallogo,width: width*0.56,),
               RichText(text: TextSpan(text: "STYLISH\n",   style: GoogleFonts.firaSans(
                 textStyle : TextStyle(color: ColorConst.primaryColor,
                   fontSize:width*0.13, ),

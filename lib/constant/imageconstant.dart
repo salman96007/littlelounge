@@ -21,6 +21,7 @@ class ImageConstant {
    static const  card = "assets/images/card.png";
    static const  paypal = "assets/images/paypal.png";
    static const  bank = "assets/images/bank.png";
+   static const  finallogo = "assets/images/littlelng.png";
 
 
    }
