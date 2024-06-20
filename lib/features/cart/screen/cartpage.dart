@@ -177,7 +177,15 @@ class _CartPageState extends State<CartPage> {
             ),
           ),
           ListTile(
-            leading: SvgPicture.asset(SvgConstant.location2),
+            leading: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(ImageConstant.locations),
+                Image.asset(ImageConstant.ellips),
+                Image.asset(ImageConstant.location),
+
+              ],
+            ),
             title: Text("fasil"),
           )
 
