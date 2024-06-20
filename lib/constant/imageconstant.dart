@@ -16,6 +16,7 @@ class ImageConstant {
    static const  kid5 = "assets/images/kid5.PNG";
    static const  kid6 = "assets/images/kid6.PNG";
    static const  image1 = "assets/images/mydress.PNG";
+   static const  image2 = "assets/images/shoppingContinue.png";
    static const  welcom = "assets/images/welcom.png";
 
 

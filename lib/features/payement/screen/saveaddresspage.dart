@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 
 import '../../../main.dart';
 
@@ -291,6 +292,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
+                      height: height*0.07,
+                      width: width*0.88,
                       child: Center(
                         child: Text("Save Address",style: TextStyle(
                           fontSize: width*0.04,
@@ -298,8 +301,6 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                           fontWeight: FontWeight.w500,
                         ),),
                       ),
-                      height: height*0.07,
-                      width: width*0.88,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(width*0.07),
                         color: ColorConst.thirdColor,
