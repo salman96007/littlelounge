@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/home/screen/homepage.dart';
 
 import '../../../main.dart';
 
@@ -53,17 +54,22 @@ class _WelcomPageState extends State<WelcomPage> {
                               ),
                             ),
                             SizedBox(width: width*0.04,),
-                            Container(
-                              height: height*0.10,
-                              width: width*0.30,
-                              child: Center(child: Text("Men",style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+                              },
+                              child: Container(
+                                height: height*0.10,
+                                width: width*0.30,
+                                child: Center(child: Text("Men",style: TextStyle(
+                                  fontWeight: FontWeight.w500,
 
-                                color: ColorConst.primaryColor,
-                              ),)),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(width*0.022),
-                                color:ColorConst.thirdColor,
+                                  color: ColorConst.primaryColor,
+                                ),)),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(width*0.022),
+                                  color:ColorConst.thirdColor,
+                                ),
                               ),
                             ),
                           ],

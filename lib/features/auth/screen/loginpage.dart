@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
@@ -176,19 +177,24 @@ class _LoginState extends State<Login> {
 
                     ),textAlign:TextAlign.center,),
                     SizedBox(height: height*0.02,),
-                    Container(
-                      child: Center(
-                        child: Text("Login",style: TextStyle(
-                          fontSize: width*0.04,
-                          color: ColorConst.primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),),
-                      ),
-                      height: height*0.07,
-                      width: width*0.88,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(width*0.07),
-                        color: ColorConst.thirdColor,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+                      },
+                      child: Container(
+                        child: Center(
+                          child: Text("Login",style: TextStyle(
+                            fontSize: width*0.04,
+                            color: ColorConst.primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ),
+                        height: height*0.07,
+                        width: width*0.88,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(width*0.07),
+                          color: ColorConst.thirdColor,
+                        ),
                       ),
                     )
                   ],

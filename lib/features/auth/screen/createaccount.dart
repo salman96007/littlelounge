@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 
 class CreatAccount extends StatelessWidget {
@@ -90,16 +91,21 @@ class CreatAccount extends StatelessWidget {
           ),
           Column(
             children: [
-              RichText(text: TextSpan(text: "Already have an account?",style: GoogleFonts.inter(
-                textStyle: TextStyle(color: ColorConst.secondary.withOpacity(0.34)),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+                },
+                child: RichText(text: TextSpan(text: "Already have an account?",style: GoogleFonts.inter(
+                  textStyle: TextStyle(color: ColorConst.secondary.withOpacity(0.34)),
+                ),
+                    children: [TextSpan(text:"Signin" ,style: GoogleFonts.inter(
+                      textStyle: TextStyle(color: ColorConst.secondary,
+                          fontWeight: FontWeight.w400),
+                    )),]
+
+
+                )),
               ),
-                  children: [TextSpan(text:"Signin" ,style: GoogleFonts.inter(
-                    textStyle: TextStyle(color: ColorConst.secondary,
-                        fontWeight: FontWeight.w400),
-                  )),]
-
-
-              )),
               SizedBox(height: height*0.02,),
               InkWell(
                 onTap: () {
