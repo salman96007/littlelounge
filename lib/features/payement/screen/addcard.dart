@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
@@ -56,7 +57,39 @@ class _AddCardState extends State<AddCard> {
 
               ),
             ],
+          ),
+          Column(
+            children: [
+              TextField(
+                keyboardType: TextInputType.name,
+                textInputAction:TextInputAction.next,
+                style: TextStyle(
+                  color: ColorConst.eighth,
+                  fontSize: width*0.045,
+                ),
+                decoration: InputDecoration(
+                  constraints: BoxConstraints(
+                    maxHeight: width*0.15,
+                  ),
+                  fillColor: ColorConst.secondary,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:BorderSide(
+                      color: ColorConst.secondary,
+                    ),
+                    borderRadius: BorderRadius.circular(width*0.03)
+
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: ColorConst.secondary
+                    )
+                  )
+                ),
+
+              )
+            ],
           )
+
         ],
       ),
     );

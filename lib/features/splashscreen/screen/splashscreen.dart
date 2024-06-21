@@ -22,13 +22,13 @@ class SplashScreen extends StatefulWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
              Image.asset(ImageConstant.finallogo,width: width*0.56,),
-              RichText(text: TextSpan(text: "STYLISH\n",   style: GoogleFonts.firaSans(
+              RichText(text: TextSpan(text: "LITTLELOUNGE\n",   style: GoogleFonts.firaSans(
                 textStyle : TextStyle(color: ColorConst.primaryColor,
-                  fontSize:width*0.13, ),
+                  fontSize:width*0.10, ),
 
               ),
                 children: [
-                  TextSpan(text:"Find Your Slyle",
+                  TextSpan(text:"Grow With Trend",
                     style:GoogleFonts.sacramento(
                       textStyle : TextStyle(color: ColorConst.primaryColor,
                       fontSize: width*0.12),
