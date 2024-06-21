@@ -101,19 +101,24 @@ class CreatAccount extends StatelessWidget {
 
               )),
               SizedBox(height: height*0.02,),
-              Container(
-                child: Center(
-                  child: Text("Create an Account",style: TextStyle(
-                    fontSize: width*0.04,
-                    color: ColorConst.primaryColor,
-                    fontWeight: FontWeight.w500,
-                  ),),
-                ),
-                height: height*0.07,
-                width: width*0.88,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(width*0.07),
-                  color: ColorConst.thirdColor,
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Signup(),));
+                },
+                child: Container(
+                  child: Center(
+                    child: Text("Create an Account",style: TextStyle(
+                      fontSize: width*0.04,
+                      color: ColorConst.primaryColor,
+                      fontWeight: FontWeight.w500,
+                    ),),
+                  ),
+                  height: height*0.07,
+                  width: width*0.88,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(width*0.07),
+                    color: ColorConst.thirdColor,
+                  ),
                 ),
               )
             ],
