@@ -186,8 +186,37 @@ class _CartPageState extends State<CartPage> {
 
               ],
             ),
-            title: Text("fasil"),
-          )
+            title: Text("43, Electronics City Phase 1,\n Electronic City",style: TextStyle(
+              fontSize: width*0.04,
+              color: ColorConst.twelthColor
+            ),),
+            trailing: SvgPicture.asset(SvgConstant.check),
+          ),
+          Padding(
+            padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.05,right: width*0.05),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Payment Method",style: TextStyle(
+                    color: ColorConst.secondary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: width*0.06
+                ),),
+                SvgPicture.asset(SvgConstant.forward)
+
+              ],
+            ),
+          ),
+          ListTile(
+            leading: Container(
+              width: width*0.05,
+            ),
+            title: Text("43, Electronics City Phase 1,\n Electronic City",style: TextStyle(
+                fontSize: width*0.04,
+                color: ColorConst.twelthColor
+            ),),
+            trailing: SvgPicture.asset(SvgConstant.check),
+          ),
 
 
         ],
