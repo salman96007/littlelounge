@@ -16,40 +16,34 @@ class HomePage extends StatefulWidget {
   class _HomePageState extends State<HomePage> {
   List dress = [
     {
-
       "imag" : ImageConstant.image1,
-       "name" : "Imported Collection"
-
+       "name" : "Imported Collection",
+       "rate" : 3000
     },
     {
-
-      "imag" : ImageConstant.kid2,
-      "name" : "Imported Collection"
-
-    },
-    {
-
-      "imag" : ImageConstant.kid3,
-      "name" : "Western Collection"
-
-    },
-    {
-
       "imag" : ImageConstant.kid4,
-      "name" : "Co-Ord Set"
-
+      "name" : "Imported Collection",
+      "rate" : 2900
     },
     {
-
+      "imag" : ImageConstant.kid3,
+      "name" : "Western Collection",
+      "rate" : 3300
+    },
+    {
       "imag" : ImageConstant.kid5,
-      "name" : "Jumpsuit"
-
+      "name" : "Co-Ord Set",
+      "rate" : 3700
     },
     {
-
       "imag" : ImageConstant.kid6,
-      "name" : Text("Trendy Co-Ord Set")
-
+      "name" : "Jumpsuit",
+      "rate" : 3900
+    },
+    {
+      "imag" : ImageConstant.kid2,
+      "name" : "Trendy Co-Ord Set",
+      "rate" : 3250
     },
 
   ];
@@ -304,8 +298,9 @@ class HomePage extends StatefulWidget {
                           alignment: Alignment.topRight,
                           children: [
                             Container(
-                              child: Image.asset(dress[index]["imag"],fit: BoxFit.fitHeight,),
+                              child: Image.asset(dress[index]["imag"],),
                               width: width*0.425,
+                              height: height*0.3,
                               decoration: BoxDecoration(
                                 color: ColorConst.forth.withOpacity(0.15),
                                 borderRadius: BorderRadius.circular(width*0.05),
@@ -336,7 +331,7 @@ class HomePage extends StatefulWidget {
                         Row(
                           children: [
                             SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
-                            Text("500",style: TextStyle(
+                            Text(dress[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: width*0.05
                             ),),

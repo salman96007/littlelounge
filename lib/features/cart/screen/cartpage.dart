@@ -30,7 +30,6 @@ class _CartPageState extends State<CartPage> {
       body: Column(
         children: [
          Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
            children: [
              Container(
                 width: width*1,
@@ -39,7 +38,7 @@ class _CartPageState extends State<CartPage> {
                    itemBuilder: (context, index) {
                      return
                        Container(
-                           margin: EdgeInsets.only(right: width*0.05,left: width*0.05,top: width*0.1),
+                           margin: EdgeInsets.only(right: width*0.05,left: width*0.05,top: width*0.07),
                            width: width*0.9,
                            height: height*0.25,
                            decoration: BoxDecoration(
@@ -165,7 +164,7 @@ class _CartPageState extends State<CartPage> {
                    itemCount: 1),
              ),
              Padding(
-               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05),
+               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05,),
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
