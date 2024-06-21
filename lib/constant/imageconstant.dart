@@ -56,5 +56,7 @@ class ImageConstant {
       static const  location2 = "assets/icons/location2.svg";
       static const  root = "assets/icons/root.svg";
       static const  ellipse = "assets/icons/ellips.svg";
+      static const  check = "assets/icons/check.svg";
+      static const  visa = "assets/icons/visa.svg";
 
    }
