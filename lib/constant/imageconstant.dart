@@ -25,6 +25,10 @@ class ImageConstant {
    static const  location = "assets/images/location.png";
    static const  locations = "assets/images/locations.png";
    static const  ellips = "assets/images/ellips.png";
+   static const  jenny = "assets/images/jenny.png";
+   static const  ronald = "assets/images/ronald.png";
+   static const  guy = "assets/images/guy.png";
+   static const  savannah = "assets/images/savannah.png";
 
 
    }
@@ -58,5 +62,6 @@ class ImageConstant {
       static const  ellipse = "assets/icons/ellips.svg";
       static const  check = "assets/icons/check.svg";
       static const  visa = "assets/icons/visa.svg";
+      static const  clock = "assets/icons/clock.svg";
 
    }
