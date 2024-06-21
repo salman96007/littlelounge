@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
@@ -15,11 +16,13 @@ class Savecard extends StatefulWidget {
 }
 
 class _SavecardState extends State<Savecard> {
+  bool toggle = false;
   int active=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:ColorConst.primaryColor,
+      resizeToAvoidBottomInset:false,
       appBar: AppBar(
         backgroundColor: ColorConst.primaryColor,
         title: Text("Payment",style: GoogleFonts.inter(
@@ -139,7 +142,7 @@ class _SavecardState extends State<Savecard> {
           SizedBox(height:height*0.02,),
           SizedBox(
             width:width*0.85,
-            height:height*0.11,
+            height:height*0.1,
             //color:Colors.red,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,7 +162,7 @@ class _SavecardState extends State<Savecard> {
                   ),
                   decoration: InputDecoration(
                     constraints:BoxConstraints(
-                        maxHeight:width*0.2
+                        maxHeight:width*0.15
                     ),
                     fillColor:ColorConst.sixteenColor,
                     filled: true,
@@ -187,7 +190,7 @@ class _SavecardState extends State<Savecard> {
             children: [
               SizedBox(
                 width:width*0.4,
-                height:height*0.12,
+                height:height*0.1,
                 //color: Colors.red,
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -207,7 +210,7 @@ class _SavecardState extends State<Savecard> {
                       ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
-                            maxHeight:width*0.2
+                            maxHeight:width*0.15
                         ),
                         fillColor:ColorConst.sixteenColor,
                         filled: true,
@@ -230,7 +233,7 @@ class _SavecardState extends State<Savecard> {
               ),
               SizedBox(
                 width:width*0.4,
-                height:height*0.12,
+                height:height*0.1,
                 //color: Colors.red,
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -250,7 +253,7 @@ class _SavecardState extends State<Savecard> {
                       ),
                       decoration: InputDecoration(
                         constraints:BoxConstraints(
-                            maxHeight:width*0.2
+                            maxHeight:width*0.15
                         ),
                         fillColor:ColorConst.sixteenColor,
                         filled: true,
@@ -273,6 +276,49 @@ class _SavecardState extends State<Savecard> {
               ),
             ],
           ),
+          SizedBox(height:height*0.01,),
+          SizedBox(
+            width:width*0.85,
+            height:height*0.05,
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Save as primary address",style:GoogleFonts.inter(
+                    color: ColorConst.nineth,
+                    fontWeight: FontWeight.w500,
+                    fontSize:width*0.04
+                ),),
+                CupertinoSwitch(
+                  focusColor:ColorConst.fourtyColor,
+                  activeColor:ColorConst.seventeenColor,
+                  value: toggle,
+                  onChanged: (bool value) {
+                    setState(() {
+                      toggle = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:height*0.04,
+          ),
+          Container(
+            height: height*0.07,
+            width: width*0.88,
+            child: Center(
+              child: Text("Save Card",style: TextStyle(
+                fontSize: width*0.04,
+                color: ColorConst.primaryColor,
+                fontWeight: FontWeight.w500,
+              ),),
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(width*0.07),
+              color: ColorConst.thirdColor,
+            ),
+          )
 
         ],
       ),
