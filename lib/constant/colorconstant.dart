@@ -21,5 +21,6 @@ class ColorConst{
   static const eightethColor=Color(0xff4BC76D);
   static const nineteenthColor=Color(0xffFF7043);
   static const twentyColor=Color(0xffDEDEDE);
+  static const twentyFirstColor=Color(0xffF6F2FF);
 
 }

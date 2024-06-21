@@ -47,10 +47,10 @@ class _SavecardState extends State<Savecard> {
                           offset: Offset(0,4)
                       )
                     ] ,
-                    borderRadius: BorderRadius.circular(width*0.04),
-                    image: DecorationImage(image:AssetImage(ImageConstant.card),
-                        fit: BoxFit.cover
-                    ),
+                    // borderRadius: BorderRadius.circular(width*0.04),
+                    // image: DecorationImage(image:AssetImage(ImageConstant.card),
+                    //     fit: BoxFit.cover
+                    // ),
                   )
               );
             },
@@ -69,9 +69,9 @@ class _SavecardState extends State<Savecard> {
           SizedBox(height:height*0.02,),
           Container(
             width:width*0.9,
-            height:height*0.07,
+            height:height*0.065,
             decoration:BoxDecoration(
-              color:ColorConst.twanteenthColor,
+              color:ColorConst.twentyFirstColor,
               borderRadius: BorderRadius.circular(width*0.03),
               border: Border.all(
                 color:ColorConst.thirdColor,
@@ -93,9 +93,9 @@ class _SavecardState extends State<Savecard> {
           
           ),
           SizedBox(height:height*0.02,),
-          SizedBox(
+          Container(
             width:width*0.85,
-            height:height*0.11,
+            height:height*0.1,
             //color:Colors.red,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +104,7 @@ class _SavecardState extends State<Savecard> {
                 Text("Card Owner",style:GoogleFonts.inter(
                     color: ColorConst.nineth,
                     fontWeight: FontWeight.w500,
-                    fontSize:width*0.043
+                    fontSize:width*0.04
                 ),),
                 TextFormField (
                   keyboardType:TextInputType.name,
@@ -115,7 +115,7 @@ class _SavecardState extends State<Savecard> {
                   ),
                   decoration: InputDecoration(
                     constraints:BoxConstraints(
-                        maxHeight:width*0.2
+                        maxHeight:width*0.15
                     ),
                     fillColor:ColorConst.sixteenColor,
                     filled: true,
@@ -148,7 +148,7 @@ class _SavecardState extends State<Savecard> {
                 Text("Card Number",style:GoogleFonts.inter(
                     color: ColorConst.nineth,
                     fontWeight: FontWeight.w500,
-                    fontSize:width*0.043
+                    fontSize:width*0.04
                 ),),
                 TextFormField(
                   keyboardType:TextInputType.number,
@@ -196,7 +196,7 @@ class _SavecardState extends State<Savecard> {
                     Text("EXP",style:GoogleFonts.inter(
                         color: ColorConst.nineth,
                         fontWeight: FontWeight.w500,
-                        fontSize:width*0.043
+                        fontSize:width*0.04
                     ),),
                     TextFormField(
                       keyboardType:TextInputType.text,
@@ -239,7 +239,7 @@ class _SavecardState extends State<Savecard> {
                     Text("CVV",style:GoogleFonts.inter(
                         color: ColorConst.nineth,
                         fontWeight: FontWeight.w500,
-                        fontSize:width*0.043
+                        fontSize:width*0.04
                     ),),
                     TextFormField(
                       keyboardType:TextInputType.text,
