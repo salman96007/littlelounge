@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/cart/screen/cartpage.dart';
+import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: HomePage(),
+        home: DetailedDress(),
         debugShowCheckedModeBanner: false,
       ),
     );

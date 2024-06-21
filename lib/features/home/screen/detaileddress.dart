@@ -14,7 +14,20 @@ class DetailedDress extends StatefulWidget {
   }
 
   class _DetailedDressState extends State<DetailedDress> {
+    List Size =[
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+    ];
+
+    String selectedSize = '';
+
     @override
+
+
+
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
@@ -120,18 +133,26 @@ class DetailedDress extends StatefulWidget {
                   Container(
                     height: height*0.09,
                     child: ListView.separated(itemBuilder: (context, index) {
-                      return Container(
-                          alignment: Alignment.center,
-                          width: width*0.155,
-                          decoration: BoxDecoration(
-                              color: ColorConst.forth.withOpacity(0.15),
-                              borderRadius: BorderRadius.circular(width*0.03)
-                          ),
-                          child: Text("S",style: TextStyle(
-                              color: ColorConst.secondary,
-                              fontWeight: FontWeight.w600,
-                              fontSize: width*0.06
-                          ),)
+                      return InkWell(
+                        onTap: () {
+                          selectedSize = Size[index];
+                          setState(() {
+
+                          });
+                        },
+                        child: Container(
+                            alignment: Alignment.center,
+                            width: width*0.155,
+                            decoration: BoxDecoration(
+                                color: selectedSize== Size[index]? ColorConst.thirdColor:ColorConst.forth.withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(width*0.03)
+                            ),
+                            child: Text(Size[index],style: TextStyle(
+                                color: ColorConst.secondary,
+                                fontWeight: FontWeight.w600,
+                                fontSize: width*0.06
+                            ),)
+                        ),
                       );
                     },
                       shrinkWrap: true,
