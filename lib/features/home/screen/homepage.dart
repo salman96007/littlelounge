@@ -16,9 +16,41 @@ class HomePage extends StatefulWidget {
   class _HomePageState extends State<HomePage> {
   List dress = [
     {
-      "img" :ImageConstant.kid1,
 
-    }
+      "imag" : ImageConstant.image1,
+       "name" : "Imported Collection"
+
+    },
+    {
+
+      "imag" : ImageConstant.kid2,
+      "name" : "Imported Collection"
+
+    },
+    {
+
+      "imag" : ImageConstant.kid3,
+      "name" : "Western Collection"
+
+    },
+    {
+
+      "imag" : ImageConstant.kid4,
+      "name" : "Co-Ord Set"
+
+    },
+    {
+
+      "imag" : ImageConstant.kid5,
+      "name" : "Jumpsuit"
+
+    },
+    {
+
+      "imag" : ImageConstant.kid6,
+      "name" : Text("Trendy Co-Ord Set")
+
+    },
 
   ];
   bool toggle =false;
@@ -272,7 +304,7 @@ class HomePage extends StatefulWidget {
                           alignment: Alignment.topRight,
                           children: [
                             Container(
-                              child: Image.asset(ImageConstant.image1),
+                              child: Image.asset(dress[index]["imag"],fit: BoxFit.fitHeight,),
                               width: width*0.425,
                               decoration: BoxDecoration(
                                 color: ColorConst.forth.withOpacity(0.15),
@@ -296,7 +328,7 @@ class HomePage extends StatefulWidget {
                           ],
                         ),
                         SizedBox(height: height*0.02,),
-                        Text("the valuable clothing collectiin",style: TextStyle(
+                        Text(dress[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
                           fontSize: width*0.04
@@ -316,7 +348,7 @@ class HomePage extends StatefulWidget {
 
 
                   },
-                itemCount: 6,
+                itemCount: dress.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
