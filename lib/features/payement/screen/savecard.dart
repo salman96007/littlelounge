@@ -74,7 +74,7 @@ class _SavecardState extends State<Savecard> {
             width:width*0.9,
             height:height*0.065,
             decoration:BoxDecoration(
-              color:ColorConst.twentyFirstColor,
+              color:ColorConst.twentyOneColor,
               borderRadius: BorderRadius.circular(width*0.03),
               border: Border.all(
                 color:ColorConst.thirdColor,
@@ -96,7 +96,7 @@ class _SavecardState extends State<Savecard> {
           
           ),
           SizedBox(height:height*0.02,),
-          Container(
+          SizedBox(
             width:width*0.85,
             height:height*0.1,
             //color:Colors.red,
@@ -120,17 +120,17 @@ class _SavecardState extends State<Savecard> {
                     constraints:BoxConstraints(
                         maxHeight:width*0.15
                     ),
-                    fillColor:ColorConst.sixteenColor,
+                    fillColor:ColorConst.eleventh,
                     filled: true,
                     enabledBorder:OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:ColorConst.sixteenColor.withOpacity(0.5)
+                            color:ColorConst.eleventh.withOpacity(0.5)
                         ),
                         borderRadius:BorderRadius.circular(width*0.03)
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:ColorConst.sixteenColor
+                            color:ColorConst.eleventh
                         ),
                         borderRadius:BorderRadius.circular(width*0.03)
                     ),
@@ -164,17 +164,17 @@ class _SavecardState extends State<Savecard> {
                     constraints:BoxConstraints(
                         maxHeight:width*0.15
                     ),
-                    fillColor:ColorConst.sixteenColor,
+                    fillColor:ColorConst.eleventh,
                     filled: true,
                     enabledBorder:OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:ColorConst.sixteenColor.withOpacity(0.5)
+                            color:ColorConst.eleventh.withOpacity(0.5)
                         ),
                         borderRadius:BorderRadius.circular(width*0.03)
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:ColorConst.sixteenColor
+                            color:ColorConst.eleventh
                         ),
                         borderRadius:BorderRadius.circular(width*0.03)
                     ),
@@ -212,17 +212,17 @@ class _SavecardState extends State<Savecard> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.15
                         ),
-                        fillColor:ColorConst.sixteenColor,
+                        fillColor:ColorConst.eleventh,
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor.withOpacity(0.5)
+                                color:ColorConst.eleventh.withOpacity(0.5)
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor
+                                color:ColorConst.eleventh
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
@@ -255,17 +255,17 @@ class _SavecardState extends State<Savecard> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.15
                         ),
-                        fillColor:ColorConst.sixteenColor,
+                        fillColor:ColorConst.eleventh,
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor.withOpacity(0.5)
+                                color:ColorConst.eleventh.withOpacity(0.5)
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor
+                                color:ColorConst.eleventh
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),

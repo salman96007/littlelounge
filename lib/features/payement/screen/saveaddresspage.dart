@@ -20,7 +20,6 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: ColorConst.primaryColor,
       resizeToAvoidBottomInset:false,
       appBar: AppBar(
@@ -60,17 +59,17 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.2
                         ),
-                        fillColor:ColorConst.sixteenColor,
+                        fillColor:ColorConst.eleventh,
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                              color:ColorConst.sixteenColor.withOpacity(0.5)
+                              color:ColorConst.eleventh.withOpacity(0.5)
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color:ColorConst.sixteenColor
+                              color:ColorConst.eleventh
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
@@ -108,17 +107,17 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                             constraints:BoxConstraints(
                                 maxHeight:width*0.2
                             ),
-                            fillColor:ColorConst.sixteenColor,
+                            fillColor:ColorConst.eleventh,
                             filled: true,
                             enabledBorder:OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color:ColorConst.sixteenColor.withOpacity(0.5)
+                                    color:ColorConst.eleventh.withOpacity(0.5)
                                 ),
                                 borderRadius:BorderRadius.circular(width*0.03)
                             ),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color:ColorConst.sixteenColor
+                                    color:ColorConst.eleventh
                                 ),
                                 borderRadius:BorderRadius.circular(width*0.03)
                             ),
@@ -151,17 +150,17 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                             constraints:BoxConstraints(
                                 maxHeight:width*0.2
                             ),
-                            fillColor:ColorConst.sixteenColor,
+                            fillColor:ColorConst.eleventh,
                             filled: true,
                             enabledBorder:OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color:ColorConst.sixteenColor.withOpacity(0.5)
+                                    color:ColorConst.eleventh.withOpacity(0.5)
                                 ),
                                 borderRadius:BorderRadius.circular(width*0.03)
                             ),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color:ColorConst.sixteenColor
+                                    color:ColorConst.eleventh
                                 ),
                                 borderRadius:BorderRadius.circular(width*0.03)
                             ),
@@ -197,17 +196,17 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.2
                         ),
-                        fillColor:ColorConst.sixteenColor,
+                        fillColor:ColorConst.eleventh,
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor.withOpacity(0.5)
+                                color:ColorConst.eleventh.withOpacity(0.5)
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor
+                                color:ColorConst.eleventh
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
@@ -241,17 +240,17 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                         constraints:BoxConstraints(
                             maxHeight:width*0.2
                         ),
-                        fillColor:ColorConst.sixteenColor,
+                        fillColor:ColorConst.eleventh,
                         filled: true,
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor.withOpacity(0.5)
+                                color:ColorConst.eleventh.withOpacity(0.5)
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:ColorConst.sixteenColor
+                                color:ColorConst.eleventh
                             ),
                             borderRadius:BorderRadius.circular(width*0.03)
                         ),
