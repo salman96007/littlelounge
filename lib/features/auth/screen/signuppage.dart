@@ -35,7 +35,7 @@ class _SignupState extends State<Signup> {
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
                       labelText:"Username",
-                      suffixIcon: SvgPicture.asset(SvgConstant.greenTick,),
+                      suffixIcon: SvgPicture.asset(SvgConstant.greenTick,fit: BoxFit.none,),
                       labelStyle:TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w400
@@ -60,9 +60,15 @@ class _SignupState extends State<Signup> {
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
                       labelText:"Password",
-                      suffixIcon: Text("Strong",style: TextStyle(
-                        color:ColorConst.eightethColor ,
-                      ),),
+                      suffixIcon: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Strong",style: TextStyle(
+                            fontSize: width*0.03,
+                            color:ColorConst.eightethColor ,
+                          ),),
+                        ],
+                      ),
                       labelStyle:TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w400
@@ -87,7 +93,7 @@ class _SignupState extends State<Signup> {
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
                       labelText:"Email Addresse",
-                      suffixIcon: SvgPicture.asset(SvgConstant.greenTick,),
+                      suffixIcon: SvgPicture.asset(SvgConstant.greenTick,fit: BoxFit.none,),
                       labelStyle:TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w400

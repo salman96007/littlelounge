@@ -2,6 +2,7 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/main.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,6 +13,13 @@ class SplashScreen extends StatefulWidget {
   }
 
   class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(Duration(
+      seconds: 3,
+    )).then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => CreatAccount(),)));
+    super.initState();
+  }
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -33,11 +41,15 @@ class SplashScreen extends StatefulWidget {
                       textStyle : TextStyle(color: ColorConst.primaryColor,
                       fontSize: width*0.12),
 
-                    ) )
+                    ), )
               ],
              ),textAlign: TextAlign.center,),
+              SizedBox(height: height*0.05,),
 
-
+              CircularProgressIndicator(
+                color:ColorConst.primaryColor,
+                backgroundColor:ColorConst.secondary,
+              )
             ],
 
           ),
