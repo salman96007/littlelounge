@@ -54,7 +54,9 @@ class _SavecardState extends State<Savecard> {
                     // image: DecorationImage(image:AssetImage(ImageConstant.card),
                     //     fit: BoxFit.cover
                     // ),
-                  )
+                  ),
+
+
               );
             },
             options: CarouselOptions(
@@ -95,6 +97,7 @@ class _SavecardState extends State<Savecard> {
             ),
           
           ),
+
           SizedBox(height:height*0.02,),
           SizedBox(
             width:width*0.85,

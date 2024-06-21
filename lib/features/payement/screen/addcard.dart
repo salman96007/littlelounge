@@ -43,6 +43,9 @@ class _AddCardState extends State<AddCard> {
                       a=true;
                       b=false;
                       c=false;
+                      setState(() {
+
+                      });
 
                     },
                     child: Container(
@@ -50,7 +53,11 @@ class _AddCardState extends State<AddCard> {
                       width: width*0.27,
                       child: Image.asset(ImageConstant.card),
                       decoration: BoxDecoration(
-                          color:ColorConst.eleventh,
+                          color:a==false?ColorConst.eleventh:ColorConst.twentyTwoColor,
+                        border:Border.all(
+                          width:width*0.003,
+                          color:a==false?ColorConst.eleventh:ColorConst.twentyThreeColor
+                        ),
                         borderRadius: BorderRadius.circular(width*0.03)
                       ),
 
@@ -61,14 +68,21 @@ class _AddCardState extends State<AddCard> {
                       a=false;
                       b=true;
                       c=false;
+                      setState(() {
+
+                      });
                     },
 
                     child: Container(
                       height: height*0.07,
                       width: width*0.27,
-                      child: Image.asset(ImageConstant.paypal),
+                      child: Image.asset(ImageConstant.paypal,width:width*0.02,),
                       decoration: BoxDecoration(
-                          color:ColorConst.eleventh,
+                          color:b==false?ColorConst.eleventh:ColorConst.twentyTwoColor,
+                          border:Border.all(
+                              width:width*0.003,
+                              color:b==false?ColorConst.eleventh:ColorConst.twentyThreeColor
+                          ),
                         borderRadius: BorderRadius.circular(width*0.03)
                       ),
 
@@ -79,6 +93,9 @@ class _AddCardState extends State<AddCard> {
                       a=false;
                       b=false;
                       c=true;
+                      setState(() {
+
+                      });
                     },
 
                     child: Container(
@@ -86,7 +103,11 @@ class _AddCardState extends State<AddCard> {
                       width: width*0.27,
                       child: Image.asset(ImageConstant.bank),
                       decoration: BoxDecoration(
-                          color:ColorConst.eleventh,
+                          color: c==false?ColorConst.eleventh:ColorConst.twentyTwoColor,
+                          border:Border.all(
+                              width:width*0.003,
+                              color:c==false?ColorConst.eleventh:ColorConst.twentyThreeColor
+                          ),
                         borderRadius: BorderRadius.circular(width*0.03)
                       ),
 
@@ -96,7 +117,7 @@ class _AddCardState extends State<AddCard> {
               ),
             ),
           ),
-        SizedBox(height:height*0.03),
+        SizedBox(height:height*0.04),
           SizedBox(
             width:width*0.85,
             height:height*0.11,
