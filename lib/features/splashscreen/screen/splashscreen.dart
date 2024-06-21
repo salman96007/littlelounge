@@ -48,7 +48,7 @@ class SplashScreen extends StatefulWidget {
 
               CircularProgressIndicator(
                 color:ColorConst.primaryColor,
-                backgroundColor:ColorConst.secondary,
+                backgroundColor:ColorConst.forth,
               )
             ],
 
