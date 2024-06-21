@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
@@ -77,14 +78,19 @@ class ForgotPassword extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    height: height*0.060,
-                    width: width*0.65,
-                    child: Text("Confirm Mail",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
-                    decoration: BoxDecoration(
-                      color: ColorConst.thirdColor,
-                      borderRadius: BorderRadius.circular(width*0.03)
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Verificationcode(),));
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: height*0.060,
+                      width: width*0.65,
+                      child: Text("Confirm Mail",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
+                      decoration: BoxDecoration(
+                        color: ColorConst.thirdColor,
+                        borderRadius: BorderRadius.circular(width*0.03)
+                      ),
                     ),
                   )
                 ],
