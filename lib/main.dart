@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: SplashScreen(),
+        home: ReviewPage(),
         debugShowCheckedModeBanner: false,
       ),
     );

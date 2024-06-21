@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:littlelounge/features/revviews/screen/reviews.dart';
 
 import '../../../main.dart';
 double a = 0;
@@ -19,7 +20,7 @@ class _AddReviewState extends State<AddReview> {
     TextEditingController nameController=TextEditingController();
   
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         elevation: 1,
@@ -108,14 +109,19 @@ class _AddReviewState extends State<AddReview> {
               Text(a.toString()),
             ],
           ),
-          Container(
-            alignment: Alignment.center,
-            height: height*0.060,
-            width: width*0.65,
-            child: Text("Submit Review",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
-            decoration: BoxDecoration(
-                color: ColorConst.thirdColor,
-                borderRadius: BorderRadius.circular(width*0.03)
+          InkWell(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ReviewPage(),), (route) => false,);
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: height*0.060,
+              width: width*0.65,
+              child: Text("Submit Review",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
+              decoration: BoxDecoration(
+                  color: ColorConst.thirdColor,
+                  borderRadius: BorderRadius.circular(width*0.03)
+              ),
             ),
           )
         ],
