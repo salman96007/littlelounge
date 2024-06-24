@@ -33,7 +33,8 @@ class ImageConstant {
    static const  men2 = "assets/images/men2.png";
    static const  men3 = "assets/images/men3.png";
    static const  men4 = "assets/images/men4.png";
-
+   static const  men5 = "assets/images/men5.png";
+   static const  men6 = "assets/images/men6.png";
 
    }
 
