@@ -46,7 +46,7 @@ class _WelcomPageState extends State<WelcomPage> {
                               child: Center(child: Text("Women",style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),)),
-                              height: height*0.10,
+                              height: height*0.07,
                               width: width*0.30,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(width*0.022),
@@ -59,11 +59,10 @@ class _WelcomPageState extends State<WelcomPage> {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
                               },
                               child: Container(
-                                height: height*0.10,
+                                height: height*0.07,
                                 width: width*0.30,
                                 child: Center(child: Text("Men",style: TextStyle(
                                   fontWeight: FontWeight.w500,
-
                                   color: ColorConst.primaryColor,
                                 ),)),
                                 decoration: BoxDecoration(

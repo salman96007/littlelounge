@@ -403,9 +403,89 @@ class HomePage extends StatefulWidget {
                  color: ColorConst.sixth,
                  fontWeight: FontWeight.w500,
                   fontSize: width*0.05
+              ),),
+              foundItems.isNotEmpty?  GridView.builder(
+                physics: BouncingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                    childAspectRatio: 0.5,
+                    crossAxisSpacing:width*0.04,
+                    mainAxisSpacing: width*0.01
+                ),
+                itemBuilder: (context, index)
+                {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Container(
+                              child: Image.asset(foundItems[index]["imag"],),
+                              width: width*0.425,
+                              height: height*0.3,
+                              decoration: BoxDecoration(
+                                  color: ColorConst.forth.withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(width*0.05),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        blurRadius:4,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 3)
+
+                                    )
+                                  ]
+                              )
+                          ),
+                          Positioned(
+                              right: width*0.05,
+                              top: width*0.04,
+
+                              child: InkWell(
+                                  onTap: () {
+                                    if(fav.contains(index)){
+                                      fav.remove(index);
+                                    }else{
+                                      fav.add(index);
+                                    }
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
+                        ],
+                      ),
+                      SizedBox(height: height*0.02,),
+                      Text(foundItems[index]["name"],style: TextStyle(
+                          color: ColorConst.secondary,
+                          fontWeight: FontWeight.w500,
+                          fontSize: width*0.04
+                      ),),
+                      Row(
+                        children: [
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          Text(foundItems[index]["rate"].toString(),style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: width*0.05
+                          ),),
+                        ],
+                      ),
+                    ],
+                  );
+
+
+
+                },
+
+                itemCount: view?foundItems.length:4,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+              )
+                  :Text("No results found",style: TextStyle(
+                  color: ColorConst.sixth,
+                  fontWeight: FontWeight.w500,
+                  fontSize: width*0.05
               ),)
-
-
             ],
           ),
         ),

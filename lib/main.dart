@@ -6,6 +6,7 @@ import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
