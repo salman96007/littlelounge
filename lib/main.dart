@@ -36,9 +36,11 @@ class _MyAppState extends State<MyApp> {
       },
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.interTextTheme()
+
+            textTheme: GoogleFonts.interTextTheme(),
         ),
-        home: DetailedDress(),
+
+        home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

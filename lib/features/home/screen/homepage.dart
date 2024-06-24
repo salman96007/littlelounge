@@ -14,7 +14,8 @@ class HomePage extends StatefulWidget {
   }
 
   class _HomePageState extends State<HomePage> {
-  List dress = [
+  bool view = false;
+  List<Map<String,dynamic>> dress = [
     {
       "imag" : ImageConstant.image1,
        "name" : "Imported Collection",
@@ -48,7 +49,36 @@ class HomePage extends StatefulWidget {
 
   ];
   bool toggle =false;
-    @override
+  bool favour =false;
+  List fav =[];
+  List<Map<String,dynamic>> foundItems = [];
+
+  @override
+  void initState() {
+    foundItems = dress;
+    // TODO: implement initState
+    super.initState();
+  }
+  void filterItems(String enteredKeyword){
+    List<Map<String,dynamic>> result = [];
+     if(enteredKeyword.isEmpty){
+       result = dress;
+     }else {
+        result = dress
+             .where((user) => user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()),).toList();
+     }
+
+     setState(() {
+       foundItems = result;
+     });
+  }
+
+
+
+
+  @override
+
+  @override
     Widget build(BuildContext context) {
       return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -239,6 +269,7 @@ class HomePage extends StatefulWidget {
                     width: width*0.7,
                     height: height*0.065,
                     child: TextFormField(
+                       onChanged: (value) => filterItems(value),
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
@@ -275,30 +306,39 @@ class HomePage extends StatefulWidget {
                     fontSize: width*0.05,
                     color: ColorConst.secondary
                   ),),
-                  Text("View All",style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: width*0.04,
-                    color: ColorConst.twelthColor
-                  ),),
+                  InkWell(
+                    onTap: () {
+                      view = !view;
+                      setState(() {
+
+                      });
+                    },
+                    child:  Text(view?"View Less":"View All",style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: width*0.04,
+                      color: ColorConst.twelthColor
+                    ),)
+                  ),
                 ],
               ),
               SizedBox(height: height*0.03,),
-              GridView.builder(
+              foundItems.isNotEmpty?  GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
                   childAspectRatio: 0.5,
                   crossAxisSpacing:width*0.04,
                   mainAxisSpacing: width*0.01
               ),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  itemBuilder: (context, index)
+                {
+                   return Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Stack(
                           alignment: Alignment.topRight,
                           children: [
                             Container(
-                              child: Image.asset(dress[index]["imag"],),
+                              child: Image.asset(foundItems[index]["imag"],),
                               width: width*0.425,
                               height: height*0.3,
                               decoration: BoxDecoration(
@@ -319,11 +359,22 @@ class HomePage extends StatefulWidget {
                               right: width*0.05,
                                 top: width*0.04,
                         
-                                child: SvgPicture.asset(SvgConstant.heart,width: width*0.07,))
+                                child: InkWell(
+                                      onTap: () {
+                                         if(fav.contains(index)){
+                                           fav.remove(index);
+                                         }else{
+                                           fav.add(index);
+                                         }
+                                         setState(() {
+
+                                         });
+                                      },
+                                    child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
                           ],
                         ),
                         SizedBox(height: height*0.02,),
-                        Text(dress[index]["name"],style: TextStyle(
+                        Text(foundItems[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
                           fontSize: width*0.04
@@ -331,7 +382,7 @@ class HomePage extends StatefulWidget {
                         Row(
                           children: [
                             SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
-                            Text(dress[index]["rate"].toString(),style: TextStyle(
+                            Text(foundItems[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: width*0.05
                             ),),
@@ -343,10 +394,16 @@ class HomePage extends StatefulWidget {
 
 
                   },
-                itemCount: dress.length,
+
+                itemCount: view?foundItems.length:4,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
+                  :Text("No results found",style: TextStyle(
+                 color: ColorConst.sixth,
+                 fontWeight: FontWeight.w500,
+                  fontSize: width*0.05
+              ),)
 
 
             ],
