@@ -15,6 +15,7 @@ class WelcomPage extends StatefulWidget {
 }
 
 class _WelcomPageState extends State<WelcomPage> {
+  String title="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,26 +43,35 @@ class _WelcomPageState extends State<WelcomPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                              child: Center(child: Text("Women",style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),)),
-                              height: height*0.07,
-                              width: width*0.30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(width*0.022),
-                                color:ColorConst.sixteenColor,
+                            InkWell(
+                                onTap: () {
+                                  title="man";
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(
+                                      name:title,),));
+                                },
+                              child: Container(
+                                child: Center(child: Text("man",style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                ),)),
+                                height: height*0.07,
+                                width: width*0.30,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(width*0.022),
+                                  color:ColorConst.sixteenColor,
+                                ),
                               ),
                             ),
                             SizedBox(width: width*0.04,),
                             InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+                                title="woman";
+
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(name:title,),));
                               },
                               child: Container(
                                 height: height*0.07,
                                 width: width*0.30,
-                                child: Center(child: Text("Men",style: TextStyle(
+                                child: Center(child: Text("Woman",style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   color: ColorConst.primaryColor,
                                 ),)),
@@ -77,9 +87,15 @@ class _WelcomPageState extends State<WelcomPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Skip",style: TextStyle(
-                            color: ColorConst.twelthColor
-                          ),)
+                          InkWell(
+                            onTap: () {
+                              title ="skip";
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(name: title),));
+                            },
+                            child: Text("Skip",style: TextStyle(
+                              color: ColorConst.twelthColor
+                            ),),
+                          )
                         ],
                       )
                     ],
