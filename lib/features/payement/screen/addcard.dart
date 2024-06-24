@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -74,9 +75,9 @@ class _AddCardState extends State<AddCard> {
                     },
 
                     child: Container(
-                      height: height*0.07,
+                      height: height*0.075,
                       width: width*0.27,
-                      child: Image.asset(ImageConstant.paypal,width:width*0.02,),
+                      child: Image.asset(ImageConstant.paypal),
                       decoration: BoxDecoration(
                           color:b==false?ColorConst.eleventh:ColorConst.twentyTwoColor,
                           border:Border.all(
