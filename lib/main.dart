@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
-import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
+import 'package:littlelounge/features/cart/screen/cartpage.dart';
+import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
+
+import 'features/home/screen/accountinfrmtn.dart';
 
  var height;
  var width;
@@ -35,9 +38,10 @@ class _MyAppState extends State<MyApp> {
       },
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.interTextTheme()
+
+            textTheme: GoogleFonts.interTextTheme(),
         ),
-        home: SplashScreen(),
+        home: AccountInfrmtn(),
         debugShowCheckedModeBanner: false,
       ),
     );
