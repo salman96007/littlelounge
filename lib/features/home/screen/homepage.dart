@@ -7,7 +7,10 @@ import 'package:littlelounge/main.dart';
 import '../../../constant/colorconstant.dart';
 
 class HomePage extends StatefulWidget {
-    const HomePage({super.key});
+         final String name;
+    const HomePage({super.key,
+      required this.name,
+    });
 
     @override
     State<HomePage> createState() => _HomePageState();
@@ -48,30 +51,89 @@ class HomePage extends StatefulWidget {
     },
 
   ];
+  List<Map<String,dynamic>> dress1 = [
+    {
+      "imag" : ImageConstant.men1,
+      "name" : "Imported Collection",
+      "rate" : 3500
+    },
+    {
+      "imag" : ImageConstant.men2,
+      "name" : "Imported Collection",
+      "rate" : 3700
+    },
+    {
+      "imag" : ImageConstant.men3,
+      "name" : "Western Collection",
+      "rate" : 3400
+    },
+    {
+      "imag" : ImageConstant.men4,
+      "name" : "Co-Ord Set",
+      "rate" : 3800
+    },
+    {
+      "imag" : ImageConstant.men5,
+      "name" : "Jumpsuit",
+      "rate" : 4900
+    },
+    {
+      "imag" : ImageConstant.men6,
+      "name" : "Trendy Co-Ord Set",
+      "rate" : 4250
+    },
+
+  ];
+  List<Map<String,dynamic>> dress2 = [
+    {
+      "imag" : ImageConstant.image1,
+      "name" : "Imported Collection",
+      "rate" : 2300
+    },
+    {
+      "imag" : ImageConstant.men1,
+      "name" : "Imported Collection",
+      "rate" : 4700
+    },
+    {
+      "imag" : ImageConstant.kid3,
+      "name" : "Western Collection",
+      "rate" : 4400
+    },
+    {
+      "imag" : ImageConstant.men3,
+      "name" : "Co-Ord Set",
+      "rate" : 3400
+    },
+    {
+      "imag" : ImageConstant.kid6,
+      "name" : "Jumpsuit",
+      "rate" : 4500
+    },
+    {
+      "imag" : ImageConstant.men6,
+      "name" : "Trendy Co-Ord Set",
+      "rate" : 4250
+    },
+
+  ];
   bool toggle =false;
   bool favour =false;
   List fav =[];
   List<Map<String,dynamic>> foundItems = [];
+  List<Map<String,dynamic>> foundItems1 = [];
+  List<Map<String,dynamic>> foundItems2 = [];
 
   @override
   void initState() {
-    foundItems = dress;
+    print(widget.name);
+      foundItems= dress;
+      foundItems1 = dress1;
+      foundItems2 = dress2;
     // TODO: implement initState
     super.initState();
   }
-  void filterItems(String enteredKeyword){
-    List<Map<String,dynamic>> result = [];
-     if(enteredKeyword.isEmpty){
-       result = dress;
-     }else {
-        result = dress
-             .where((user) => user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()),).toList();
-     }
 
-     setState(() {
-       foundItems = result;
-     });
-  }
 
 
 
@@ -269,7 +331,7 @@ class HomePage extends StatefulWidget {
                     width: width*0.7,
                     height: height*0.065,
                     child: TextFormField(
-                       onChanged: (value) => filterItems(value),
+                       // onChanged: (value) => filterItems(value),
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
@@ -322,89 +384,90 @@ class HomePage extends StatefulWidget {
                 ],
               ),
               SizedBox(height: height*0.03,),
-              foundItems.isNotEmpty?  GridView.builder(
+            
+           widget.name=="man"? foundItems1.isNotEmpty?  GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-                  childAspectRatio: 0.5,
-                  crossAxisSpacing:width*0.04,
-                  mainAxisSpacing: width*0.01
-              ),
-                  itemBuilder: (context, index)
+                    childAspectRatio: 0.5,
+                    crossAxisSpacing:width*0.04,
+                    mainAxisSpacing: width*0.01
+                ),
+                itemBuilder: (context, index)
                 {
-                   return Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            Container(
-                              child: Image.asset(foundItems[index]["imag"],),
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Container(
+                              child: Image.asset(foundItems1[index]["imag"],),
                               width: width*0.425,
                               height: height*0.3,
                               decoration: BoxDecoration(
-                                color: ColorConst.forth.withOpacity(0.15),
-                                borderRadius: BorderRadius.circular(width*0.05),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius:4,
-                                    spreadRadius: 2,
-                                    offset: Offset(0, 3)
-                        
-                                  )
-                                ]
-                          )
-                            ),
-                            Positioned(
-                              right: width*0.05,
-                                top: width*0.04,
-                        
-                                child: InkWell(
-                                      onTap: () {
-                                         if(fav.contains(index)){
-                                           fav.remove(index);
-                                         }else{
-                                           fav.add(index);
-                                         }
-                                         setState(() {
+                                  color: ColorConst.forth.withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(width*0.05),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        blurRadius:4,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 3)
 
-                                         });
-                                      },
-                                    child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
-                          ],
-                        ),
-                        SizedBox(height: height*0.02,),
-                        Text(foundItems[index]["name"],style: TextStyle(
+                                    )
+                                  ]
+                              )
+                          ),
+                          Positioned(
+                              right: width*0.05,
+                              top: width*0.04,
+
+                              child: GestureDetector(
+                                  onTap: () {
+                                    if(fav.contains(index)){
+                                      fav.remove(index);
+                                    }else{
+                                      fav.add(index);
+                                    }
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
+                        ],
+                      ),
+                      SizedBox(height: height*0.02,),
+                      Text(foundItems1[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
                           fontSize: width*0.04
-                        ),),
-                        Row(
-                          children: [
-                            SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
-                            Text(foundItems[index]["rate"].toString(),style: TextStyle(
+                      ),),
+                      Row(
+                        children: [
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          Text(foundItems1[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: width*0.05
-                            ),),
-                          ],
-                        ),
-                      ],
-                    );
+                          ),),
+                        ],
+                      ),
+                    ],
+                  );
 
 
 
-                  },
+                },
 
-                itemCount: view?foundItems.length:4,
+                itemCount: view?foundItems1.length: 4,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
                   :Text("No results found",style: TextStyle(
-                 color: ColorConst.sixth,
-                 fontWeight: FontWeight.w500,
+                  color: ColorConst.sixth,
+                  fontWeight: FontWeight.w500,
                   fontSize: width*0.05
-              ),),
-              foundItems.isNotEmpty?  GridView.builder(
+              ),):SizedBox(),
+              widget.name=="woman"? foundItems.isNotEmpty?  GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
                     childAspectRatio: 0.5,
@@ -441,7 +504,7 @@ class HomePage extends StatefulWidget {
                               right: width*0.05,
                               top: width*0.04,
 
-                              child: InkWell(
+                              child: GestureDetector(
                                   onTap: () {
                                     if(fav.contains(index)){
                                       fav.remove(index);
@@ -477,7 +540,7 @@ class HomePage extends StatefulWidget {
 
                 },
 
-                itemCount: view?foundItems.length:4,
+                itemCount: view?foundItems2.length: 4,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
@@ -485,7 +548,89 @@ class HomePage extends StatefulWidget {
                   color: ColorConst.sixth,
                   fontWeight: FontWeight.w500,
                   fontSize: width*0.05
-              ),)
+              ),):SizedBox(),
+              widget.name=="skip"? foundItems.isNotEmpty?  GridView.builder(
+                physics: BouncingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                    childAspectRatio: 0.5,
+                    crossAxisSpacing:width*0.04,
+                    mainAxisSpacing: width*0.01
+                ),
+                itemBuilder: (context, index)
+                {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Container(
+                              child: Image.asset(foundItems2[index]["imag"],),
+                              width: width*0.425,
+                              height: height*0.3,
+                              decoration: BoxDecoration(
+                                  color: ColorConst.forth.withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(width*0.05),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        blurRadius:4,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 3)
+
+                                    )
+                                  ]
+                              )
+                          ),
+                          Positioned(
+                              right: width*0.05,
+                              top: width*0.04,
+
+                              child: GestureDetector(
+                                  onTap: () {
+                                    if(fav.contains(index)){
+                                      fav.remove(index);
+                                    }else{
+                                      fav.add(index);
+                                    }
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
+                        ],
+                      ),
+                      SizedBox(height: height*0.02,),
+                      Text(foundItems2[index]["name"],style: TextStyle(
+                          color: ColorConst.secondary,
+                          fontWeight: FontWeight.w500,
+                          fontSize: width*0.04
+                      ),),
+                      Row(
+                        children: [
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          Text(foundItems2[index]["rate"].toString(),style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: width*0.05
+                          ),),
+                        ],
+                      ),
+                    ],
+                  );
+
+
+
+                },
+
+                itemCount: view?foundItems2.length: 4,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+              )
+                  :Text("No results found",style: TextStyle(
+                  color: ColorConst.sixth,
+                  fontWeight: FontWeight.w500,
+                  fontSize: width*0.05
+              ),):SizedBox()
             ],
           ),
         ),
