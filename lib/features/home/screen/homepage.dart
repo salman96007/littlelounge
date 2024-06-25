@@ -128,7 +128,7 @@ class HomePage extends StatefulWidget {
              ),),
              decoration: BoxDecoration(
                color: ColorConst.thirtyColor,
-               borderRadius: BorderRadius.circular(width*0.02)
+               borderRadius: BorderRadius.circular(width*0.02),
                // borderRadius: BorderRadius.circular(radius)
              ),
            ),
@@ -138,7 +138,7 @@ class HomePage extends StatefulWidget {
           leading: SvgPicture.asset(SvgConstant.darkMode),
            title: Text("Dark Mode",style: TextStyle(
              color: ColorConst.secondary,
-             fontWeight: FontWeight.w400
+             fontWeight: FontWeight.w400,
            ),),
            trailing: Stack(
              children: [

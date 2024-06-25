@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
+import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/home/screen/detaileddress.dart';
@@ -38,10 +39,9 @@ class _MyAppState extends State<MyApp> {
       },
       child: MaterialApp(
         theme: ThemeData(
-
-            textTheme: GoogleFonts.interTextTheme(),
+            textTheme: GoogleFonts.interTextTheme()
         ),
-        home: AccountInfrmtn(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
