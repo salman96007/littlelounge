@@ -1,19 +1,20 @@
 
   import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class HomePageView extends StatefulWidget {
+class HomePageView extends ConsumerStatefulWidget {
     const HomePageView({super.key});
 
     @override
-    State<HomePageView> createState() => _HomePageViewState();
+    ConsumerState<HomePageView> createState() => _HomePageViewState();
   }
 
-  class _HomePageViewState extends State<HomePageView> {
+  class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
       Container(

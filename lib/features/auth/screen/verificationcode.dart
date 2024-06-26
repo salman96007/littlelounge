@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
-class Verificationcode extends StatelessWidget {
+class Verificationcode extends ConsumerStatefulWidget {
   const Verificationcode({super.key});
 
+  @override
+  ConsumerState<Verificationcode> createState() => _VerificationcodeState();
+}
+
+class _VerificationcodeState extends ConsumerState<Verificationcode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

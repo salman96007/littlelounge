@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
@@ -8,14 +9,9 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 
-class CreatAccount extends StatefulWidget {
+class CreatAccount extends StatelessWidget {
   const CreatAccount({super.key});
 
-  @override
-  State<CreatAccount> createState() => _CreatAccountState();
-}
-
-class _CreatAccountState extends State<CreatAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

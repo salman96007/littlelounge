@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
@@ -6,14 +7,14 @@ import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class Signup extends StatefulWidget {
+class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  ConsumerState<Signup> createState() => _SignupState();
 }
 
-class _SignupState extends State<Signup> {
+class _SignupState extends ConsumerState<Signup> {
   bool toggle =false;
   @override
   Widget build(BuildContext context) {

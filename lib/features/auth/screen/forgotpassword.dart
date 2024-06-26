@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class ForgotPassword extends StatelessWidget {
+class ForgotPassword extends ConsumerStatefulWidget {
   const ForgotPassword({super.key});
+
+  @override
+  ConsumerState<ForgotPassword> createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
 

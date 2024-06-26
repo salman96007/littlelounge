@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class NewPassword extends StatelessWidget {
+class NewPassword extends ConsumerStatefulWidget {
   const NewPassword({super.key});
 
+  @override
+  ConsumerState<NewPassword> createState() => _NewPasswordState();
+}
+
+class _NewPasswordState extends ConsumerState<NewPassword> {
   @override
   Widget build(BuildContext context) {
     TextEditingController passwordController=TextEditingController();

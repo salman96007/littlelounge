@@ -55,14 +55,9 @@ class _AccountInfrmtnState extends State<AccountInfrmtn> {
                   ),
                   Positioned(
                     left: 210,
-                    child: InkWell(
-                      onTap: () {
-                        pickFile(ImageSource.camera);
-                      },
-                      child: CircleAvatar(
-                        radius: width*0.05,
-                        child: SvgPicture.asset(SvgConstant.edit),
-                      ),
+                    child: CircleAvatar(
+                      radius: width*0.05,
+                      child: SvgPicture.asset(SvgConstant.edit),
                     ),
                   ),
 
@@ -72,7 +67,6 @@ class _AccountInfrmtnState extends State<AccountInfrmtn> {
           ),
           Column(
             children: [
-
             ],
           )
         ],
