@@ -1,4 +1,5 @@
   import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -6,17 +7,17 @@ import 'package:littlelounge/main.dart';
 
 import '../../../constant/colorconstant.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
          final String name;
     const HomePage({super.key,
       required this.name,
     });
 
     @override
-    State<HomePage> createState() => _HomePageState();
+    ConsumerState<HomePage> createState() => _HomePageState();
   }
 
-  class _HomePageState extends State<HomePage> {
+  class _HomePageState extends ConsumerState<HomePage> {
   bool view = false;
   List<Map<String,dynamic>> dress = [
     {

@@ -1,19 +1,20 @@
 
   import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
-class DetailedDress extends StatefulWidget {
+class DetailedDress extends ConsumerStatefulWidget {
     const DetailedDress({super.key});
 
     @override
-    State<DetailedDress> createState() => _DetailedDressState();
+    ConsumerState<DetailedDress> createState() => _DetailedDressState();
   }
 
-  class _DetailedDressState extends State<DetailedDress> {
+  class _DetailedDressState extends ConsumerState<DetailedDress> {
     List Size =[
         "S",
         "M",

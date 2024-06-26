@@ -2,20 +2,21 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 
 import '../../../main.dart';
 
-class Saveaddresspage extends StatefulWidget {
+class Saveaddresspage extends ConsumerStatefulWidget {
   const Saveaddresspage({super.key});
 
   @override
-  State<Saveaddresspage> createState() => _SaveaddresspageState();
+  ConsumerState<Saveaddresspage> createState() => _SaveaddresspageState();
 }
 
-class _SaveaddresspageState extends State<Saveaddresspage> {
+class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
   bool toggle = false;
   @override
   Widget build(BuildContext context) {
