@@ -68,4 +68,5 @@ class ImageConstant {
       static const  check = "assets/icons/check.svg";
       static const  visa = "assets/icons/visa.svg";
       static const  clock = "assets/icons/clock.svg";
+      static const  home = "assets/icons/home.svg";
    }
