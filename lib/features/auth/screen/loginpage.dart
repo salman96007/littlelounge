@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
@@ -8,14 +7,14 @@ import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
-class Login extends ConsumerStatefulWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
-  ConsumerState<Login> createState() => _LoginState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends ConsumerState<Login> {
+class _LoginState extends State<Login> {
   bool toggle =false;
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,6 @@ class _LoginState extends ConsumerState<Login> {
                         suffixIcon: Text("Strong",style: TextStyle(
                           color:ColorConst.eightethColor ,
                         ),),
-
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400

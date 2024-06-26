@@ -15,6 +15,8 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
   @override
   Widget build(BuildContext context) {
     TextEditingController passwordController=TextEditingController();
+    TextEditingController confirmPasswordController=TextEditingController();
+
     final passwordValidation=RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$");
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +71,7 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
               Padding(
                 padding:  EdgeInsets.all(width*0.02),
                 child: TextFormField(
-                  controller: passwordController,
+                  controller: confirmPasswordController,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.go,
 

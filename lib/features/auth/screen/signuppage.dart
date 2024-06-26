@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
@@ -7,14 +6,17 @@ import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class Signup extends ConsumerStatefulWidget {
+class Signup extends StatefulWidget {
   const Signup({super.key});
 
   @override
-  ConsumerState<Signup> createState() => _SignupState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _SignupState extends ConsumerState<Signup> {
+class _SignupState extends State<Signup> {
+  TextEditingController usernameController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
+  TextEditingController emailController=TextEditingController();
   bool toggle =false;
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class _SignupState extends ConsumerState<Signup> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TextFormField(
+                    controller: usernameController,
                     keyboardType: TextInputType.name,
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
@@ -58,7 +61,8 @@ class _SignupState extends ConsumerState<Signup> {
 
                   ),
                   TextFormField(
-                    keyboardType: TextInputType.name,
+                    controller: passwordController,
+                    keyboardType: TextInputType.visiblePassword,
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
                       labelText:"Password",
@@ -83,15 +87,11 @@ class _SignupState extends ConsumerState<Signup> {
                         borderRadius: BorderRadius.circular(width*0.03),
                         borderSide: BorderSide(color: ColorConst.secondary),
                       ),
-
-
                     ),
-
-
-
                   ),
                   TextFormField(
-                    keyboardType: TextInputType.name,
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
                     textInputAction:TextInputAction.next,
                     decoration: InputDecoration(
                       labelText:"Email Addresse",

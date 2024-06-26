@@ -2,21 +2,26 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 
 import '../../../main.dart';
 
-class Saveaddresspage extends ConsumerStatefulWidget {
+class Saveaddresspage extends StatefulWidget {
   const Saveaddresspage({super.key});
 
   @override
-  ConsumerState<Saveaddresspage> createState() => _SaveaddresspageState();
+  State<Saveaddresspage> createState() => _SaveaddresspageState();
 }
 
-class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
+class _SaveaddresspageState extends State<Saveaddresspage> {
+  TextEditingController nameController=TextEditingController();
+  TextEditingController countryController=TextEditingController();
+  TextEditingController cityController=TextEditingController();
+  TextEditingController phoneNumberController=TextEditingController();
+  TextEditingController addressController=TextEditingController();
   bool toggle = false;
   @override
   Widget build(BuildContext context) {
@@ -50,6 +55,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                       fontSize:width*0.043
                     ),),
                     TextFormField (
+                      controller: nameController,
                       keyboardType:TextInputType.name,
                       textInputAction:TextInputAction.next,
                       style:TextStyle(
@@ -98,6 +104,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                             fontSize:width*0.043
                         ),),
                         TextFormField(
+                          controller: countryController,
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
@@ -141,6 +148,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                             fontSize:width*0.043
                         ),),
                         TextFormField(
+                          controller: cityController,
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
@@ -187,6 +195,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                         fontSize:width*0.043
                     ),),
                     TextFormField(
+                      controller:phoneNumberController,
                       keyboardType:TextInputType.number,
                       textInputAction:TextInputAction.next,
                       style:TextStyle(
@@ -231,6 +240,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                         fontSize:width*0.043
                     ),),
                     TextFormField(
+                      controller:addressController,
                       keyboardType:TextInputType.emailAddress,
                       textInputAction:TextInputAction.done,
                       style:TextStyle(
