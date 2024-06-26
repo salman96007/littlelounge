@@ -159,7 +159,6 @@ class HomePage extends StatefulWidget {
           shape: BeveledRectangleBorder(side: BorderSide(color: ColorConst.primaryColor)),
           backgroundColor: ColorConst.primaryColor,
       child: ListView(
-
         children:  [
           SizedBox(height: height*0.05,),
          ListTile(
