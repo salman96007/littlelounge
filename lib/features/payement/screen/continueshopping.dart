@@ -1,19 +1,20 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 
 import '../../../main.dart';
 
-class Continueshopping extends StatefulWidget {
+class Continueshopping extends ConsumerStatefulWidget {
   const Continueshopping({super.key});
 
   @override
-  State<Continueshopping> createState() => _ContinueshoppingState();
+  ConsumerState<Continueshopping> createState() => _ContinueshoppingState();
 }
 
-class _ContinueshoppingState extends State<Continueshopping> {
+class _ContinueshoppingState extends ConsumerState<Continueshopping> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

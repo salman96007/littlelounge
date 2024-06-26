@@ -1,20 +1,21 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
 
-class AccountInfrmtn extends StatefulWidget {
+class AccountInfrmtn extends  ConsumerStatefulWidget {
   const AccountInfrmtn({super.key});
 
   @override
-  State<AccountInfrmtn> createState() => _AccountInfrmtnState();
+  ConsumerState<AccountInfrmtn> createState() => _AccountInfrmtnState();
 }
 
-class _AccountInfrmtnState extends State<AccountInfrmtn> {
+class _AccountInfrmtnState extends ConsumerState<AccountInfrmtn> {
   var file;
   pickFile(ImageSource) async {
     final imageFile=await ImagePicker.platform.pickImage(source: ImageSource);

@@ -1,18 +1,19 @@
   import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
-class WishListPage extends StatefulWidget {
+class WishListPage extends ConsumerStatefulWidget {
     const WishListPage({super.key});
 
     @override
-    State<WishListPage> createState() => _WishListPageState();
+    ConsumerState<WishListPage> createState() => _WishListPageState();
   }
 
-  class _WishListPageState extends State<WishListPage> {
+  class _WishListPageState extends ConsumerState<WishListPage> {
     @override
     Widget build(BuildContext context) {
       return Scaffold(

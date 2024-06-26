@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
 
-class AddCard extends StatefulWidget {
+class AddCard extends ConsumerStatefulWidget {
   const AddCard({super.key});
 
   @override
-  State<AddCard> createState() => _AddCardState();
+  ConsumerState<AddCard> createState() => _AddCardState();
 }
 
-class _AddCardState extends State<AddCard> {
+class _AddCardState extends ConsumerState<AddCard> {
   bool a=false;
   bool b=false;
   bool c=false;

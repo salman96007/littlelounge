@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
@@ -7,14 +8,14 @@ import 'package:littlelounge/features/home/screen/homepage.dart';
 
 import '../../../main.dart';
 
-class WelcomPage extends StatefulWidget {
+class WelcomPage extends ConsumerStatefulWidget {
   const WelcomPage({super.key});
 
   @override
-  State<WelcomPage> createState() => _WelcomPageState();
+  ConsumerState<WelcomPage> createState() => _WelcomPageState();
 }
 
-class _WelcomPageState extends State<WelcomPage> {
+class _WelcomPageState extends ConsumerState<WelcomPage> {
   String title="";
   @override
   Widget build(BuildContext context) {
