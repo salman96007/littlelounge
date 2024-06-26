@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "754616473372",
+    "project_id": "littlelounge-f2f31",
+    "storage_bucket": "littlelounge-f2f31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754616473372:android:41785da29c6685d43d8cd9",
+        "android_client_info": {
+          "package_name": "com.example.littlelounge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsWmpuhYw7QnHz5wVEIT3OFxCJ82ztBPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
