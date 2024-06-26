@@ -241,30 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.17.2"
-  firebase_storage:
-    dependency: "direct main"
-    description:
-      name: firebase_storage
-      sha256: "2ae478ceec9f458c1bcbf0ee3e0100e4e909708979e83f16d5d9fba35a5b42c1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "11.7.7"
-  firebase_storage_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_storage_platform_interface
-      sha256: "4e18662e6a66e2e0e181c06f94707de06d5097d70cfe2b5141bf64660c5b5da9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.1.22"
-  firebase_storage_web:
-    dependency: transitive
-    description:
-      name: firebase_storage_web
-      sha256: "3a44aacd38a372efb159f6fe36bb4a7d79823949383816457fd43d3d47602a53"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.9.7"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -299,6 +275,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_pannable_rating_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_pannable_rating_bar
+      sha256: a6ba1f474ccb23e1b0b7d0a0ec28bb31c088bad808fd207b536b3cb46cbcaf7a
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.2+1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -365,6 +349,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  gradient_mask:
+    dependency: "direct main"
+    description:
+      name: gradient_mask
+      sha256: a715b778d0577a96e8d76d63d82b7267725147c3de8eb50461f6baa0e5fa1364
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   http:
     dependency: transitive
     description:

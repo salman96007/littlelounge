@@ -40,7 +40,7 @@
                 name: name??this.name,
                 password: password??this.password,
                 email: email??this.email,
-                id: email??this.id
+                id: id??this.id
             );
           }
 

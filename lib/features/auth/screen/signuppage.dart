@@ -1,24 +1,46 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
+import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 
-class Signup extends StatefulWidget {
+class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  ConsumerState<Signup> createState() => _SignupState();
 }
 
-class _SignupState extends State<Signup> {
-  TextEditingController usernameController=TextEditingController();
-  TextEditingController passwordController=TextEditingController();
-  TextEditingController emailController=TextEditingController();
+class _SignupState extends ConsumerState<Signup> {
+
+  add(){
+
+    ref.watch(ControllerProvider).addUser(detail: UserModel(
+        name: usernameController.text,
+        password: passwordController.text,
+        email: emailController.text,
+        id: ""));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+
+  }
+
+
+
+  TextEditingController usernameController =TextEditingController();
+  TextEditingController passwordController =TextEditingController();
+  TextEditingController emailController =TextEditingController();
   bool toggle =false;
   @override
+
+
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -87,7 +109,12 @@ class _SignupState extends State<Signup> {
                         borderRadius: BorderRadius.circular(width*0.03),
                         borderSide: BorderSide(color: ColorConst.secondary),
                       ),
+
+
                     ),
+
+
+
                   ),
                   TextFormField(
                     controller: emailController,
@@ -171,7 +198,7 @@ class _SignupState extends State<Signup> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+                    add();
                   },
                   child: Container(
                     child: Center(
