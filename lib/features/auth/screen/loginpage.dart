@@ -81,6 +81,7 @@ class _LoginState extends State<Login> {
                         suffixIcon: Text("Strong",style: TextStyle(
                           color:ColorConst.eightethColor ,
                         ),),
+
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400

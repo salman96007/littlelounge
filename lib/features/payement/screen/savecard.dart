@@ -2,20 +2,21 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 
 import '../../../main.dart';
 
-class Savecard extends StatefulWidget {
+class Savecard extends ConsumerStatefulWidget {
   const Savecard({super.key});
 
   @override
-  State<Savecard> createState() => _SavecardState();
+  ConsumerState<Savecard> createState() => _SavecardState();
 }
 
-class _SavecardState extends State<Savecard> {
+class _SavecardState extends ConsumerState<Savecard> {
   bool toggle = false;
   int active=0;
   @override

@@ -8,9 +8,14 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 
-class CreatAccount extends StatelessWidget {
+class CreatAccount extends StatefulWidget {
   const CreatAccount({super.key});
 
+  @override
+  State<CreatAccount> createState() => _CreatAccountState();
+}
+
+class _CreatAccountState extends State<CreatAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
