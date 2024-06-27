@@ -9,7 +9,7 @@ import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
-import 'package:littlelounge/features/bottomnavigation/screen/bottomnavigation.dart';
+import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
@@ -21,17 +21,8 @@ import 'firebase_options.dart';
  var height;
  var width;
 
-
-
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const ProviderScope(
-      child: MyApp()));
-
+void main(){
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -56,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: Login(),
+        home: AccountInfrmtn(),
         debugShowCheckedModeBanner: false,
       ),
     );
