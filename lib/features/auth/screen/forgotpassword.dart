@@ -20,6 +20,7 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
     TextEditingController emailController=TextEditingController();
     final emailValidation=RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
+
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,

@@ -112,7 +112,7 @@ class _SignupState extends ConsumerState<Signup> {
                           children: [
                             Text("Strong",style: TextStyle(
                               fontSize: width*0.03,
-                              color:ColorConst.eightethColor ,
+                              color:ColorConst.eightethColor,
                             ),),
                           ],
                         ),
