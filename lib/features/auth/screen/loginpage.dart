@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
+import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
-class Login extends StatefulWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  ConsumerState<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends ConsumerState<Login> {
+
+  loginAuth({required String email, required String password}){
+    ref.watch(ControllerProvider).authLogin(email: usernameController.text,
+        password: passwordController.text, context: context
+    );
+  }
+
   TextEditingController usernameController =TextEditingController();
   TextEditingController passwordController =TextEditingController();
   final passwordValidation=  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?).{8,}$');
@@ -57,7 +67,7 @@ class _LoginState extends State<Login> {
                     children: [
                       TextFormField(
                         controller:usernameController ,
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.emailAddress,
                         textInputAction:TextInputAction.next,
                         decoration: InputDecoration(
                           labelText:"Username",
@@ -84,7 +94,7 @@ class _LoginState extends State<Login> {
                       SizedBox(height: height*0.05,),
                       TextFormField(
                         controller: passwordController,
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.visiblePassword,
                         textInputAction:TextInputAction.next,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
@@ -207,8 +217,7 @@ class _LoginState extends State<Login> {
                               passwordController.text != "" &&
                               formkey.currentState!.validate()
                           ){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
-
+                            loginAuth(email: usernameController.text, password: passwordController.text);
                           }else{
                             usernameController.text==""?ScaffoldMessenger.of(context).
                             showSnackBar(SnackBar(content: Text("please Enter your name"))):
