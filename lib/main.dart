@@ -21,8 +21,12 @@ import 'firebase_options.dart';
  var height;
  var width;
 
-void main(){
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -47,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: AccountInfrmtn(),
+        home: Login(),
         debugShowCheckedModeBanner: false,
       ),
     );
