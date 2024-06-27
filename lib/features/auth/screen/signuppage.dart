@@ -95,7 +95,12 @@ class _SignupState extends ConsumerState<Signup> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
                         if(!passwordValidation.hasMatch(value!)){
-                          return "Enter the validateEnter a Valid Password\n it must contain 8characters \n 1 small letter(a-z) \n 1 capital letter (A-Z) \n 1 numeric character (0-9) \n 1 special character (#&*) \n";
+                          return "Enter the Valid Password \n"
+                              " it must contain 8 characters \n"
+                              " 1 LowerCase (a-z) \n"
+                              " 1 UpperCase (A-Z) \n"
+                              " 1 numeric character (0-9) \n"
+                              " 1 special character (#&*? etc...) \n";
                         }else {
                           return null;
                         }
@@ -123,6 +128,12 @@ class _SignupState extends ConsumerState<Signup> {
                           borderRadius: BorderRadius.circular(width*0.03),
                           borderSide: BorderSide(color: ColorConst.secondary),
                         ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: ColorConst.secondary,
+                          ),
+                          borderRadius: BorderRadius.circular(width*0.03)
+                        )
 
 
                       ),
