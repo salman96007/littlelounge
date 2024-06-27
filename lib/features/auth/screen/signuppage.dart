@@ -227,12 +227,12 @@ class _SignupState extends ConsumerState<Signup> {
                     if(usernameController.text !="" &&
                       passwordController.text != "" &&
                       emailController.text != ""&&
-                    formkey.currentState!.validate()
+                      formkey.currentState!.validate()
                     ){
                       add();
                     }else{
-                     usernameController.text==""?ScaffoldMessenger.of(context).
-                     showSnackBar(SnackBar(content: Text("please Enter your name"))):
+                         usernameController.text==""?ScaffoldMessenger.of(context).
+                         showSnackBar(SnackBar(content: Text("please Enter your name"))):
                          passwordController.text ==""? ScaffoldMessenger.of(context).
                          showSnackBar(SnackBar(content: Text("please Enter valid password"))):
                              emailController.text ==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid email address"))):

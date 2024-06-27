@@ -1,6 +1,7 @@
 
 
-   import 'package:flutter_riverpod/flutter_riverpod.dart';
+   import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/features/auth/respository/authrespository.dart';
 import 'package:littlelounge/model/usermodel.dart';
   final ControllerProvider = Provider((ref) => AuthController(adduserRespository: ref.watch(addUserRespositoryProvider)),);
@@ -11,6 +12,7 @@ class AuthController{
     addUser({required UserModel detail}){
       _adduserRespository.addAuth(detail: detail);
     }
-
-
-   }
+    authLogin({required String email, required String password,required BuildContext context}){
+      _adduserRespository.loginAuth(email:email, password: password, context: context,);
+    }
+}
