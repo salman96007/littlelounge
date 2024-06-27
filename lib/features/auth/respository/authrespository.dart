@@ -6,15 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/core/providers/firebaseproviders.dart';
 import 'package:littlelounge/model/usermodel.dart';
  final addUserRespositoryProvider = Provider((ref) => AdduserRespository(firebaseAuth: ref.watch(firebaseAuthProvider), firestore: ref.watch(firebaseProvider)),);
-class AdduserRespository {
+ class AdduserRespository {
      final FirebaseAuth _firebaseAuth;
      final FirebaseFirestore _firestore;
      AdduserRespository({required FirebaseAuth firebaseAuth,required FirebaseFirestore firestore}):_firebaseAuth =firebaseAuth,_firestore=firestore;
-
      CollectionReference get _user=>_firestore.collection("user");
-
      addAuth({ required UserModel detail}){
-
        _firebaseAuth.createUserWithEmailAndPassword(
            email:detail.email , password: detail.password
        ).then((value) {

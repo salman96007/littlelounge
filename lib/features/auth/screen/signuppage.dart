@@ -19,7 +19,7 @@ class Signup extends ConsumerStatefulWidget {
 
 class _SignupState extends ConsumerState<Signup> {
   final emailvalidation=RegExp(r"^[a-z-0-9.a-z-0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z-0-9]+\.[a-z-]+");
-  final passwordvalidation= RegExp(r'^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[!@#\$&*~]).{8,}$');
+  final passwordValidation=  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?).{8,}$');
   final formkey= GlobalKey<FormState>();
 
 
@@ -30,7 +30,7 @@ class _SignupState extends ConsumerState<Signup> {
         password: passwordController.text,
         email: emailController.text,
         id: ""));
-    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
 
   }
 
@@ -94,9 +94,9 @@ class _SignupState extends ConsumerState<Signup> {
                       textInputAction:TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
-                        if(!passwordvalidation.hasMatch(value!)){
-                          return "Incorect Password";
-                        }else{
+                        if(!passwordValidation.hasMatch(value!)){
+                          return "Enter the validateEnter a Valid Password\n it must contain 8characters \n 1 small letter(a-z) \n 1 capital letter (A-Z) \n 1 numeric character (0-9) \n 1 special character (#&*) \n";
+                        }else {
                           return null;
                         }
                       },
@@ -219,8 +219,16 @@ class _SignupState extends ConsumerState<Signup> {
                     formkey.currentState!.validate()
                     ){
                       add();
+                    }else{
+                     usernameController.text==""?ScaffoldMessenger.of(context).
+                     showSnackBar(SnackBar(content: Text("please Enter your name"))):
+                         passwordController.text ==""? ScaffoldMessenger.of(context).
+                         showSnackBar(SnackBar(content: Text("please Enter valid password"))):
+                             emailController.text ==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid email address"))):
+                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid details")));
+
                     }
-                    add();
+
                   },
                   child: Container(
                     child: Center(
