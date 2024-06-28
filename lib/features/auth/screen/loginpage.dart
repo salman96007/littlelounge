@@ -216,6 +216,7 @@ class _LoginState extends ConsumerState<Login> {
                           if(usernameController.text !="" &&
                               passwordController.text != "" &&
                               formkey.currentState!.validate()
+
                           ){
                             loginAuth(email: usernameController.text, password: passwordController.text);
                           }else{
