@@ -1,5 +1,5 @@
 
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -50,9 +50,11 @@ class HomePageView extends ConsumerStatefulWidget {
 
 
       return Scaffold(
+        //backgroundColor:ColorConst.primaryColor,
         body: pages[selectIndex],
         bottomNavigationBar: BottomNavigationBar(
-
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           currentIndex: selectIndex,
           onTap: (value) {
             selectIndex=value;
@@ -63,23 +65,44 @@ class HomePageView extends ConsumerStatefulWidget {
 
           items: [
             BottomNavigationBarItem(
-               icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
+                activeIcon:Text("Home",style: TextStyle(
+                  fontWeight:FontWeight.w500,
+                  color:ColorConst.thirdColor
+                ),),
+                icon:SvgPicture.asset(SvgConstant.home,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
-                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
+                activeIcon:Text("Wishlist",style: TextStyle(
+                    fontWeight:FontWeight.w500,
+                    color:ColorConst.thirdColor
+                ),),
+                icon:SvgPicture.asset(SvgConstant.wishlist,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
-                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
+                activeIcon:Text("Order",style: TextStyle(
+                    fontWeight:FontWeight.w500,
+                    color:ColorConst.thirdColor
+                ),),
+                icon:SvgPicture.asset(SvgConstant.order,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
-                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
+                activeIcon:Text("My Cards",style: TextStyle(
+                    fontWeight:FontWeight.w500,
+                    color:ColorConst.thirdColor
+                ),),
+                icon:SvgPicture.asset(SvgConstant.myCard,color:ColorConst.eighth,),
+
                 label: ""
             ),
 
           ],
+
         ),
 
 
