@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/model/usermodel.dart';
@@ -24,6 +26,7 @@ class _LoginState extends ConsumerState<Login> {
         password: passwordController.text, context: context
     );
   }
+
 
   TextEditingController usernameController =TextEditingController();
   TextEditingController passwordController =TextEditingController();

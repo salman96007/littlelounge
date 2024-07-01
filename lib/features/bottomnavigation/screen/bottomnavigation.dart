@@ -52,6 +52,7 @@ class HomePageView extends ConsumerStatefulWidget {
       return Scaffold(
         body: pages[selectIndex],
         bottomNavigationBar: BottomNavigationBar(
+
           currentIndex: selectIndex,
           onTap: (value) {
             selectIndex=value;
@@ -62,19 +63,19 @@ class HomePageView extends ConsumerStatefulWidget {
 
           items: [
             BottomNavigationBarItem(
-               icon: SvgPicture.asset(SvgConstant.home),
-                label: "djjdj"
-            ),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(SvgConstant.home),
+               icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
                 label: ""
             ),
             BottomNavigationBarItem(
-                icon:Icon(Icons.directions,size: width*0.09,),
+                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
                 label: ""
             ),
             BottomNavigationBarItem(
-                icon:Icon(Icons.directions,size: width*0.09,),
+                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
+                label: ""
+            ),
+            BottomNavigationBarItem(
+                icon:   Icon(Icons.reddit,color: Colors.red,size: width*0.09,),
                 label: ""
             ),
 

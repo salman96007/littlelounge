@@ -8,7 +8,7 @@ import 'package:littlelounge/main.dart';
 import '../../../constant/colorconstant.dart';
 
 class HomePage extends ConsumerStatefulWidget {
-         final String name;
+  final String name;
     const HomePage({super.key,
       required this.name,
     });
@@ -127,7 +127,6 @@ class HomePage extends ConsumerStatefulWidget {
 
   @override
   void initState() {
-    print(widget.name);
       foundItems= dress;
       foundItems1 = dress1;
       foundItems2 = dress2;
@@ -440,14 +439,14 @@ class HomePage extends ConsumerStatefulWidget {
                       Text(foundItems1[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
-                          fontSize: width*0.04
+                          fontSize: width*0.037
                       ),),
                       Row(
                         children: [
-                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
                           Text(foundItems1[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: width*0.05
+                              fontSize: width*0.04
                           ),),
                         ],
                       ),
@@ -522,14 +521,14 @@ class HomePage extends ConsumerStatefulWidget {
                       Text(foundItems[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
-                          fontSize: width*0.04
+                          fontSize: width*0.037
                       ),),
                       Row(
                         children: [
-                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
                           Text(foundItems[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: width*0.05
+                              fontSize: width*0.04
                           ),),
                         ],
                       ),
@@ -604,14 +603,14 @@ class HomePage extends ConsumerStatefulWidget {
                       Text(foundItems2[index]["name"],style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
-                          fontSize: width*0.04
+                          fontSize: width*0.037
                       ),),
                       Row(
                         children: [
-                          SvgPicture.asset(SvgConstant.rupees,width: width*0.05,),
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
                           Text(foundItems2[index]["rate"].toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: width*0.05
+                              fontSize: width*0.04
                           ),),
                         ],
                       ),

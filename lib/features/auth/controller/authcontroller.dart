@@ -15,4 +15,12 @@ class AuthController{
     authLogin({required String email, required String password,required BuildContext context}){
       _adduserRespository.loginAuth(email:email, password: password, context: context,);
     }
+
+    google({required  currentUSerName,required currentUSerEmail,required BuildContext context}){
+
+      _adduserRespository.signInWithGoogle(currentUSerName: currentUSerName, currentUSerEmail: currentUSerEmail, context: context);
+
+    }
+
+
 }

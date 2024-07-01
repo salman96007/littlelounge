@@ -11,11 +11,13 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
+import 'features/bottomnavigation/screen/bottomnavigation.dart';
 import 'firebase_options.dart';
 
  var height;
@@ -51,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: Login(),
+        home: WelcomPage(),
         debugShowCheckedModeBanner: false,
       ),
     );

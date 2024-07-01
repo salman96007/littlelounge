@@ -5,15 +5,37 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/controller/authcontroller.dart';
+import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
+import 'package:littlelounge/model/usermodel.dart';
+String? currentUSerName ;
+String? currentUSerEmail;
+String? currentUSerPassword;
+String? currentUSerId;
+String? currentUserImage;
+String? googlename ;
+String?  userCredential;
 
-class CreatAccount extends StatelessWidget {
+class CreatAccount extends ConsumerStatefulWidget {
   const CreatAccount({super.key});
 
   @override
+  ConsumerState<CreatAccount> createState() => _CreatAccountState();
+}
+
+class _CreatAccountState extends ConsumerState<CreatAccount> {
+
+  loginGoogle({required  currentUSerName,required currentUSerEmail,required BuildContext context}){
+    ref.watch(ControllerProvider).google(currentUSerName:currentUSerName ,currentUSerEmail: currentUSerEmail, context: context);
+  }
+
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
       ),
@@ -65,21 +87,26 @@ class CreatAccount extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: height*0.01,),
-                Container(
-                  height: height*0.05,
-                  width: width*0.7,
-                  child:Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(SvgConstant.google),
-                      Text("Google",
-                        style:TextStyle(color: ColorConst.primaryColor,
-                        fontWeight: FontWeight.bold),),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(width*0.03),
-                    color:ColorConst.sixth
+                GestureDetector(
+                  onTap: () {
+                   loginGoogle(currentUSerName: currentUSerName, currentUSerEmail: currentUSerEmail, context: context);
+                  },
+                  child: Container(
+                    height: height*0.05,
+                    width: width*0.7,
+                    child:Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(SvgConstant.google),
+                        Text("Google",
+                          style:TextStyle(color: ColorConst.primaryColor,
+                          fontWeight: FontWeight.bold),),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(width*0.03),
+                      color:ColorConst.sixth
+                    ),
                   ),
                 ),
 
@@ -94,7 +121,7 @@ class CreatAccount extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
                 },
                 child: RichText(text: TextSpan(text: "Already have an account?",style: GoogleFonts.inter(
                   textStyle: TextStyle(color: ColorConst.secondary.withOpacity(0.34)),
