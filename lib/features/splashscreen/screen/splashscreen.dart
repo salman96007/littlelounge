@@ -18,7 +18,7 @@ class SplashScreen extends ConsumerStatefulWidget {
   void initState() {
     Future.delayed(Duration(
       seconds: 3,
-    )).then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => CreatAccount(),)));
+    )).then((value) => Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) =>CreatAccount(),),(route) => false,));
     super.initState();
   }
     @override
