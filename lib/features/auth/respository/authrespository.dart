@@ -14,7 +14,6 @@ final addUserRespositoryProvider = Provider(
       firebaseAuth: ref.watch(firebaseAuthProvider),
       firestore: ref.watch(firebaseProvider)),
 );
-final GoogleSignIn _googleSignIn= GoogleSignIn();
 class AdduserRespository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
