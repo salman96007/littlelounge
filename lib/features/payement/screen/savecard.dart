@@ -3,6 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:flutter_flip_card/controllers/flip_card_controllers.dart';
+import 'package:flutter_flip_card/flipcard/flip_card.dart';
+import 'package:flutter_flip_card/flutter_flip_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -17,12 +20,7 @@ class Savecard extends StatefulWidget {
 }
 
 class _SavecardState extends State<Savecard> {
-    String cardNumber = '';
-  String expiryDate= '';
-  String cardHolderName = '';
-  String cvvCode= '';
-  bool isCvvFocused = false;
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final flipcontroller = FlipCardController();
   bool toggle = false;
   int active=0;
   @override
@@ -40,42 +38,25 @@ class _SavecardState extends State<Savecard> {
       ),
       body:Column(
         children: [
-          Container(
-            width: width*0.85,
-            height:height*0.24,
-            margin: EdgeInsets.all(width*0.020),
-            //padding: EdgeInsets.all(width*0.2),
-            decoration: BoxDecoration(
-              boxShadow:[
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 2,
-                    spreadRadius: 2,
-                    offset: Offset(0,4)
-                )
-              ] ,
-              // borderRadius: BorderRadius.circular(width*0.04),
-              // image: DecorationImage(image:AssetImage(ImageConstant.card),
-              //     fit: BoxFit.cover
-              // ),
-            ),
-            child:CreditCardWidget(
-              cardNumber: cardNumber,
-              expiryDate: expiryDate,
-              cardHolderName: cardHolderName,
-              cvvCode: cvvCode,
-              showBackView: isCvvFocused,
-              obscureCardNumber: true,
-              obscureCardCvv: true,
-              backgroundImage:"assets/images/creditcard.png",
-              onCreditCardWidgetChange: (CreditCardBrand ) {
-
-              },
-
-            ),
-
-
-          ),
+         Padding(
+           padding:  EdgeInsets.only(top:height*0.01),
+           child: FlipCard(
+             axis:FlipAxis.vertical,
+               animationDuration:Durations.short1,
+               onTapFlipping:true,
+               controller: flipcontroller,
+             rotateSide: RotateSide.left,
+               frontWidget: Container(
+                 height:height*0.24,
+                 width:width*0.87,
+                 color:Colors.red,
+               ),
+               backWidget: Container(
+                 height:height*0.22,
+                 width:width*0.85,
+                 color:Colors.black,
+               ),  ),
+         ),
           SizedBox(height:height*0.02,),
           Container(
             width:width*0.9,
@@ -334,6 +315,21 @@ class _SavecardState extends State<Savecard> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter_credit_card/flutter_credit_card.dart';
 //
