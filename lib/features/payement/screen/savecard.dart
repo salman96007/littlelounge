@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -16,6 +17,12 @@ class Savecard extends StatefulWidget {
 }
 
 class _SavecardState extends State<Savecard> {
+    String cardNumber = '';
+  String expiryDate= '';
+  String cardHolderName = '';
+  String cvvCode= '';
+  bool isCvvFocused = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool toggle = false;
   int active=0;
   @override
@@ -33,43 +40,41 @@ class _SavecardState extends State<Savecard> {
       ),
       body:Column(
         children: [
-          CarouselSlider.builder(
-            itemCount:1,
-            itemBuilder:(context, index, realIndex) {
-              return Container(
-                  width: width*0.85,
-                  height:height*0.1,
-                  margin: EdgeInsets.all(width*0.020),
-                  //padding: EdgeInsets.all(width*0.2),
-                  decoration: BoxDecoration(
-                    boxShadow:[
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 2,
-                          spreadRadius: 2,
-                          offset: Offset(0,4)
-                      )
-                    ] ,
-                    // borderRadius: BorderRadius.circular(width*0.04),
-                    // image: DecorationImage(image:AssetImage(ImageConstant.card),
-                    //     fit: BoxFit.cover
-                    // ),
-                  ),
-
-
-              );
-            },
-            options: CarouselOptions(
-                height: width*0.55,
-                onPageChanged: (index, reason) {
-                  active=index;
-                  setState(() {
-                  });
-                },
-                autoPlay: false,
-                autoPlayAnimationDuration: Duration(seconds: 2),
-                viewportFraction:0.9
+          Container(
+            width: width*0.85,
+            height:height*0.24,
+            margin: EdgeInsets.all(width*0.020),
+            //padding: EdgeInsets.all(width*0.2),
+            decoration: BoxDecoration(
+              boxShadow:[
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                    offset: Offset(0,4)
+                )
+              ] ,
+              // borderRadius: BorderRadius.circular(width*0.04),
+              // image: DecorationImage(image:AssetImage(ImageConstant.card),
+              //     fit: BoxFit.cover
+              // ),
             ),
+            child:CreditCardWidget(
+              cardNumber: cardNumber,
+              expiryDate: expiryDate,
+              cardHolderName: cardHolderName,
+              cvvCode: cvvCode,
+              showBackView: isCvvFocused,
+              obscureCardNumber: true,
+              obscureCardCvv: true,
+              backgroundImage:"assets/images/creditcard.png",
+              onCreditCardWidgetChange: (CreditCardBrand ) {
+
+              },
+
+            ),
+
+
           ),
           SizedBox(height:height*0.02,),
           Container(
@@ -95,7 +100,7 @@ class _SavecardState extends State<Savecard> {
                 ),)
               ],
             ),
-          
+
           ),
 
           SizedBox(height:height*0.02,),
@@ -329,3 +334,127 @@ class _SavecardState extends State<Savecard> {
     );
   }
 }
+// import 'package:flutter/material.dart';
+// import 'package:flutter_credit_card/flutter_credit_card.dart';
+//
+//
+// class CreditCardPage extends StatefulWidget {
+//   const CreditCardPage({Key? key}) : super(key: key);
+//
+//   @override
+//   _CreditCardPageState createState() => _CreditCardPageState();
+// }
+//
+// class _CreditCardPageState extends State<CreditCardPage> {
+//   String cardNumber = '';
+//   String expiryDate= '';
+//   String cardHolderName = '';
+//   String cvvCode= '';
+//   bool isCvvFocused = false;
+//   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.teal[50],
+//       appBar: AppBar(
+//         automaticallyImplyLeading: false,
+//         title: Text('Flutter Credit Card View'),
+//       ),
+//       resizeToAvoidBottomInset: true,
+//       body: Column(
+//         children: [
+//           CreditCardWidget(
+//             cardNumber: cardNumber,
+//             expiryDate: expiryDate,
+//             cardHolderName: cardHolderName,
+//             cvvCode: cvvCode,
+//             showBackView: isCvvFocused,
+//             obscureCardNumber: true,
+//             obscureCardCvv: true,
+//             backgroundImage:"assets/images/creditcard.png",
+//             onCreditCardWidgetChange: (CreditCardBrand ) {
+//
+//
+//             },
+//
+//           ),
+//           Expanded(
+//               child: SingleChildScrollView(
+//                 child: Column(
+//                   children: [
+//                     CreditCardForm(
+//
+//                       cardNumber: cardNumber,
+//                       expiryDate: expiryDate,
+//                       cardHolderName: cardHolderName,
+//                       cvvCode: cvvCode,
+//                       onCreditCardModelChange: onCreditCardModelChange,
+//                       // themeColor: Colors.blue,
+//                       formKey: formKey,
+//                       // cardNumberDecoration: InputDecoration(
+//                       //     border: OutlineInputBorder(),
+//                       //     labelText: 'Number',
+//                       //     hintText: 'xxxx xxxx xxxx xxxx'
+//                       // ),
+//                       // expiryDateDecoration: InputDecoration(
+//                       //     border: OutlineInputBorder(),
+//                       //     labelText: 'Expired Date',
+//                       //     hintText: 'xx/xx'
+//                       // ),
+//                       // cvvCodeDecoration: InputDecoration(
+//                       //     border: OutlineInputBorder(),
+//                       //     labelText: 'CVV',
+//                       //     hintText: 'xxx'
+//                       // ),
+//                       // cardHolderDecoration: InputDecoration(
+//                       //   border: OutlineInputBorder(),
+//                       //   labelText: 'Card Holder',
+//                       // ),
+//
+//                     ),
+//                     ElevatedButton(
+//                       style: ElevatedButton.styleFrom(
+//                           shape: RoundedRectangleBorder(
+//                             borderRadius: BorderRadius.circular(8.0),
+//                           ),
+//                           backgroundColor: Colors.blue
+//
+//                       ),
+//                       child: Container(
+//                         margin: EdgeInsets.all(8.0),
+//                         child: Text(
+//                           'validate',
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontFamily: 'halter',
+//                             fontSize: 14,
+//                             package: 'flutter_credit_card',
+//                           ),
+//                         ),
+//                       ),
+//                       onPressed: (){
+//                         if(formKey.currentState!.validate()){
+//                           print('valid');
+//                         }
+//                         else{
+//                           print('inValid');
+//                         }
+//                       },)
+//                   ],
+//                 ),
+//               )),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   void onCreditCardModelChange(CreditCardModel creditCardModel){
+//     setState(() {
+//       cardNumber = creditCardModel.cardNumber;
+//       expiryDate = creditCardModel.expiryDate;
+//       cardHolderName = creditCardModel.cardHolderName;
+//       cvvCode = creditCardModel.cvvCode;
+//       isCvvFocused = creditCardModel.isCvvFocused;
+//     });
+//   }
+// }
