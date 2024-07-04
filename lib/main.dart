@@ -11,6 +11,8 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:littlelounge/features/home/screen/settingspage.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';

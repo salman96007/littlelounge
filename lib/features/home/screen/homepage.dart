@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/main.dart';
 
 import '../../../constant/colorconstant.dart';
@@ -383,8 +384,7 @@ class HomePage extends ConsumerStatefulWidget {
                 ],
               ),
               SizedBox(height: height*0.03,),
-            
-           widget.name=="man"? foundItems1.isNotEmpty?  GridView.builder(
+              ref.watch(StreamCollection).when(data: (data) =>  widget.name=="man"? foundItems1.isNotEmpty?  GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
                     childAspectRatio: 0.5,
@@ -393,6 +393,7 @@ class HomePage extends ConsumerStatefulWidget {
                 ),
                 itemBuilder: (context, index)
                 {
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -400,7 +401,7 @@ class HomePage extends ConsumerStatefulWidget {
                         alignment: Alignment.topRight,
                         children: [
                           Container(
-                              child: Image.asset(foundItems1[index]["imag"],),
+                              child: Image.network(data[index].image),
                               width: width*0.425,
                               height: height*0.3,
                               decoration: BoxDecoration(
@@ -436,7 +437,7 @@ class HomePage extends ConsumerStatefulWidget {
                         ],
                       ),
                       SizedBox(height: height*0.02,),
-                      Text(foundItems1[index]["name"],style: TextStyle(
+                      Text(data[index].name,style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w500,
                           fontSize: width*0.037
@@ -444,7 +445,7 @@ class HomePage extends ConsumerStatefulWidget {
                       Row(
                         children: [
                           SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                          Text(foundItems1[index]["rate"].toString(),style: TextStyle(
+                          Text(data[index].prize.toString(),style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: width*0.04
                           ),),
@@ -452,12 +453,7 @@ class HomePage extends ConsumerStatefulWidget {
                       ),
                     ],
                   );
-
-
-
-                },
-
-                itemCount: view?foundItems1.length: 4,
+                }, itemCount: data.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
               )
@@ -466,6 +462,11 @@ class HomePage extends ConsumerStatefulWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: width*0.05
               ),):SizedBox(),
+
+
+                  error: (error, stackTrace) => Text(error.toString()),
+                  loading: () => CircularProgressIndicator(),),
+
               widget.name=="woman"? foundItems.isNotEmpty?  GridView.builder(
                 physics: BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
