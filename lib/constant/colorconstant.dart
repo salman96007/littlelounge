@@ -24,5 +24,6 @@ class ColorConst{
   static const twentyOneColor=Color(0xffF6F2FF);
   static const twentyTwoColor=Color(0xffFFEEE3);
   static const twentyThreeColor=Color(0xffFF5F00);
+  static const twentyFourColor=Color(0xffFF5757);
 
 }
