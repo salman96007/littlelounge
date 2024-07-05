@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/home/screen/semailid.dart';
+import 'package:littlelounge/features/home/screen/smobilenumber.dart';
 import 'package:littlelounge/main.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -33,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Column(
               children: [
                 Container(
-                  height: height*0.16,
+                  height: height*0.22,
                   width: width*0.95,
                   child: Padding(
                     padding: EdgeInsets.only(left: width*0.02),
@@ -56,12 +58,30 @@ class _SettingsPageState extends State<SettingsPage> {
                           ],
                         ),
                         Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Phone number",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
-                            Icon(Icons.arrow_right,color: ColorConst.secondary,),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MobileNumber(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Phone number",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,),
+                            ],
+                          ),
+                        ),
+                        Divider(),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => EmailId(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Email id",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,),
+                            ],
+                          ),
                         ),
                       ],
                     ),

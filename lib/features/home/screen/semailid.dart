@@ -28,7 +28,7 @@ class _EmailIdState extends State<EmailId> {
               textInputAction: TextInputAction.go,
               maxLength: 12,
               decoration: InputDecoration(
-                  labelText: "Mobile number",
+                  labelText: "Email Id",
                   labelStyle: TextStyle(fontSize: width*0.04,color: ColorConst.secondary),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(width*0.03),
