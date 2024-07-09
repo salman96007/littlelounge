@@ -421,18 +421,18 @@ class HomePage extends ConsumerStatefulWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             children: [
-              SizedBox(height: height*0.05,),
+              SizedBox(height: height*0.02,),
               Text(currentUSerName.toString(),style: TextStyle(
                   color: ColorConst.secondary,
-                  fontSize: width*0.07,
+                  fontSize: width*0.06,
                   fontWeight: FontWeight.w600
               ),),
               Text("Welcome to LittleLounge.",style: TextStyle(
                   color: ColorConst.twelthColor,
-                  fontSize: width*0.05,
+                  fontSize: width*0.043,
                   fontWeight: FontWeight.w400
               ),),
-              SizedBox(height: height*0.04,),
+              SizedBox(height: height*0.02,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

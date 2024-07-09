@@ -40,7 +40,6 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
             fontSize: width*0.05,
             fontWeight: FontWeight.bold,
           ),),
-
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
