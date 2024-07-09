@@ -6,8 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:littlelounge/core/providers/firebaseproviders.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
+import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/model/usermodel.dart';
+
+import '../screen/loginpage.dart';
 
 final addUserRespositoryProvider = Provider(
   (ref) => AdduserRespository(
@@ -33,18 +36,30 @@ class AdduserRespository {
           );
     });
   }
-  loginAuth(
-      {required String email,
-      required String password,
-      required BuildContext context}) {
-    _firebaseAuth
-        .signInWithEmailAndPassword(email: email, password: password)
-        .then((value) => Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => WelcomPage()),
-            (route) => false))
-        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text("user not exist"))));
+  loginAuth({required String email,required String password, required BuildContext context}) async {
+    var data = await FirebaseFirestore.instance.collection("user")
+        .where("email",isEqualTo :email).get();
+    if( data.docs.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No user ')));
+    }else{
+      UserModel user = UserModel.fromJson(data.docs[0].data());
+      if(data.docs[0]["password"]== password){
+
+        currentUSerName = user.name;
+        currentUSerEmail =user.email;
+        currentUSerPassword = user.password;
+        currentUserImage =user.imageUrl;
+
+        Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (context) => WelcomPage()),
+    (route) => false);
+
   }
+
+  }
+  }
+
 
   final GoogleSignIn _googleSignIn= GoogleSignIn();
   Future<UserCredential?>signInWithGoogle({required  currentUSerName,required currentUSerEmail,required BuildContext context})async{

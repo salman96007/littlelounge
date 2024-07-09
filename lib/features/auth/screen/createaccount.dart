@@ -11,13 +11,7 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
-String? currentUSerName ;
-String? currentUSerEmail;
-String? currentUSerPassword;
-String? currentUSerId;
-String? currentUserImage;
-String? googlename ;
-String?  userCredential;
+
 
 class CreatAccount extends ConsumerStatefulWidget {
   const CreatAccount({super.key});
@@ -89,7 +83,7 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
                 SizedBox(height: height*0.01,),
                 GestureDetector(
                   onTap: () {
-                   loginGoogle(currentUSerName: currentUSerName, currentUSerEmail: currentUSerEmail, context: context);
+                   loginGoogle(context: context, currentUSerName: "", currentUSerEmail: "");
                   },
                   child: Container(
                     height: height*0.05,

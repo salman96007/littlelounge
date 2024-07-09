@@ -7,13 +7,20 @@ class collectionResposiyory{
   final FirebaseFirestore _firestore;
   collectionResposiyory({required FirebaseFirestore firestore}):_firestore=firestore;
 
-  CollectionReference get _collection => _firestore.collection("men");
-  CollectionReference get _collection1 => _firestore.collection("girl");
-  CollectionReference get _collection2=> _firestore.collection("skip");
-  
-  Stream<List<DressModel>> menStream(){
-    return _collection.snapshots().map( (event) => event.docs.map( (e) => DressModel.fromJson(e.data() as Map<String,dynamic>,),).toList());
+  CollectionReference get _collection => _firestore.collection("Category");
+  // CollectionReference get _collection1 => _firestore.collection("girl");
+  // CollectionReference get _collection2=> _firestore.collection("skip");
+
+  addCollection({required DressModel detail}){
+    _collection.add(detail.toJson());
+
   }
+
+
+  
+  // Stream<List<DressModel>> menStream(){
+  //   return _collection.snapshots().map( (event) => event.docs.map( (e) => DressModel.fromJson(e.data() as Map<String,dynamic>,),).toList());
+  // }
 
 
 }

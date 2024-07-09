@@ -20,6 +20,7 @@ import 'package:littlelounge/features/revviews/screen/reviews.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
 
 import 'features/bottomnavigation/screen/bottomnavigation.dart';
+import 'features/payement/screen/savecard.dart';
 import 'firebase_options.dart';
 
  var height;
@@ -55,7 +56,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: WelcomPage(),
+        home:CreatAccount(),
         debugShowCheckedModeBanner: false,
       ),
     );

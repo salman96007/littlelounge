@@ -4,11 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
+import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import 'loginpage.dart';
+
+
 
 class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
@@ -24,12 +28,13 @@ class _SignupState extends ConsumerState<Signup> {
 
 
   add(){
-
     ref.watch(ControllerProvider).addUser(detail: UserModel(
         name: usernameController.text,
         password: passwordController.text,
         email: emailController.text,
-        id: ""));
+        id: "", imageUrl: ""));
+    currentUSerName =usernameController.text;
+
       Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
 
   }

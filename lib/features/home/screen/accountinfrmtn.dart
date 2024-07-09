@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
-
+String? currentUserImage;
 class AccountInfrmtn extends  ConsumerStatefulWidget {
   const AccountInfrmtn({super.key});
 
@@ -18,7 +19,6 @@ class _AccountInfrmtnState extends ConsumerState<AccountInfrmtn> {
   TextEditingController nameController=TextEditingController();
   TextEditingController emailController=TextEditingController();
   TextEditingController numberController=TextEditingController();
-
   var file;
   pickFile(ImageSource) async {
     final imageFile=await ImagePicker.platform.pickImage(source: ImageSource);
@@ -28,7 +28,24 @@ class _AccountInfrmtnState extends ConsumerState<AccountInfrmtn> {
         file=File(imageFile.path);
       });
     }
+    uploadImage();
   }
+  String imageUrl ="";
+
+  uploadImage() async {
+    var uploadPick = await FirebaseStorage.instance.ref("newUsers")
+        .child("path ${DateTime.now()}").putFile(file,SettableMetadata(
+        contentType: "image/jpeg"
+    ));
+    var getUrl = await uploadPick.ref.getDownloadURL();
+    imageUrl =getUrl;
+    setState(() {
+
+    });
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

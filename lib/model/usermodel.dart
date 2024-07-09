@@ -6,6 +6,7 @@
        String password;
        String email;
        String id;
+       String imageUrl;
 
          UserModel({
          
@@ -13,19 +14,23 @@
          required this.password,
          required this.email,
          required this.id,
+         required this.imageUrl,
 
      });
          factory UserModel.fromJson(Map<String,dynamic>json)=>UserModel(
              name: json["name"],
              password: json["password"],
              email: json["email"],
-             id: json["id"]);
+             id: json["id"],
+             imageUrl: json["imageUrl"]
+         );
 
           Map<String,dynamic>toJson()=>{
           "name":name,
           "password": password,
           "email": email,
-          "id": id
+          "id": id,
+          "imageUrl": imageUrl
 
           };
           UserModel copyWith({
@@ -33,6 +38,7 @@
           String?password,
           String?email,
           String?id,
+          String?imageUrl,
 
      })
           {
@@ -40,7 +46,8 @@
                 name: name??this.name,
                 password: password??this.password,
                 email: email??this.email,
-                id: id??this.id
+                id: id??this.id,
+                imageUrl: imageUrl??this.imageUrl
             );
           }
 

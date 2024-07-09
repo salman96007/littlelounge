@@ -21,6 +21,9 @@ class AuthController{
       _adduserRespository.signInWithGoogle(currentUSerName: currentUSerName, currentUSerEmail: currentUSerEmail, context: context);
 
     }
+    get({required String email,required String password, required context}){
+      _adduserRespository.loginAuth(email: email, password: password, context: context);
+    }
 
 
 }
