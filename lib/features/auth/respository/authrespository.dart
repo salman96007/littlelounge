@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,14 +18,18 @@ final addUserRespositoryProvider = Provider(
       firebaseAuth: ref.watch(firebaseAuthProvider),
       firestore: ref.watch(firebaseProvider)),
 );
+
 class AdduserRespository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
+
+
   AdduserRespository(
       {required FirebaseAuth firebaseAuth,
-      required FirebaseFirestore firestore})
+      required FirebaseFirestore firestore,})
       : _firebaseAuth = firebaseAuth,
-        _firestore = firestore;
+        _firestore = firestore
+  ;
   CollectionReference get _user => _firestore.collection("user");
   addAuth({required UserModel detail}) {
     _firebaseAuth
@@ -35,10 +40,10 @@ class AdduserRespository {
             (value) => value.update(detail.copyWith(id: value.id).toJson()),
           );
     });
+
   }
   loginAuth({required String email,required String password, required BuildContext context}) async {
-    var data = await FirebaseFirestore.instance.collection("user")
-        .where("email",isEqualTo :email).get();
+    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").where("email",isEqualTo :email).get();
     if( data.docs.isEmpty){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No user ')));
     }else{
@@ -82,6 +87,9 @@ class AdduserRespository {
     Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
   }
 
+  uploadUser({required String image}){
+
+  }
 
 
 

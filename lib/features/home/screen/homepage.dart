@@ -16,8 +16,6 @@ import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 
-  String? imageUrl ;
-
 class HomePage extends ConsumerStatefulWidget {
   final String name;
     const HomePage({super.key,
@@ -158,14 +156,14 @@ class HomePage extends ConsumerStatefulWidget {
     }
     uploadImage();
   }
-
+ String imageUrl= "";
   uploadImage() async {
     var uploadPick = await FirebaseStorage.instance.ref("newUsers")
         .child("path ${DateTime.now()}").putFile(file,SettableMetadata(
         contentType: "image/jpeg"
     ));
     var getUrl = await uploadPick.ref.getDownloadURL();
- currentUserImage=imageUrl =getUrl;
+    imageUrl =getUrl;
     setState(() {
 
     });
@@ -193,7 +191,7 @@ class HomePage extends ConsumerStatefulWidget {
           shape: BeveledRectangleBorder(side: BorderSide(color: ColorConst.primaryColor)),
           backgroundColor: ColorConst.primaryColor,
       child: ListView(
-        physics: BouncingScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
         children:  [
           SizedBox(height: height*0.05,),
          Column(
@@ -397,7 +395,7 @@ class HomePage extends ConsumerStatefulWidget {
 
            ),),
          ),
-         SizedBox(height: height*0.09,),
+         SizedBox(height: height*0.05,),
          GestureDetector(
            onTap: () {
              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Login(),), (route) => false,);
