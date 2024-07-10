@@ -25,6 +25,7 @@ class _SignupState extends ConsumerState<Signup> {
   final emailvalidation=RegExp(r"^[a-z-0-9.a-z-0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z-0-9]+\.[a-z-]+");
   final passwordValidation=  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?).{8,}$');
   final formkey= GlobalKey<FormState>();
+  bool pass=false;
 
 
   add(){
@@ -59,7 +60,6 @@ class _SignupState extends ConsumerState<Signup> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
             Container(
               height: height*0.45,
               child: Form(
@@ -71,9 +71,10 @@ class _SignupState extends ConsumerState<Signup> {
                       controller: usernameController,
                       keyboardType: TextInputType.name,
                       textInputAction:TextInputAction.next,
+                      textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
                         labelText:"Username",
-                        suffixIcon: SvgPicture.asset(SvgConstant.greenTick,fit: BoxFit.none,),
+                        suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400
@@ -98,6 +99,7 @@ class _SignupState extends ConsumerState<Signup> {
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction:TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                      obscureText:pass?true:false,
                       validator: (value) {
                         if(!passwordValidation.hasMatch(value!)){
                           return "Enter the Valid Password \n"
@@ -112,15 +114,14 @@ class _SignupState extends ConsumerState<Signup> {
                       },
                       decoration: InputDecoration(
                         labelText:"Password",
-                        suffixIcon: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Strong",style: TextStyle(
-                              fontSize: width*0.03,
-                              color:ColorConst.eightethColor,
-                            ),),
-                          ],
-                        ),
+                        suffixIcon: InkWell(
+                        
+                                onTap: () {
+                                  pass=!pass;
+                                  setState(() {
+                                  });
+                                },
+                            child:pass?Icon(CupertinoIcons.eye_slash,color:ColorConst.eightethColor,):Icon(CupertinoIcons.eye,color:ColorConst.eightethColor)),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400
@@ -152,7 +153,7 @@ class _SignupState extends ConsumerState<Signup> {
                       textInputAction:TextInputAction.next,
                       decoration: InputDecoration(
                         labelText:"Email Addresse",
-                        suffixIcon: SvgPicture.asset(SvgConstant.greenTick,fit: BoxFit.none,),
+                        suffixIcon: Icon(Icons.email_outlined,color:ColorConst.eightethColor),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400,
