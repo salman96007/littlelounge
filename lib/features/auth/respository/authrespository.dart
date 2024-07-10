@@ -54,6 +54,7 @@ class AdduserRespository {
         currentUSerEmail =user.email;
         currentUSerPassword = user.password;
         currentUserImage =user.imageUrl;
+        currentUSerId =user.id;
 
         Navigator.pushAndRemoveUntil(
     context,
@@ -87,8 +88,9 @@ class AdduserRespository {
     Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
   }
 
-  uploadUser({required String image}){
 
+  updateData(String imageUrl){
+    _user.doc(currentUSerId).update({"imageUrl":imageUrl});
   }
 
 

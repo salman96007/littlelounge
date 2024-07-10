@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
@@ -152,9 +153,12 @@ class HomePage extends ConsumerStatefulWidget {
     if(mounted){
       setState(() {
         file =File(imageFile.path);
+
+
       });
     }
     uploadImage();
+
   }
  String imageUrl= "";
   uploadImage() async {
@@ -164,10 +168,15 @@ class HomePage extends ConsumerStatefulWidget {
     ));
     var getUrl = await uploadPick.ref.getDownloadURL();
     imageUrl =getUrl;
+    updatedata(imageUrl: imageUrl);
+    currentUserImage=imageUrl;
     setState(() {
 
     });
 
+  }
+  updatedata({required String imageUrl}){
+    ref.watch(ControllerProvider).userData(imageUrl: imageUrl);
   }
 
   @override
@@ -201,14 +210,11 @@ class HomePage extends ConsumerStatefulWidget {
              Stack(
                alignment: Alignment.bottomRight,
                children: [
-                 file!=null? CircleAvatar(
-                   radius: width*0.15,
-                   backgroundImage: FileImage(file),
-                 ):
                  CircleAvatar(
                    radius: width*0.15,
-                   backgroundImage:AssetImage(ImageConstant.modelLogo),
+                   backgroundImage: NetworkImage(currentUserImage.toString()),
                  ),
+
                  Container(
                    margin: EdgeInsets.only(right: width*0.012),
                    child: CircleAvatar(
@@ -226,6 +232,7 @@ class HomePage extends ConsumerStatefulWidget {
                                  children: [
                                    InkWell(
                                      onTap: () {
+
                                        pickFile(ImageSource.camera);
                                        Navigator.pop(context);
                                      },
@@ -242,6 +249,7 @@ class HomePage extends ConsumerStatefulWidget {
                                    InkWell(
                                      onTap: () {
                                        pickFile(ImageSource.gallery);
+
                                        Navigator.pop(context);
                                      },
                                      child: Container(

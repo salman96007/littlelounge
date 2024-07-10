@@ -24,6 +24,9 @@ class AuthController{
     get({required String email,required String password, required context}){
       _adduserRespository.loginAuth(email: email, password: password, context: context);
     }
+    userData({required String imageUrl}){
+      _adduserRespository.updateData(imageUrl);
+    }
 
 
 }

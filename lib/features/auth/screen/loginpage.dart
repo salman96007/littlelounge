@@ -95,8 +95,6 @@ class _LoginState extends ConsumerState<Login> {
                             borderRadius: BorderRadius.circular(width*0.03),
                             borderSide: BorderSide(color: ColorConst.secondary),
                           ),
-
-
                         ),
 
 
