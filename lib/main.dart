@@ -1,5 +1,5 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:firebase_core/firebase_core.dart';
+
+import 'package:firebase_core/firebase_core.dart';import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,6 @@ import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
-
 import 'features/bottomnavigation/screen/bottomnavigation.dart';
 import 'features/payement/screen/savecard.dart';
 import 'firebase_options.dart';
@@ -46,6 +45,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return  GestureDetector(
@@ -56,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home:CreatAccount(),
+        home: Signup(),
         debugShowCheckedModeBanner: false,
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,44 +31,44 @@ class _LoginState extends ConsumerState<Login> {
 
   loginAuth({required String email, required String password}){
     ref.watch(ControllerProvider).authLogin(email: usernameController.text,
-        password: passwordController.text, context: context,
+      password: passwordController.text, context: context,
 
     );
 
   }
   TextEditingController usernameController =TextEditingController();
   TextEditingController passwordController =TextEditingController();
-  final passwordValidation=  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?).{8,}$');
+  final passwordValidation=  RegExp(r'^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?).{8,}$');
   final formkey= GlobalKey<FormState>();
 
   bool toggle =false;
-  bool pass=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+
       ),
       body: Form(
         key: formkey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-        Center(
-          child: RichText(text: TextSpan(text: "Welcome\n",style: GoogleFonts.inter(
-            textStyle: TextStyle(color: ColorConst.secondary,
-            fontSize: width*0.09,
-            fontWeight: FontWeight.w600),
-          ),
-              children: [TextSpan(text:"Please enter your data to continue" ,style: GoogleFonts.inter(
-                textStyle: TextStyle(color: ColorConst.eighth,
-                  fontSize: width*0.05,
-                    fontWeight: FontWeight.w400,
+            Center(
+              child: RichText(text: TextSpan(text: "Welcome\n",style: GoogleFonts.inter(
+                textStyle: TextStyle(color: ColorConst.secondary,
+                    fontSize: width*0.09,
+                    fontWeight: FontWeight.w600),
+              ),
+                  children: [TextSpan(text:"Please enter your data to continue" ,style: GoogleFonts.inter(
+                    textStyle: TextStyle(color: ColorConst.eighth,
+                      fontSize: width*0.05,
+                      fontWeight: FontWeight.w400,
 
-                ),
-              )),]
-          ),textAlign: TextAlign.center,),
-        ),
+                    ),
+                  )),]
+              ),textAlign: TextAlign.center,),
+            ),
             Padding(
               padding:  EdgeInsets.all(width*0.04),
               child: Column(
@@ -83,7 +82,7 @@ class _LoginState extends ConsumerState<Login> {
                         textInputAction:TextInputAction.next,
                         decoration: InputDecoration(
                           labelText:"Username",
-                          suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
+                          suffixIcon: SvgPicture.asset(SvgConstant.greenTick,),
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
@@ -96,7 +95,12 @@ class _LoginState extends ConsumerState<Login> {
                             borderRadius: BorderRadius.circular(width*0.03),
                             borderSide: BorderSide(color: ColorConst.secondary),
                           ),
+
+
                         ),
+
+
+
                       ),
                       SizedBox(height: height*0.05,),
                       TextFormField(
@@ -104,7 +108,6 @@ class _LoginState extends ConsumerState<Login> {
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction:TextInputAction.next,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        obscureText:pass?true:false,
                         validator: (value) {
                           if(!passwordValidation.hasMatch(value!)){
                             return "Enter the Valid Password \n"
@@ -119,13 +122,9 @@ class _LoginState extends ConsumerState<Login> {
                         },
                         decoration: InputDecoration(
                           labelText:"Password",
-                          suffixIcon: InkWell(
-                              onTap: () {
-                                pass=!pass;
-                                setState(() {
-                                });
-                              },
-                              child:pass?Icon(CupertinoIcons.eye_slash,color:ColorConst.eightethColor,):Icon(CupertinoIcons.eye,color:ColorConst.eightethColor)),
+                          suffixIcon: Text("Strong",style: TextStyle(
+                            color:ColorConst.eightethColor ,
+                          ),),
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
@@ -265,7 +264,7 @@ class _LoginState extends ConsumerState<Login> {
             )
 
 
-            ],
+          ],
         ),
       ),
     );

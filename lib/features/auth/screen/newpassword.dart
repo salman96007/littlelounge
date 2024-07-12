@@ -62,7 +62,7 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
                       ),
                       border: UnderlineInputBorder(
                           borderSide: BorderSide(color: ColorConst.eighth)
-                      )
+                      ),
 
                   ),
 
@@ -133,7 +133,7 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
                         color: ColorConst.thirdColor,
                         borderRadius: BorderRadius.circular(width*0.03)
                     ),
-                  )
+                  ),
                 ],
               )
             ],
