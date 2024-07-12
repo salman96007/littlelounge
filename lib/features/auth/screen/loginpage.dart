@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,6 +43,8 @@ class _LoginState extends ConsumerState<Login> {
   final formkey= GlobalKey<FormState>();
 
   bool toggle =false;
+  bool pass=false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,8 +84,9 @@ class _LoginState extends ConsumerState<Login> {
                         keyboardType: TextInputType.emailAddress,
                         textInputAction:TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText:"Username",
-                          suffixIcon: SvgPicture.asset(SvgConstant.greenTick,),
+                          labelText:"Email",
+                          suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
+
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
@@ -107,6 +111,7 @@ class _LoginState extends ConsumerState<Login> {
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction:TextInputAction.next,
+                        obscureText:pass?true:false,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if(!passwordValidation.hasMatch(value!)){
@@ -122,9 +127,14 @@ class _LoginState extends ConsumerState<Login> {
                         },
                         decoration: InputDecoration(
                           labelText:"Password",
-                          suffixIcon: Text("Strong",style: TextStyle(
-                            color:ColorConst.eightethColor ,
-                          ),),
+                          suffixIcon: InkWell(
+
+                              onTap: () {
+                                pass=!pass;
+                                setState(() {
+                                });
+                              },
+                              child:pass?Icon(CupertinoIcons.eye_slash,color:ColorConst.eightethColor,):Icon(CupertinoIcons.eye,color:ColorConst.eightethColor)),
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
