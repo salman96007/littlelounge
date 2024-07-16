@@ -37,12 +37,12 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
         centerTitle: true,
       ),
       body:Padding(
-        padding:EdgeInsets.only(bottom:height*0.01,),
+        padding:EdgeInsets.only(bottom:height*0.015,),
         child: Center(
           child: Column(
             children: [
               SizedBox(
-                width:width*0.85,
+                width:width*0.88,
                 height:height*0.11,
                 //color:Colors.red,
                 child: Column(
@@ -85,13 +85,13 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                   ],
                 ),
               ),
-              SizedBox(height:height*0.02,),
+              SizedBox(height:height*0.015),
               Row(
                 crossAxisAlignment:CrossAxisAlignment.start,
                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(
-                    width:width*0.4,
+                    width:width*0.43,
                     height:height*0.12,
                     //color: Colors.red,
                     child:Column(
@@ -135,7 +135,7 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                     ),
                   ),
                   SizedBox(
-                    width:width*0.4,
+                    width:width*0.43,
                     height:height*0.12,
                     //color: Colors.red,
                     child:Column(
@@ -180,9 +180,9 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                   ),
                 ],
               ),
-              SizedBox(height:height*0.02),
+              SizedBox(height:height*0.015),
               SizedBox(
-                width:width*0.85,
+                width:width*0.88,
                 height:height*0.11,
                 //color:Colors.red,
                 child: Column(
@@ -225,9 +225,9 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                   ],
                 ),
               ),
-              SizedBox(height:height*0.02,),
+              SizedBox(height:height*0.015),
               SizedBox(
-                width:width*0.85,
+                width:width*0.88,
                 height:height*0.11,
                 //color:Colors.red,
                 child: Column(
@@ -296,8 +296,8 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                 ),
               ),
               SizedBox(
-                width:width*07,
-                height:height*0.2,
+                width:width*08,
+                height:height*0.1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
