@@ -22,5 +22,4 @@ class collectionResposiyory{
   //   return _collection.snapshots().map( (event) => event.docs.map( (e) => DressModel.fromJson(e.data() as Map<String,dynamic>,),).toList());
   // }
 
-
 }

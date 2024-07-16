@@ -66,7 +66,6 @@ class AdduserRespository {
   }
   }
 
-
   final GoogleSignIn _googleSignIn= GoogleSignIn();
   Future<UserCredential?>signInWithGoogle({required  currentUSerName,required currentUSerEmail,required BuildContext context})async{
     await _googleSignIn.signOut();

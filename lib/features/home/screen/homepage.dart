@@ -1,6 +1,7 @@
   import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,8 +13,11 @@ import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
+import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
+import 'package:littlelounge/features/home/screen/settingspage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
+import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
 
 import '../../../constant/colorconstant.dart';
 
@@ -355,13 +359,18 @@ class HomePage extends ConsumerStatefulWidget {
              ],
            ),
         ),
-         ListTile(
-           leading: SvgPicture.asset(SvgConstant.account),
-           title: Text("Account Information",style: TextStyle(
-             color: ColorConst.secondary,
-             fontWeight: FontWeight.w400,
+         InkWell(
+           onTap: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context) => AccountInfrmtn(),));
+           },
+           child: ListTile(
+             leading: SvgPicture.asset(SvgConstant.account),
+             title: Text("Account Information",style: TextStyle(
+               color: ColorConst.secondary,
+               fontWeight: FontWeight.w400,
 
-           ),),
+             ),),
+           ),
          ),
          ListTile(
            leading: SvgPicture.asset(SvgConstant.password),
@@ -395,13 +404,18 @@ class HomePage extends ConsumerStatefulWidget {
 
            ),),
          ),
-         ListTile(
-           leading: SvgPicture.asset(SvgConstant.settings),
-           title: Text("Settings",style: TextStyle(
-             color: ColorConst.secondary,
-             fontWeight: FontWeight.w400,
+         InkWell(
+           onTap: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage(),));
+           },
+           child: ListTile(
+             leading: SvgPicture.asset(SvgConstant.settings),
+             title: Text("Settings",style: TextStyle(
+               color: ColorConst.secondary,
+               fontWeight: FontWeight.w400,
 
-           ),),
+             ),),
+           ),
          ),
          SizedBox(height: height*0.05,),
          GestureDetector(

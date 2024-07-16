@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/home/screen/more/aboutus.dart';
+import 'package:littlelounge/features/home/screen/more/privacypolicy.dart';
+import 'package:littlelounge/features/home/screen/seditprofile.dart';
 import 'package:littlelounge/features/home/screen/semailid.dart';
 import 'package:littlelounge/features/home/screen/smobilenumber.dart';
+import 'package:littlelounge/features/home/screen/spassword.dart';
 import 'package:littlelounge/main.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -42,20 +46,30 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Edit profile",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
-                            Icon(Icons.arrow_right,color: ColorConst.secondary,),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => EditprofilePage(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Edit profile",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,),
+                            ],
+                          ),
                         ),
                         Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Change password",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
-                            Icon(Icons.arrow_right,color: ColorConst.secondary,),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordPage(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Change password",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,),
+                            ],
+                          ),
                         ),
                         Divider(),
                         InkWell(
@@ -108,20 +122,30 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("About us",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
-                            Icon(Icons.arrow_right,color: ColorConst.secondary,)
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => AboutusPage(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("About us",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,)
+                            ],
+                          ),
                         ),
                         Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Privacy policy",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
-                            Icon(Icons.arrow_right,color: ColorConst.secondary,)
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy(),));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Privacy policy",style: TextStyle(color: ColorConst.secondary,fontSize: width*0.04,fontWeight: FontWeight.w600,),),
+                              Icon(Icons.arrow_right,color: ColorConst.secondary,)
+                            ],
+                          ),
                         )
                       ],
                     ),

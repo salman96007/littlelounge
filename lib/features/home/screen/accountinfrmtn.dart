@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/main.dart';
-String? currentUserImage;
 class AccountInfrmtn extends  ConsumerStatefulWidget {
   const AccountInfrmtn({super.key});
 
@@ -44,7 +43,6 @@ class _AccountInfrmtnState extends ConsumerState<AccountInfrmtn> {
     });
 
   }
-
 
 
   @override
@@ -183,6 +181,7 @@ class _AccountInfrmtnState extends ConsumerState<AccountInfrmtn> {
                   controller: numberController,
                   keyboardType: TextInputType.multiline,
                   textInputAction: TextInputAction.go,
+                  maxLength: 10,
                   style: TextStyle(fontSize: width*0.05),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.phone),
