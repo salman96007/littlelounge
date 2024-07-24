@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 
 import '../../../main.dart';
@@ -20,94 +21,80 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
         children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: height*1,
+                width: width*1,
+
+                child: Image.asset(ImageConstant.welcomfinal,fit:BoxFit.cover,),
+
+              )
+
+
+
+            ],
+          ),
           Container(
             child:Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image.asset(ImageConstant.welcom),
                 Container(
+                  height: height*0.28,
+                  width: width*0.86,
+                  margin:  EdgeInsets.only(bottom: height*0.05),
+                  decoration: BoxDecoration(
+                    color: ColorConst.primaryColor,
+                    borderRadius: BorderRadius.circular(width*0.04),
+                  ),
                   child: Column(
                     children: [
                       SizedBox(height: height*0.02,),
                       Text("Look Good, Feel Good",style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: width*0.06
+                          fontWeight: FontWeight.w600,
+                          fontSize: width*0.06
                       ),),
                       Text("Create your individual & unique style and look amazing everyday.",style: TextStyle(
                         fontWeight: FontWeight.w400,
                         color:ColorConst.twelthColor,
                       ),textAlign: TextAlign.center,),
-                      Padding(
-                        padding:  EdgeInsets.all(width*0.09),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                                onTap: () {
-                                  title="man";
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(
-                                      name:title,),));
-                                },
-                              child: Container(
-                                child: Center(child: Text("man",style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                ),)),
-                                height: height*0.07,
-                                width: width*0.30,
+                      SizedBox(height: height*0.07,),
+                      ref.watch(StreamCollection).when(
+                        data: (data) =>    Container(
+                          width: width*0.8,
+                          height: height*0.07,
+                          margin: EdgeInsets.only(left: width*0.05),
+                          child: ListView.separated(
+                            itemCount:data.length,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                alignment: Alignment.center,
+                                child: Text(data[index].name,style: TextStyle(
+                                    color: ColorConst.primaryColor
+                                ),),
+                                height: height*0.03,
+                                width: width*0.35,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(width*0.022),
-                                  color:ColorConst.sixteenColor,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: width*0.04,),
-                            InkWell(
-                              onTap: () {
-                                title="woman";
+                                    color: ColorConst.thirdColor,
+                                    borderRadius: BorderRadius.circular(width*0.02)
 
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(name:title,),));
-                              },
-                              child: Container(
-                                height: height*0.07,
-                                width: width*0.30,
-                                child: Center(child: Text("Woman",style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: ColorConst.primaryColor,
-                                ),)),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(width*0.022),
-                                  color:ColorConst.thirdColor,
                                 ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              title ="skip";
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(name: title),));
-                            },
-                            child: Text("Skip",style: TextStyle(
-                              color: ColorConst.twelthColor
-                            ),),
-                          )
-                        ],
-                      )
+                              );
+                            }, separatorBuilder: (context, index) {
+                            return SizedBox(width: width*0.04,);
+                          }, ),
+                        ) ,
+                        error: (error, stackTrace) => Text(error.toString()),
+                        loading: () => CircularProgressIndicator(),)
+
+
                     ],
                   ),
-                  height: height*0.36,
-                  width: width*0.9,
-                  decoration: BoxDecoration(
-                    color: ColorConst.primaryColor,
-                    borderRadius: BorderRadius.circular(width*0.04),
-                  ),
-
                 )
               ],
             ) ,
@@ -115,19 +102,20 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
             width: width*1,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.topLeft,
+                  begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   stops: [0.05,0.7],
+
                   colors: [
-                ColorConst.thirdColor.withOpacity(0.5),
-                ColorConst.thirdColor,
-              ]
-              )
+                    ColorConst.thirdColor.withOpacity(0.2),
+                    ColorConst.thirdColor.withOpacity(0.8),
+                  ]
+              ),
             ),
           ),
+        ]
 
 
-         ],
       ),
 
     );
