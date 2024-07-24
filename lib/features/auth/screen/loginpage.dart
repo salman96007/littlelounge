@@ -19,7 +19,7 @@ String? currentUSerEmail;
 String? currentUSerPassword;
 String? currentUSerId;
 String? currentUserImage;
-String? googlename ;
+String? googlename;
 String?  userCredential;
 class Login extends ConsumerStatefulWidget {
   const Login({super.key});
