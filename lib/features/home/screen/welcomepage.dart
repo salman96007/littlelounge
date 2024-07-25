@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +7,8 @@ import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:pinput/pinput.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
@@ -19,6 +22,12 @@ class WelcomPage extends ConsumerStatefulWidget {
 
 class _WelcomPageState extends ConsumerState<WelcomPage> {
   String title="";
+  List images=[
+    ImageConstant.finalimg1,
+    ImageConstant.finalimg2,
+    ImageConstant.finalimg3,
+  ];
+  int activeindex=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,19 +36,47 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                height: height*1,
-                width: width*1,
+              CarouselSlider.builder(
+                itemCount:images.length ,
+                  itemBuilder:(context, index, realIndex) {
+                  return Container(
+                    height: height*1,
+                    width: width*1,
+                    child: Image.asset(images[index],fit:BoxFit.cover,),
+                  );
+                  },
+                  options: CarouselOptions(
+                      height: height*1,
+                      onPageChanged: (index, reason) {
+                        activeindex=index;
+                        setState(() {
+                        });
+                      },
+                      autoPlay: true,
+                      autoPlayAnimationDuration: Duration(seconds: 2),
+                      viewportFraction:1
+                  ),),
 
-                child: Image.asset(ImageConstant.welcomfinal,fit:BoxFit.cover,),
-
-              )
 
 
 
             ],
           ),
           Container(
+            height: height*1,
+            width: width*1,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.05,0.7],
+
+                  colors: [
+                    ColorConst.thirdColor.withOpacity(0.2),
+                    ColorConst.thirdColor.withOpacity(0.8),
+                  ]
+              ),
+            ),
             child:Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -99,20 +136,7 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                 )
               ],
             ) ,
-            height: height*1,
-            width: width*1,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.05,0.7],
 
-                  colors: [
-                    ColorConst.thirdColor.withOpacity(0.2),
-                    ColorConst.thirdColor.withOpacity(0.8),
-                  ]
-              ),
-            ),
           ),
         ]
 
