@@ -110,17 +110,22 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return Container(
-                                alignment: Alignment.center,
-                                child: Text(data[index].name,style: TextStyle(
-                                    color: ColorConst.primaryColor
-                                ),),
-                                height: height*0.03,
-                                width: width*0.35,
-                                decoration: BoxDecoration(
-                                    color: ColorConst.thirdColor,
-                                    borderRadius: BorderRadius.circular(width*0.02)
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePage(),));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text(data[index].name,style: TextStyle(
+                                      color: ColorConst.primaryColor
+                                  ),),
+                                  height: height*0.03,
+                                  width: width*0.35,
+                                  decoration: BoxDecoration(
+                                      color: ColorConst.thirdColor,
+                                      borderRadius: BorderRadius.circular(width*0.02)
 
+                                  ),
                                 ),
                               );
                             }, separatorBuilder: (context, index) {
