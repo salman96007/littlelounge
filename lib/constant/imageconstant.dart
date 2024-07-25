@@ -38,6 +38,7 @@ class ImageConstant {
    static const  creditCard = "assets/images/creditcard.png";
    static const  welcomfinal = "assets/images/welcom final image.png";
    static const  bg = "assets/images/BG IMG.png";
+   static const  bg1 = "assets/images/BG IMG2.png";
 
    }
 
