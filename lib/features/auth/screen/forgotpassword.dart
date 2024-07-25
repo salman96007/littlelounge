@@ -1,3 +1,4 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
@@ -13,15 +14,16 @@ class ForgotPassword extends ConsumerStatefulWidget {
   ConsumerState<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
+
 class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
+  TextEditingController emailController=TextEditingController();
+  final emailValidation=RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   @override
   Widget build(BuildContext context) {
 
-    TextEditingController emailController=TextEditingController();
-    final emailValidation=RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-
 
     return  Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         elevation: 1,
@@ -39,7 +41,7 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
           Column(
             children: [
             Padding(
-              padding:  EdgeInsets.all(width*0.03),
+              padding:  EdgeInsets.all(width*0.05),
               child: TextFormField(
                          controller: emailController,
                          keyboardType: TextInputType.emailAddress,
@@ -64,11 +66,17 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                        emailController.clear();
                      },
                      child: Icon(Icons.clear)),
-               enabledBorder: UnderlineInputBorder(
+               enabledBorder: OutlineInputBorder(
                  borderSide: BorderSide(color: ColorConst.eighth),
+                 borderRadius: BorderRadius.circular(width*0.04)
                ),
-               border: UnderlineInputBorder(
-                 borderSide: BorderSide(color: ColorConst.eighth)
+               focusedBorder: OutlineInputBorder(
+                 borderSide: BorderSide(color: ColorConst.eighth),
+                   borderRadius: BorderRadius.circular(width*0.04)),
+               border: OutlineInputBorder(
+                 borderSide: BorderSide(color: ColorConst.eighth),
+                   borderRadius: BorderRadius.circular(width*0.04)
+
                )
 
                          ),
@@ -87,8 +95,20 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Verificationcode(),));
+                    onTap: () async {
+                      EmailOTP.config(
+                        appName: 'Email OTP',
+                        otpType: OTPType.numeric,
+                        emailTheme: EmailTheme.v1,
+                          otpLength: 4);
+                      if(await EmailOTP.sendOTP(email: emailController.text)==true){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("OTP has been sent")));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Verificationcode(),));
+                      }else{
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP send failed")));
+                      }
+
                     },
                     child: Container(
                       alignment: Alignment.center,

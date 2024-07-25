@@ -10,7 +10,6 @@ import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
-import 'package:littlelounge/model/usermodel.dart';
 
 
 class CreatAccount extends ConsumerStatefulWidget {
@@ -22,8 +21,10 @@ class CreatAccount extends ConsumerStatefulWidget {
 
 class _CreatAccountState extends ConsumerState<CreatAccount> {
 
-  loginGoogle({required  currentUSerName,required currentUSerEmail,required BuildContext context}){
-    ref.watch(ControllerProvider).google(currentUSerName:currentUSerName ,currentUSerEmail: currentUSerEmail, context: context);
+  loginGoogle(){
+    ref.watch(ControllerProvider).google(context: context);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+
   }
 
 
@@ -34,7 +35,7 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
       appBar: AppBar(
       ),
       body: Column(
-       mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text("Let’s Get Started",style: TextStyle(
             fontSize: width*0.05,
@@ -53,12 +54,12 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
                       Image.asset(ImageConstant.facebookImg),
                       Text("Facebook",
                         style:TextStyle(color: ColorConst.primaryColor,
-                        fontWeight: FontWeight.bold),),
+                            fontWeight: FontWeight.bold),),
                     ],
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(width*0.03),
-                    color:ColorConst.tenth
+                      borderRadius: BorderRadius.circular(width*0.03),
+                      color:ColorConst.tenth
                   ),
                 ),
                 SizedBox(height: height*0.01,),
@@ -71,18 +72,18 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
                       SvgPicture.asset(SvgConstant.twitter),
                       Text("Twitter",
                         style:TextStyle(color: ColorConst.primaryColor,
-                        fontWeight: FontWeight.bold),),
+                            fontWeight: FontWeight.bold),),
                     ],
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(width*0.03),
-                    color:ColorConst.fifth
+                      borderRadius: BorderRadius.circular(width*0.03),
+                      color:ColorConst.fifth
                   ),
                 ),
                 SizedBox(height: height*0.01,),
                 GestureDetector(
                   onTap: () {
-                   loginGoogle(context: context, currentUSerName: "", currentUSerEmail: "");
+                    loginGoogle();
                   },
                   child: Container(
                     height: height*0.05,
@@ -93,12 +94,12 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
                         SvgPicture.asset(SvgConstant.google),
                         Text("Google",
                           style:TextStyle(color: ColorConst.primaryColor,
-                          fontWeight: FontWeight.bold),),
+                              fontWeight: FontWeight.bold),),
                       ],
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(width*0.03),
-                      color:ColorConst.sixth
+                        borderRadius: BorderRadius.circular(width*0.03),
+                        color:ColorConst.sixth
                     ),
                   ),
                 ),

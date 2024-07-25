@@ -16,9 +16,9 @@ class AuthController{
       _adduserRespository.loginAuth(email:email, password: password, context: context,);
     }
 
-    google({required  currentUSerName,required currentUSerEmail,required BuildContext context}){
+    google({required BuildContext context}){
 
-      _adduserRespository.signInWithGoogle(currentUSerName: currentUSerName, currentUSerEmail: currentUSerEmail, context: context);
+      _adduserRespository.signInWithGoogle(context: context);
 
     }
     get({required String email,required String password, required context}){
@@ -26,6 +26,9 @@ class AuthController{
     }
     userData({required String imageUrl}){
       _adduserRespository.updateData(imageUrl);
+    }
+    updatepassword({required String password}){
+      _adduserRespository.updatepassword(password);
     }
 
 

@@ -1,6 +1,8 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/auth/screen/newpassword.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../constant/imageconstant.dart';
@@ -14,9 +16,11 @@ class Verificationcode extends ConsumerStatefulWidget {
 }
 
 class _VerificationcodeState extends ConsumerState<Verificationcode> {
+  TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         elevation: 1,
@@ -35,30 +39,34 @@ class _VerificationcodeState extends ConsumerState<Verificationcode> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Pinput(
+                controller: otpController,
                 length: 4,
               )
             ],
           ),
           SizedBox(height: height*0.15,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("00:20",style: TextStyle(fontSize: width*0.06,color: ColorConst.secondary),),
-              Text(" resend confirmation code.",style: TextStyle(fontSize: width*0.055,color: ColorConst.eighth),)
-            ],
-          ),
           SizedBox(height: height*0.02,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.center,
-                height: height*0.060,
-                width: width*0.65,
-                child: Text("Confirm Code",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
-                decoration: BoxDecoration(
-                    color: ColorConst.thirdColor,
-                    borderRadius: BorderRadius.circular(width*0.03)
+              GestureDetector(
+                onTap: () {
+                  if(EmailOTP.verifyOTP(otp: otpController.text)==true){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP Verifyed")));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => NewPassword(),));
+                  }else{
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("plese check currect verifyCode")));
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: height*0.060,
+                  width: width*0.65,
+                  child: Text("Confirm Code",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
+                  decoration: BoxDecoration(
+                      color: ColorConst.thirdColor,
+                      borderRadius: BorderRadius.circular(width*0.03)
+                  ),
                 ),
               )
             ],

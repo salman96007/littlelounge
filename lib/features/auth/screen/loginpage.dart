@@ -1,25 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
-import 'package:littlelounge/features/auth/screen/signuppage.dart';
-import 'package:littlelounge/features/home/screen/welcomepage.dart';
-import 'package:littlelounge/model/usermodel.dart';
+import 'package:littlelounge/features/auth/screen/forgotpassword.dart';
+import 'package:littlelounge/features/auth/screen/newpassword.dart';
+
 
 import '../../../constant/colorconstant.dart';
-import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 String? currentUSerName ;
 String? currentUSerEmail;
 String? currentUSerPassword;
 String? currentUSerId;
 String? currentUserImage;
-String? googlename;
+String? googlename ;
 String?  userCredential;
 class Login extends ConsumerStatefulWidget {
   const Login({super.key});
@@ -34,23 +29,23 @@ class _LoginState extends ConsumerState<Login> {
     ref.watch(ControllerProvider).authLogin(email: usernameController.text,
       password: passwordController.text, context: context,
 
+
     );
+
 
   }
   TextEditingController usernameController =TextEditingController();
   TextEditingController passwordController =TextEditingController();
-  final passwordValidation=  RegExp(r'^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?).{8,}$');
+  final passwordValidation=  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?).{8,}$');
   final formkey= GlobalKey<FormState>();
 
   bool toggle =false;
   bool pass=false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-
       ),
       body: Form(
         key: formkey,
@@ -84,9 +79,8 @@ class _LoginState extends ConsumerState<Login> {
                         keyboardType: TextInputType.emailAddress,
                         textInputAction:TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText:"Email",
+                          labelText:"Username",
                           suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
-
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
@@ -99,20 +93,15 @@ class _LoginState extends ConsumerState<Login> {
                             borderRadius: BorderRadius.circular(width*0.03),
                             borderSide: BorderSide(color: ColorConst.secondary),
                           ),
-
-
                         ),
-
-
-
                       ),
                       SizedBox(height: height*0.05,),
                       TextFormField(
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction:TextInputAction.next,
-                        obscureText:pass?true:false,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
+                        obscureText:pass?true:false,
                         validator: (value) {
                           if(!passwordValidation.hasMatch(value!)){
                             return "Enter the Valid Password \n"
@@ -128,7 +117,6 @@ class _LoginState extends ConsumerState<Login> {
                         decoration: InputDecoration(
                           labelText:"Password",
                           suffixIcon: InkWell(
-
                               onTap: () {
                                 pass=!pass;
                                 setState(() {
@@ -158,9 +146,14 @@ class _LoginState extends ConsumerState<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("Forgot password?",style: TextStyle(
-                            color:ColorConst.sixth,
-                          ),)
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
+                            },
+                            child: Text("Forgot password?",style: TextStyle(
+                              color:ColorConst.sixth,
+                            ),),
+                          )
                         ],
                       ),
                       SizedBox(height: height*0.02,),
@@ -272,8 +265,6 @@ class _LoginState extends ConsumerState<Login> {
                 ],
               ),
             )
-
-
           ],
         ),
       ),

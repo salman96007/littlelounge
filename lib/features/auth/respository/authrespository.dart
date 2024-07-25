@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -59,15 +61,16 @@ class AdduserRespository {
         Navigator.pushAndRemoveUntil(
     context,
     MaterialPageRoute(builder: (context) => WelcomPage()),
-    (route) => false);
-
+    (route) => false);}
+      else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please correct password ")));
+      }
+    }
   }
 
-  }
-  }
 
   final GoogleSignIn _googleSignIn= GoogleSignIn();
-  Future<UserCredential?>signInWithGoogle({required  currentUSerName,required currentUSerEmail,required BuildContext context})async{
+  Future<UserCredential?>signInWithGoogle({required BuildContext context})async{
     await _googleSignIn.signOut();
     final GoogleSignInAccount?googleSignInAccount = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googGoogleSignInAuthentication=await googleSignInAccount!.authentication;
@@ -78,19 +81,26 @@ class AdduserRespository {
     User? userDetails =Auth.user;
     currentUSerName =userDetails!.displayName!;
     currentUSerEmail =userDetails.email!;
-    // currentUserImage =userDetails.photoURL;
+    currentUserImage =userDetails.photoURL!;
     // SharedPreferences prefs2 = await SharedPreferences.getInstance();
     // prefs2.setBool("login",true);
     // prefs2.setString("user", currentUSerName.toString());
     // prefs2.setString("sign1", currentUserImage.toString());
-
     Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+
   }
-
-
   updateData(String imageUrl){
     _user.doc(currentUSerId).update({"imageUrl":imageUrl});
   }
+
+  updatepassword( String password) async {
+    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").get();
+    UserModel user = UserModel.fromJson(data.docs[0].data());
+    currentUSerId =user.id;
+    _user.doc(currentUSerId).update({"password":password});
+  }
+
+
 
 
 

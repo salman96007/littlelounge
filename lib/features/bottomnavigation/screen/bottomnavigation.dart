@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/home/screen/homepage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
@@ -17,12 +18,7 @@ class HomePageView extends ConsumerStatefulWidget {
   class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
-      Container(
-        alignment: Alignment.center,
-        child: Text("Live",style: TextStyle(
-            fontWeight: FontWeight.w600,fontSize: width*0.1
-        ),),
-      ),
+      HomePage(),
       Container(
         alignment: Alignment.center,
         child: Text("Live",style: TextStyle(
@@ -70,7 +66,6 @@ class HomePageView extends ConsumerStatefulWidget {
                   color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.home,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -79,7 +74,6 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.wishlist,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -88,7 +82,6 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.order,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -97,7 +90,6 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.myCard,color:ColorConst.eighth,),
-
                 label: ""
             ),
 

@@ -9,7 +9,6 @@ import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/auth/screen/verificationcode.dart';
-import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/home/screen/accountinfrmtn.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/home/screen/settingspage.dart';
