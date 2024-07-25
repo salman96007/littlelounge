@@ -40,6 +40,10 @@ class ImageConstant {
    static const  bg = "assets/images/BG IMG.png";
    static const  bg1 = "assets/images/BG IMG2.png";
    static const  bg2 = "assets/images/BG IMG3.png";
+   static const  finalimg1 = "assets/images/final img1.jpg";
+   static const  finalimg2 = "assets/images/final img2.jpgg";
+   static const  finalimg3 = "assets/images/final image3.jpg";
+
 
    }
 
