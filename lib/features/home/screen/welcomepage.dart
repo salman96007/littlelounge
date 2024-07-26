@@ -8,8 +8,6 @@ import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:pinput/pinput.dart';
-
-
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
 
@@ -110,22 +108,17 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePage(),));
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Text(data[index].name,style: TextStyle(
-                                      color: ColorConst.primaryColor
-                                  ),),
-                                  height: height*0.03,
-                                  width: width*0.35,
-                                  decoration: BoxDecoration(
-                                      color: ColorConst.thirdColor,
-                                      borderRadius: BorderRadius.circular(width*0.02)
+                              return Container(
+                                alignment: Alignment.center,
+                                child: Text(data[index].name,style: TextStyle(
+                                    color: ColorConst.primaryColor
+                                ),),
+                                height: height*0.03,
+                                width: width*0.35,
+                                decoration: BoxDecoration(
+                                    color: ColorConst.thirdColor,
+                                    borderRadius: BorderRadius.circular(width*0.02)
 
-                                  ),
                                 ),
                               );
                             }, separatorBuilder: (context, index) {

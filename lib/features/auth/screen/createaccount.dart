@@ -30,6 +30,7 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      
       appBar: AppBar(
       ),
       body: Column(

@@ -104,7 +104,7 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                     onTap: () async {
                       updatePassword();
                       EmailOTP.config(
-                        appName: 'Email OTP',
+                        appName: 'Little lounge',
                         otpType: OTPType.numeric,
                         emailTheme: EmailTheme.v1,
                           otpLength: 4);
