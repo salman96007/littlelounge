@@ -8,7 +8,7 @@ import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:pinput/pinput.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
@@ -24,7 +24,7 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
   String title="";
   List images=[
     ImageConstant.finalimg1,
-    ImageConstant.finalimg2,
+    ImageConstant.finalimg4,
     ImageConstant.finalimg3,
   ];
   int activeindex=0;
@@ -110,17 +110,22 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return Container(
-                                alignment: Alignment.center,
-                                child: Text(data[index].name,style: TextStyle(
-                                    color: ColorConst.primaryColor
-                                ),),
-                                height: height*0.03,
-                                width: width*0.35,
-                                decoration: BoxDecoration(
-                                    color: ColorConst.thirdColor,
-                                    borderRadius: BorderRadius.circular(width*0.02)
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePage(),));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text(data[index].name,style: TextStyle(
+                                      color: ColorConst.primaryColor
+                                  ),),
+                                  height: height*0.03,
+                                  width: width*0.35,
+                                  decoration: BoxDecoration(
+                                      color: ColorConst.thirdColor,
+                                      borderRadius: BorderRadius.circular(width*0.02)
 
+                                  ),
                                 ),
                               );
                             }, separatorBuilder: (context, index) {
