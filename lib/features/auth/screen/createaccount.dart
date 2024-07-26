@@ -22,9 +22,7 @@ class CreatAccount extends ConsumerStatefulWidget {
 class _CreatAccountState extends ConsumerState<CreatAccount> {
 
   loginGoogle(){
-    ref.watch(ControllerProvider).google(context: context);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
-
+    ref.watch(ControllerProvider).google(context);
   }
 
 

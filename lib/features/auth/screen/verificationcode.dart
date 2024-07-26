@@ -2,11 +2,13 @@ import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/newpassword.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
+import '../controller/authcontroller.dart';
 
 class Verificationcode extends ConsumerStatefulWidget {
   const Verificationcode({super.key});
@@ -15,7 +17,10 @@ class Verificationcode extends ConsumerStatefulWidget {
   ConsumerState<Verificationcode> createState() => _VerificationcodeState();
 }
 
+
+
 class _VerificationcodeState extends ConsumerState<Verificationcode> {
+
   TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {

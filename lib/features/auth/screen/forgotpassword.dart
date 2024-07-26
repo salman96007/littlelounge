@@ -6,6 +6,8 @@ import 'package:littlelounge/features/auth/screen/verificationcode.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import '../controller/authcontroller.dart';
+import 'loginpage.dart';
 
 class ForgotPassword extends ConsumerStatefulWidget {
   const ForgotPassword({super.key});
@@ -16,6 +18,9 @@ class ForgotPassword extends ConsumerStatefulWidget {
 
 
 class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
+  updatePassword(){
+    ref.watch(ControllerProvider).updatepassword(password: currentUSerPassword.toString(), email: emailController.text);
+  }
   TextEditingController emailController=TextEditingController();
   final emailValidation=RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   @override
@@ -95,12 +100,15 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
+
                     onTap: () async {
+                      updatePassword();
                       EmailOTP.config(
                         appName: 'Email OTP',
                         otpType: OTPType.numeric,
                         emailTheme: EmailTheme.v1,
                           otpLength: 4);
+
                       if(await EmailOTP.sendOTP(email: emailController.text)==true){
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("OTP has been sent")));

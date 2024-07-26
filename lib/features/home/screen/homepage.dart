@@ -469,8 +469,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                             width: width*0.425,
                             height: height*0.3,
                             decoration: BoxDecoration(
-                                color: ColorConst.forth.withOpacity(0.15),
                                 borderRadius: BorderRadius.circular(width*0.05),
+                                image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
                                 boxShadow: [
                                   BoxShadow(
                                       color: Colors.black.withOpacity(0.1),

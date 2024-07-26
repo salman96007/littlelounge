@@ -93,11 +93,15 @@ class AdduserRespository {
     _user.doc(currentUSerId).update({"imageUrl":imageUrl});
   }
 
-  updatepassword( String password) async {
-    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").get();
+  updatepassword( String email,  String password) async {
+    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").where("email", isEqualTo:email).get();
     UserModel user = UserModel.fromJson(data.docs[0].data());
+    currentUSerName = user.name;
+    currentUSerEmail =user.email;
+    currentUSerPassword = user.password;
+    currentUserImage =user.imageUrl;
     currentUSerId =user.id;
-    _user.doc(currentUSerId).update({"password":password});
+    _user.doc(currentUSerId).update({"email":email,"password" :password});
   }
 
 

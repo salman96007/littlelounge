@@ -19,7 +19,7 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
   final passwordValidation=RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$");
 
   updatePassword(){
-    ref.watch(ControllerProvider).updatepassword(password: passwordController.text);
+    ref.watch(ControllerProvider).updatepassword(password: passwordController.text, email: currentUSerEmail.toString());
   }
 
 
