@@ -7,6 +7,7 @@ import 'package:littlelounge/features/home/screen/homepage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import '../../home/screen/wishlistpage.dart';
 
 class HomePageView extends ConsumerStatefulWidget {
     const HomePageView({super.key});
@@ -19,12 +20,7 @@ class HomePageView extends ConsumerStatefulWidget {
     var selectIndex =0;
     List pages =[
       HomePage(),
-      Container(
-        alignment: Alignment.center,
-        child: Text("Live",style: TextStyle(
-            fontWeight: FontWeight.w600,fontSize: width*0.1
-        ),),
-      ),
+      WishListPage(),
       Container(
         alignment: Alignment.center,
         child: Text("Video",style: TextStyle(
@@ -66,6 +62,7 @@ class HomePageView extends ConsumerStatefulWidget {
                   color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.home,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -74,6 +71,7 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.wishlist,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -82,6 +80,7 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.order,color:ColorConst.eighth,),
+
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -90,6 +89,7 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.myCard,color:ColorConst.eighth,),
+
                 label: ""
             ),
 

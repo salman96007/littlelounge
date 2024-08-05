@@ -31,25 +31,59 @@ class DetailedDress extends ConsumerStatefulWidget {
 
     Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConst.primaryColor,
-          actions: [
-            Padding(
-              padding:  EdgeInsets.only(right :width*0.05),
-              child: SvgPicture.asset(SvgConstant.lock1),
+        bottomSheet: Row(
+          children: [
+          Container(
+            height:height*0.07,
+            width:width*0.5,
+            color:ColorConst.primaryColor,
+            child:Center(child: Text("Add to cart",style:TextStyle(
+              fontWeight: FontWeight.w600,
+              color:ColorConst.secondary,
+              fontSize:width*0.04
+            ),)),
+          ),
+            Container(
+              height:height*0.07,
+              width:width*0.5,
+              color:ColorConst.thirdColor,
+              child:Center(child: Text("Buy now",style:TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color:ColorConst.primaryColor,
+                  fontSize:width*0.04
+              ),)),
             )
           ],
-          elevation: 1, 
         ),
+
         body: ListView(
           children: [
-            Container(
-                child: Image.asset(ImageConstant.image1),
-                width: width*1,
-                height: height*0.45,
-                decoration: BoxDecoration(
-                    color: ColorConst.forth.withOpacity(0.15),
-                )
+            Stack(
+              children:[ Container(
+                  child: Image.asset(ImageConstant.image1),
+                  width: width*1,
+                  height: height*0.45,
+                  decoration: BoxDecoration(
+                      image:DecorationImage(image:AssetImage(ImageConstant.bg),fit:BoxFit.cover)
+                  )
+              ),
+                Positioned(
+                  top:height*0.015,
+                    left:width*0.04,
+                    child: CircleAvatar(
+                  radius:width*0.066,
+                  backgroundColor:Colors.white,
+                      child:Icon(Icons.arrow_back),
+                )),
+                Positioned(
+                    top:height*0.015,
+                    right:width*0.04,
+                    child: CircleAvatar(
+                      radius:width*0.066,
+                      backgroundColor:Colors.white,
+                      child:SvgPicture.asset(SvgConstant.order),
+                    ))
+      ]
             ),
             Padding(
               padding:  EdgeInsets.all(width*0.05),
@@ -71,14 +105,14 @@ class DetailedDress extends ConsumerStatefulWidget {
                       ),),
                     ],
                   ),
-                  SizedBox(height: height*0.02,),
+                  SizedBox(height: height*0.005),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Nike Club Fleece",style: TextStyle(
                           color: ColorConst.secondary,
                           fontWeight: FontWeight.w600,
-                          fontSize: width*0.07
+                          fontSize: width*0.06
                       ),),
                       Row(
                         children: [
@@ -91,14 +125,14 @@ class DetailedDress extends ConsumerStatefulWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: height*0.02,),
+                  SizedBox(height: height*0.01,),
                   Container(
-                    height: height*0.12,
+                    height: height*0.11,
                     child: ListView.separated(itemBuilder: (context, index) {
                       return Container(
-                        width: width*0.2,
+                        width: width*0.22,
                         decoration: BoxDecoration(
-                            color: ColorConst.forth.withOpacity(0.15),
+                            image:DecorationImage(image:AssetImage(ImageConstant.bg),fit:BoxFit.cover),
                             borderRadius: BorderRadius.circular(width*0.03)
                         ),
                         child: Image.asset(ImageConstant.image1,fit: BoxFit.cover,),
@@ -114,7 +148,7 @@ class DetailedDress extends ConsumerStatefulWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: height*0.02,),
+                  SizedBox(height: height*0.01,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -130,9 +164,9 @@ class DetailedDress extends ConsumerStatefulWidget {
                       ),),
                     ],
                   ),
-                  SizedBox(height: height*0.02,),
+                  SizedBox(height: height*0.01,),
                   Container(
-                    height: height*0.09,
+                    height: height*0.08,
                     child: ListView.separated(itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
@@ -145,13 +179,13 @@ class DetailedDress extends ConsumerStatefulWidget {
                             alignment: Alignment.center,
                             width: width*0.155,
                             decoration: BoxDecoration(
-                                color: selectedSize== Size[index]? ColorConst.thirdColor:ColorConst.forth.withOpacity(0.15),
+                                color: selectedSize== Size[index]? ColorConst.thirdColor.withOpacity(0.15):ColorConst.eleventh,
                                 borderRadius: BorderRadius.circular(width*0.03)
                             ),
                             child: Text(Size[index],style: TextStyle(
                                 color: ColorConst.secondary,
                                 fontWeight: FontWeight.w600,
-                                fontSize: width*0.06
+                                fontSize: width*0.05
                             ),)
                         ),
                       );
