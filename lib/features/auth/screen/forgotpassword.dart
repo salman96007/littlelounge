@@ -38,101 +38,82 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
       body:
       Column(
         children: [
-          Row(
-            children: [
-              Image.asset(ImageConstant.forgotpassimg)
-            ],
-          ),
-          Column(
-            children: [
-            Padding(
-              padding:  EdgeInsets.all(width*0.05),
-              child: TextFormField(
-                         controller: emailController,
-                         keyboardType: TextInputType.emailAddress,
-                         textInputAction: TextInputAction.go,
+          Image.asset(ImageConstant.forgotpassimg),
+          Padding(
+            padding:  EdgeInsets.all(width*0.05),
+            child: TextFormField(
+                       controller: emailController,
+                       keyboardType: TextInputType.emailAddress,
+                       textInputAction: TextInputAction.go,
 
-                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                         validator: (value) {
-               if(!emailValidation.hasMatch(value!)){
-                 return "Enter your email";
-               }else{
-                 return null;
-               }
-                         },
-                         style: TextStyle(fontSize: width*0.05,fontWeight: FontWeight.w600),
-                         decoration: InputDecoration(
-                 labelText: "Email Address",
-                 labelStyle: TextStyle(
-                   color: ColorConst.eighth,fontSize: width*0.05
-                 ),
-                 suffix: InkWell(
-                     onTap: () {
-                       emailController.clear();
-                     },
-                     child: Icon(Icons.clear)),
-               enabledBorder: OutlineInputBorder(
-                 borderSide: BorderSide(color: ColorConst.eighth),
-                 borderRadius: BorderRadius.circular(width*0.04)
+                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                       validator: (value) {
+             if(!emailValidation.hasMatch(value!)){
+               return "Enter your email";
+             }else{
+               return null;
+             }
+                       },
+                       style: TextStyle(fontSize: width*0.05,fontWeight: FontWeight.w600),
+                       decoration: InputDecoration(
+               labelText: "Email Address",
+               labelStyle: TextStyle(
+                 color: ColorConst.eighth,fontSize: width*0.05
                ),
-               focusedBorder: OutlineInputBorder(
-                 borderSide: BorderSide(color: ColorConst.eighth),
-                   borderRadius: BorderRadius.circular(width*0.04)),
-               border: OutlineInputBorder(
-                 borderSide: BorderSide(color: ColorConst.eighth),
-                   borderRadius: BorderRadius.circular(width*0.04)
+               suffix: InkWell(
+                   onTap: () {
+                     emailController.clear();
+                   },
+                   child: Icon(Icons.clear)),
+             enabledBorder: OutlineInputBorder(
+               borderSide: BorderSide(color: ColorConst.eighth),
+               borderRadius: BorderRadius.circular(width*0.04)
+             ),
+             focusedBorder: OutlineInputBorder(
+               borderSide: BorderSide(color: ColorConst.eighth),
+                 borderRadius: BorderRadius.circular(width*0.04)),
+             border: OutlineInputBorder(
+               borderSide: BorderSide(color: ColorConst.eighth),
+                 borderRadius: BorderRadius.circular(width*0.04)
 
-               )
-
-                         ),
+             )
 
                        ),
-            ),
-              SizedBox(height: height*0.28,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Please write your email to receive a\n confirmation code to set a new password.",style: TextStyle(color: ColorConst.eighth),)
-                ],
+
+                     ),
+          ),
+            Text("Please write your email to receive a confirmation\n code to set a new password.",style: TextStyle(color: ColorConst.eighth),),
+            SizedBox(height: height*0.20,),
+            InkWell(
+
+              onTap: () async {
+                updatePassword();
+                EmailOTP.config(
+                  appName: 'Little lounge',
+                  otpType: OTPType.numeric,
+                  emailTheme: EmailTheme.v1,
+                    otpLength: 4);
+
+                if(await EmailOTP.sendOTP(email: emailController.text)==true){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("OTP has been sent")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => VerificationCode(),));
+                }else{
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP send failed")));
+                }
+
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: height*0.060,
+                width: width*0.65,
+                child: Text("Confirm Mail",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
+                decoration: BoxDecoration(
+                  color: ColorConst.thirdColor,
+                  borderRadius: BorderRadius.circular(width*0.03)
+                ),
               ),
-              SizedBox(height: height*0.02,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-
-                    onTap: () async {
-                      updatePassword();
-                      EmailOTP.config(
-                        appName: 'Little lounge',
-                        otpType: OTPType.numeric,
-                        emailTheme: EmailTheme.v1,
-                          otpLength: 4);
-
-                      if(await EmailOTP.sendOTP(email: emailController.text)==true){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("OTP has been sent")));
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Verificationcode(),));
-                      }else{
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP send failed")));
-                      }
-
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: height*0.060,
-                      width: width*0.65,
-                      child: Text("Confirm Mail",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
-                      decoration: BoxDecoration(
-                        color: ColorConst.thirdColor,
-                        borderRadius: BorderRadius.circular(width*0.03)
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
-          )
+            )
         ],
       ),
     );

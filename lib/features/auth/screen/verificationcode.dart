@@ -10,16 +10,14 @@ import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 import '../controller/authcontroller.dart';
 
-class Verificationcode extends ConsumerStatefulWidget {
-  const Verificationcode({super.key});
+class VerificationCode extends ConsumerStatefulWidget {
+  const VerificationCode({super.key});
 
   @override
-  ConsumerState<Verificationcode> createState() => _VerificationcodeState();
+  ConsumerState<VerificationCode> createState() => _VerificationcodeState();
 }
 
-
-
-class _VerificationcodeState extends ConsumerState<Verificationcode> {
+class _VerificationcodeState extends ConsumerState<VerificationCode> {
 
   TextEditingController otpController = TextEditingController();
   @override
@@ -34,47 +32,32 @@ class _VerificationcodeState extends ConsumerState<Verificationcode> {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Image.asset(ImageConstant.forgotpassimg)
-            ],
-          ),
+          Center(child: Image.asset(ImageConstant.forgotpassimg)),
           SizedBox(height: height*0.1,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Pinput(
-                controller: otpController,
-                length: 4,
-              )
-            ],
+          Pinput(
+            controller: otpController,
+            length: 4,
           ),
           SizedBox(height: height*0.15,),
-          SizedBox(height: height*0.02,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  if(EmailOTP.verifyOTP(otp: otpController.text)==true){
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP Verifyed")));
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => NewPassword(),));
-                  }else{
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("plese check currect verifyCode")));
-                  }
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: height*0.060,
-                  width: width*0.65,
-                  child: Text("Confirm Code",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
-                  decoration: BoxDecoration(
-                      color: ColorConst.thirdColor,
-                      borderRadius: BorderRadius.circular(width*0.03)
-                  ),
-                ),
-              )
-            ],
+          GestureDetector(
+            onTap: () {
+              if(EmailOTP.verifyOTP(otp: otpController.text)==true){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("OTP Verifyed")));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NewPassword(),));
+              }else{
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("plese check currect verifyCode")));
+              }
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: height*0.060,
+              width: width*0.65,
+              child: Text("Confirm Code",style: TextStyle(color: ColorConst.primaryColor,fontSize: width*0.05),),
+              decoration: BoxDecoration(
+                  color: ColorConst.thirdColor,
+                  borderRadius: BorderRadius.circular(width*0.03)
+              ),
+            ),
           )
         ],
       ),

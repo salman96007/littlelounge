@@ -8,6 +8,7 @@ import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:pinput/pinput.dart';
+
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
 
@@ -40,7 +41,7 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                   return Container(
                     height: height*1,
                     width: width*1,
-                    child: Image.asset(images[index],fit:BoxFit.cover,),
+                    child: Image.asset(images[index],fit:BoxFit.fill,),
                   );
                   },
                   options: CarouselOptions(
