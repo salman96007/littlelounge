@@ -24,13 +24,15 @@ class _RememberMeState extends State<RememberMe> {
           Center(
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: width*0.21,
-                  backgroundColor: ColorConst.fifth,
-                  child: CircleAvatar(
-                    radius: width*0.2,
-                    backgroundColor: ColorConst.primaryColor,
+                Container(
+                  height: width*0.4,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ColorConst.fifth),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(image: AssetImage(ImageConstant.welcomfinal),fit: BoxFit.contain)
                   ),
+
+
                 ),
                 SizedBox(height: width*0.02,),
                 Text("FasilRahman",style: TextStyle(fontWeight: FontWeight.w600),),
