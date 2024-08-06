@@ -33,10 +33,12 @@ class _SignupState extends ConsumerState<Signup> {
         name: usernameController.text,
         password: passwordController.text,
         email: emailController.text,
-        id: "", imageUrl: ""));
+        id: "", imageUrl: "", check: false, Search: [],
+
+    ));
       currentUSerName =usernameController.text;
       currentUserImage =currentUserImage.toString();
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
 
   }
 

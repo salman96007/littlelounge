@@ -12,7 +12,7 @@ class AuthController{
     addUser({required UserModel detail}){
       _adduserRespository.addAuth(detail: detail);
     }
-    authLogin({required String email, required String password,required BuildContext context}){
+    authLogin({required String email, required String password,required,required BuildContext context,}){
       _adduserRespository.loginAuth(email:email, password: password, context: context,);
     }
 
@@ -21,8 +21,8 @@ class AuthController{
       _adduserRespository.signInWithGoogle(context: context);
 
     }
-    get({required String email,required String password, required context}){
-      _adduserRespository.loginAuth(email: email, password: password, context: context);
+    get({required String email,required String password,required context}){
+      _adduserRespository.loginAuth(email: email, password: password, context: context,);
     }
     userData({required String imageUrl}){
       _adduserRespository.updateData(imageUrl);

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/bottomnavigation/screen/bottomnavigation.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:pinput/pinput.dart';
@@ -100,31 +101,36 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                       ),textAlign: TextAlign.center,),
                       SizedBox(height: height*0.07,),
                       ref.watch(StreamCollection).when(
-                        data: (data) =>    Container(
-                          width: width*0.8,
-                          height: height*0.07,
-                          margin: EdgeInsets.only(left: width*0.05),
-                          child: ListView.separated(
-                            itemCount:data.length,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                alignment: Alignment.center,
-                                child: Text(data[index].name,style: TextStyle(
-                                    color: ColorConst.primaryColor
-                                ),),
-                                height: height*0.03,
-                                width: width*0.35,
-                                decoration: BoxDecoration(
-                                    color: ColorConst.thirdColor,
-                                    borderRadius: BorderRadius.circular(width*0.02)
+                        data: (data) =>    GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageView(),));
+                          },
+                          child: Container(
+                            width: width*0.8,
+                            height: height*0.07,
+                            margin: EdgeInsets.only(left: width*0.05),
+                            child: ListView.separated(
+                              itemCount:data.length,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  alignment: Alignment.center,
+                                  child: Text(data[index].name,style: TextStyle(
+                                      color: ColorConst.primaryColor
+                                  ),),
+                                  height: height*0.03,
+                                  width: width*0.35,
+                                  decoration: BoxDecoration(
+                                      color: ColorConst.thirdColor,
+                                      borderRadius: BorderRadius.circular(width*0.02)
 
-                                ),
-                              );
-                            }, separatorBuilder: (context, index) {
-                            return SizedBox(width: width*0.04,);
-                          }, ),
+                                  ),
+                                );
+                              }, separatorBuilder: (context, index) {
+                              return SizedBox(width: width*0.04,);
+                            }, ),
+                          ),
                         ) ,
                         error: (error, stackTrace) => Text(error.toString()),
                         loading: () => CircularProgressIndicator(),)
