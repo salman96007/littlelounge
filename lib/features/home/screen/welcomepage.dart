@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/bottomnavigation/screen/bottomnavigation.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:pinput/pinput.dart';
@@ -41,7 +42,7 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                   return Container(
                     height: height*1,
                     width: width*1,
-                    child: Image.asset(images[index],fit:BoxFit.fill,),
+                    child: Image.asset(images[index],fit:BoxFit.cover,),
                   );
                   },
                   options: CarouselOptions(
@@ -55,10 +56,6 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                       autoPlayAnimationDuration: Duration(seconds: 2),
                       viewportFraction:1
                   ),),
-
-
-
-
             ],
           ),
           Container(
@@ -109,17 +106,22 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return Container(
-                                alignment: Alignment.center,
-                                child: Text(data[index].name,style: TextStyle(
-                                    color: ColorConst.primaryColor
-                                ),),
-                                height: height*0.03,
-                                width: width*0.35,
-                                decoration: BoxDecoration(
-                                    color: ColorConst.thirdColor,
-                                    borderRadius: BorderRadius.circular(width*0.02)
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePageView(),));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text(data[index].name,style: TextStyle(
+                                      color: ColorConst.primaryColor
+                                  ),),
+                                  height: height*0.03,
+                                  width: width*0.35,
+                                  decoration: BoxDecoration(
+                                      color: ColorConst.thirdColor,
+                                      borderRadius: BorderRadius.circular(width*0.02)
 
+                                  ),
                                 ),
                               );
                             }, separatorBuilder: (context, index) {
