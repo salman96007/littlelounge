@@ -46,8 +46,12 @@ class AdduserRespository {
   }
   loginAuth({required String email,required String password, required BuildContext context}) async {
     QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").where("email",isEqualTo :email).get();
-    if( data.docs.isEmpty){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No user ')));
+    if( data.docs.isEmpty)
+    {
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("no user")));
+
+
     }else{
       UserModel user = UserModel.fromJson(data.docs[0].data());
       if(data.docs[0]["password"]== password){
@@ -58,11 +62,9 @@ class AdduserRespository {
         currentUserImage =user.imageUrl;
         currentUSerId =user.id;
 
-        Navigator.pushAndRemoveUntil(
-    context,
-    MaterialPageRoute(builder: (context) => WelcomPage()),
-    (route) => false);}
-      else{
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
+
+}else{
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please correct password ")));
       }
     }

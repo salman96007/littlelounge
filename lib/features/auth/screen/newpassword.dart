@@ -20,6 +20,7 @@ class _NewPasswordState extends ConsumerState<NewPassword> {
 
   updatePassword(){
     ref.watch(ControllerProvider).updatepassword(password: passwordController.text, email: currentUSerEmail.toString());
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("password has been changed")));
   }
 
 
