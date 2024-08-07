@@ -19,7 +19,7 @@ class HomePageView extends ConsumerStatefulWidget {
   class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
-      HomePage(),
+      HomePage(id: '',),
       WishListPage(),
       Container(
         alignment: Alignment.center,

@@ -18,7 +18,9 @@ import 'package:littlelounge/model/usermodel.dart';
 import '../../../constant/colorconstant.dart';
 
 class HomePage extends ConsumerStatefulWidget {
+ final  String id;
   const HomePage({super.key,
+    required this.id
   });
 
   @override
@@ -446,79 +448,83 @@ class _HomePageState extends ConsumerState<HomePage> {
               ],
             ),
             SizedBox(height: height*0.03,),
-            GridView.builder(
-              physics: BouncingScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-                  childAspectRatio: 0.5,
-                  crossAxisSpacing:width*0.04,
-                  mainAxisSpacing: width*0.01
-              ),
-              itemCount: 4,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index)
-              {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      alignment: Alignment.topRight,
+            ref.watch(StreamProduct(widget.id)).when(
+                data: (data) =>  GridView.builder(
+                  physics: BouncingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                      childAspectRatio: 0.5,
+                      crossAxisSpacing:width*0.04,
+                      mainAxisSpacing: width*0.01
+                  ),
+                  itemCount: data.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index)
+                  {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                            child: Image.asset(foundItems[index]["imag"],),
-                            width: width*0.425,
-                            height: height*0.3,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(width*0.05),
-                                image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      blurRadius:4,
-                                      spreadRadius: 2,
-                                      offset: Offset(0, 3)
+                        Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Container(
+                               child:Image.network(data[index].image,),
+                                width: width*0.425,
+                                height: height*0.3,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(width*0.05),
+                                    image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          blurRadius:4,
+                                          spreadRadius: 2,
+                                          offset: Offset(0, 3)
 
-                                  )
-                                ]
-                            )
+                                      )
+                                    ]
+                                )
+                            ),
+                            Positioned(
+                                right: width*0.05,
+                                top: width*0.04,
+
+                                child: GestureDetector(
+                                    onTap: () {
+                                      if(fav.contains(index)){
+                                        fav.remove(index);
+                                      }else{
+                                        fav.add(index);
+                                      }
+                                      setState(() {
+
+                                      });
+                                    },
+                                    child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
+                          ],
                         ),
-                        Positioned(
-                            right: width*0.05,
-                            top: width*0.04,
-
-                            child: GestureDetector(
-                                onTap: () {
-                                  if(fav.contains(index)){
-                                    fav.remove(index);
-                                  }else{
-                                    fav.add(index);
-                                  }
-                                  setState(() {
-
-                                  });
-                                },
-                                child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
-                      ],
-                    ),
-                    SizedBox(height: height*0.02,),
-                    Text(foundItems[index]["name"],style: TextStyle(
-                        color: ColorConst.secondary,
-                        fontWeight: FontWeight.w500,
-                        fontSize: width*0.037
-                    ),),
-                    Row(
-                      children: [
-                        SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                        Text(foundItems[index]["rate"].toString(),style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: width*0.04
+                        SizedBox(height: height*0.02,),
+                        Text(data[index].name,style: TextStyle(
+                            color: ColorConst.secondary,
+                            fontWeight: FontWeight.w500,
+                            fontSize: width*0.037
                         ),),
+                        Row(
+                          children: [
+                            SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
+                            Text(data[index].prize.toString(),style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: width*0.04
+                            ),),
+                          ],
+                        ),
                       ],
-                    ),
-                  ],
-                );
-              },
-            )
+                    );
+                  },
+                ),
+                error: (error, stackTrace) => Text(error.toString()),
+                loading: () => CircularProgressIndicator(),)
+
           ],
         ),
       ),
