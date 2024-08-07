@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
+String?CategoryId;
 
 class WelcomPage extends ConsumerStatefulWidget {
   const WelcomPage({super.key});
@@ -108,7 +110,8 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                               itemBuilder: (context, index) {
                                 return GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(id: data[index].CategoryId),));
+                                    CategoryId=data[index].CategoryId;
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageView()));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,

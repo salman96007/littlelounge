@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
@@ -19,7 +20,7 @@ class HomePageView extends ConsumerStatefulWidget {
   class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
-      HomePage(id: '',),
+      HomePage(id:CategoryId.toString(),),
       WishListPage(),
       Container(
         alignment: Alignment.center,
