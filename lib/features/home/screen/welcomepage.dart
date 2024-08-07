@@ -56,10 +56,6 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                       autoPlayAnimationDuration: Duration(seconds: 2),
                       viewportFraction:1
                   ),),
-
-
-
-
             ],
           ),
           Container(
