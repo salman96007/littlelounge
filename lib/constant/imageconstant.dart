@@ -44,6 +44,10 @@ class ImageConstant {
    static const  finalimg2 = "assets/images/final img2.jpg";
    static const  finalimg3 = "assets/images/final image3.jpg";
    static const  finalimg4 = "assets/images/final imag4.jpg";
+   static const  google2 = "assets/images/Google Png.png";
+   static const  finalgoogle = "assets/images/final google.png";
+
+
 
 
    }
@@ -80,4 +84,6 @@ class ImageConstant {
       static const  clock = "assets/icons/clock.svg";
       static const  home = "assets/icons/home.svg";
       static const  visaW = "assets/icons/visaW.svg";
+
+
    }
