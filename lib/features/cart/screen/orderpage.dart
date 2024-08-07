@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +26,7 @@ class _OrederpageState extends ConsumerState<Orderpage> {
         actions: [
           Padding(
             padding:  EdgeInsets.only(right :width*0.05),
-            child: SvgPicture.asset(SvgConstant.lock1),
+              child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,)
           )
         ],
         elevation: 1,
@@ -94,6 +95,12 @@ class _OrederpageState extends ConsumerState<Orderpage> {
                                   SizedBox(height:height*0.016,),
                                   InkWell(
                                     onTap: () {
+                                      // showDialog(
+                                      //     context: context, builder: (context) {
+                                      //       return  AlertDialog(
+                                      //         title: Text("Are you sure you want cancecel"),
+                                      //       )
+                                      //     },)
                                     },
                                     child: Container(
                                       height:height*0.04,
