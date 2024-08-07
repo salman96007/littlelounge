@@ -93,15 +93,81 @@ class _OrederpageState extends ConsumerState<Orderpage> {
                                     ),)
                                   ],),
                                   SizedBox(height:height*0.016,),
-                                  InkWell(
+                                  GestureDetector(
                                     onTap: () {
-                                      // showDialog(
-                                      //     context: context, builder: (context) {
-                                      //       return  AlertDialog(
-                                      //         title: Text("Are you sure you want cancecel"),
-                                      //       )
-                                      //     },)
-                                    },
+                                    showDialog(
+                                      context: context, builder: (context) {
+                                      return AlertDialog(
+
+                                        title:Text("Are you sure log out ?",style:TextStyle(
+                                            fontSize:width*0.05
+                                        ),),
+                                        content:Padding(
+                                          padding:  EdgeInsets.only(top:height*0.06),
+                                          child: Row(
+                                            mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                  height:height*0.045,
+                                                  width:width*0.2,
+                                                  decoration:BoxDecoration(
+                                                    color:ColorConst.thirdColor,
+                                                    borderRadius: BorderRadius.circular(width*0.04),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Colors.black.withOpacity(0.13),
+                                                          blurRadius: 6,
+                                                          spreadRadius: 3,
+                                                          offset: Offset(0, 4)
+                                                      )
+                                                    ],
+                                                  ),
+                                                  child:Center(child: Text("Yes",style:TextStyle(
+                                                      color: ColorConst.primaryColor,
+                                                      fontWeight:FontWeight.w500
+                                                  ),)),
+                                                ),
+                                              ),
+                                              SizedBox(width:width*0.04,),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                  height:height*0.045,
+                                                  width:width*0.2,
+                                                  decoration:BoxDecoration(
+                                                    color:ColorConst.primaryColor,
+                                                    borderRadius: BorderRadius.circular(width*0.04),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Colors.black.withOpacity(0.13),
+                                                          blurRadius: 6,
+                                                          spreadRadius: 3,
+                                                          offset: Offset(0, 4)
+                                                      )
+                                                    ],
+                                                  ),
+                                                  child:Center(child: Text("No",style:TextStyle(
+                                                      color: ColorConst.secondary,
+                                                      fontWeight:FontWeight.w500
+                                                  ))),
+
+
+                                                ),
+                                              )
+
+                                            ],
+                                          ),
+                                        ),
+
+                                      );
+                                    },);
+                                  },
                                     child: Container(
                                       height:height*0.04,
                                       width:width*0.3,
