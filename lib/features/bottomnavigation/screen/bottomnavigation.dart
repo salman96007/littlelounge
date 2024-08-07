@@ -43,7 +43,6 @@ class HomePageView extends ConsumerStatefulWidget {
 
 
       return Scaffold(
-        //backgroundColor:ColorConst.primaryColor,
         body: pages[selectIndex],
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
@@ -63,7 +62,6 @@ class HomePageView extends ConsumerStatefulWidget {
                   color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.home,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(

@@ -191,7 +191,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,)
           )
         ],
-        elevation: 1,
+        elevation: 2,
       ),
       drawer: Drawer(
         shape: BeveledRectangleBorder(side: BorderSide(color: ColorConst.primaryColor)),
