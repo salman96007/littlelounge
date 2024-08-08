@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
@@ -21,7 +22,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     return Scaffold(
       backgroundColor: ColorConst.primaryColor,
       appBar: AppBar(
-        title: Text("Cart",style: TextStyle(
+        title: Text("My Cart",style: TextStyle(
           color: ColorConst.secondary,
           fontWeight: FontWeight.w600,
           fontSize: width*0.05,
@@ -247,18 +248,23 @@ class _CartPageState extends ConsumerState<CartPage> {
               ],
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            width: width*0.75,
-            height: height*0.065,
-            child: Text("Checkout",style: TextStyle(
-              color: ColorConst.primaryColor,
-              fontWeight: FontWeight.w500,
-              fontSize: width*0.05
-            ),),
-            decoration: BoxDecoration(
-              color: ColorConst.thirdColor,
-              borderRadius: BorderRadius.circular(width*0.03),
+          InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(),));
+            },
+            child: Container(
+              alignment: Alignment.center,
+              width: width*0.75,
+              height: height*0.065,
+              child: Text("Checkout",style: TextStyle(
+                color: ColorConst.primaryColor,
+                fontWeight: FontWeight.w500,
+                fontSize: width*0.05
+              ),),
+              decoration: BoxDecoration(
+                color: ColorConst.thirdColor,
+                borderRadius: BorderRadius.circular(width*0.03),
+              ),
             ),
           )
         ],
