@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
@@ -21,7 +22,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     return Scaffold(
       backgroundColor: ColorConst.primaryColor,
       appBar: AppBar(
-        title: Text("Cart",style: TextStyle(
+        title: Text("My Cart",style: TextStyle(
           color: ColorConst.secondary,
           fontWeight: FontWeight.w600,
           fontSize: width*0.05,
@@ -166,76 +167,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                    },
                    itemCount: 1),
              ),
-             Padding(
-               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05,),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Delivery Address",style: TextStyle(
-                       color: ColorConst.secondary,
-                       fontWeight: FontWeight.w500,
-                       fontSize: width*0.06
-                   ),),
-                   SvgPicture.asset(SvgConstant.forward)
-
-                 ],
-               ),
-             ),
-             ListTile(
-               leading: Stack(
-                 alignment: Alignment.center,
-                 children: [
-                   Image.asset(ImageConstant.locations),
-                   Image.asset(ImageConstant.ellips),
-                   Image.asset(ImageConstant.location),
-
-                 ],
-               ),
-               title: Text("43, Electronics City Phase 1,\n Electronic City",style: TextStyle(
-                   fontSize: width*0.04,
-                   color: ColorConst.twelthColor,
-                   fontWeight: FontWeight.w400
-               ),),
-               trailing: SvgPicture.asset(SvgConstant.check),
-             ),
-             SizedBox(height:height*0.01,),
-             Padding(
-               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Payment Method",style: TextStyle(
-                       color: ColorConst.secondary,
-                       fontWeight: FontWeight.w500,
-                       fontSize: width*0.06
-                   ),),
-                   SvgPicture.asset(SvgConstant.forward)
-
-                 ],
-               ),
-             ),
-             ListTile(
-               leading: Container(
-                 width: width*0.15,
-                 height: height*0.15,
-                 child: SvgPicture.asset(SvgConstant.visa,fit: BoxFit.none,),
-                 decoration: BoxDecoration(
-                     color: ColorConst.forth.withOpacity(0.25),
-                     borderRadius: BorderRadius.circular(width*0.02)
-                 ),
-               ),
-               title: Text("Visa Classic",style: TextStyle(
-                   fontSize: width*0.05,
-                   color: ColorConst.secondary,
-                   fontWeight: FontWeight.w400
-               ),),
-               subtitle: Text("**** 7690",style: TextStyle(
-                 fontWeight: FontWeight.w400,
-                 color: ColorConst.twelthColor,
-
-               ),),
-               trailing: SvgPicture.asset(SvgConstant.check),
-             ),
            ],
          ),
           Padding(
@@ -243,7 +174,7 @@ class _CartPageState extends ConsumerState<CartPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Order Info",style: TextStyle(
+                Text("Price Details",style: TextStyle(
                   color: ColorConst.secondary,
                   fontWeight: FontWeight.w500,
                   fontSize: width*0.055
@@ -317,18 +248,23 @@ class _CartPageState extends ConsumerState<CartPage> {
               ],
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            width: width*0.75,
-            height: height*0.065,
-            child: Text("Checkout",style: TextStyle(
-              color: ColorConst.primaryColor,
-              fontWeight: FontWeight.w500,
-              fontSize: width*0.05
-            ),),
-            decoration: BoxDecoration(
-              color: ColorConst.thirdColor,
-              borderRadius: BorderRadius.circular(width*0.03),
+          InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(),));
+            },
+            child: Container(
+              alignment: Alignment.center,
+              width: width*0.75,
+              height: height*0.065,
+              child: Text("Checkout",style: TextStyle(
+                color: ColorConst.primaryColor,
+                fontWeight: FontWeight.w500,
+                fontSize: width*0.05
+              ),),
+              decoration: BoxDecoration(
+                color: ColorConst.thirdColor,
+                borderRadius: BorderRadius.circular(width*0.03),
+              ),
             ),
           )
         ],
