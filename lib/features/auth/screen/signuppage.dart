@@ -76,7 +76,7 @@ class _SignupState extends ConsumerState<Signup> {
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
                         labelText:"Username",
-                        suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
+                        suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.secondary,),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400
@@ -101,7 +101,7 @@ class _SignupState extends ConsumerState<Signup> {
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction:TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      obscureText:pass?true:false,
+                      obscureText:pass?false:true,
                       validator: (value) {
                         if(!passwordValidation.hasMatch(value!)){
                           return "Enter the Valid Password \n"
@@ -117,13 +117,13 @@ class _SignupState extends ConsumerState<Signup> {
                       decoration: InputDecoration(
                         labelText:"Password",
                         suffixIcon: InkWell(
-                        
+
                                 onTap: () {
                                   pass=!pass;
                                   setState(() {
                                   });
                                 },
-                            child:pass?Icon(CupertinoIcons.eye_slash,color:ColorConst.eightethColor,):Icon(CupertinoIcons.eye,color:ColorConst.eightethColor)),
+                            child:pass?Icon(CupertinoIcons.eye,color:ColorConst.secondary,):Icon(CupertinoIcons.eye_slash,color:ColorConst.secondary)),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400
@@ -154,8 +154,8 @@ class _SignupState extends ConsumerState<Signup> {
                       keyboardType: TextInputType.emailAddress,
                       textInputAction:TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText:"Email Addresse",
-                        suffixIcon: Icon(Icons.email_outlined,color:ColorConst.eightethColor),
+                        labelText:"Email Address",
+                        suffixIcon: Icon(Icons.email_outlined,color:ColorConst.secondary),
                         labelStyle:TextStyle(
                             color: ColorConst.secondary,
                             fontWeight: FontWeight.w400,
@@ -176,9 +176,10 @@ class _SignupState extends ConsumerState<Signup> {
 
                     ),
                     Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("Remember me"),
+                        Text("Remember me",style: TextStyle(fontWeight: FontWeight.w500),),
+                        SizedBox(width: width*0.02,),
                         Stack(
                           children: [
                             InkWell(
@@ -254,11 +255,11 @@ class _SignupState extends ConsumerState<Signup> {
                       child: Text("Sign Up",style: TextStyle(
                         fontSize: width*0.04,
                         color: ColorConst.primaryColor,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),),
                     ),
                     height: height*0.07,
-                    width: width*0.88,
+                    width: width*0.80,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(width*0.07),
                       color: ColorConst.thirdColor,
