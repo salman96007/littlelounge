@@ -148,12 +148,10 @@ class DetailedDress extends ConsumerStatefulWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: width*0.06
                   ),),
-                  Container(
-                    child: Text("The Nike Throwback Pullover Hoodie is made\nfrom premium French terry fabric that blends a performance feel with",style: TextStyle(
-                        color: ColorConst.twelthColor,
-                        fontWeight: FontWeight.w400
-                    )),
-                  ),
+                  Text("The Nike Throwback Pullover Hoodie is made\nfrom premium French terry fabric that blends a performance feel with",style: TextStyle(
+                      color: ColorConst.twelthColor,
+                      fontWeight: FontWeight.w400
+                  )),
                   SizedBox(height:width*0.01,),
                   // Text("Sale Price",style: TextStyle(
                   //     color: ColorConst.secondary,
