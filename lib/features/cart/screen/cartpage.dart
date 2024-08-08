@@ -166,76 +166,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                    },
                    itemCount: 1),
              ),
-             Padding(
-               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05,),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Delivery Address",style: TextStyle(
-                       color: ColorConst.secondary,
-                       fontWeight: FontWeight.w500,
-                       fontSize: width*0.06
-                   ),),
-                   SvgPicture.asset(SvgConstant.forward)
-
-                 ],
-               ),
-             ),
-             ListTile(
-               leading: Stack(
-                 alignment: Alignment.center,
-                 children: [
-                   Image.asset(ImageConstant.locations),
-                   Image.asset(ImageConstant.ellips),
-                   Image.asset(ImageConstant.location),
-
-                 ],
-               ),
-               title: Text("43, Electronics City Phase 1,\n Electronic City",style: TextStyle(
-                   fontSize: width*0.04,
-                   color: ColorConst.twelthColor,
-                   fontWeight: FontWeight.w400
-               ),),
-               trailing: SvgPicture.asset(SvgConstant.check),
-             ),
-             SizedBox(height:height*0.01,),
-             Padding(
-               padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Payment Method",style: TextStyle(
-                       color: ColorConst.secondary,
-                       fontWeight: FontWeight.w500,
-                       fontSize: width*0.06
-                   ),),
-                   SvgPicture.asset(SvgConstant.forward)
-
-                 ],
-               ),
-             ),
-             ListTile(
-               leading: Container(
-                 width: width*0.15,
-                 height: height*0.15,
-                 child: SvgPicture.asset(SvgConstant.visa,fit: BoxFit.none,),
-                 decoration: BoxDecoration(
-                     color: ColorConst.forth.withOpacity(0.25),
-                     borderRadius: BorderRadius.circular(width*0.02)
-                 ),
-               ),
-               title: Text("Visa Classic",style: TextStyle(
-                   fontSize: width*0.05,
-                   color: ColorConst.secondary,
-                   fontWeight: FontWeight.w400
-               ),),
-               subtitle: Text("**** 7690",style: TextStyle(
-                 fontWeight: FontWeight.w400,
-                 color: ColorConst.twelthColor,
-
-               ),),
-               trailing: SvgPicture.asset(SvgConstant.check),
-             ),
            ],
          ),
           Padding(
@@ -243,7 +173,7 @@ class _CartPageState extends ConsumerState<CartPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Order Info",style: TextStyle(
+                Text("Price Details",style: TextStyle(
                   color: ColorConst.secondary,
                   fontWeight: FontWeight.w500,
                   fontSize: width*0.055
