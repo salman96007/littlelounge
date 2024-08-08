@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
+import 'cartpage.dart';
 
 class Orderpage extends ConsumerStatefulWidget {
   const Orderpage({super.key});
@@ -26,7 +27,12 @@ class _OrederpageState extends ConsumerState<Orderpage> {
         actions: [
           Padding(
             padding:  EdgeInsets.only(right :width*0.05),
-              child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,)
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>CartPage(),));
+
+                  },
+                  child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,))
           )
         ],
         elevation: 1,

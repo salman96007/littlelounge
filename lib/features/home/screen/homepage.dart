@@ -12,6 +12,7 @@ import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
+import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/main.dart';
@@ -84,7 +85,11 @@ class _HomePageState extends ConsumerState<HomePage> {
         actions: [
           Padding(
             padding:  EdgeInsets.only(right :width*0.05),
-            child: Icon(CupertinoIcons.cart,size:width*0.075,)
+            child: InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>CartPage(),));
+              },
+                child: Icon(CupertinoIcons.cart,size:width*0.075,))
           )
         ],
         elevation: 1,

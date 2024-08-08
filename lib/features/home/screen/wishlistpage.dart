@@ -1,10 +1,12 @@
-  import 'package:flutter/material.dart';
+  import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
+import '../../cart/screen/cartpage.dart';
 
 class WishListPage extends ConsumerStatefulWidget {
     const WishListPage({super.key});
@@ -22,7 +24,12 @@ class WishListPage extends ConsumerStatefulWidget {
         actions: [
           Padding(
             padding:  EdgeInsets.only(right :width*0.05),
-            child: SvgPicture.asset(SvgConstant.lock1),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>CartPage(),));
+
+                },
+                  child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,))
           )
         ],
         elevation: 1,
