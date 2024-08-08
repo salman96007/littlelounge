@@ -19,16 +19,9 @@ class DetailedDress extends ConsumerStatefulWidget {
         "S",
         "M",
         "L",
-        "XL",
-        "2XL",
     ];
-
     String selectedSize = '';
-
     @override
-
-
-
     Widget build(BuildContext context) {
       return Scaffold(
         bottomSheet: Row(
@@ -166,24 +159,23 @@ class DetailedDress extends ConsumerStatefulWidget {
                   ),
                   SizedBox(height: height*0.01,),
                   Container(
-                    height: height*0.08,
+                    height: height*0.06,
                     child: ListView.separated(itemBuilder: (context, index) {
-                      return InkWell(
+                      return GestureDetector(
                         onTap: () {
                           selectedSize = Size[index];
-                          setState(() {
-
-                          });
-                        },
+                          setState(() {});
+                          },
                         child: Container(
+
                             alignment: Alignment.center,
-                            width: width*0.155,
+                            width: height*0.06,
                             decoration: BoxDecoration(
-                                color: selectedSize== Size[index]? ColorConst.thirdColor.withOpacity(0.15):ColorConst.eleventh,
+                                color: selectedSize== Size[index]? ColorConst.seventh:ColorConst.sixth,
                                 borderRadius: BorderRadius.circular(width*0.03)
                             ),
                             child: Text(Size[index],style: TextStyle(
-                                color: ColorConst.secondary,
+                                color:selectedSize== Size[index]? ColorConst.primaryColor:ColorConst.secondary,
                                 fontWeight: FontWeight.w600,
                                 fontSize: width*0.05
                             ),)
@@ -191,7 +183,7 @@ class DetailedDress extends ConsumerStatefulWidget {
                       );
                     },
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount: 3,
                       scrollDirection: Axis.horizontal, separatorBuilder: (
                           BuildContext context, int index) {
                         return SizedBox(

@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme()
         ),
-        home: CreatAccount(),
+        home: WelcomPage(),
         debugShowCheckedModeBanner: false,
       ),
     );
