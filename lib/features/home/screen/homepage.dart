@@ -13,6 +13,7 @@ import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
+import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
@@ -31,117 +32,10 @@ class HomePage extends ConsumerStatefulWidget {
 
 class _HomePageState extends ConsumerState<HomePage> {
   bool view = false;
-  List<Map<String,dynamic>> dress = [
-    {
-      "imag" : ImageConstant.image1,
-      "name" : "Imported Collection",
-      "rate" : 3000
-    },
-    {
-      "imag" : ImageConstant.kid4,
-      "name" : "Imported Collection",
-      "rate" : 2900
-    },
-    {
-      "imag" : ImageConstant.kid3,
-      "name" : "Western Collection",
-      "rate" : 3300
-    },
-    {
-      "imag" : ImageConstant.kid5,
-      "name" : "Co-Ord Set",
-      "rate" : 3700
-    },
-    {
-      "imag" : ImageConstant.kid6,
-      "name" : "Jumpsuit",
-      "rate" : 3900
-    },
-    {
-      "imag" : ImageConstant.kid2,
-      "name" : "Trendy Co-Ord Set",
-      "rate" : 3250
-    },
-
-  ];
-  List<Map<String,dynamic>> dress1 = [
-    {
-      "imag" : ImageConstant.men1,
-      "name" : "Imported Collection",
-      "rate" : 3500
-    },
-    {
-      "imag" : ImageConstant.men2,
-      "name" : "Imported Collection",
-      "rate" : 3700
-    },
-    {
-      "imag" : ImageConstant.men3,
-      "name" : "Western Collection",
-      "rate" : 3400
-    },
-    {
-      "imag" : ImageConstant.men4,
-      "name" : "Co-Ord Set",
-      "rate" : 3800
-    },
-    {
-      "imag" : ImageConstant.men5,
-      "name" : "Jumpsuit",
-      "rate" : 4900
-    },
-    {
-      "imag" : ImageConstant.men6,
-      "name" : "Trendy Co-Ord Set",
-      "rate" : 4250
-    },
-
-  ];
-  List<Map<String,dynamic>> dress2 = [
-    {
-      "imag" : ImageConstant.image1,
-      "name" : "Imported Collection",
-      "rate" : 2300
-    },
-    {
-      "imag" : ImageConstant.men1,
-      "name" : "Imported Collection",
-      "rate" : 4700
-    },
-    {
-      "imag" : ImageConstant.kid3,
-      "name" : "Western Collection",
-      "rate" : 4400
-    },
-    {
-      "imag" : ImageConstant.men3,
-      "name" : "Co-Ord Set",
-      "rate" : 3400
-    },
-    {
-      "imag" : ImageConstant.kid6,
-      "name" : "Jumpsuit",
-      "rate" : 4500
-    },
-    {
-      "imag" : ImageConstant.men6,
-      "name" : "Trendy Co-Ord Set",
-      "rate" : 4250
-    },
-
-  ];
-  bool toggle =false;
   bool favour =false;
   List fav =[];
-  List<Map<String,dynamic>> foundItems = [];
-  List<Map<String,dynamic>> foundItems1 = [];
-  List<Map<String,dynamic>> foundItems2 = [];
-
   @override
   void initState() {
-    foundItems= dress;
-    foundItems1 = dress1;
-    foundItems2 = dress2;
     // TODO: implement initState
     super.initState();
   }
@@ -540,23 +434,28 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Stack(
                         alignment: Alignment.topRight,
                         children: [
-                          Container(
-                              child:Image.network(data[index].image,),
-                              width: width*0.425,
-                              height: height*0.3,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(width*0.05),
-                                  image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        blurRadius:4,
-                                        spreadRadius: 2,
-                                        offset: Offset(0, 3)
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>DetailedDress(detail: data[index],) ));
+                            },
+                            child: Container(
+                                child:Image.network(data[index].image,),
+                                width: width*0.425,
+                                height: height*0.3,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(width*0.05),
+                                    image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          blurRadius:4,
+                                          spreadRadius: 2,
+                                          offset: Offset(0, 3)
 
-                                    )
-                                  ]
-                              )
+                                      )
+                                    ]
+                                )
+                            ),
                           ),
                           Positioned(
                               right: width*0.05,

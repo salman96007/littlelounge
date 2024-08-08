@@ -2,13 +2,18 @@
   import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:littlelounge/model/productmodel.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 
 class DetailedDress extends ConsumerStatefulWidget {
-    const DetailedDress({super.key});
+    final ProductModel detail;
+    const DetailedDress({super.key,
+      required this.detail
+    });
 
     @override
     ConsumerState<DetailedDress> createState() => _DetailedDressState();
@@ -53,7 +58,7 @@ class DetailedDress extends ConsumerStatefulWidget {
           children: [
             Stack(
               children:[ Container(
-                  child: Image.asset(ImageConstant.image1),
+                  child: Image.network(widget.detail.image),
                   width: width*1,
                   height: height*0.45,
                   decoration: BoxDecoration(
@@ -128,11 +133,11 @@ class DetailedDress extends ConsumerStatefulWidget {
                             image:DecorationImage(image:AssetImage(ImageConstant.bg),fit:BoxFit.cover),
                             borderRadius: BorderRadius.circular(width*0.03)
                         ),
-                        child: Image.asset(ImageConstant.image1,fit: BoxFit.cover,),
+                        child: Image.network(widget.detail.images[index]),
                       );
                     },
                       shrinkWrap: true,
-                      itemCount: 4,
+                      itemCount:widget.detail.images.length,
                       scrollDirection: Axis.horizontal, separatorBuilder: (
                           BuildContext context, int index) {
                         return SizedBox(
