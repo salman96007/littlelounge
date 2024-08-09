@@ -39,8 +39,9 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
       Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(ImageConstant.forgotpassimg)
+              Image.asset(ImageConstant.lockf,width: width*0.5,)
             ],
           ),
           Column(

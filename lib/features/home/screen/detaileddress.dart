@@ -1,3 +1,4 @@
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -80,13 +81,22 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
             itemBuilder:(context, index, realIndex) {
               return Stack(
                   children:[
-                    Container(
-                        child: Image.network(widget.detail.images[index],fit:BoxFit.cover,),
-                        width: width*1,
-                        height: height*0.45,
-                        decoration: BoxDecoration(
-                            image:DecorationImage(image:AssetImage(ImageConstant.bg),fit:BoxFit.cover)
-                        )
+                    Hero(
+                      tag:widget.detail.images[index],
+                      transitionOnUserGestures: true,
+                      flightShuttleBuilder: (flightContext, animation, direction, fromContext, toContext) {
+                        return Image.network(widget.detail.images[index]);
+
+                      },
+
+                      child: Container(
+                      child: Image.network(widget.detail.images[index],fit:BoxFit.cover,),
+                          width: width*1,
+                          height: height*0.45,
+                          decoration: BoxDecoration(
+                              image:DecorationImage(image:AssetImage(ImageConstant.bg),fit:BoxFit.cover)
+                          )
+                      ),
                     ),
                     Positioned(
                         top:height*0.015,
@@ -142,12 +152,12 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Nike Club Fleece",style: TextStyle(
+                Text(widget.detail.name,style: TextStyle(
                     color: ColorConst.secondary,
                     fontWeight: FontWeight.w600,
                     fontSize: width*0.06
                 ),),
-                Text("The Nike Throwback Pullover Hoodie is made\nfrom premium French terry fabric that blends a performance feel with",style: TextStyle(
+                Text(widget.detail.description,style: TextStyle(
                     color: ColorConst.twelthColor,
                     fontWeight: FontWeight.w400
                 )),
@@ -182,7 +192,9 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                 SizedBox(height: height*0.01,),
                 Container(
                   height: height*0.07,
-                  child: ListView.separated(itemBuilder: (context, index) {
+                  child: ListView.separated(
+                    itemCount:widget.detail.size.length,
+                    itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
                         selectedSize = Size[index];
@@ -197,7 +209,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                               color: selectedSize== Size[index]? ColorConst.thirdColor.withOpacity(0.15):ColorConst.eleventh,
                               borderRadius: BorderRadius.circular(width*0.03)
                           ),
-                          child: Text(Size[index],style: TextStyle(
+                          child: Text(widget.detail.size[index],style: TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w600,
                               fontSize: width*0.05
@@ -206,7 +218,6 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                     );
                   },
                     shrinkWrap: true,
-                    itemCount: 5,
                     scrollDirection: Axis.horizontal, separatorBuilder: (
                         BuildContext context, int index) {
                       return SizedBox(

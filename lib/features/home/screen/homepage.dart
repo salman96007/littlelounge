@@ -455,23 +455,26 @@ class _HomePageState extends ConsumerState<HomePage> {
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) =>DetailedDress(detail: data[index],) ));
                             },
-                            child: Container(
-                                child:Image.network(data[index].image,),
-                                width: width*0.425,
-                                height: height*0.3,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(width*0.05),
-                                    image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          blurRadius:4,
-                                          spreadRadius: 2,
-                                          offset: Offset(0, 3)
-
-                                      )
-                                    ]
-                                )
+                            child: Hero(
+                              tag: data[index].image,
+                              child: Container(
+                                  child:Image.network(data[index].image,),
+                                  width: width*0.425,
+                                  height: height*0.3,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(width*0.05),
+                                      image:DecorationImage(image: AssetImage(ImageConstant.bg),fit: BoxFit.cover),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black.withOpacity(0.1),
+                                            blurRadius:4,
+                                            spreadRadius: 2,
+                                            offset: Offset(0, 3)
+                              
+                                        )
+                                      ]
+                                  )
+                              ),
                             ),
                           ),
                           Positioned(

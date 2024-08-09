@@ -61,7 +61,7 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
                               height: height*0.4,
                               width: width*0.7,
 
-                              child:Image.asset(ImageConstant.finalgoogle,width: width*0.9,),
+                              child:Image.asset(ImageConstant.lockf,width: width*0.9,),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(width*0.03),
                               ),

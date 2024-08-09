@@ -45,7 +45,8 @@ class ImageConstant {
    static const  finalimg3 = "assets/images/final image3.jpg";
    static const  finalimg4 = "assets/images/final imag4.jpg";
    static const  google2 = "assets/images/Google Png.png";
-   static const  finalgoogle = "assets/images/final google.png";
+   static const  lockf = "assets/images/lock1.png";
+
 
 
 
