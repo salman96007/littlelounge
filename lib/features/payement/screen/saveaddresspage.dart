@@ -3,26 +3,41 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
+import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
+import '../../auth/controller/authcontroller.dart';
+List? currentUseraddress;
 
-class Saveaddresspage extends StatefulWidget {
+class Saveaddresspage extends ConsumerStatefulWidget {
   const Saveaddresspage({super.key});
 
   @override
-  State<Saveaddresspage> createState() => _SaveaddresspageState();
+  ConsumerState<Saveaddresspage> createState() => _SaveaddresspageState();
 }
 
-class _SaveaddresspageState extends State<Saveaddresspage> {
+class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
   TextEditingController nameController=TextEditingController();
   TextEditingController countryController=TextEditingController();
   TextEditingController cityController=TextEditingController();
   TextEditingController phoneNumberController=TextEditingController();
   TextEditingController addressController=TextEditingController();
+
   bool toggle = false;
+   addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
+
+     List addressList = detail.address;
+     addressList.add(adreess);
+
+     ref.watch(ControllerProvider).updateaddress(detail.copyWith(address:addressList ));
+   }
+    Map<String,dynamic> adreess ={};
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -301,19 +316,28 @@ class _SaveaddresspageState extends State<Saveaddresspage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      height: height*0.07,
-                      width: width*0.88,
-                      child: Center(
-                        child: Text("Save Address",style: TextStyle(
-                          fontSize: width*0.04,
-                          color: ColorConst.primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(width*0.07),
-                        color: ColorConst.thirdColor,
+                    InkWell(
+                      onTap: (){
+                        Map <String, dynamic>add={
+                          "name":nameController.text.trim(),
+                          "city":cityController.text.trim()
+                        };
+                        addressadd(detail:currentUserModel!,adreess: add);
+                      },
+                      child: Container(
+                        height: height*0.07,
+                        width: width*0.88,
+                        child: Center(
+                          child: Text("Save Address",style: TextStyle(
+                            fontSize: width*0.04,
+                            color: ColorConst.primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(width*0.07),
+                          color: ColorConst.thirdColor,
+                        ),
                       ),
                     )
                   ],

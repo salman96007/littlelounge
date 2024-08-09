@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -82,7 +81,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
               return Stack(
                   children:[
                     Container(
-                    child: Image.network(widget.detail.images[index],fit:BoxFit.cover,),
+                        child: Image.network(widget.detail.images[index],fit:BoxFit.cover,),
                         width: width*1,
                         height: height*0.45,
                         decoration: BoxDecoration(

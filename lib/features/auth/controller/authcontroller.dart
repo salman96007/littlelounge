@@ -30,6 +30,10 @@ class AuthController{
     updatepassword({required String email,required String password,}){
       _adduserRespository.updatepassword(email, password);
     }
+    updateaddress(UserModel detail){
+      _adduserRespository.addAddress(detail);
+    }
+
 
 
 }

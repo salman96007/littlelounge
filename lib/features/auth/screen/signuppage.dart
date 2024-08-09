@@ -33,7 +33,7 @@ class _SignupState extends ConsumerState<Signup> {
         name: usernameController.text,
         password: passwordController.text,
         email: emailController.text,
-        id: "", imageUrl: "", check: false, Search: [],
+        id: "", imageUrl: "", check: false, Search: [], address: [], favourites: [],
 
     ));
       currentUSerName =usernameController.text;

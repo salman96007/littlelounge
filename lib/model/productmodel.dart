@@ -10,6 +10,7 @@ class ProductModel{
   DateTime uploadedTime;
   String ProductId;
 
+
   ProductModel({
     required this.name,
     required this.prize,
@@ -28,7 +29,8 @@ class ProductModel{
       images: json["images"],
       image: json["image"],
       uploadedTime: json["uploadedTime"].toDate(),
-      ProductId: json["ProductId"]
+      ProductId: json["ProductId"],
+
   );
   Map<String,dynamic>toJson()=>{
     "name":name,
@@ -39,6 +41,8 @@ class ProductModel{
     "image":image,
     "uploadedTime":uploadedTime,
     "ProductId":ProductId,
+
+
   };
   ProductModel copyWith({
     String?name,
@@ -48,7 +52,8 @@ class ProductModel{
     List?images,
     String?image,
     DateTime?uploadedTime,
-    String ?ProductId
+    String ?ProductId,
+    List ?fav,
 })
   {
     return ProductModel(
@@ -59,7 +64,7 @@ class ProductModel{
         images: images??this.images,
         image: image??this.image,
         uploadedTime: uploadedTime??this.uploadedTime as DateTime,
-        ProductId: ProductId??this.ProductId
+        ProductId: ProductId??this.ProductId,
     );
   }
 

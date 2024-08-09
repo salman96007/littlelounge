@@ -9,6 +9,8 @@ class UserModel{
   String imageUrl;
   bool check;
   List Search;
+  List address;
+  List favourites;
 
   UserModel({
 
@@ -19,6 +21,8 @@ class UserModel{
     required this.imageUrl,
     required this.check,
     required this.Search,
+    required this.address,
+    required this.favourites,
 
   });
   factory UserModel.fromJson(Map<String,dynamic>json)=>UserModel(
@@ -29,6 +33,8 @@ class UserModel{
     imageUrl: json["imageUrl"],
     check: json["check"],
     Search: json["Search"],
+    address: json["address"],
+    favourites: json["favourites"],
   );
 
   Map<String,dynamic>toJson()=>{
@@ -39,6 +45,8 @@ class UserModel{
     "imageUrl": imageUrl,
     "check": check,
     "Search": Search,
+    "address": address,
+    "favourites": favourites,
 
   };
   UserModel copyWith({
@@ -49,6 +57,8 @@ class UserModel{
     String?imageUrl,
     bool?check,
     List?Search,
+    List?address,
+    List?favourites,
 
   })
   {
@@ -60,6 +70,8 @@ class UserModel{
       imageUrl: imageUrl??this.imageUrl,
       check: check??this.check,
       Search: Search??this.Search,
+      address: address??this.address,
+      favourites: favourites??this.favourites,
     );
   }
 

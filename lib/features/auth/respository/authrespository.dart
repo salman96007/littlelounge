@@ -11,8 +11,10 @@ import 'package:littlelounge/core/providers/firebaseproviders.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
+import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
+import '../../payement/screen/saveaddresspage.dart';
 import '../screen/loginpage.dart';
 
 final addUserRespositoryProvider = Provider(
@@ -61,6 +63,11 @@ class AdduserRespository {
         currentUSerPassword = user.password;
         currentUserImage =user.imageUrl;
         currentUSerId =user.id;
+        currentUserModel = user;
+
+
+
+
 
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
 
@@ -104,6 +111,9 @@ class AdduserRespository {
     currentUserImage =user.imageUrl;
     currentUSerId =user.id;
     _user.doc(currentUSerId).update({"email":email,"password" :password});
+  }
+  addAddress( UserModel detail){
+    _user.doc(currentUserModel?.id).update(detail.toJson());
   }
 
 

@@ -5,6 +5,7 @@ import 'package:littlelounge/core/providers/firebaseproviders.dart';
 import 'package:littlelounge/model/categorymodel.dart';
 
 import '../../../model/productmodel.dart';
+import '../screen/welcomepage.dart';
   final collectionRespositoryProvider = Provider( (ref) => collectionResposiyory(firestore: ref.watch(firebaseProvider)),);
 class collectionResposiyory{
   final FirebaseFirestore _firestore;
@@ -18,4 +19,9 @@ class collectionResposiyory{
   Stream<List<ProductModel>>productStream(CategoryId){
     return _collection.doc(CategoryId).collection("product").snapshots().map((event) => event.docs.map((e) =>ProductModel.fromJson(e.data() as Map<String,dynamic>),).toList(),);
   }
+  updatefav(String id, ProductModel detail){
+    return _collection.doc(CategoryId).collection("product").doc(id).update(detail.toJson());
+
+  }
+
 }

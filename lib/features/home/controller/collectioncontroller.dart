@@ -19,6 +19,12 @@ class dressController{
       Stream<List<ProductModel>>productStream(CategoryId){
        return _resposiyory.productStream(CategoryId);
       }
+      favupdate(String id,ProductModel detail){
+        return _resposiyory.updatefav(id, detail);
+      }
+
+
+
 
     }
    

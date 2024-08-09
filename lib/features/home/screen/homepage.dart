@@ -17,11 +17,11 @@ import 'package:littlelounge/features/home/controller/collectioncontroller.dart'
 import 'package:littlelounge/features/home/screen/detaileddress.dart';
 import 'package:littlelounge/features/home/screen/settingspage.dart';
 import 'package:littlelounge/main.dart';
+import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../auth/screen/createaccount.dart';
-
 class HomePage extends ConsumerStatefulWidget {
   final  String id;
   const HomePage({super.key,
@@ -33,9 +33,12 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+
+
   bool view = false;
   bool favour =false;
   List fav =[];
+  List faver =[];
   @override
   void initState() {
     // TODO: implement initState
@@ -72,6 +75,9 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
   updatedata({required String imageUrl}){
     ref.watch(ControllerProvider).userData(imageUrl: imageUrl);
+  }
+  updatefaver({required String id,required ProductModel detail}){
+    ref.watch(collectionControllProvider).favupdate(id, detail.copyWith(fav: fav));
   }
 
   @override
@@ -471,7 +477,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                           Positioned(
                               right: width*0.05,
                               top: width*0.04,
-
                               child: GestureDetector(
                                   onTap: () {
                                     if(fav.contains(index)){
@@ -483,7 +488,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
                                     });
                                   },
-                                  child:  Icon(!fav.contains(index)?Icons.favorite_outline:Icons.favorite,color: ColorConst.sixth,)))
+                                  child:  Icon(fav.contains(index)?Icons.favorite:Icons.favorite_outline,color: ColorConst.sixth,)))
                         ],
                       ),
                       SizedBox(height: height*0.02,),

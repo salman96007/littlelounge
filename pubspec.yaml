@@ -55,6 +55,7 @@ dependencies:
   firebase_storage: ^11.7.7
   email_otp: ^3.0.2
   flutter_flip_card: ^0.0.6
+  smooth_page_indicator: ^1.1.0
 
 
 

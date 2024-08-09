@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
+import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
@@ -16,12 +17,12 @@ class HomePageView extends ConsumerStatefulWidget {
     @override
     ConsumerState<HomePageView> createState() => _HomePageViewState();
   }
-
   class _HomePageViewState extends ConsumerState<HomePageView> {
+   List data=[];
     var selectIndex =0;
     List pages =[
       HomePage(id:CategoryId.toString(),),
-      WishListPage(),
+       WishListPage(),
       Container(
         alignment: Alignment.center,
         child: Text("Video",style: TextStyle(

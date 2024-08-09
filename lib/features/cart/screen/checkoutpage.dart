@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 
 import '../../../main.dart';
 
@@ -166,17 +167,22 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
              ),
              Padding(
                padding:  EdgeInsets.only(left: width*0.05,bottom: width*0.02,right: width*0.05,),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Delivery Address",style: TextStyle(
-                       color: ColorConst.secondary,
-                       fontWeight: FontWeight.w500,
-                       fontSize: width*0.06
-                   ),),
-                   SvgPicture.asset(SvgConstant.forward)
+               child: GestureDetector(
+                 onTap: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => Saveaddresspage(),));
+                 },
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Text("Delivery Address",style: TextStyle(
+                         color: ColorConst.secondary,
+                         fontWeight: FontWeight.w500,
+                         fontSize: width*0.06
+                     ),),
+                     SvgPicture.asset(SvgConstant.forward)
 
-                 ],
+                   ],
+                 ),
                ),
              ),
              ListTile(
@@ -269,26 +275,31 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                   ],
                 ),
                 SizedBox(height: height*0.01,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Delivery Charge",style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: width*0.045,
-                      color: ColorConst.twelthColor
-                    ),),
-                    Row(
-                      children: [
-                        SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                        Text("10",style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: ColorConst.secondary,
-                          fontSize: width*0.04
-                        ),)
-                      ],
-                    )
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Saveaddresspage(),));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Delivery Charge",style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: width*0.045,
+                        color: ColorConst.twelthColor
+                      ),),
+                      Row(
+                        children: [
+                          SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
+                          Text("10",style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: ColorConst.secondary,
+                            fontSize: width*0.04
+                          ),)
+                        ],
+                      )
 
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: height*0.01,),
                 Row(
