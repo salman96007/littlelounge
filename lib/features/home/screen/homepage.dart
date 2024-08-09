@@ -15,6 +15,7 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/home/screen/detaileddress.dart';
+import 'package:littlelounge/features/home/screen/settingspage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
@@ -246,13 +247,18 @@ class _HomePageState extends ConsumerState<HomePage> {
 
               ),),
             ),
-            ListTile(
-              leading: SvgPicture.asset(SvgConstant.settings),
-              title: Text("Settings",style: TextStyle(
-                color: ColorConst.secondary,
-                fontWeight: FontWeight.w400,
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage(),));
+              },
+              child: ListTile(
+                leading: SvgPicture.asset(SvgConstant.settings),
+                title: Text("Settings",style: TextStyle(
+                  color: ColorConst.secondary,
+                  fontWeight: FontWeight.w400,
 
-              ),),
+                ),),
+              ),
             ),
             GestureDetector(
               onTap: () {

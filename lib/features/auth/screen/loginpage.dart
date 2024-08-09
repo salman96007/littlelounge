@@ -80,7 +80,7 @@ class _LoginState extends ConsumerState<Login> {
                         textInputAction:TextInputAction.next,
                         decoration: InputDecoration(
                           labelText:"Username",
-                          suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.eightethColor,),
+                          suffixIcon:Icon(CupertinoIcons.person,color:ColorConst.secondary,),
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
@@ -101,7 +101,7 @@ class _LoginState extends ConsumerState<Login> {
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction:TextInputAction.next,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        obscureText:pass?true:false,
+                        obscureText:pass?false:true,
                         validator: (value) {
                           if(!passwordValidation.hasMatch(value!)){
                             return "Enter the Valid Password \n"
@@ -122,7 +122,7 @@ class _LoginState extends ConsumerState<Login> {
                                 setState(() {
                                 });
                               },
-                              child:pass?Icon(CupertinoIcons.eye_slash,color:ColorConst.eightethColor,):Icon(CupertinoIcons.eye,color:ColorConst.eightethColor)),
+                              child:pass?Icon(CupertinoIcons.eye,color:ColorConst.secondary,):Icon(CupertinoIcons.eye_slash,color:ColorConst.secondary)),
                           labelStyle:TextStyle(
                               color: ColorConst.secondary,
                               fontWeight: FontWeight.w400
