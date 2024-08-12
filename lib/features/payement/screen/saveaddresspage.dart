@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
+import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
@@ -327,7 +328,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(),));
                       },
                       child: Container(
                         height: height*0.07,
