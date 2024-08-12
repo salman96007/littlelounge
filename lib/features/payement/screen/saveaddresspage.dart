@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
+import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
@@ -256,7 +257,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                     ),),
                     TextFormField(
                       controller:addressController,
-                      keyboardType:TextInputType.emailAddress,
+                      keyboardType:TextInputType.streetAddress,
                       textInputAction:TextInputAction.done,
                       style:TextStyle(
                           color:ColorConst.eighth,
@@ -316,13 +317,17 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: (){
                         Map <String, dynamic>add={
                           "name":nameController.text.trim(),
-                          "city":cityController.text.trim()
+                          "country":countryController.text.trim(),
+                          "city":cityController.text.trim(),
+                          "phone number:":phoneNumberController.text.trim(),
+                          "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(),));
                       },
                       child: Container(
                         height: height*0.07,
