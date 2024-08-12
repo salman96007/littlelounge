@@ -95,8 +95,8 @@ class _AddReviewState extends State<AddReview> {
                 itemCount: 5,
                 itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => Icon(
-                  Icons.star,
-                  color: Colors.amber,
+                  Icons.star_rounded,
+                  color: Colors.green,
                 ),
                 onRatingUpdate: (rating){
                   print(rating);
