@@ -105,7 +105,7 @@ class _OrederpageState extends ConsumerState<Orderpage> {
                                       context: context, builder: (context) {
                                       return AlertDialog(
 
-                                        title:Text("Are you sure log out ?",style:TextStyle(
+                                        title:Text("Are you sure Cancel ?",style:TextStyle(
                                             fontSize:width*0.05
                                         ),),
                                         content:Padding(
