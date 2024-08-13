@@ -51,7 +51,7 @@ class _ContinueshoppingState extends ConsumerState<Continueshopping> {
             Text("Your order has been confirmed, we will send \nyou confirmation email shortly.",
               textAlign:TextAlign.center,
               style:TextStyle(
-                color: ColorConst.eighth
+                color: ColorConst.eighth,
             ),),
             SizedBox(
               width:width*07,
