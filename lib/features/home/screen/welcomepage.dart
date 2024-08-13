@@ -12,7 +12,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../../main.dart';
 import '../controller/collectioncontroller.dart';
-String ? CategoryId;
+
 class WelcomPage extends ConsumerStatefulWidget {
   const WelcomPage({super.key});
 
@@ -112,7 +112,7 @@ class _WelcomPageState extends ConsumerState<WelcomPage> {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      CategoryId =data[index].CategoryId;
+                                      CategoryIdData =data[index].CategoryId;
                                       Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePageView()),);
                                     },
                                     child: Container(

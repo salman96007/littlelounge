@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
-import 'package:littlelounge/features/auth/screen/forgotpassword.dart';
 import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/auth/screen/rememberme.dart';
 import 'package:littlelounge/features/auth/screen/signuppage.dart';
@@ -28,7 +27,7 @@ import 'package:littlelounge/model/usermodel.dart';
 import 'features/bottomnavigation/screen/bottomnavigation.dart';
 import 'features/payement/screen/savecard.dart';
 import 'firebase_options.dart';
-
+String ? CategoryIdData;
  var height;
  var width;
 
@@ -54,7 +53,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
 
 
 

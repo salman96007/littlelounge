@@ -14,6 +14,7 @@ import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
+import '../../../model/productmodel.dart';
 import '../../payement/screen/saveaddresspage.dart';
 import '../screen/loginpage.dart';
 
@@ -113,12 +114,17 @@ class AdduserRespository {
     _user.doc(currentUSerId).update({"email":email,"password" :password});
   }
   addAddress( UserModel detail){
-    _user.doc(currentUserModel?.id).update(detail.toJson());
+    _user.doc(currentUSerId).update(detail.toJson());
   }
 
+   updatefavourite( UserModel detail){
+    _user.doc(currentUSerId).update(detail.toJson());
 
+   }
 
-
+   Stream<UserModel>favouriteStream(){
+     return _user.doc(currentUSerId).snapshots().map((event) => UserModel.fromJson(event.data() as Map<String,dynamic>),);
+   }
 
 }
 

@@ -8,8 +8,8 @@ class ProductModel{
   List images;
   String image;
   DateTime uploadedTime;
-  String ProductId;
-
+  String productId;
+  String categoryId;
 
   ProductModel({
     required this.name,
@@ -19,18 +19,19 @@ class ProductModel{
     required this.images,
     required this.image,
     required this.uploadedTime,
-    required this.ProductId,
-});
+    required this.productId,
+    required this.categoryId,
+  });
   factory ProductModel.fromJson(Map<String,dynamic>json)=>ProductModel(
-      name: json["name"],
-      prize: json["prize"].toDouble(),
-      size: json["size"],
-      description: json["description"],
-      images: json["images"],
-      image: json["image"],
-      uploadedTime: json["uploadedTime"].toDate(),
-      ProductId: json["ProductId"],
-
+    name: json["name"],
+    prize: json["prize"].toDouble(),
+    size: json["size"],
+    description: json["description"],
+    images: json["images"],
+    image: json["image"],
+    uploadedTime: json["uploadedTime"].toDate(),
+    productId: json["productId"],
+    categoryId: json["categoryId"],
   );
   Map<String,dynamic>toJson()=>{
     "name":name,
@@ -40,8 +41,8 @@ class ProductModel{
     "images":images,
     "image":image,
     "uploadedTime":uploadedTime,
-    "ProductId":ProductId,
-
+    "productId":productId,
+    "categoryId":categoryId,
 
   };
   ProductModel copyWith({
@@ -52,19 +53,20 @@ class ProductModel{
     List?images,
     String?image,
     DateTime?uploadedTime,
-    String ?ProductId,
-    List ?fav,
-})
+    String ?productId,
+    String ?categoryId,
+  })
   {
     return ProductModel(
-        name: name??this.name,
-        prize: prize??this.prize,
-        size: size??this.size,
-        description: description??this.description,
-        images: images??this.images,
-        image: image??this.image,
-        uploadedTime: uploadedTime??this.uploadedTime as DateTime,
-        ProductId: ProductId??this.ProductId,
+      name: name??this.name,
+      prize: prize??this.prize,
+      size: size??this.size,
+      description: description??this.description,
+      images: images??this.images,
+      image: image??this.image,
+      uploadedTime: uploadedTime??this.uploadedTime as DateTime,
+      productId: productId??this.productId,
+      categoryId: categoryId??this.categoryId,
     );
   }
 
