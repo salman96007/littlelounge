@@ -68,7 +68,6 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.wishlist,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(
@@ -77,7 +76,6 @@ class HomePageView extends ConsumerStatefulWidget {
                     color:ColorConst.thirdColor
                 ),),
                 icon:SvgPicture.asset(SvgConstant.order,color:ColorConst.eighth,),
-
                 label: ""
             ),
             BottomNavigationBarItem(
