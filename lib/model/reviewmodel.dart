@@ -30,7 +30,7 @@ class ReviewModel{
     return ReviewModel(
         name: name??this.name,
         review: review??this.review,
-        rating: rating??this.rating
+        rating: rating??this.rating,
     );
 
   }
