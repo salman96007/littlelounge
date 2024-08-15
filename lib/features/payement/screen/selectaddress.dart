@@ -7,9 +7,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
+import 'package:littlelounge/features/payement/screen/editaddress.dart';
+import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import '../../home/controller/collectioncontroller.dart';
 
 class Selectaddress extends ConsumerStatefulWidget {
   const Selectaddress({super.key});
@@ -23,6 +26,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:false,
       appBar: AppBar(
         backgroundColor: ColorConst.primaryColor,
         elevation: 1,
@@ -50,99 +54,134 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       body:Column(
         children: [
-          Container(
-            height:height*0.07,
-            width:width*1,
-            decoration:BoxDecoration(
-              color:ColorConst.primaryColor,
-              boxShadow: [
-                BoxShadow(
-                    color: ColorConst.secondary.withOpacity(0.13),
-                    blurRadius: 7,
-                    spreadRadius: 3,
-                    offset: Offset(0, 4)
-                )
-              ],
-            ),
-            child:Row(
-              children: [
-               Padding(
-                 padding: EdgeInsets.only(left:width*0.04),
-                 child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
-               ),
-                SizedBox(width:width*0.02),
-                Text("Add a new address",style:TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: width*0.045
+          InkWell(
+            onTap:() {
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(),));
+            },
+            child: Container(
+              height:height*0.07,
+              width:width*1,
+              decoration:BoxDecoration(
+                color:ColorConst.primaryColor,
+                boxShadow: [
+                  BoxShadow(
+                      color: ColorConst.secondary.withOpacity(0.13),
+                      blurRadius: 7,
+                      spreadRadius: 3,
+                      offset: Offset(0, 4)
+                  )
+                ],
+              ),
+              child:Row(
+                children: [
+                 Padding(
+                   padding: EdgeInsets.only(left:width*0.04),
+                   child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
+                 ),
+                  SizedBox(width:width*0.02),
+                  Text("Add a new address",style:TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: width*0.045
 
-                ),),
+                  ),),
 
-              ],
+                ],
+              ),
             ),
           ),
-       ListView.separated(
-         itemCount: 4,
-           scrollDirection: Axis.vertical,
-           physics: BouncingScrollPhysics(),
-           shrinkWrap: true,
-           itemBuilder: (context, index) {
-             return  Container(
-               height:height*0.16,
-               width:width*1,
-               decoration:BoxDecoration(
-                   border:Border.all(
-                       color: ColorConst.twentyColor,
-                       width:width*0.002
-                   )
-               ),
-               child:Row(
-                 crossAxisAlignment:CrossAxisAlignment.start,
-                 children: [
-                   Radio(
-                     value: radio,
-                     groupValue: radio,
-                     onChanged: (value) {
-                       radio=value!;
-                       print(value);
-                       print("kkkkkkkkkkkkkkkkkkkkkkkk");
-                       setState(() {
+       ref.watch(userStreamProvider).when(
+           data: (data) => ListView.separated(
+             itemCount: data.address.length,
+             scrollDirection: Axis.vertical,
+             physics: BouncingScrollPhysics(),
+             shrinkWrap: true,
+             itemBuilder: (context, index) {
+               return  Container(
+                 height:height*0.16,
+                 width:width*1,
+                 decoration:BoxDecoration(
+                     border:Border.all(
+                         color: ColorConst.twentyColor,
+                         width:width*0.002
+                     )
+                 ),
+                 child:Row(
+                   crossAxisAlignment:CrossAxisAlignment.start,
+                   children: [
+                     Radio(
+                       value: radio,
+                       groupValue: radio,
+                       onChanged: (value) {
+                         radio=value!;
+                         print(value);
+                         print("kkkkkkkkkkkkkkkkkkkkkkkk");
+                         setState(() {
 
-                       });
-                     },),
-                   SizedBox(width:width*0.03,),
-                   Column(
-                     crossAxisAlignment:CrossAxisAlignment.start,
-                     mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                     children: [
-                       Text("Jibin thomas",style:TextStyle(
-                           fontWeight:FontWeight.w500,
-                           fontSize:width*0.045
-                       ),),
-                       Container(
-                         height:height*0.09,
-                         width:width*0.7,
-                         //color:Colors.black,
-                         child:   Text("",style:TextStyle(
-                           fontWeight:FontWeight.w400,
-                           fontSize:width*0.04,
-                         ),textAlign:TextAlign.center,),
+                         });
+                       },),
+                     SizedBox(width:width*0.03,),
+                     Column(
+                       crossAxisAlignment:CrossAxisAlignment.start,
+                       mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                       children: [
 
-                       ),
-                       Text("9999999999",style:TextStyle(
-                           fontWeight:FontWeight.w400,
-                           fontSize:width*0.04
-                       ),),
-                     ],
-                   ),
-                   Icon(Icons.edit_outlined),
-                 ],
-               ),
-             );
-           },
-           separatorBuilder:(context, index) {
-             return SizedBox();
-           },
-           )
+                         Text(data.address[index]["name"],style:TextStyle(
+                             fontWeight:FontWeight.w500,
+                             fontSize:width*0.045
+                         ),),
+                         Container(
+                           height:height*0.1,
+                           width:width*0.75,
+                           //color:Colors.black,
+                           child:   Column(
+                             children: [
+                               Text(data.address[index]["address"],style:TextStyle(
+                                 fontWeight:FontWeight.w400,
+                                 fontSize:width*0.04,
+                               ),),
+                               Row(
+                                 children: [
+                                   Text(data.address[index]["city"],style:TextStyle(
+                                     fontWeight:FontWeight.w400,
+                                     fontSize:width*0.04,
+                                   ),),
+                                   Text(",",style:TextStyle(
+                                     fontWeight:FontWeight.w400,
+                                     fontSize:width*0.04,
+                                   ),),
+
+                                   Text(data.address[index]["country"],style:TextStyle(
+                                     fontWeight:FontWeight.w400,
+                                     fontSize:width*0.04,
+                                   ),),
+                                 ],
+                               )
+                             ],
+                           ),
+
+                         ),
+                         Text(data.address[index]["phone number:"],style:TextStyle(
+                             fontWeight:FontWeight.w400,
+                             fontSize:width*0.04
+                         ),),
+                       ],
+                     ),
+                     InkWell(
+                         onTap:() {
+                           Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
+                         },
+                         child: Icon(Icons.edit_outlined)),
+                   ],
+                 ),
+               );
+             },
+             separatorBuilder:(context, index) {
+               return SizedBox();
+             },
+           ),
+           error: (error, stackTrace) => Text(error.toString()),
+           loading: () => CircularProgressIndicator(),)
+
         ],
       ),
 

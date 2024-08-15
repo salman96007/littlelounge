@@ -9,6 +9,7 @@ import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/selectaddress.dart';
+import 'package:littlelounge/model/addressmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
@@ -47,7 +48,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
       resizeToAvoidBottomInset:false,
       appBar: AppBar(
         backgroundColor: ColorConst.primaryColor,
-        title: Text("Address",style: GoogleFonts.inter(
+        title: Text("Add delivery address",style: GoogleFonts.inter(
           fontWeight:FontWeight.w600,
           color: ColorConst.secondary
         ),),
@@ -320,11 +321,18 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                   children: [
                     GestureDetector(
                       onTap: (){
+                        Addressmodel address =Addressmodel(
+                            name: nameController.text,
+                            country: countryController.text,
+                            city: cityController.text,
+                            phonenumber: phoneNumberController.text,
+                            address: addressController.text);
                         Map <String, dynamic>add={
+
                           "name":nameController.text.trim(),
                           "country":countryController.text.trim(),
                           "city":cityController.text.trim(),
-                          "phone number:":phoneNumberController.text.trim(),
+                          "phone number":phoneNumberController.text.trim(),
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
