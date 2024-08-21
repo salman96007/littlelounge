@@ -7,19 +7,20 @@ import 'package:littlelounge/features/cart/screen/orderpage.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/model/productmodel.dart';
+import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 import '../../home/screen/wishlistpage.dart';
 
 class HomePageView extends ConsumerStatefulWidget {
-    const HomePageView({super.key});
+    const HomePageView({super.key,
+    });
 
     @override
     ConsumerState<HomePageView> createState() => _HomePageViewState();
   }
   class _HomePageViewState extends ConsumerState<HomePageView> {
-   List data=[];
     var selectIndex =0;
     List pages =[
       HomePage(id:CategoryIdData.toString(),),

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/core/providers/firebaseproviders.dart';
+import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/categorymodel.dart';
@@ -39,8 +40,8 @@ class collectionResposiyory {
         .toList());
   }
 
-  Stream<List<ProductModel>> productStream() {
-    return _product.where('categoryId',isEqualTo: CategoryIdData).snapshots().map(
+     Stream<List<ProductModel>> productStream(CategorilayIdData) {
+         return _product.where('categoryId',isEqualTo:CategoryIdData).snapshots().map(
           (event) => event.docs
               .map(
                 (e) => ProductModel.fromJson(e.data() as Map<String, dynamic>),
@@ -68,4 +69,6 @@ class collectionResposiyory {
               UserModel.fromJson(event.data() as Map<String, dynamic>),
     );
   }
+
+
 }

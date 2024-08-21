@@ -17,9 +17,9 @@ final collectionControllProvider = Provider((ref) =>
 final StreamCollection = StreamProvider(
   (ref) => ref.watch(collectionControllProvider).menControl(),
 );
-final StreamProduct = StreamProvider(
-  (ref) =>
-      ref.watch(collectionControllProvider).productStream(),
+final StreamProduct = StreamProvider.family(
+  (ref,CategoryIdData) =>
+      ref.watch(collectionControllProvider).productStream(CategoryIdData),
 );
 
 final StreamProduct1 = StreamProvider.family((ref,String productId) =>
@@ -37,8 +37,8 @@ class dressController {
     return _resposiyory.menStream();
   }
 
-  Stream<List<ProductModel>> productStream() {
-    return _resposiyory.productStream();
+  Stream<List<ProductModel>> productStream(CategoryIdData) {
+    return _resposiyory.productStream(CategoryIdData);
   }
 
   Stream<ProductModel> productStream1({required String productId})  {

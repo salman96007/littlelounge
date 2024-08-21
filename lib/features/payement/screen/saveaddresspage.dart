@@ -36,7 +36,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
      List addressList = detail.address;
      addressList.add(adreess);
 
-     ref.watch(ControllerProvider).updateaddress(detail.copyWith(address:addressList ));
+     ref.watch(ControllerProvider).updateaddress(detail.copyWith(address: addressList ));
    }
     Map<String,dynamic> adreess ={};
 

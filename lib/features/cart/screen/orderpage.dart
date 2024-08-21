@@ -29,7 +29,7 @@ class _OrederpageState extends ConsumerState<Orderpage> {
             padding:  EdgeInsets.only(right :width*0.05),
               child: InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) =>CartPage(),));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) =>CartPage(data: ,),));
 
                   },
                   child: Icon(CupertinoIcons.shopping_cart,size:width*0.075,))

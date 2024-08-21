@@ -29,13 +29,18 @@ class _SignupState extends ConsumerState<Signup> {
 
 
   add(){
-    ref.watch(ControllerProvider).addUser(detail: UserModel(
+      UserModel user =  UserModel(
         name: usernameController.text,
         password: passwordController.text,
         email: emailController.text,
-        id: "", imageUrl: "", check: false, Search: [], address: [], favourites: [],
-
-    ));
+        id: "", imageUrl: "",
+        check: false,
+        Search: [],
+        address: [],
+        favourites: [],
+        addTOCart: [],
+      );
+    ref.watch(ControllerProvider).addUser(detail:user);
       currentUSerName =usernameController.text;
       currentUserImage =currentUserImage.toString();
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);

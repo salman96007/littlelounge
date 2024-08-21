@@ -23,10 +23,10 @@ import 'package:littlelounge/model/usermodel.dart';
 import '../../../constant/colorconstant.dart';
 import '../../auth/screen/createaccount.dart';
 
-// List?ProductIdData;
 class HomePage extends ConsumerStatefulWidget {
   final String id;
-  const HomePage({super.key, required this.id});
+  const HomePage({super.key, required this.id,
+  });
 
   @override
   ConsumerState<HomePage> createState() => _HomePageState();
@@ -77,6 +77,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         .watch(ControllerProvider)
         .updatedfavourite(detail.copyWith(favourites: detail.favourites));
   }
+
 
   @override
   @override
@@ -494,7 +495,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             SizedBox(
               height: height * 0.03,
             ),
-            ref.watch(StreamProduct).when(
+            ref.watch(StreamProduct(widget.id)).when(
                   data: (data) => GridView.builder(
                     physics: BouncingScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -550,18 +551,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         if (currentUserModel!.favourites
                                             .contains(data[index].productId)) {
                                           currentUserModel!.favourites
-                                              .contains(data[index].productId);
-                                          currentUserModel!.favourites
                                               .remove(data[index].productId);
                                         } else {
                                           currentUserModel!.favourites
                                               .add(data[index].productId);
                                         }
-                                        updatefavourites(
-                                            detail: currentUserModel!);
-                                        // ProductIdData=currentUserModel!.favourites;
-                                        //  print(ProductIdData);
-                                        //  print(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+                                        updatefavourites(detail: currentUserModel!);
 
                                         setState(() {});
                                       },

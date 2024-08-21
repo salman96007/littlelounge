@@ -5,8 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/features/auth/respository/authrespository.dart';
 import 'package:littlelounge/model/usermodel.dart';
   final ControllerProvider = Provider((ref) => AuthController(adduserRespository: ref.watch(addUserRespositoryProvider)),);
-  final StreamUser = StreamProvider.family((ref,currentUSerId) => ref.watch(ControllerProvider).favouritedata(currentUSerId),);
-class AuthController{
+  class AuthController{
     final AdduserRespository _adduserRespository;
     AuthController({required AdduserRespository adduserRespository}):_adduserRespository=adduserRespository;
 
@@ -38,9 +37,12 @@ class AuthController{
       _adduserRespository.updatefavourite(detail);
     }
 
-
-    Stream<UserModel>favouritedata(currentUSerId){
-      return _adduserRespository.favouriteStream();
+    updateAddToCartData({required List addToCart}){
+      _adduserRespository.updateAddToCart(addToCart:addToCart);
     }
+
+    // deleteCart({required UserModel detail}){
+    //   _adduserRespository.deleteAddtoCart(detail: detail);
+    // }
 
 }

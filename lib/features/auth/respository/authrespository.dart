@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -28,13 +26,11 @@ class AdduserRespository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
 
-
-  AdduserRespository(
-      {required FirebaseAuth firebaseAuth,
-      required FirebaseFirestore firestore,})
-      : _firebaseAuth = firebaseAuth,
-        _firestore = firestore
-  ;
+  AdduserRespository({
+    required FirebaseAuth firebaseAuth,
+    required FirebaseFirestore firestore,
+  })  : _firebaseAuth = firebaseAuth,
+        _firestore = firestore;
   CollectionReference get _user => _firestore.collection("user");
   addAuth({required UserModel detail}) {
     _firebaseAuth
@@ -45,87 +41,102 @@ class AdduserRespository {
             (value) => value.update(detail.copyWith(id: value.id).toJson()),
           );
     });
-
   }
-  loginAuth({required String email,required String password, required BuildContext context}) async {
-    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").where("email",isEqualTo :email).get();
-    if( data.docs.isEmpty)
-    {
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("no user")));
-
-
-    }else{
+  loginAuth(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
+        .collection("user")
+        .where("email", isEqualTo: email)
+        .get();
+    if (data.docs.isEmpty) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("no user")));
+    } else {
       UserModel user = UserModel.fromJson(data.docs[0].data());
-      if(data.docs[0]["password"]== password){
-
+      if (data.docs[0]["password"] == password) {
         currentUSerName = user.name;
-        currentUSerEmail =user.email;
+        currentUSerEmail = user.email;
         currentUSerPassword = user.password;
-        currentUserImage =user.imageUrl;
-        currentUSerId =user.id;
+        currentUserImage = user.imageUrl;
+        currentUSerId = user.id;
         currentUserModel = user;
 
-
-
-
-
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
-
-}else{
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please correct password ")));
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WelcomPage(),
+          ),
+          (route) => false,
+        );
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("please correct password ")));
       }
     }
   }
 
-
-  final GoogleSignIn _googleSignIn= GoogleSignIn();
-  Future<UserCredential?>signInWithGoogle({required BuildContext context})async{
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  Future<UserCredential?> signInWithGoogle(
+      {required BuildContext context}) async {
     await _googleSignIn.signOut();
-    final GoogleSignInAccount?googleSignInAccount = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googGoogleSignInAuthentication=await googleSignInAccount!.authentication;
+    final GoogleSignInAccount? googleSignInAccount =
+        await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googGoogleSignInAuthentication =
+        await googleSignInAccount!.authentication;
     final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googGoogleSignInAuthentication.accessToken,idToken: googGoogleSignInAuthentication.idToken
-    );
+        accessToken: googGoogleSignInAuthentication.accessToken,
+        idToken: googGoogleSignInAuthentication.idToken);
     final Auth = await FirebaseAuth.instance.signInWithCredential(credential);
-    User? userDetails =Auth.user;
-    currentUSerName =userDetails!.displayName!;
-    currentUSerEmail =userDetails.email!;
-    currentUserImage =userDetails.photoURL!;
+    User? userDetails = Auth.user;
+    currentUSerName = userDetails!.displayName!;
+    currentUSerEmail = userDetails.email!;
+    currentUserImage = userDetails.photoURL!;
     // SharedPreferences prefs2 = await SharedPreferences.getInstance();
     // prefs2.setBool("login",true);
     // prefs2.setString("user", currentUSerName.toString());
     // prefs2.setString("sign1", currentUserImage.toString());
-    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomPage(),));
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => WelcomPage(),
+        ));
   }
-  updateData(String imageUrl){
-    _user.doc(currentUSerId).update({"imageUrl":imageUrl});
+
+  updateData(String imageUrl) {
+    _user.doc(currentUSerId).update({"imageUrl": imageUrl});
   }
 
-  updatepassword( String email,  String password) async {
-    QuerySnapshot<Map<String,dynamic>> data = await FirebaseFirestore.instance.collection("user").where("email", isEqualTo:email).get();
+  updatepassword(String email, String password) async {
+    QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
+        .collection("user")
+        .where("email", isEqualTo: email)
+        .get();
     UserModel user = UserModel.fromJson(data.docs[0].data());
     currentUSerName = user.name;
-    currentUSerEmail =user.email;
+    currentUSerEmail = user.email;
     currentUSerPassword = user.password;
-    currentUserImage =user.imageUrl;
-    currentUSerId =user.id;
-    _user.doc(currentUSerId).update({"email":email,"password" :password});
+    currentUserImage = user.imageUrl;
+    currentUSerId = user.id;
+    _user.doc(currentUSerId).update({"email": email, "password": password});
   }
-  addAddress( UserModel detail){
+
+  addAddress(UserModel detail) {
     _user.doc(currentUSerId).update(detail.toJson());
   }
 
-   updatefavourite( UserModel detail){
+  updatefavourite(UserModel detail) {
     _user.doc(currentUSerId).update(detail.toJson());
+  }
 
-   }
+  updateAddToCart({required List addToCart}) {
+    _user.doc(currentUSerId).update({"addTOCart": addToCart});
+  }
 
-   Stream<UserModel>favouriteStream(){
-     return _user.doc(currentUSerId).snapshots().map((event) => UserModel.fromJson(event.data() as Map<String,dynamic>),);
-   }
-
+  //  deleteAddtoCart({required UserModel detail}){
+  //   _user.doc(detail.id).delete();
+  //
+  // }
 }
-
-
