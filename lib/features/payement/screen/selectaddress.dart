@@ -160,7 +160,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                            ),
 
                          ),
-                         Text(data.address[index]["phone number:"],style:TextStyle(
+                         Text(data.address[index]["phone number"],style:TextStyle(
                              fontWeight:FontWeight.w400,
                              fontSize:width*0.04
                          ),),

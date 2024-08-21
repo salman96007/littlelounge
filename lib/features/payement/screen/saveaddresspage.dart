@@ -332,7 +332,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                           "name":nameController.text.trim(),
                           "country":countryController.text.trim(),
                           "city":cityController.text.trim(),
-                          "phone number":phoneNumberController.text.trim(),
+                          "phonenumber":phoneNumberController.text.trim(),
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
