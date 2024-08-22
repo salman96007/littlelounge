@@ -8,7 +8,10 @@ import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import '../../../main.dart';
 
 class CheckoutPage extends ConsumerStatefulWidget {
-  const CheckoutPage({super.key});
+  final String data;
+  const CheckoutPage({super.key,
+    required this.data
+  });
 
   @override
   ConsumerState<CheckoutPage> createState() => _CartPageState();
@@ -195,7 +198,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
 
                  ],
                ),
-               title: Text("43, Electronics City Phase 1,\n Electronic City",style: TextStyle(
+               title: Text(widget.data,style: TextStyle(
                    fontSize: width*0.04,
                    color: ColorConst.twelthColor,
                    fontWeight: FontWeight.w400

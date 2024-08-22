@@ -84,7 +84,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CheckoutPage(),
+                    builder: (context) => CheckoutPage(data: '',),
                   ));
             },
             child: Container(

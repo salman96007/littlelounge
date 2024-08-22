@@ -14,7 +14,7 @@ import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
 import '../../auth/controller/authcontroller.dart';
-List? currentUseraddress;
+
 
 class Saveaddresspage extends ConsumerStatefulWidget {
   const Saveaddresspage({super.key});
@@ -321,18 +321,11 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Addressmodel address =Addressmodel(
-                            name: nameController.text,
-                            country: countryController.text,
-                            city: cityController.text,
-                            phonenumber: phoneNumberController.text,
-                            address: addressController.text);
                         Map <String, dynamic>add={
-
                           "name":nameController.text.trim(),
                           "country":countryController.text.trim(),
                           "city":cityController.text.trim(),
-                          "phonenumber":phoneNumberController.text.trim(),
+                          "phone number":phoneNumberController.text.trim(),
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);

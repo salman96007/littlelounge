@@ -387,7 +387,7 @@ class _CartPageState extends ConsumerState<CartPage> {
              ),
              InkWell(
                onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(),));
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(data: '',),));
                },
                child: Container(
                  alignment: Alignment.center,

@@ -37,7 +37,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       bottomSheet:InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',),));
         },
         child: Container(
           height:height*0.07,
@@ -52,137 +52,145 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
           ),
         ),
       ),
-      body:Column(
-        children: [
-          InkWell(
-            onTap:() {
-              Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(),));
-            },
-            child: Container(
-              height:height*0.07,
-              width:width*1,
-              decoration:BoxDecoration(
-                color:ColorConst.primaryColor,
-                boxShadow: [
-                  BoxShadow(
-                      color: ColorConst.secondary.withOpacity(0.13),
-                      blurRadius: 7,
-                      spreadRadius: 3,
-                      offset: Offset(0, 4)
-                  )
-                ],
-              ),
-              child:Row(
-                children: [
-                 Padding(
-                   padding: EdgeInsets.only(left:width*0.04),
-                   child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
-                 ),
-                  SizedBox(width:width*0.02),
-                  Text("Add a new address",style:TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: width*0.045
-
-                  ),),
-
-                ],
+      body:SingleChildScrollView(
+        child: Column(
+          children: [
+            InkWell(
+              onTap:() {
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(),));
+              },
+              child: Container(
+                height:height*0.07,
+                width:width*1,
+                decoration:BoxDecoration(
+                  color:ColorConst.primaryColor,
+                  boxShadow: [
+                    BoxShadow(
+                        color: ColorConst.secondary.withOpacity(0.13),
+                        blurRadius: 7,
+                        spreadRadius: 3,
+                        offset: Offset(0, 4)
+                    )
+                  ],
+                ),
+                child:Row(
+                  children: [
+                   Padding(
+                     padding: EdgeInsets.only(left:width*0.04),
+                     child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
+                   ),
+                    SizedBox(width:width*0.02),
+                    Text("Add a new address",style:TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: width*0.045
+        
+                    ),),
+        
+                  ],
+                ),
               ),
             ),
-          ),
-       ref.watch(userStreamProvider).when(
-           data: (data) => ListView.separated(
-             itemCount: data.address.length,
-             scrollDirection: Axis.vertical,
-             physics: BouncingScrollPhysics(),
-             shrinkWrap: true,
-             itemBuilder: (context, index) {
-               return  Container(
-                 height:height*0.16,
-                 width:width*1,
-                 decoration:BoxDecoration(
-                     border:Border.all(
-                         color: ColorConst.twentyColor,
-                         width:width*0.002
-                     )
-                 ),
-                 child:Row(
-                   crossAxisAlignment:CrossAxisAlignment.start,
-                   children: [
-                     Radio(
-                       value: radio,
-                       groupValue: radio,
-                       onChanged: (value) {
-                         radio=value!;
-                         print(value);
-                         print("kkkkkkkkkkkkkkkkkkkkkkkk");
-                         setState(() {
-
-                         });
-                       },),
-                     SizedBox(width:width*0.03,),
-                     Column(
+         ref.watch(userStreamProvider).when(
+             data: (data) => ListView.separated(
+               itemCount: data.address.length,
+               scrollDirection: Axis.vertical,
+               physics: BouncingScrollPhysics(),
+               shrinkWrap: true,
+               itemBuilder: (context, index) {
+                 return  GestureDetector(
+                   onTap: () {
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],),));
+                   },
+                   child: Container(
+                     height:height*0.16,
+                     width:width*1,
+                     decoration:BoxDecoration(
+                         border:Border.all(
+                             color: ColorConst.twentyColor,
+                             width:width*0.002
+                         )
+                     ),
+                     child:Row(
                        crossAxisAlignment:CrossAxisAlignment.start,
-                       mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                        children: [
-
-                         Text(data.address[index]["name"],style:TextStyle(
-                             fontWeight:FontWeight.w500,
-                             fontSize:width*0.045
-                         ),),
-                         Container(
-                           height:height*0.1,
-                           width:width*0.75,
-                           //color:Colors.black,
-                           child:   Column(
-                             children: [
-                               Text(data.address[index]["address"],style:TextStyle(
-                                 fontWeight:FontWeight.w400,
-                                 fontSize:width*0.04,
-                               ),),
-                               Row(
+                         Radio(
+                           activeColor: ColorConst.seventh,
+                           value: data.address[index],
+                           groupValue: radio,
+                           onChanged: (value) {
+                           radio=  data.address[index].toString();
+                             setState(() {
+                               radio=value.toString();
+                               print(radio);
+                               print(";;;;;;;;;;;;;;;;;;");
+                             });
+                           },),
+                         SizedBox(width:width*0.03,),
+                         Column(
+                           crossAxisAlignment:CrossAxisAlignment.start,
+                           mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                           children: [
+        
+                             Text(data.address[index]["name"],style:TextStyle(
+                                 fontWeight:FontWeight.w500,
+                                 fontSize:width*0.045
+                             ),),
+                             Container(
+                               height:height*0.1,
+                               width:width*0.75,
+                               //color:Colors.black,
+                               child:   Column(
                                  children: [
-                                   Text(data.address[index]["city"],style:TextStyle(
+                                   Text(data.address[index]["address"],style:TextStyle(
                                      fontWeight:FontWeight.w400,
                                      fontSize:width*0.04,
                                    ),),
-                                   Text(",",style:TextStyle(
-                                     fontWeight:FontWeight.w400,
-                                     fontSize:width*0.04,
-                                   ),),
-
-                                   Text(data.address[index]["country"],style:TextStyle(
-                                     fontWeight:FontWeight.w400,
-                                     fontSize:width*0.04,
-                                   ),),
+                                   Row(
+                                     children: [
+                                       Text(data.address[index]["city"],style:TextStyle(
+                                         fontWeight:FontWeight.w400,
+                                         fontSize:width*0.04,
+                                       ),),
+                                       Text(",",style:TextStyle(
+                                         fontWeight:FontWeight.w400,
+                                         fontSize:width*0.04,
+                                       ),),
+        
+                                       Text(data.address[index]["country"],style:TextStyle(
+                                         fontWeight:FontWeight.w400,
+                                         fontSize:width*0.04,
+                                       ),),
+                                     ],
+                                   )
                                  ],
-                               )
-                             ],
-                           ),
-
+                               ),
+        
+                             ),
+                             Text(data.address[index]["phone number"],style:TextStyle(
+                                 fontWeight:FontWeight.w400,
+                                 fontSize:width*0.04
+                             ),),
+                           ],
                          ),
-                         Text(data.address[index]["phone number"],style:TextStyle(
-                             fontWeight:FontWeight.w400,
-                             fontSize:width*0.04
-                         ),),
+                         InkWell(
+                             onTap:() {
+                               // Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
+                             },
+                             child: Icon(Icons.edit_outlined)),
                        ],
                      ),
-                     InkWell(
-                         onTap:() {
-                           Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
-                         },
-                         child: Icon(Icons.edit_outlined)),
-                   ],
-                 ),
-               );
-             },
-             separatorBuilder:(context, index) {
-               return SizedBox();
-             },
-           ),
-           error: (error, stackTrace) => Text(error.toString()),
-           loading: () => CircularProgressIndicator(),)
-
-        ],
+                   ),
+                 );
+               },
+               separatorBuilder:(context, index) {
+                 return SizedBox();
+               },
+             ),
+             error: (error, stackTrace) => Text(error.toString()),
+             loading: () => CircularProgressIndicator(),)
+        
+          ],
+        ),
       ),
 
 
