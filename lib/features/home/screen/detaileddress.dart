@@ -60,10 +60,6 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                 ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBar(content: Text("adding to cart")));
               }
-
-              //
-              //
-              // print("111111111111111111111111111111111111111111111111111111111111111111111");
             },
             child: Container(
               height: height * 0.07,
@@ -71,12 +67,12 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
               color: ColorConst.primaryColor,
               child: Center(
                   child: Text(
-                "Add to cart",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: ColorConst.secondary,
-                    fontSize: width * 0.04),
-              )),
+                    "Add to cart",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: ColorConst.secondary,
+                        fontSize: width * 0.04),
+                  )),
             ),
           ),
           GestureDetector(
@@ -93,80 +89,85 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
               color: ColorConst.thirdColor,
               child: Center(
                   child: Text(
-                "Buy now",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: ColorConst.primaryColor,
-                    fontSize: width * 0.04),
-              )),
+                    "Buy now",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: ColorConst.primaryColor,
+                        fontSize: width * 0.04),
+                  )),
             ),
           )
         ],
       ),
       body: ListView(
         children: [
-          CarouselSlider.builder(
-            itemCount: widget.detail.images.length,
-            itemBuilder: (context, index, realIndex) {
-              return Stack(children: [
-                Hero(
-                  tag: widget.detail.images[index],
-                  transitionOnUserGestures: true,
-                  flightShuttleBuilder: (flightContext, animation, direction,
-                      fromContext, toContext) {
-                    return Image.network(widget.detail.images[index]);
-                  },
-                  child: Container(
-                      child: Image.network(
-                        widget.detail.images[index],
-                        fit: BoxFit.cover,
-                      ),
-                      width: width * 1,
-                      height: height * 0.45,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(ImageConstant.bg),
-                              fit: BoxFit.cover))),
-                ),
-                Positioned(
-                    top: height * 0.015,
-                    left: width * 0.04,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePageView(),
-                            ));
+          Stack(
+            children:[ Container(
+              width: width*1,
+              child: CarouselSlider.builder(
+                itemCount: widget.detail.images.length,
+                itemBuilder: (context, index, realIndex) {
+                  return
+                    Hero(
+                      tag: widget.detail.images[index],
+                      transitionOnUserGestures: true,
+                      flightShuttleBuilder: (flightContext, animation, direction,
+                          fromContext, toContext) {
+                        return Image.network(widget.detail.images[index]);
                       },
-                      child: Icon(Icons.arrow_back),
-                    )),
-                Positioned(
-                    top: height * 0.015,
-                    right: width * 0.04,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  CartPage(),
-                            ));
-                      },
-                      child: SvgPicture.asset(SvgConstant.order),
-                    ))
-              ]);
-            },
-            options: CarouselOptions(
-                height: height * 0.45,
-                onPageChanged: (index, reason) {
-                  activeIndex = index;
-                  setState(() {});
+                      child: Container(
+                          child: Image.network(
+                            widget.detail.images[index],
+                            fit: BoxFit.cover,
+                          ),
+                          width: width * 1,
+                          height: height * 0.45,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(ImageConstant.bg),
+                                  fit: BoxFit.cover))),
+
+                  );
                 },
-                autoPlay: false,
-                autoPlayAnimationDuration: Duration(seconds: 2),
-                viewportFraction: 1),
-          ),
+                options: CarouselOptions(
+                    height: height * 0.45,
+                    onPageChanged: (index, reason) {
+                      activeIndex = index;
+                      setState(() {});
+                    },
+                    autoPlay: false,
+                    autoPlayAnimationDuration: Duration(seconds: 2),
+                    viewportFraction: 1),
+              ),
+            ),
+              Positioned(
+                  top: height * 0.015,
+                  left: width * 0.04,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePageView(),
+                          ));
+                    },
+                    child: Icon(Icons.arrow_back),
+                  )),
+              Positioned(
+                  top: height * 0.015,
+                  right: width * 0.04,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CartPage(),
+                          ));
+                    },
+                    child: SvgPicture.asset(SvgConstant.order),
+                  ))
+          ]),
           SizedBox(height: height * 0.015),
           Center(
             child: AnimatedSmoothIndicator(
