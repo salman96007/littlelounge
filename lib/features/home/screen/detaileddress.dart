@@ -7,6 +7,7 @@ import 'package:littlelounge/features/bottomnavigation/screen/bottomnavigation.d
 import 'package:littlelounge/features/cart/screen/cartpage.dart';
 import 'package:littlelounge/features/cart/screen/orderpage.dart';
 import 'package:littlelounge/features/home/screen/wishlistpage.dart';
+import 'package:littlelounge/features/revviews/screen/addreview.dart';
 import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 import 'package:pinput/pinput.dart';
@@ -278,24 +279,29 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                   height: height * 0.02,
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Reviews",
-                      style: TextStyle(
-                          color: ColorConst.secondary,
-                          fontWeight: FontWeight.w600,
-                          fontSize: width * 0.05),
-                    ),
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                          color: ColorConst.twelthColor,
-                          fontWeight: FontWeight.w400,
-                          fontSize: width * 0.045),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddReview(id: widget.detail.productId,),));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Reviews",
+                        style: TextStyle(
+                            color: ColorConst.secondary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: width * 0.05),
+                      ),
+                      Text(
+                        "View All",
+                        style: TextStyle(
+                            color: ColorConst.twelthColor,
+                            fontWeight: FontWeight.w400,
+                            fontSize: width * 0.045),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

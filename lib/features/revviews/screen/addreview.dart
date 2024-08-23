@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:littlelounge/features/revviews/controller/reviewcontroller.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
+import 'package:littlelounge/model/reviewmodel.dart';
 
 import '../../../main.dart';
 double a = 0;
 
-class AddReview extends StatefulWidget {
-  const AddReview({super.key});
+class AddReview extends ConsumerStatefulWidget {
+   final String id;
+  const AddReview({super.key,
+    required this.id
+  });
 
   @override
-  State<AddReview> createState() => _AddReviewState();
+  ConsumerState<AddReview> createState() => _AddReviewState();
 }
 
-class _AddReviewState extends State<AddReview> {
+class _AddReviewState extends  ConsumerState<AddReview> {
+  TextEditingController nameController=TextEditingController();
+  TextEditingController experience=TextEditingController();
+
+   addreviewdata(){
+     ref.watch(reviewControllerProvider).addreview(ReviewModel(
+         name: nameController.text,
+         review: experience.text,
+         rating: a,
+         ProductId: widget.id));
+
+   }
+
   @override
   Widget build(BuildContext context) {
 
-    TextEditingController nameController=TextEditingController();
+
   
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -31,20 +49,22 @@ class _AddReviewState extends State<AddReview> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Center(
-            child: Container(
+            child: SizedBox(
               width: width*0.90,
               child: TextFormField(
-                keyboardType: TextInputType.multiline,
+                controller: nameController,
+                maxLines: 1,
+                keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
                 style: TextStyle(fontSize: width * 0.05),
                 decoration: InputDecoration(
-                  labelText: "Name",
+                  labelText: "name",
                   labelStyle: TextStyle(
-                    fontSize: width*0.05,
-                    color: ColorConst.secondary,
-                    fontWeight: FontWeight.bold
+                      fontSize: width*0.05,
+                      color: ColorConst.secondary,
+                      fontWeight: FontWeight.bold
                   ),
-                  hintText: "Type your name",
+                  hintText: "Describe your experience?",
                   hintStyle: TextStyle(
                       fontSize: width * 0.035,
                       color: ColorConst.eighth),
@@ -61,6 +81,7 @@ class _AddReviewState extends State<AddReview> {
             child: SizedBox(
               width: width*0.90,
               child: TextFormField(
+                controller: experience,
                 maxLines: 8,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.next,
@@ -111,6 +132,7 @@ class _AddReviewState extends State<AddReview> {
           ),
           InkWell(
             onTap: () {
+              addreviewdata();
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ReviewPage(),), (route) => false,);
             },
             child: Container(

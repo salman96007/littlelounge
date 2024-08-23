@@ -57,7 +57,7 @@ class _ReviewPageState extends State<ReviewPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddReview(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddReview(id:"" ,),));
                   },
                   child: Container(
                     child: Row(
