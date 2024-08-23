@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/screen/createaccount.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
     const SplashScreen({super.key});
@@ -14,13 +16,14 @@ class SplashScreen extends ConsumerStatefulWidget {
   }
 
   class _SplashScreenState extends ConsumerState<SplashScreen> {
-  @override
-  void initState() {
-    Future.delayed(Duration(
-      seconds: 3,
-    )).then((value) => Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) =>CreatAccount(),),(route) => false,));
-    super.initState();
-  }
+    bool login=false;
+    getData() async {
+      SharedPreferences prefs=await SharedPreferences.getInstance();
+      login=prefs.getBool("login")??false;
+      Future.delayed(Duration(
+          seconds: 3
+      )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?WelcomPage():CreatAccount(),)));
+    }
     @override
     Widget build(BuildContext context) {
       return Scaffold(
