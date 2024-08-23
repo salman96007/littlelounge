@@ -11,6 +11,7 @@ import 'package:littlelounge/features/auth/screen/signuppage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/usermodel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../model/productmodel.dart';
 import '../../payement/screen/saveaddresspage.dart';
@@ -63,6 +64,10 @@ class AdduserRespository {
         currentUserImage = user.imageUrl;
         currentUSerId = user.id;
         currentUserModel = user;
+        SharedPreferences prefs2 = await SharedPreferences.getInstance();
+        prefs2.setBool("login",true);
+        // prefs2.setString("user", currentUSerName.toString());
+        // prefs2.setString("sign1", currentUserImage.toString());
 
         Navigator.pushAndRemoveUntil(
           context,
@@ -94,10 +99,7 @@ class AdduserRespository {
     currentUSerName = userDetails!.displayName!;
     currentUSerEmail = userDetails.email!;
     currentUserImage = userDetails.photoURL!;
-    // SharedPreferences prefs2 = await SharedPreferences.getInstance();
-    // prefs2.setBool("login",true);
-    // prefs2.setString("user", currentUSerName.toString());
-    // prefs2.setString("sign1", currentUserImage.toString());
+
     Navigator.push(
         context,
         MaterialPageRoute(

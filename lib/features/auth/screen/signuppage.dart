@@ -38,7 +38,7 @@ class _SignupState extends ConsumerState<Signup> {
         Search: [],
         address: [],
         favourites: [],
-        addTOCart: [],
+        addTOCart: [], order: [],
       );
     ref.watch(ControllerProvider).addUser(detail:user);
       currentUSerName =usernameController.text;
@@ -46,9 +46,6 @@ class _SignupState extends ConsumerState<Signup> {
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
 
   }
-
-
-
   TextEditingController usernameController =TextEditingController();
   TextEditingController passwordController =TextEditingController();
   TextEditingController emailController =TextEditingController();
