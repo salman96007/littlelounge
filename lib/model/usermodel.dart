@@ -1,5 +1,4 @@
 
-
 class UserModel{
 
   String name;
@@ -12,6 +11,7 @@ class UserModel{
   List address;
   List favourites;
   List addTOCart;
+  List order;
 
   UserModel({
 
@@ -25,6 +25,7 @@ class UserModel{
     required this.address,
     required this.favourites,
     required this.addTOCart,
+    required this.order
 
   });
   factory UserModel.fromJson(Map<String,dynamic>json)=>UserModel(
@@ -38,6 +39,7 @@ class UserModel{
     address: json["address"],
     favourites: json["favourites"],
     addTOCart: json["addTOCart"],
+    order: json["order"],
   );
 
   Map<String,dynamic>toJson()=>{
@@ -51,6 +53,7 @@ class UserModel{
     "address": address,
     "favourites": favourites,
     "addTOCart": addTOCart,
+    "order":order,
 
   };
   UserModel copyWith({
@@ -64,6 +67,7 @@ class UserModel{
     List?address,
     List?favourites,
     List?addTOCart,
+    List?order
 
   })
   {
@@ -78,6 +82,7 @@ class UserModel{
       address: address??this.address,
       favourites: favourites??this.favourites,
       addTOCart: addTOCart??this.addTOCart,
+      order: order??this.order
     );
   }
 
