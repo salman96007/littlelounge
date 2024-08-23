@@ -45,9 +45,9 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
           color:ColorConst.thirdColor,
           child:Center(
             child: Text("Deliver here",style:TextStyle(
-              color:ColorConst.primaryColor,
-              fontWeight:FontWeight.w600,
-              fontSize:width*0.055
+                color:ColorConst.primaryColor,
+                fontWeight:FontWeight.w600,
+                fontSize:width*0.055
             ),),
           ),
         ),
@@ -75,120 +75,120 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                 ),
                 child:Row(
                   children: [
-                   Padding(
-                     padding: EdgeInsets.only(left:width*0.04),
-                     child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
-                   ),
+                    Padding(
+                      padding: EdgeInsets.only(left:width*0.04),
+                      child: Icon(CupertinoIcons.add,size:width*0.05 ,color:ColorConst.secondary,),
+                    ),
                     SizedBox(width:width*0.02),
                     Text("Add a new address",style:TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: width*0.045
-        
+                        fontWeight: FontWeight.w500,
+                        fontSize: width*0.045
+
                     ),),
-        
+
                   ],
                 ),
               ),
             ),
-         ref.watch(userStreamProvider).when(
-             data: (data) => ListView.separated(
-               itemCount: data.address.length,
-               scrollDirection: Axis.vertical,
-               physics: BouncingScrollPhysics(),
-               shrinkWrap: true,
-               itemBuilder: (context, index) {
-                 return  GestureDetector(
-                   onTap: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],),));
-                   },
-                   child: Container(
-                     height:height*0.16,
-                     width:width*1,
-                     decoration:BoxDecoration(
-                         border:Border.all(
-                             color: ColorConst.twentyColor,
-                             width:width*0.002
-                         )
-                     ),
-                     child:Row(
-                       crossAxisAlignment:CrossAxisAlignment.start,
-                       children: [
-                         Radio(
-                           activeColor: ColorConst.seventh,
-                           value: data.address[index],
-                           groupValue: radio,
-                           onChanged: (value) {
-                           radio=  data.address[index].toString();
-                             setState(() {
-                               radio=value.toString();
-                               print(radio);
-                               print(";;;;;;;;;;;;;;;;;;");
-                             });
-                           },),
-                         SizedBox(width:width*0.03,),
-                         Column(
-                           crossAxisAlignment:CrossAxisAlignment.start,
-                           mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                           children: [
-        
-                             Text(data.address[index]["name"],style:TextStyle(
-                                 fontWeight:FontWeight.w500,
-                                 fontSize:width*0.045
-                             ),),
-                             Container(
-                               height:height*0.1,
-                               width:width*0.75,
-                               //color:Colors.black,
-                               child:   Column(
-                                 children: [
-                                   Text(data.address[index]["address"],style:TextStyle(
-                                     fontWeight:FontWeight.w400,
-                                     fontSize:width*0.04,
-                                   ),),
-                                   Row(
-                                     children: [
-                                       Text(data.address[index]["city"],style:TextStyle(
-                                         fontWeight:FontWeight.w400,
-                                         fontSize:width*0.04,
-                                       ),),
-                                       Text(",",style:TextStyle(
-                                         fontWeight:FontWeight.w400,
-                                         fontSize:width*0.04,
-                                       ),),
-        
-                                       Text(data.address[index]["country"],style:TextStyle(
-                                         fontWeight:FontWeight.w400,
-                                         fontSize:width*0.04,
-                                       ),),
-                                     ],
-                                   )
-                                 ],
-                               ),
-        
-                             ),
-                             Text(data.address[index]["phone number"],style:TextStyle(
-                                 fontWeight:FontWeight.w400,
-                                 fontSize:width*0.04
-                             ),),
-                           ],
-                         ),
-                         InkWell(
-                             onTap:() {
-                               // Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
-                             },
-                             child: Icon(Icons.edit_outlined)),
-                       ],
-                     ),
-                   ),
-                 );
-               },
-               separatorBuilder:(context, index) {
-                 return SizedBox();
-               },
-             ),
-             error: (error, stackTrace) => Text(error.toString()),
-             loading: () => CircularProgressIndicator(),)
-        
+            ref.watch(userStreamProvider).when(
+              data: (data) => ListView.separated(
+                itemCount: data.address.length,
+                scrollDirection: Axis.vertical,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],),));
+                    },
+                    child: Container(
+                      height:height*0.16,
+                      width:width*1,
+                      decoration:BoxDecoration(
+                          border:Border.all(
+                              color: ColorConst.twentyColor,
+                              width:width*0.002
+                          )
+                      ),
+                      child:Row(
+                        crossAxisAlignment:CrossAxisAlignment.start,
+                        children: [
+                          Radio(
+                            activeColor: ColorConst.seventh,
+                            value: data.address[index],
+                            groupValue: radio,
+                            onChanged: (value) {
+                              radio=  data.address[index].toString();
+                              setState(() {
+                                radio=value.toString();
+                                print(radio);
+                                print(";;;;;;;;;;;;;;;;;;");
+                              });
+                            },),
+                          SizedBox(width:width*0.03,),
+                          Column(
+                            crossAxisAlignment:CrossAxisAlignment.start,
+                            mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                            children: [
+
+                              Text(data.address[index]["name"],style:TextStyle(
+                                  fontWeight:FontWeight.w500,
+                                  fontSize:width*0.045
+                              ),),
+                              Container(
+                                height:height*0.1,
+                                width:width*0.75,
+                                //color:Colors.black,
+                                child:   Column(
+                                  children: [
+                                    Text(data.address[index]["address"],style:TextStyle(
+                                      fontWeight:FontWeight.w400,
+                                      fontSize:width*0.04,
+                                    ),),
+                                    Row(
+                                      children: [
+                                        Text(data.address[index]["city"],style:TextStyle(
+                                          fontWeight:FontWeight.w400,
+                                          fontSize:width*0.04,
+                                        ),),
+                                        Text(",",style:TextStyle(
+                                          fontWeight:FontWeight.w400,
+                                          fontSize:width*0.04,
+                                        ),),
+
+                                        Text(data.address[index]["country"],style:TextStyle(
+                                          fontWeight:FontWeight.w400,
+                                          fontSize:width*0.04,
+                                        ),),
+                                      ],
+                                    )
+                                  ],
+                                ),
+
+                              ),
+                              Text(data.address[index]["phone number"],style:TextStyle(
+                                  fontWeight:FontWeight.w400,
+                                  fontSize:width*0.04
+                              ),),
+                            ],
+                          ),
+                          InkWell(
+                              onTap:() {
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
+                              },
+                              child: Icon(Icons.edit_outlined)),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder:(context, index) {
+                  return SizedBox();
+                },
+              ),
+              error: (error, stackTrace) => Text(error.toString()),
+              loading: () => CircularProgressIndicator(),)
+
           ],
         ),
       ),
