@@ -42,6 +42,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
       double Sum = 0;
       Sum+=widget.details.prize*count;
       print(Sum);
+      return Sum;
 
      }
 
