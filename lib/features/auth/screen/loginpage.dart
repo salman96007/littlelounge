@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
 import 'package:littlelounge/features/auth/screen/forgotpassword.dart';
 import 'package:littlelounge/features/auth/screen/newpassword.dart';
+import 'package:littlelounge/features/auth/screen/signuppage.dart';
 
 
 import '../../../constant/colorconstant.dart';
@@ -255,11 +256,24 @@ class _LoginState extends ConsumerState<Login> {
                           height: height*0.07,
                           width: width*0.88,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(width*0.07),
+                            borderRadius: BorderRadius.circular(width*0.05),
                             color: ColorConst.thirdColor,
                           ),
                         ),
-                      )
+                      ),
+                      SizedBox(height: height*0.04,),
+                      InkWell(
+                         onTap: () {
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => Signup(),));
+                         },
+                        child: Center(
+                          child: Text("Signup",style: TextStyle(
+                            fontSize: width*0.04,
+                            color: ColorConst.sixth,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ),
+                      ),
                     ],
                   ),
                 ],

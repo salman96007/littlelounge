@@ -27,7 +27,7 @@ class SplashScreen extends ConsumerStatefulWidget {
     login = prefs.getBool("login")?? false;
     Future.delayed(Duration(
         seconds: 3
-    )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?WelcomPage():Login(),)));
+    )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?HomePageView():Login(),)));
   }
   @override
   void initState() {

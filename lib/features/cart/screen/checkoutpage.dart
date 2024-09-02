@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,13 +6,17 @@ import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/payement/screen/selectaddress.dart';
+import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../main.dart';
 
 class CheckoutPage extends ConsumerStatefulWidget {
   final String data;
+  final ProductModel details;
+
   const CheckoutPage({super.key,
-    required this.data
+    required this.data,
+    required this.details
   });
 
   @override
@@ -19,6 +24,29 @@ class CheckoutPage extends ConsumerStatefulWidget {
 }
 
 class _CartPageState extends ConsumerState<CheckoutPage> {
+  int count = 1;
+  add(){
+    count++;
+    setState(() {
+
+    });
+  }
+  substract(){
+    count>1?count--:count;
+    setState(() {
+
+    });
+  }
+
+     total(){
+      double Sum = 0;
+      Sum+=widget.details.prize*count;
+      print(Sum);
+
+     }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +93,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                   margin: EdgeInsets.only(left:width*0.05),
                                   width: width*0.28,
                                   height: height*0.20,
-                                  child: Image.asset(ImageConstant.image1,fit: BoxFit.fill,),
+                                  child: Image.network(widget.details.image,fit: BoxFit.fill,),
                                   decoration: BoxDecoration(
                                       color: ColorConst.forth.withOpacity(0.25),
                                       borderRadius: BorderRadius.circular(width*0.03),
@@ -90,7 +118,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text("Men's Tie-Dye T-Shirt\nNike Sportswear",style: TextStyle(
+                                      Text(widget.details.name,style: TextStyle(
                                           color: ColorConst.secondary,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width*0.04
@@ -100,43 +128,53 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                           SvgPicture.asset(SvgConstant.rupees,width: width*0.04
 
                                             ,),
-                                          Text("500"),
+                                          Text(widget.details.prize.toString()),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          Container(
-                                              width: width*0.07,
-                                              height: height*0.07,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                      color: ColorConst.twentyColor
-                                                  )
+                                          GestureDetector(
+                                            onTap: () {
+                                              substract();
+                                            },
+                                            child: Container(
+                                                width: width*0.07,
+                                                height: height*0.07,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: ColorConst.twentyColor
+                                                    )
 
 
-                                              ),
-                                              child: SvgPicture.asset(SvgConstant.down,fit: BoxFit.none,)),
+                                                ),
+                                                child: SvgPicture.asset(SvgConstant.down,fit: BoxFit.none,)),
+                                          ),
                                           SizedBox(width: width*0.04,),
-                                          Text("1",style: TextStyle(
+                                          Text(count.toString(),style: TextStyle(
                                               color: ColorConst.secondary,
                                               fontWeight: FontWeight.w600,
                                               fontSize: width*0.05
 
                                           ),),
                                           SizedBox(width: width*0.04,),
-                                          Container(
-                                              width: width*0.07,
-                                              height: height*0.07,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                      color: ColorConst.twentyColor
-                                                  )
+                                          GestureDetector(
+                                            onTap:  () {
+                                              add();
+                                            },
+                                            child: Container(
+                                                width: width*0.07,
+                                                height: height*0.07,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: ColorConst.twentyColor
+                                                    )
 
 
-                                              ),
-                                              child: SvgPicture.asset(SvgConstant.up,fit: BoxFit.none,)),
+                                                ),
+                                                child: SvgPicture.asset(SvgConstant.up,fit: BoxFit.none,)),
+                                          ),
                                           SizedBox(width: width*0.13,),
                                           Container(
                                             // margin: EdgeInsets.only(top: width*0.34),
@@ -265,10 +303,12 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                         fontSize: width*0.045,
                         color: ColorConst.twelthColor
                     ),),
+
                     Row(
                       children: [
                         SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                        Text("120",style: TextStyle(
+
+                        Text("${total()}",style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: ColorConst.secondary,
                             fontSize: width*0.04

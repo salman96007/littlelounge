@@ -26,6 +26,8 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
   TextEditingController addressController=TextEditingController();
 
   bool toggle = false;
+
+  get data => null;
   addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
 
     List addressList = detail.address;
@@ -322,7 +324,7 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '', details:data,),));
                       },
                       child: Container(
                         height: height*0.07,

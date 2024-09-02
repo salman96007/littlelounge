@@ -23,6 +23,10 @@ class Selectaddress extends ConsumerStatefulWidget {
 
 class _SelectaddressState extends ConsumerState<Selectaddress> {
   String radio="";
+
+  get data => null;
+
+  get w => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +41,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       bottomSheet:InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '', details: data,),));
         },
         child: Container(
           height:height*0.07,
@@ -99,7 +103,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                 itemBuilder: (context, index) {
                   return  GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"], details:w,),));
                     },
                     child: Container(
                       height:height*0.16,

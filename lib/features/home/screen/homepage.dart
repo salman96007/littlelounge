@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ import 'package:littlelounge/features/home/screen/settingspage.dart';
 import 'package:littlelounge/main.dart';
 import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../auth/screen/createaccount.dart';
@@ -33,12 +35,19 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  getUserName() async {
+    SharedPreferences prefs1 =await SharedPreferences.getInstance();
+    currentUSerName = prefs1.getString("user");
+    currentUserImage =prefs1.getString("sign1");
+  }
+
   bool view = false;
   bool favour = false;
   List fav = [];
   List<dynamic> faver = [];
   @override
   void initState() {
+    getUserName();
     // TODO: implement initState
     super.initState();
   }
@@ -77,6 +86,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         .watch(ControllerProvider)
         .updatedfavourite(detail.copyWith(favourites: detail.favourites));
   }
+
 
 
   @override
@@ -323,11 +333,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                              onTap: () {
+                              onTap: () async {
+                                SharedPreferences prefs = await SharedPreferences.getInstance();
+                                prefs.remove("login");
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => CreatAccount(),
+                                    builder: (context) => Login()
                                   ),
                                   (route) => false,
                                 );
@@ -543,30 +555,32 @@ class _HomePageState extends ConsumerState<HomePage> {
                                               offset: Offset(0, 3))
                                         ])),
                               ),
-                              Positioned(
-                                  right: width * 0.05,
-                                  top: width * 0.04,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        if (currentUserModel!.favourites
-                                            .contains(data[index].productId)) {
-                                          currentUserModel!.favourites
-                                              .remove(data[index].productId);
-                                        } else {
-                                          currentUserModel!.favourites
-                                              .add(data[index].productId);
-                                        }
-                                        updatefavourites(detail: currentUserModel!);
-
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        currentUserModel!.favourites
-                                                .contains(data[index].productId)
-                                            ? Icons.favorite
-                                            : Icons.favorite_outline,
-                                        color: ColorConst.sixth,
-                                      )))
+                              // Positioned(
+                              //     right: width * 0.05,
+                              //     top: width * 0.04,
+                              //     child: GestureDetector(
+                              //         onTap: () {
+                              //           if (currentUserModel!.favourites
+                              //               .contains(data[index].productId)) {
+                              //             currentUserModel!.favourites
+                              //                 .remove(data[index].productId);
+                              //
+                              //           }
+                              //           else {
+                              //             currentUserModel!.favourites
+                              //                 .add(data[index].productId);
+                              //           }
+                              //           updatefavourites(detail: currentUserModel!);
+                              //
+                              //           setState(() {});
+                              //         },
+                              //         child: Icon(
+                              //               currentUserModel!.favourites .contains(data[index].productId)
+                              //               ? Icons.favorite
+                              //               : Icons.favorite_outline,
+                              //           color: ColorConst.sixth,
+                              //         ),
+                              //     ))
                             ],
                           ),
                           SizedBox(
@@ -586,7 +600,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 width: width * 0.04,
                               ),
                               Text(
-                                data[index].prize.toString(),
+                               data[index].prize.toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: width * 0.04),

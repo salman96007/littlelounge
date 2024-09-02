@@ -27,6 +27,8 @@ class CartPage extends ConsumerStatefulWidget {
 class _CartPageState extends ConsumerState<CartPage> {
   int count=0;
 
+  get w => null;
+
   add(){
     count++;
   }
@@ -387,7 +389,7 @@ class _CartPageState extends ConsumerState<CartPage> {
              ),
              InkWell(
                onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(data: '',),));
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(data: '', details: w,),));
                },
                child: Container(
                  alignment: Alignment.center,
