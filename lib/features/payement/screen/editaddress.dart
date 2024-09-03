@@ -2,16 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 import '../../../model/usermodel.dart';
 import '../../auth/controller/authcontroller.dart';
+import '../../auth/respository/authrespository.dart';
 import '../../cart/screen/checkoutpage.dart';
 List? currentUseraddress;
 
 class EditAddresspage extends ConsumerStatefulWidget {
-  const EditAddresspage({super.key});
+  final ProductModel details;
+  const EditAddresspage({super.key,
+    required this.details
+  });
 
   @override
   ConsumerState<EditAddresspage> createState() => _EditAddresspageState();
@@ -27,7 +32,6 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
 
   bool toggle = false;
 
-  get data => null;
   addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
 
     List addressList = detail.address;
@@ -324,7 +328,8 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '', details:data,),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',
+                             details: widget.details,),));
                       },
                       child: Container(
                         height: height*0.07,

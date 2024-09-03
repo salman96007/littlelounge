@@ -15,6 +15,7 @@ import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 import '../../../model/usermodel.dart';
 import '../../auth/controller/authcontroller.dart';
+import '../../auth/respository/authrespository.dart';
 
 
 String? ProductId1;
@@ -139,46 +140,46 @@ class _WishListPageState extends ConsumerState<WishListPage> {
                                                         offset:
                                                         Offset(0, 3))
                                                   ])),
-                                          // Positioned(
-                                          //     right: width * 0.05,
-                                          //     top: width * 0.04,
-                                          //     child: GestureDetector(
-                                          //         onTap: () {
-                                          //           ProductId1 =
-                                          //               data.productId;
-                                          //           if (currentUserModel!
-                                          //               .favourites
-                                          //               .contains(data
-                                          //               .productId)) {
-                                          //             currentUserModel!
-                                          //                 .favourites
-                                          //                 .remove(data
-                                          //                 .productId);
-                                          //           } else {
-                                          //             currentUserModel!
-                                          //                 .favourites
-                                          //                 .add(data
-                                          //                 .productId);
-                                          //           }
-                                          //           updatefavourites(
-                                          //               detail:
-                                          //               currentUserModel!);
-                                          //           print(
-                                          //               currentUserModel!
-                                          //                   .favourites);
-                                          //           setState(() {});
-                                          //         },
-                                          //         child: Icon(
-                                          //           currentUserModel!
-                                          //               .favourites
-                                          //               .contains(data
-                                          //               .productId)
-                                          //               ? Icons.favorite
-                                          //               : Icons
-                                          //               .favorite_outline,
-                                          //           color:
-                                          //           ColorConst.sixth,
-                                          //         )))
+                                          Positioned(
+                                              right: width * 0.05,
+                                              top: width * 0.04,
+                                              child: GestureDetector(
+                                                  onTap: () {
+                                                    ProductId1 =
+                                                        data.productId;
+                                                    if (currentUserModel!
+                                                        .favourites
+                                                        .contains(data
+                                                        .productId)) {
+                                                      currentUserModel!
+                                                          .favourites
+                                                          .remove(data
+                                                          .productId);
+                                                    } else {
+                                                      currentUserModel!
+                                                          .favourites
+                                                          .add(data
+                                                          .productId);
+                                                    }
+                                                    updatefavourites(
+                                                        detail:
+                                                        currentUserModel!);
+                                                    print(
+                                                        currentUserModel!
+                                                            .favourites);
+                                                    setState(() {});
+                                                  },
+                                                  child: Icon(
+                                                    currentUserModel!
+                                                        .favourites
+                                                        .contains(data
+                                                        .productId)
+                                                        ? Icons.favorite
+                                                        : Icons
+                                                        .favorite_outline,
+                                                    color:
+                                                    ColorConst.sixth,
+                                                  )))
                                         ],
                                       ),
                                       SizedBox(

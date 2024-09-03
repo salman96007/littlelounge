@@ -225,7 +225,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
               ),
               GestureDetector(
                 onTap:() {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(data1: widget.details,),));
                 },
                 child: ListTile(
                   leading: Stack(

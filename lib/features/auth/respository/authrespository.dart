@@ -16,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../model/productmodel.dart';
 import '../../payement/screen/saveaddresspage.dart';
 import '../screen/loginpage.dart';
-
+UserModel? currentUserModel;
 final addUserRespositoryProvider = Provider(
   (ref) => AdduserRespository(
       firebaseAuth: ref.watch(firebaseAuthProvider),

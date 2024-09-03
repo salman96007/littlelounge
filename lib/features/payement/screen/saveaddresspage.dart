@@ -14,6 +14,7 @@ import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
 import '../../auth/controller/authcontroller.dart';
+import '../../auth/respository/authrespository.dart';
 
 
 class Saveaddresspage extends ConsumerStatefulWidget {
@@ -31,6 +32,8 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
   TextEditingController addressController=TextEditingController();
 
   bool toggle = false;
+
+  get d => null;
    addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
 
      List addressList = detail.address;
@@ -329,7 +332,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(data1: d,),));
                       },
                       child: Container(
                         height: height*0.07,

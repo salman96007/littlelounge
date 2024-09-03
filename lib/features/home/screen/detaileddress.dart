@@ -17,6 +17,7 @@ import '../../../constant/colorconstant.dart';
 import '../../../constant/imageconstant.dart';
 import '../../../main.dart';
 import '../../auth/controller/authcontroller.dart';
+import '../../auth/respository/authrespository.dart';
 import '../../cart/screen/checkoutpage.dart';
 
 class DetailedDress extends ConsumerStatefulWidget {
@@ -163,7 +164,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                CartPage(),
+                                CartPage(detail: widget.detail,),
                           ));
                     },
                     child: SvgPicture.asset(SvgConstant.order),

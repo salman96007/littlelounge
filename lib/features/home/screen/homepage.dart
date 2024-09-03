@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ import 'package:littlelounge/model/usermodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constant/colorconstant.dart';
+import '../../auth/respository/authrespository.dart';
 import '../../auth/screen/createaccount.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -40,6 +42,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     currentUSerName = prefs1.getString("user");
     currentUserImage =prefs1.getString("sign1");
   }
+  
+    
 
   bool view = false;
   bool favour = false;
@@ -102,11 +106,11 @@ class _HomePageState extends ConsumerState<HomePage> {
               padding: EdgeInsets.only(right: width * 0.05),
               child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CartPage(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => CartPage(detail: d,),
+                    //     ));
                   },
                   child: Icon(
                     CupertinoIcons.cart,
@@ -555,32 +559,32 @@ class _HomePageState extends ConsumerState<HomePage> {
                                               offset: Offset(0, 3))
                                         ])),
                               ),
-                              // Positioned(
-                              //     right: width * 0.05,
-                              //     top: width * 0.04,
-                              //     child: GestureDetector(
-                              //         onTap: () {
-                              //           if (currentUserModel!.favourites
-                              //               .contains(data[index].productId)) {
-                              //             currentUserModel!.favourites
-                              //                 .remove(data[index].productId);
-                              //
-                              //           }
-                              //           else {
-                              //             currentUserModel!.favourites
-                              //                 .add(data[index].productId);
-                              //           }
-                              //           updatefavourites(detail: currentUserModel!);
-                              //
-                              //           setState(() {});
-                              //         },
-                              //         child: Icon(
-                              //               currentUserModel!.favourites .contains(data[index].productId)
-                              //               ? Icons.favorite
-                              //               : Icons.favorite_outline,
-                              //           color: ColorConst.sixth,
-                              //         ),
-                              //     ))
+                              Positioned(
+                                  right: width * 0.05,
+                                  top: width * 0.04,
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        if (currentUserModel!.favourites
+                                            .contains(data[index].productId)) {
+                                          currentUserModel!.favourites
+                                              .remove(data[index].productId);
+
+                                        }
+                                        else {
+                                          currentUserModel!.favourites
+                                              .add(data[index].productId);
+                                        }
+                                        updatefavourites(detail: currentUserModel!);
+
+                                        setState(() {});
+                                      },
+                                      child: Icon(
+                                            currentUserModel!.favourites .contains(data[index].productId)
+                                            ? Icons.favorite
+                                            : Icons.favorite_outline,
+                                        color: ColorConst.sixth,
+                                      ),
+                                  ))
                             ],
                           ),
                           SizedBox(

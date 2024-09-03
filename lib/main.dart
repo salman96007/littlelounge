@@ -31,7 +31,7 @@ String ? CategoryIdData;
  var height;
  var width;
 
- UserModel? currentUserModel;
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

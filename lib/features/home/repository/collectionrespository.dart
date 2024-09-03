@@ -15,6 +15,7 @@ import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../model/productmodel.dart';
 
+import '../../auth/respository/authrespository.dart';
 import '../screen/welcomepage.dart';
 
 final collectionRespositoryProvider = Provider(

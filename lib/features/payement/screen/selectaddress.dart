@@ -9,13 +9,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/editaddress.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
+import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
 import '../../home/controller/collectioncontroller.dart';
 
 class Selectaddress extends ConsumerStatefulWidget {
-  const Selectaddress({super.key});
+  final ProductModel data1;
+  const Selectaddress({super.key,
+    required this.data1
+  });
 
   @override
   ConsumerState createState() => _SelectaddressState();
@@ -23,10 +27,8 @@ class Selectaddress extends ConsumerStatefulWidget {
 
 class _SelectaddressState extends ConsumerState<Selectaddress> {
   String radio="";
+ var data1;
 
-  get data => null;
-
-  get w => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       bottomSheet:InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '', details: data,),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data:"", details: widget.data1,),));
         },
         child: Container(
           height:height*0.07,
@@ -103,7 +105,8 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                 itemBuilder: (context, index) {
                   return  GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"], details:w,),));
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],details: widget.data1,)));
                     },
                     child: Container(
                       height:height*0.16,
