@@ -67,8 +67,10 @@ class AdduserRespository {
         SharedPreferences prefs2 = await SharedPreferences.getInstance();
         prefs2.setBool("login",true);
         prefs2.setString('user', currentUSerName.toString(),);
+        prefs2.setString('email', currentUSerEmail!);
         prefs2.setString("sign1", currentUserImage.toString());
-
+        prefs2.setString("userId", currentUSerId.toString());
+        prefs2.setString("imageUrl", currentUserImage!);
         // prefs2.setString("user", currentUSerName.toString());
         // prefs2.setString("sign1", currentUserImage.toString());
 

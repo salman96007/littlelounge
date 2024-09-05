@@ -56,8 +56,7 @@ class _CartPageState extends ConsumerState<CartPage> {
         backgroundColor: ColorConst.primaryColor,
         centerTitle: true,
       ),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
+      body: Column(
         children: [
          Column(
            children: [
@@ -114,180 +113,78 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           ),
 
 
-                                        ),
-                                        Padding(
-                                          padding:  EdgeInsets.only(top: width*0.05,left: width*0.05),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Text(data.name,style: TextStyle(
-                                                  color: ColorConst.secondary,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: width*0.04
-                                              ),),
-                                              Row(
-                                                children: [
-                                                  SvgPicture.asset(SvgConstant.rupees,width: width*0.04
+                               ),
+                               Padding(
+                                 padding:  EdgeInsets.only(top: width*0.05,left: width*0.05),
+                                 child: Column(
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                   children: [
+                                     Text("Men's Tie-Dye T-Shirt\nNike Sportswear",style: TextStyle(
+                                         color: ColorConst.secondary,
+                                         fontWeight: FontWeight.w500,
+                                         fontSize: width*0.04
+                                     ),),
+                                     Row(
+                                       children: [
+                                         SvgPicture.asset(SvgConstant.rupees,width: width*0.04
 
-                                                    ,),
-                                                  Text(data.prize.toString()),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      substract();
-                                                      setState(() {
-
-                                                      });
-                                                    },
-                                                    child: Container(
-
-                                                        width: width*0.07,
-                                                        height: height*0.07,
-                                                        decoration: BoxDecoration(
-                                                            shape: BoxShape.circle,
-                                                            border: Border.all(
-                                                                color: ColorConst.twentyColor
-                                                            )
+                                           ,),
+                                         Text("500"),
+                                       ],
+                                     ),
+                                     Row(
+                                       children: [
+                                         Container(
+                                             width: width*0.07,
+                                             height: height*0.07,
+                                             decoration: BoxDecoration(
+                                                 shape: BoxShape.circle,
+                                                 border: Border.all(
+                                                     color: ColorConst.twentyColor
+                                                 )
 
 
-                                                        ),
-                                                        child: SvgPicture.asset(SvgConstant.down,fit: BoxFit.none,)),
-                                                  ),
-                                                  SizedBox(width: width*0.04,),
-                                                  Text("${count}",style: TextStyle(
-                                                      color: ColorConst.secondary,
-                                                      fontWeight: FontWeight.w600,
-                                                      fontSize: width*0.05
+                                             ),
+                                             child: SvgPicture.asset(SvgConstant.down,fit: BoxFit.none,)),
+                                         SizedBox(width: width*0.04,),
+                                         Text("1",style: TextStyle(
+                                             color: ColorConst.secondary,
+                                             fontWeight: FontWeight.w600,
+                                             fontSize: width*0.05
 
-                                                  ),),
-                                                  SizedBox(width: width*0.04,),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      add();
-                                                      setState(() {
-
-                                                      });
-                                                    },
-                                                    child: Container(
-                                                        width: width*0.07,
-                                                        height: height*0.07,
-                                                        decoration: BoxDecoration(
-                                                            shape: BoxShape.circle,
-                                                            border: Border.all(
-                                                                color: ColorConst.twentyColor
-                                                            )
+                                         ),),
+                                         SizedBox(width: width*0.04,),
+                                         Container(
+                                             width: width*0.07,
+                                             height: height*0.07,
+                                             decoration: BoxDecoration(
+                                                 shape: BoxShape.circle,
+                                                 border: Border.all(
+                                                     color: ColorConst.twentyColor
+                                                 )
 
 
-                                                        ),
-                                                        child: SvgPicture.asset(SvgConstant.up,fit: BoxFit.none,)),
-                                                  ),
-                                                  SizedBox(width: width*0.13,),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                              "Are you sure log out ?",
-                                                              style: TextStyle(fontSize: width * 0.05),
-                                                            ),
-                                                            content: Padding(
-                                                              padding: EdgeInsets.only(top: height * 0.06),
-                                                              child: Row(
-                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                children: [
-                                                                  GestureDetector(
-                                                                    onTap: () {
-                                                                      // if(currentUserModel!.addTOCart.contains(widget.detail.productId)){
-                                                                      //     currentUserModel!.addTOCart.remove(widget.detail.productId);
-                                                                      //     updateAddCart(userModel: currentUserModel!);
-                                                                      // }
+                                             ),
+                                             child: SvgPicture.asset(SvgConstant.up,fit: BoxFit.none,)),
+                                         SizedBox(width: width*0.13,),
+                                         Container(
+                                           // margin: EdgeInsets.only(top: width*0.34),
+                                             width: width*0.07,
+                                             height: height*0.07,
+                                             decoration: BoxDecoration(
+                                                 shape: BoxShape.circle,
+                                                 border: Border.all(
+                                                     color: ColorConst.twentyColor
+                                                 )
 
 
-                                                                      Navigator.pop(context);
+                                             ),
+                                             child: SvgPicture.asset(SvgConstant.delete,fit: BoxFit.none,)),
 
-                                                                    },
-                                                                    child: Container(
-                                                                      height: height * 0.045,
-                                                                      width: width * 0.2,
-                                                                      decoration: BoxDecoration(
-                                                                        color: ColorConst.thirdColor,
-                                                                        borderRadius:
-                                                                        BorderRadius.circular(width * 0.04),
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                              color: Colors.black.withOpacity(0.13),
-                                                                              blurRadius: 6,
-                                                                              spreadRadius: 3,
-                                                                              offset: Offset(0, 4))
-                                                                        ],
-                                                                      ),
-                                                                      child: Center(
-                                                                          child: Text(
-                                                                            "Yes",
-                                                                            style: TextStyle(
-                                                                                color: ColorConst.primaryColor,
-                                                                                fontWeight: FontWeight.w500),
-                                                                          )),
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                    width: width * 0.04,
-                                                                  ),
-                                                                  InkWell(
-                                                                    onTap: () {
-                                                                      Navigator.pop(context);
-                                                                    },
-                                                                    child: Container(
-                                                                      height: height * 0.045,
-                                                                      width: width * 0.2,
-                                                                      decoration: BoxDecoration(
-                                                                        color: ColorConst.primaryColor,
-                                                                        borderRadius:
-                                                                        BorderRadius.circular(width * 0.04),
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                              color: Colors.black.withOpacity(0.13),
-                                                                              blurRadius: 6,
-                                                                              spreadRadius: 3,
-                                                                              offset: Offset(0, 4))
-                                                                        ],
-                                                                      ),
-                                                                      child: Center(
-                                                                          child: Text("No",
-                                                                              style: TextStyle(
-                                                                                  color: ColorConst.secondary,
-                                                                                  fontWeight: FontWeight.w500))),
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      );
-                                                    },
-                                                    child: Container(
-                                                      // margin: EdgeInsets.only(top: width*0.34),
-                                                        width: width*0.12,
-                                                        height: height*0.12,
-                                                        decoration: BoxDecoration(
-                                                            shape: BoxShape.circle,
-                                                            border: Border.all(
-                                                                color: ColorConst.twentyColor
-                                                            )
-                                                        ),
-                                                        child: SvgPicture.asset(SvgConstant.delete,fit: BoxFit.none,)),
-                                                  ),
-
-                                                ],),
-                                            ],
-                                          ),
+                                       ],),
+                                   ],
+                                 ),
 
                                         ),
                                       ],

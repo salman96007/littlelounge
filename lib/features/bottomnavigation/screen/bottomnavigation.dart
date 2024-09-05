@@ -17,13 +17,14 @@ class HomePageView extends ConsumerStatefulWidget {
     const HomePageView({super.key,
     });
 
-    @override
+      @override
     ConsumerState<HomePageView> createState() => _HomePageViewState();
   }
   class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
-      HomePage(id:CategoryIdData.toString(),),
+      HomePage(id:
+      "dAW5snotvVwoJQ944L15",),
        WishListPage(),
       Orderpage(),
       Container(

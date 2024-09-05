@@ -31,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
-               children: [
+              children: [
                 Text("My Account",style: TextStyle(color: ColorConst.secondary,fontWeight: FontWeight.w600,fontSize: width*0.05),),
               ],
             ),

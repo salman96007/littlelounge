@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import '../../../model/productmodel.dart';
 import '../../../model/usermodel.dart';
 import '../../auth/controller/authcontroller.dart';
 import '../../auth/respository/authrespository.dart';
@@ -32,6 +32,7 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
 
   bool toggle = false;
 
+  get data => null;
   addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
 
     List addressList = detail.address;

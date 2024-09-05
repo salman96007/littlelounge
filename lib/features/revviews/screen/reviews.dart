@@ -102,13 +102,14 @@ class _ReviewPageState extends State<ReviewPage> {
                      ],
                    ),
                  ),
-                 Text("Lorem ipsum dolor sit amet, consectetur\n adipiscing elit. Pellentesque malesuada eget\n vitae amet...")
+                 Text("Lorem ipsum dolor sit amet, consectetur\n adipiscing elit. Pellentesque malesuada eget\n vitae amet..."),
+                 Divider()
                ],
              );
            },
              itemCount: a.length,
            ),
-         )
+         ),
         ],
       ),
     );

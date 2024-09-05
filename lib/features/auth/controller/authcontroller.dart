@@ -12,12 +12,12 @@ import 'package:littlelounge/model/usermodel.dart';
     addUser({required UserModel detail}){
       _adduserRespository.addAuth(detail: detail);
     }
+
     authLogin({required String email, required String password,required,required BuildContext context,}){
       _adduserRespository.loginAuth(email: email, password: password, context: context);
     }
 
     google(BuildContext context){
-
       _adduserRespository.signInWithGoogle(context: context);
 
     }
