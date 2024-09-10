@@ -63,7 +63,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
           children: [
             InkWell(
               onTap:() {
-                Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(),));
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(data2: widget.data1,),));
               },
               child: Container(
                 height:height*0.07,

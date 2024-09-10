@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
 import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/model/addressmodel.dart';
+import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 
 import '../../../main.dart';
@@ -18,7 +20,9 @@ import '../../auth/respository/authrespository.dart';
 
 
 class Saveaddresspage extends ConsumerStatefulWidget {
-  const Saveaddresspage({super.key});
+  final ProductModel data2;
+  const Saveaddresspage({super.key,
+  required this.data2});
 
   @override
   ConsumerState<Saveaddresspage> createState() => _SaveaddresspageState();
@@ -33,7 +37,6 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
 
   bool toggle = false;
 
-  get d => null;
    addressadd({required UserModel detail, required Map<String,dynamic> adreess}){
 
      List addressList = detail.address;
@@ -219,6 +222,10 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                       controller:phoneNumberController,
                       keyboardType:TextInputType.number,
                       textInputAction:TextInputAction.next,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(10),
+                      ],
                       style:TextStyle(
                           color:ColorConst.eighth,
                           fontSize:width*0.045
@@ -324,7 +331,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Map <String, dynamic>add={
+                        Map <String,dynamic>add={
                           "name":nameController.text.trim(),
                           "country":countryController.text.trim(),
                           "city":cityController.text.trim(),
@@ -332,7 +339,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(data1: d,),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress( data1:widget.data2),));
                       },
                       child: Container(
                         height: height*0.07,
