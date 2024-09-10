@@ -14,6 +14,7 @@ class CheckoutPage extends ConsumerStatefulWidget {
   final String data;
   final ProductModel details;
 
+
   const CheckoutPage({super.key,
     required this.data,
     required this.details
@@ -73,7 +74,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                     itemBuilder: (context, index) {
                       return
                         Container(
-                            margin: EdgeInsets.only(right: width*0.05,left: width*0.05,top: width*0.07),
+                            margin: EdgeInsets.only(right: width*0.05,left: width*0.05,top: width*0.05),
                             width: width*0.9,
                             height: height*0.25,
                             decoration: BoxDecoration(
@@ -81,7 +82,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                 color: ColorConst.primaryColor,
                                 boxShadow: [
                                   BoxShadow(
-                                      color: ColorConst.forth.withOpacity(0.2),
+                                      color: ColorConst.secondary.withOpacity(0.2),
                                       blurRadius: 4,
                                       spreadRadius:2,
                                       offset: Offset(0,4)
@@ -92,11 +93,14 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(left:width*0.05),
-                                  width: width*0.28,
+                                  width: width*0.3,
                                   height: height*0.20,
-                                  child: Image.network(widget.details.image,fit: BoxFit.fill,),
                                   decoration: BoxDecoration(
-                                      color: ColorConst.forth.withOpacity(0.25),
+                                    image: DecorationImage(image: NetworkImage(widget.details.image,),fit: BoxFit.cover),
+                                      border: Border.all(
+                                        width:width*0.003,
+                                        color:ColorConst.secondary
+                                      ),
                                       borderRadius: BorderRadius.circular(width*0.03),
                                       boxShadow: [
                                         BoxShadow(
@@ -120,18 +124,26 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(widget.details.name,style: TextStyle(
-                                          color: ColorConst.secondary,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width*0.04
+                                        fontSize:width*0.04,
+                                        fontWeight:FontWeight.w600,
                                       ),),
                                       Row(
                                         children: [
-                                          SvgPicture.asset(SvgConstant.rupees,width: width*0.04
+                                          Text("size:",style: TextStyle(
+                                            color:ColorConst.eighth,
+                                            fontSize:width*0.036
+                                          ),),
+                                          Text("M",style:TextStyle(
+                                            fontSize:width*0.04,
+                                            fontWeight:FontWeight.w500,
+                                          ),)
 
-                                            ,),
-                                          Text(widget.details.prize.toString()),
-                                        ],
-                                      ),
+
+                                      ],),
+                                      Text("₹${widget.details.prize.toString()}",style: TextStyle(
+                                        fontSize:width*0.04,
+                                        fontWeight:FontWeight.w600,
+                                      ),),
                                       Row(
                                         children: [
                                           GestureDetector(

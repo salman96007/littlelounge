@@ -16,6 +16,7 @@ import '../../../main.dart';
 import '../../../model/usermodel.dart';
 import '../../auth/controller/authcontroller.dart';
 import '../../auth/respository/authrespository.dart';
+import 'detaileddress.dart';
 
 
 String? ProductId1;
@@ -112,34 +113,42 @@ class _WishListPageState extends ConsumerState<WishListPage> {
                                       Stack(
                                         alignment: Alignment.topRight,
                                         children: [
-                                          Container(
-                                              child: Image.network(
-                                                data.image.toString(),
-                                              ),
-                                              width: width * 0.425,
-                                              height: height * 0.3,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(
-                                                      width *
-                                                          0.05),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          ImageConstant
-                                                              .bg),
-                                                      fit: BoxFit.cover),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors
-                                                            .black
-                                                            .withOpacity(
-                                                            0.1),
-                                                        blurRadius: 4,
-                                                        spreadRadius: 2,
-                                                        offset:
-                                                        Offset(0, 3))
-                                                  ])),
+                                          GestureDetector(
+                                            onTap:() {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => DetailedDress(detail: data,)));
+                                            },
+                                            child: Container(
+                                                child: Image.network(
+                                                  data.image.toString(),
+                                                ),
+                                                width: width * 0.425,
+                                                height: height * 0.3,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius
+                                                        .circular(
+                                                        width *
+                                                            0.05),
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            ImageConstant
+                                                                .bg),
+                                                        fit: BoxFit.cover),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Colors
+                                                              .black
+                                                              .withOpacity(
+                                                              0.1),
+                                                          blurRadius: 4,
+                                                          spreadRadius: 2,
+                                                          offset:
+                                                          Offset(0, 3))
+                                                    ])),
+                                          ),
                                           Positioned(
                                               right: width * 0.05,
                                               top: width * 0.04,
