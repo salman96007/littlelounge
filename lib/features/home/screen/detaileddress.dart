@@ -22,7 +22,8 @@ import '../../cart/screen/checkoutpage.dart';
 
 class DetailedDress extends ConsumerStatefulWidget {
   final ProductModel detail;
-  const DetailedDress({super.key, required this.detail});
+  const DetailedDress({super.key,
+    required this.detail});
 
   @override
   ConsumerState<DetailedDress> createState() => _DetailedDressState();
@@ -82,7 +83,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CheckoutPage(data: '', details: widget.detail,),
+                    builder: (context) => CheckoutPage(data: '', details: widget.detail, selectedsize:selectedSize,),
                   ));
             },
             child: Container(

@@ -17,8 +17,10 @@ import '../../home/controller/collectioncontroller.dart';
 
 class Selectaddress extends ConsumerStatefulWidget {
   final ProductModel data1;
-  const Selectaddress({super.key,
-    required this.data1
+  String?selectedsize;
+   Selectaddress({super.key,
+    required this.data1,
+    this.selectedsize,
   });
 
   @override
@@ -43,7 +45,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       bottomSheet:InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data:"", details: widget.data1,),));
+          Navigator.pop(context);
         },
         child: Container(
           height:height*0.07,
@@ -106,7 +108,8 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                   return  GestureDetector(
                     onTap: () {
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage( data:data.address[index]["address"],details: widget.data1,)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                          CheckoutPage( data:data.address[index]["address"],details: widget.data1,selectedsize:widget.selectedsize.toString(),)));
                     },
                     child: Container(
                       height:height*0.16,

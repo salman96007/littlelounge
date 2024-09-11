@@ -7,17 +7,17 @@ import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/model/productmodel.dart';
-
 import '../../../main.dart';
-
+double? total;
 class CheckoutPage extends ConsumerStatefulWidget {
   final String data;
   final ProductModel details;
+  final String selectedsize;
 
-
-  const CheckoutPage({super.key,
+  const  CheckoutPage({super.key,
     required this.data,
-    required this.details
+    required this.details,
+     required this.selectedsize,
   });
 
   @override
@@ -40,12 +40,12 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
   }
 
      total(){
-      double Sum = 0;
+       double Sum = 0;
       Sum+=widget.details.prize*count;
       print(Sum);
       return Sum;
-
      }
+
 
 
 
@@ -133,7 +133,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                                             color:ColorConst.eighth,
                                             fontSize:width*0.036
                                           ),),
-                                          Text("M",style:TextStyle(
+                                          Text(widget.selectedsize.toString(),style:TextStyle(
                                             fontSize:width*0.04,
                                             fontWeight:FontWeight.w500,
                                           ),)
@@ -237,7 +237,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
               ),
               GestureDetector(
                 onTap:() {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(data1: widget.details,),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress(data1: widget.details,selectedsize:widget.selectedsize,),));
                 },
                 child: ListTile(
                   leading: Stack(
@@ -343,7 +343,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                     Row(
                       children: [
                         SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                        Text("10",style: TextStyle(
+                        Text("50",style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: ColorConst.secondary,
                             fontSize: width*0.04
@@ -364,8 +364,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                     ),),
                     Row(
                       children: [
-                        SvgPicture.asset(SvgConstant.rupees,width: width*0.04,),
-                        Text("140",style: TextStyle(
+                        Text("₹1234",style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: ColorConst.secondary,
                             fontSize: width*0.04
@@ -378,21 +377,59 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
               ],
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            width: width*0.75,
-            height: height*0.065,
-            child: Text("Checkout",style: TextStyle(
-                color: ColorConst.primaryColor,
-                fontWeight: FontWeight.w500,
-                fontSize: width*0.05
-            ),),
-            decoration: BoxDecoration(
-              color: ColorConst.thirdColor,
-              borderRadius: BorderRadius.circular(width*0.03),
-            ),
-          )
         ],
+      ),
+      bottomSheet:Container(
+        height: height * 0.08,
+        width:width*1,
+        decoration:BoxDecoration(
+            color:ColorConst.primaryColor,
+            boxShadow: [
+              BoxShadow(
+                  color: ColorConst.secondary.withOpacity(0.5),
+                  blurRadius: 4,
+                  spreadRadius: 2,
+                  offset: Offset(0, 4)
+
+              ),
+            ]
+        ),
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisAlignment:MainAxisAlignment.center,
+              crossAxisAlignment:CrossAxisAlignment.start,
+              children: [
+                Text("Total price",style:TextStyle(
+                    color:ColorConst.eighth,
+                    fontWeight: FontWeight.w500,
+                    fontSize:width*0.035
+                ),),
+                Text("₹1234",style:TextStyle(
+                  fontWeight:FontWeight.w600,
+                  fontSize:width*0.05,
+                ),),
+              ],
+            ),
+            SizedBox(width:width*0.25),
+            Container(
+              height:height*0.052,
+              width:width*0.35,
+              decoration:BoxDecoration(
+                  color:ColorConst.thirdColor,
+                  borderRadius:BorderRadius.circular(width*0.02)
+
+              ),
+              child:Center(
+                child: Text("Place order",style:TextStyle(
+                  fontWeight:FontWeight.w600,
+                  color:ColorConst.primaryColor,
+                ),),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
