@@ -21,8 +21,11 @@ import '../../auth/respository/authrespository.dart';
 
 class Saveaddresspage extends ConsumerStatefulWidget {
   final ProductModel data2;
-  const Saveaddresspage({super.key,
-  required this.data2});
+   final String?selectedsize;
+
+   Saveaddresspage({super.key,
+   required this.data2,
+   this.selectedsize});
 
   @override
   ConsumerState<Saveaddresspage> createState() => _SaveaddresspageState();
@@ -45,7 +48,6 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
      ref.watch(ControllerProvider).updateaddress(detail.copyWith(address: addressList ));
    }
     Map<String,dynamic> adreess ={};
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +84,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                       controller: nameController,
                       keyboardType:TextInputType.name,
                       textInputAction:TextInputAction.next,
+                      textCapitalization: TextCapitalization.words,
                       style:TextStyle(
                         color:ColorConst.eighth,
                         fontSize:width*0.045

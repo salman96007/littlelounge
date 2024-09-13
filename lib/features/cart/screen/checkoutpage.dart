@@ -17,7 +17,7 @@ class CheckoutPage extends ConsumerStatefulWidget {
   const  CheckoutPage({super.key,
     required this.data,
     required this.details,
-     required this.selectedsize,
+    required this.selectedsize,
   });
 
   @override
@@ -26,6 +26,9 @@ class CheckoutPage extends ConsumerStatefulWidget {
 
 class _CartPageState extends ConsumerState<CheckoutPage> {
   int count = 1;
+  double totalP=0;
+
+
   add(){
     count++;
     setState(() {
@@ -33,6 +36,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
     });
   }
   substract(){
+
     count>1?count--:count;
     setState(() {
 
@@ -46,7 +50,14 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
       return Sum;
      }
 
+totalPrice(){
+    double dc=50;
+    totalP=dc+total();
+    print(totalP);
+    return totalP;
 
+
+}
 
 
   @override
@@ -364,7 +375,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                     ),),
                     Row(
                       children: [
-                        Text("₹1234",style: TextStyle(
+                        Text("₹${totalPrice()}",style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: ColorConst.secondary,
                             fontSize: width*0.04
@@ -406,7 +417,7 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
                     fontWeight: FontWeight.w500,
                     fontSize:width*0.035
                 ),),
-                Text("₹1234",style:TextStyle(
+                Text("₹${totalPrice()}",style:TextStyle(
                   fontWeight:FontWeight.w600,
                   fontSize:width*0.05,
                 ),),

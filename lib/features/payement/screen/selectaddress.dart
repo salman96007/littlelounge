@@ -13,11 +13,14 @@ import 'package:littlelounge/model/productmodel.dart';
 
 import '../../../constant/colorconstant.dart';
 import '../../../main.dart';
+import '../../../model/usermodel.dart';
+import '../../auth/controller/authcontroller.dart';
+import '../../auth/screen/loginpage.dart';
 import '../../home/controller/collectioncontroller.dart';
 
 class Selectaddress extends ConsumerStatefulWidget {
   final ProductModel data1;
-  String?selectedsize;
+  final String?selectedsize;
    Selectaddress({super.key,
     required this.data1,
     this.selectedsize,
@@ -30,6 +33,7 @@ class Selectaddress extends ConsumerStatefulWidget {
 class _SelectaddressState extends ConsumerState<Selectaddress> {
   String radio="";
  var data1;
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,7 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
           children: [
             InkWell(
               onTap:() {
-                Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(data2: widget.data1,),));
+                Navigator.push(context,MaterialPageRoute(builder: (context) =>Saveaddresspage(data2: widget.data1,selectedsize:widget.selectedsize,),));
               },
               child: Container(
                 height:height*0.07,
@@ -182,11 +186,12 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                               ),),
                             ],
                           ),
-                          InkWell(
-                              onTap:() {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAddresspage(address:data.address[index],),));
-                              },
-                              child: Icon(Icons.edit_outlined)),
+                         // InkWell(
+                         //   onTap: () {
+                         //
+                         //
+                         //   },
+                         //     child: Icon(CupertinoIcons.delete,color:ColorConst.sixth,))
                         ],
                       ),
                     ),

@@ -283,7 +283,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
 
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddReview(id: widget.detail.productId,),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddReview(id: widget.detail.productId),));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
