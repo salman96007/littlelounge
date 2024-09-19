@@ -27,12 +27,14 @@ import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/features/revviews/screen/addreview.dart';
 import 'package:littlelounge/features/revviews/screen/reviews.dart';
 import 'package:littlelounge/features/splashscreen/screen/splashscreen.dart';
+import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 import 'features/bottomnavigation/screen/bottomnavigation.dart';
 import 'features/payement/screen/savecard.dart';
 import 'firebase_options.dart';
 
 String ? CategoryIdData;
+ProductModel ? product;
  var height;
  var width;
 

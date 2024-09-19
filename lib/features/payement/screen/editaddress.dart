@@ -330,7 +330,7 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
                         Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',
-                             details: widget.details,),));
+                          details: widget.details, selectedsize: '',),));
                       },
                       child: Container(
                         height: height*0.07,

@@ -16,7 +16,6 @@ import '../../home/controller/collectioncontroller.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   final ProductModel detail;
-
   const CartPage({super.key,
     required this.detail
 
@@ -288,7 +287,7 @@ class _CartPageState extends ConsumerState<CartPage> {
              ),
              InkWell(
                onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(data: '',details:widget.detail,)));
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(data: '',details:widget.detail, selectedsize: '',)));
                },
                child: Container(
                  alignment: Alignment.center,

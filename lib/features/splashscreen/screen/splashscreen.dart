@@ -10,6 +10,7 @@ import 'package:littlelounge/features/auth/screen/loginpage.dart';
 import 'package:littlelounge/features/bottomnavigation/screen/bottomnavigation.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/main.dart';
+import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,12 +27,9 @@ class SplashScreen extends ConsumerStatefulWidget {
   @override
   bool login=false ;
 
-
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDataFromFirebase(String currentUSerId) async {
     return await FirebaseFirestore.instance.collection('user').doc(currentUSerId).get();
   }
-
-
 
   void loadCurrentUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -48,11 +46,12 @@ class SplashScreen extends ConsumerStatefulWidget {
           print("+++++++      ------------------ checking if exists -----------------------     ++++++");
           setState(() {
             currentUserModel = UserModel.fromJson(userDoc.data() as Map<String,dynamic>);
+
           });
 
           Future.delayed(Duration(
               seconds: 3
-          )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?HomePageView():Login(),)));
+          )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?WelcomPage():Login(),)));
         } else {
           print("User not found in Firestore");
         }
@@ -81,6 +80,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 
   @override
   void initState() {
+
     loadCurrentUser();
     // TODO: implement initState
     super.initState();

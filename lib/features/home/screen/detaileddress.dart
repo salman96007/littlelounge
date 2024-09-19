@@ -105,72 +105,72 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
       body: ListView(
         children: [
           Stack(
-            children:[ Container(
-              width: width*1,
-              child: CarouselSlider.builder(
-                itemCount: widget.detail.images.length,
-                itemBuilder: (context, index, realIndex) {
-                  return
-                    Hero(
-                      tag: widget.detail.images[index],
-                      transitionOnUserGestures: true,
-                      flightShuttleBuilder: (flightContext, animation, direction,
-                          fromContext, toContext) {
-                        return Image.network(widget.detail.images[index]);
-                      },
-                      child: Container(
-                          child: Image.network(
-                            widget.detail.images[index],
-                            fit: BoxFit.cover,
-                          ),
-                          width: width * 1,
-                          height: height * 0.45,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(ImageConstant.bg),
-                                  fit: BoxFit.cover))),
+              children:[ Container(
+                width: width*1,
+                child: CarouselSlider.builder(
+                  itemCount: widget.detail.images.length,
+                  itemBuilder: (context, index, realIndex) {
+                    return
+                      Hero(
+                        tag: widget.detail.images[index],
+                        transitionOnUserGestures: true,
+                        flightShuttleBuilder: (flightContext, animation, direction,
+                            fromContext, toContext) {
+                          return Image.network(widget.detail.images[index]);
+                        },
+                        child: Container(
+                            child: Image.network(
+                              widget.detail.images[index],
+                              fit: BoxFit.cover,
+                            ),
+                            width: width * 1,
+                            height: height * 0.45,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(ImageConstant.bg),
+                                    fit: BoxFit.cover))),
 
-                  );
-                },
-                options: CarouselOptions(
-                    height: height * 0.45,
-                    onPageChanged: (index, reason) {
-                      activeIndex = index;
-                      setState(() {});
-                    },
-                    autoPlay: false,
-                    autoPlayAnimationDuration: Duration(seconds: 2),
-                    viewportFraction: 1),
+                      );
+                  },
+                  options: CarouselOptions(
+                      height: height * 0.45,
+                      onPageChanged: (index, reason) {
+                        activeIndex = index;
+                        setState(() {});
+                      },
+                      autoPlay: false,
+                      autoPlayAnimationDuration: Duration(seconds: 2),
+                      viewportFraction: 1),
+                ),
               ),
-            ),
-              Positioned(
-                  top: height * 0.015,
-                  left: width * 0.04,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePageView(),
-                          ));
-                    },
-                    child: Icon(Icons.arrow_back),
-                  )),
-              Positioned(
-                  top: height * 0.015,
-                  right: width * 0.04,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                CartPage(detail: widget.detail,),
-                          ));
-                    },
-                    child: SvgPicture.asset(SvgConstant.order),
-                  ))
-          ]),
+                Positioned(
+                    top: height * 0.015,
+                    left: width * 0.04,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageView(),
+                            ));
+                      },
+                      child: Icon(Icons.arrow_back),
+                    )),
+                Positioned(
+                    top: height * 0.015,
+                    right: width * 0.04,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  CartPage(detail: widget.detail,),
+                            ));
+                      },
+                      child: SvgPicture.asset(SvgConstant.order),
+                    ))
+              ]),
           SizedBox(height: height * 0.015),
           Center(
             child: AnimatedSmoothIndicator(
@@ -248,6 +248,8 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                       return GestureDetector(
                         onTap: () {
                           selectedSize = Size[index];
+                          print(selectedSize);
+                          print("''''''''''''''''''''''''''object''''''''''''''''''''''''''");
                           setState(() {});
                         },
                         child: Container(
@@ -258,7 +260,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                                     ? ColorConst.thirdColor.withOpacity(0.15)
                                     : ColorConst.eleventh,
                                 borderRadius:
-                                    BorderRadius.circular(width * 0.03)),
+                                BorderRadius.circular(width * 0.03)),
                             child: Text(
                               widget.detail.size[index],
                               style: TextStyle(

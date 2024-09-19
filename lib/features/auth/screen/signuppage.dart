@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
 import 'package:littlelounge/features/auth/controller/authcontroller.dart';
+import 'package:littlelounge/features/auth/respository/authrespository.dart';
 import 'package:littlelounge/features/home/screen/homepage.dart';
 import 'package:littlelounge/features/home/screen/welcomepage.dart';
 import 'package:littlelounge/model/usermodel.dart';
@@ -29,21 +30,21 @@ class _SignupState extends ConsumerState<Signup> {
 
 
   add(){
-      UserModel user =  UserModel(
-        name: usernameController.text,
-        password: passwordController.text,
-        email: emailController.text,
-        id: "", imageUrl: "",
-        check: false,
-        Search: [],
-        address: [],
-        favourites: [],
-        addTOCart: [], order: [],
-      );
+    UserModel user =  UserModel(
+      name: usernameController.text,
+      password: passwordController.text,
+      email: emailController.text,
+      id: "", imageUrl: "",
+      check: false,
+      Search: [],
+      address: [],
+      favourites: [],
+      addTOCart: [], order: [],
+    );
     ref.watch(ControllerProvider).addUser(detail:user);
-      currentUSerName =usernameController.text;
-      currentUserImage =currentUserImage.toString();
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
+    currentUSerName =usernameController.text;
+    currentUserImage =currentUserImage.toString();
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomPage(),), (route) => false,);
 
   }
   TextEditingController usernameController =TextEditingController();
@@ -117,33 +118,33 @@ class _SignupState extends ConsumerState<Signup> {
                         }
                       },
                       decoration: InputDecoration(
-                        labelText:"Password",
-                        suffixIcon: InkWell(
+                          labelText:"Password",
+                          suffixIcon: InkWell(
 
-                                onTap: () {
-                                  pass=!pass;
-                                  setState(() {
-                                  });
-                                },
-                            child:pass?Icon(CupertinoIcons.eye,color:ColorConst.secondary,):Icon(CupertinoIcons.eye_slash,color:ColorConst.secondary)),
-                        labelStyle:TextStyle(
-                            color: ColorConst.secondary,
-                            fontWeight: FontWeight.w400
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(width*0.03),
-                          borderSide: BorderSide(color: ColorConst.secondary),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(width*0.03),
-                          borderSide: BorderSide(color: ColorConst.secondary),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: ColorConst.secondary,
+                              onTap: () {
+                                pass=!pass;
+                                setState(() {
+                                });
+                              },
+                              child:pass?Icon(CupertinoIcons.eye,color:ColorConst.secondary,):Icon(CupertinoIcons.eye_slash,color:ColorConst.secondary)),
+                          labelStyle:TextStyle(
+                              color: ColorConst.secondary,
+                              fontWeight: FontWeight.w400
                           ),
-                          borderRadius: BorderRadius.circular(width*0.03)
-                        )
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(width*0.03),
+                            borderSide: BorderSide(color: ColorConst.secondary),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(width*0.03),
+                            borderSide: BorderSide(color: ColorConst.secondary),
+                          ),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: ColorConst.secondary,
+                              ),
+                              borderRadius: BorderRadius.circular(width*0.03)
+                          )
 
 
                       ),
@@ -159,8 +160,8 @@ class _SignupState extends ConsumerState<Signup> {
                         labelText:"Email Address",
                         suffixIcon: Icon(Icons.email_outlined,color:ColorConst.secondary),
                         labelStyle:TextStyle(
-                            color: ColorConst.secondary,
-                            fontWeight: FontWeight.w400,
+                          color: ColorConst.secondary,
+                          fontWeight: FontWeight.w400,
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(width*0.03),
@@ -236,18 +237,18 @@ class _SignupState extends ConsumerState<Signup> {
                 InkWell(
                   onTap: () {
                     if(usernameController.text !="" &&
-                      passwordController.text != "" &&
-                      emailController.text != ""&&
-                      formkey.currentState!.validate()
+                        passwordController.text != "" &&
+                        emailController.text != ""&&
+                        formkey.currentState!.validate()
                     ){
                       add();
                     }else{
-                         usernameController.text==""?ScaffoldMessenger.of(context).
-                         showSnackBar(SnackBar(content: Text("please Enter your name"))):
-                         passwordController.text ==""? ScaffoldMessenger.of(context).
-                         showSnackBar(SnackBar(content: Text("please Enter valid password"))):
-                             emailController.text ==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid email address"))):
-                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid details")));
+                      usernameController.text==""?ScaffoldMessenger.of(context).
+                      showSnackBar(SnackBar(content: Text("please Enter your name"))):
+                      passwordController.text ==""? ScaffoldMessenger.of(context).
+                      showSnackBar(SnackBar(content: Text("please Enter valid password"))):
+                      emailController.text ==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid email address"))):
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please Enter your valid details")));
 
                     }
 

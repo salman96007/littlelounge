@@ -18,7 +18,7 @@ import '../../payement/screen/saveaddresspage.dart';
 import '../screen/loginpage.dart';
 UserModel? currentUserModel;
 final addUserRespositoryProvider = Provider(
-  (ref) => AdduserRespository(
+      (ref) => AdduserRespository(
       firebaseAuth: ref.watch(firebaseAuthProvider),
       firestore: ref.watch(firebaseProvider)),
 );
@@ -36,18 +36,18 @@ class AdduserRespository {
   addAuth({required UserModel detail}) {
     _firebaseAuth
         .createUserWithEmailAndPassword(
-            email: detail.email, password: detail.password)
+        email: detail.email, password: detail.password)
         .then((value) {
       _user.add(detail.toJson()).then(
             (value) => value.update(detail.copyWith(id: value.id).toJson()),
-          );
+      );
     });
   }
 
   loginAuth(
       {required String email,
-      required String password,
-      required BuildContext context}) async {
+        required String password,
+        required BuildContext context}) async {
     QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
         .collection("user")
         .where("email", isEqualTo: email)
@@ -79,7 +79,7 @@ class AdduserRespository {
           MaterialPageRoute(
             builder: (context) => WelcomPage(),
           ),
-          (route) => false,
+              (route) => false,
         );
       } else {
         ScaffoldMessenger.of(context)
@@ -93,9 +93,9 @@ class AdduserRespository {
       {required BuildContext context}) async {
     await _googleSignIn.signOut();
     final GoogleSignInAccount? googleSignInAccount =
-        await _googleSignIn.signIn();
+    await _googleSignIn.signIn();
     final GoogleSignInAuthentication googGoogleSignInAuthentication =
-        await googleSignInAccount!.authentication;
+    await googleSignInAccount!.authentication;
     final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googGoogleSignInAuthentication.accessToken,
         idToken: googGoogleSignInAuthentication.idToken);
@@ -142,8 +142,8 @@ class AdduserRespository {
     _user.doc(currentUSerId).update({"addTOCart": addToCart});
   }
 
-  //  deleteAddtoCart({required UserModel detail}){
-  //   _user.doc(detail.id).delete();
-  //
-  // }
+//  deleteAddtoCart({required UserModel detail}){
+//   _user.doc(detail.id).delete();
+//
+// }
 }

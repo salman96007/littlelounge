@@ -23,8 +23,7 @@ class HomePageView extends ConsumerStatefulWidget {
   class _HomePageViewState extends ConsumerState<HomePageView> {
     var selectIndex =0;
     List pages =[
-      HomePage(id:
-      "dAW5snotvVwoJQ944L15",),
+      HomePage(id:CategoryIdData.toString()),
        WishListPage(),
       Orderpage(),
       Container(

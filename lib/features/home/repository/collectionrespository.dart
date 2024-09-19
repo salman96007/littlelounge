@@ -19,7 +19,7 @@ import '../../auth/respository/authrespository.dart';
 import '../screen/welcomepage.dart';
 
 final collectionRespositoryProvider = Provider(
-  (ref) => collectionResposiyory(firestore: ref.watch(firebaseProvider)),
+      (ref) => collectionResposiyory(firestore: ref.watch(firebaseProvider)),
 );
 
 class collectionResposiyory {
@@ -35,20 +35,20 @@ class collectionResposiyory {
     return _category.snapshots().map((event) => event.docs
         .map(
           (e) => categorymodel.fromJson(
-            e.data() as Map<String, dynamic>,
-          ),
-        )
+        e.data() as Map<String, dynamic>,
+      ),
+    )
         .toList());
   }
 
-     Stream<List<ProductModel>> productStream(CategorilayIdData) {
-         return _product.where('categoryId',isEqualTo:CategoryIdData).snapshots().map(
+  Stream<List<ProductModel>> productStream(CategoryIdData) {
+    return _product.where('categoryId',isEqualTo:CategoryIdData).snapshots().map(
           (event) => event.docs
-              .map(
-                (e) => ProductModel.fromJson(e.data() as Map<String, dynamic>),
-              )
-              .toList(),
-        );
+          .map(
+            (e) => ProductModel.fromJson(e.data() as Map<String, dynamic>),
+      )
+          .toList(),
+    );
   }
 
   Stream<ProductModel> productStream1({required String productId}) {
@@ -56,9 +56,8 @@ class collectionResposiyory {
         .doc(productId)
         .snapshots()
         .map(
-          (event) =>
-              ProductModel.fromJson(event.data() as Map<String, dynamic>),
-        );
+          (event) => ProductModel.fromJson(event.data() as Map<String, dynamic>),
+    );
   }
 
   Stream<UserModel> userStream() {
@@ -67,7 +66,7 @@ class collectionResposiyory {
         .snapshots()
         .map(
           (event) =>
-              UserModel.fromJson(event.data() as Map<String, dynamic>),
+          UserModel.fromJson(event.data() as Map<String, dynamic>),
     );
   }
 
