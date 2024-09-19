@@ -49,13 +49,13 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
       print(Sum);
       return Sum;
      }
+     double deliverycharge=50;
 
 totalPrice(){
-    double dc=50;
-    totalP=dc+total();
-    print(totalP);
-    return totalP;
-
+     double sum=0;
+     sum+=total()+deliverycharge;
+     print(sum);
+     return sum;
 
 }
 
