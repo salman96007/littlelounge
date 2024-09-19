@@ -4,9 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/auth/respository/authrespository.dart';
+import 'package:littlelounge/features/cart/controller/checkoutcontroller.dart';
+import 'package:littlelounge/features/home/controller/collectioncontroller.dart';
 import 'package:littlelounge/features/payement/screen/saveaddresspage.dart';
 import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/model/productmodel.dart';
+import 'package:littlelounge/model/usermodel.dart';
 import '../../../main.dart';
 double? total;
 class CheckoutPage extends ConsumerStatefulWidget {
@@ -58,6 +62,15 @@ totalPrice(){
      return sum;
 
 }
+
+ updatedata({required UserModel detail,required Map<String,dynamic>orderlist}){
+
+  List orderPage = detail.order;
+     orderPage.add(orderlist);
+
+     ref.watch(checkoutControllerRespository).updateorderPage(detail: detail.copyWith(order:orderPage));
+
+ }
 
 
   @override
@@ -424,19 +437,32 @@ totalPrice(){
               ],
             ),
             SizedBox(width:width*0.25),
-            Container(
-              height:height*0.052,
-              width:width*0.35,
-              decoration:BoxDecoration(
-                  color:ColorConst.thirdColor,
-                  borderRadius:BorderRadius.circular(width*0.02)
+            GestureDetector(
+               onTap: () {
+                  Map<String,dynamic> orderData={
+                    "name" : widget.details.name,
+                     "image": widget.details.image,
+                     "size": widget.selectedsize,
+                      "itemCount":count.toString(),
+                      "price": totalPrice().toString(),
+                      "address": widget.data,
+                  };
+                 updatedata(detail: currentUserModel!, orderlist: orderData);
+               },
+              child: Container(
+                height:height*0.052,
+                width:width*0.35,
+                decoration:BoxDecoration(
+                    color:ColorConst.thirdColor,
+                    borderRadius:BorderRadius.circular(width*0.02)
 
-              ),
-              child:Center(
-                child: Text("Place order",style:TextStyle(
-                  fontWeight:FontWeight.w600,
-                  color:ColorConst.primaryColor,
-                ),),
+                ),
+                child:Center(
+                  child: Text("Place order",style:TextStyle(
+                    fontWeight:FontWeight.w600,
+                    color:ColorConst.primaryColor,
+                  ),),
+                ),
               ),
             )
           ],
