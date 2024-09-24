@@ -342,7 +342,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress( data1:widget.data2),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>Selectaddress( data1:widget.data2,selectedsize:widget.selectedsize.toString()),));
                       },
                       child: Container(
                         height: height*0.07,

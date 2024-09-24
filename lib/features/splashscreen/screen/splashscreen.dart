@@ -27,9 +27,12 @@ class SplashScreen extends ConsumerStatefulWidget {
   @override
   bool login=false ;
 
+
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDataFromFirebase(String currentUSerId) async {
     return await FirebaseFirestore.instance.collection('user').doc(currentUSerId).get();
   }
+
+
 
   void loadCurrentUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,6 +42,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 
 
     if (currentUSerId != null) {
+
       try {
         DocumentSnapshot<Map<String, dynamic>> userDoc = await getUserDataFromFirebase(currentUSerId!);
 
@@ -46,12 +50,12 @@ class SplashScreen extends ConsumerStatefulWidget {
           print("+++++++      ------------------ checking if exists -----------------------     ++++++");
           setState(() {
             currentUserModel = UserModel.fromJson(userDoc.data() as Map<String,dynamic>);
-
           });
+
 
           Future.delayed(Duration(
               seconds: 3
-          )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?WelcomPage():Login(),)));
+          )).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login?HomePageView():CreatAccount(),)));
         } else {
           print("User not found in Firestore");
         }
@@ -80,7 +84,6 @@ class SplashScreen extends ConsumerStatefulWidget {
 
   @override
   void initState() {
-
     loadCurrentUser();
     // TODO: implement initState
     super.initState();
@@ -99,27 +102,27 @@ class SplashScreen extends ConsumerStatefulWidget {
                 textStyle : TextStyle(color: ColorConst.primaryColor,
                   fontSize:width*0.10, ),
 
-              ),
-                children: [
-                  TextSpan(text:"Grow With Trend",
-                    style:GoogleFonts.sacramento(
-                      textStyle : TextStyle(color: ColorConst.primaryColor,
-                      fontSize: width*0.12),
+            ),
+              children: [
+                TextSpan(text:"Grow With Trend",
+                  style:GoogleFonts.sacramento(
+                    textStyle : TextStyle(color: ColorConst.primaryColor,
+                        fontSize: width*0.12),
 
-                    ), )
+                  ), )
               ],
-             ),textAlign: TextAlign.center,),
-              SizedBox(height: height*0.05,),
+            ),textAlign: TextAlign.center,),
+            SizedBox(height: height*0.05,),
 
-              CircularProgressIndicator(
-                color:ColorConst.primaryColor,
-                backgroundColor:ColorConst.forth,
-              )
-            ],
+            CircularProgressIndicator(
+              color:ColorConst.primaryColor,
+              backgroundColor:ColorConst.forth,
+            )
+          ],
 
-          ),
         ),
+      ),
 
-      );
-    }
+    );
   }
+}
