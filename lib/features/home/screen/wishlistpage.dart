@@ -85,7 +85,7 @@ class _WishListPageState extends ConsumerState<WishListPage> {
           child: ref.watch(userStreamProvider).when(
                 data: (user) {
                   return user.favourites.isEmpty
-                      ? Text("favourites no add")
+                      ? Text("Empty")
                       : GridView.builder(
                           physics: BouncingScrollPhysics(),
                           gridDelegate:
@@ -151,18 +151,13 @@ class _WishListPageState extends ConsumerState<WishListPage> {
                                                   onTap: () {
                                                     ProductId1 =
                                                         data.productId;
-                                                    if (currentUserModel!
-                                                        .favourites
-                                                        .contains(data
+                                                    if (currentUserModel!.favourites.contains(data
                                                         .productId)) {
                                                       currentUserModel!
-                                                          .favourites
-                                                          .remove(data
+                                                          .favourites.remove(data
                                                           .productId);
                                                     } else {
-                                                      currentUserModel!
-                                                          .favourites
-                                                          .add(data
+                                                      currentUserModel!.favourites.add(data
                                                           .productId);
                                                     }
                                                     updatefavourites(
@@ -175,10 +170,7 @@ class _WishListPageState extends ConsumerState<WishListPage> {
                                                   },
                                                   child: Icon(
                                                     currentUserModel!
-                                                        .favourites
-                                                        .contains(data
-                                                        .productId)
-                                                        ? Icons.favorite
+                                                        .favourites.contains(data.productId) ? Icons.favorite
                                                         : Icons
                                                         .favorite_outline,
                                                     color:
