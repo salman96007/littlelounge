@@ -49,6 +49,7 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:ColorConst.primaryColor,
       bottomSheet: Row(
         children: [
           GestureDetector(
@@ -80,11 +81,16 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CheckoutPage(data: '', details: widget.detail, selectedsize:selectedSize,),
-                  ));
+              if(selectedSize!=""){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckoutPage(data: '', details: widget.detail, selectedsize:selectedSize,),
+                    ));
+              }else{
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Select your size")));
+              }
+
             },
             child: Container(
               height: height * 0.07,
@@ -257,14 +263,18 @@ class _DetailedDressState extends ConsumerState<DetailedDress> {
                             width: width * 0.155,
                             decoration: BoxDecoration(
                                 color: selectedSize == Size[index]
-                                    ? ColorConst.thirdColor.withOpacity(0.15)
-                                    : ColorConst.eleventh,
+                                    ? ColorConst.secondary
+                                    : ColorConst.primaryColor,
                                 borderRadius:
-                                BorderRadius.circular(width * 0.03)),
+                                BorderRadius.circular(width * 0.03),
+                              border:Border.all(width:width*0.002,color:ColorConst.secondary)
+                            ),
                             child: Text(
                               widget.detail.size[index],
                               style: TextStyle(
-                                  color: ColorConst.secondary,
+                                  color:selectedSize == Size[index]
+                                      ? ColorConst.primaryColor
+                                      : ColorConst.secondary,
                                   fontWeight: FontWeight.w600,
                                   fontSize: width * 0.05),
                             )),

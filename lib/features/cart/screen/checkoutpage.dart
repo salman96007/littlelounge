@@ -12,6 +12,7 @@ import 'package:littlelounge/features/payement/screen/selectaddress.dart';
 import 'package:littlelounge/model/productmodel.dart';
 import 'package:littlelounge/model/usermodel.dart';
 import '../../../main.dart';
+import '../../payement/screen/continueshopping.dart';
 double? total;
 class CheckoutPage extends ConsumerStatefulWidget {
   final String data;
@@ -448,6 +449,11 @@ totalPrice(){
                       "address": widget.data,
                   };
                  updatedata(detail: currentUserModel!, orderlist: orderData);
+                  if(widget.data!=""){
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>Continueshopping(),), (route) =>false,);
+                  }else{
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Add your delivery address")));
+                  }
                },
               child: Container(
                 height:height*0.052,
