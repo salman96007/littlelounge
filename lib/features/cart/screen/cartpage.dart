@@ -94,7 +94,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           margin: EdgeInsets.only(left:width*0.05),
                                           width: width*0.28,
                                           height: height*0.20,
-                                          child: Image.network(data.image,fit: BoxFit.fill,),
+                                          child: Image.network(data.images[0],fit: BoxFit.fill,),
                                           decoration: BoxDecoration(
                                               image: DecorationImage(image: AssetImage(ImageConstant.bg)),
                                               borderRadius: BorderRadius.circular(width*0.03),

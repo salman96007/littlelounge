@@ -121,7 +121,7 @@ totalPrice(){
                                   width: width*0.3,
                                   height: height*0.20,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(image: NetworkImage(widget.details.image,),fit: BoxFit.cover),
+                                    image: DecorationImage(image: NetworkImage(widget.details.images[0],),fit: BoxFit.cover),
                                       border: Border.all(
                                         width:width*0.003,
                                         color:ColorConst.secondary
@@ -442,7 +442,7 @@ totalPrice(){
                onTap: () {
                   Map<String,dynamic> orderData={
                     "name" : widget.details.name,
-                     "image": widget.details.image,
+                     "image": widget.details.images[0],
                      "size": widget.selectedsize,
                       "itemCount":count.toString(),
                       "price": totalPrice().toString(),

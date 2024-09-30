@@ -1,12 +1,10 @@
 
-
 class ProductModel{
   String name;
   double prize;
   List size;
   String description;
   List images;
-  String image;
   DateTime uploadedTime;
   String productId;
   String categoryId;
@@ -17,7 +15,6 @@ class ProductModel{
     required this.size,
     required this.description,
     required this.images,
-    required this.image,
     required this.uploadedTime,
     required this.productId,
     required this.categoryId,
@@ -28,7 +25,6 @@ class ProductModel{
     size: json["size"],
     description: json["description"],
     images: json["images"],
-    image: json["image"],
     uploadedTime: json["uploadedTime"].toDate(),
     productId: json["productId"],
     categoryId: json["categoryId"],
@@ -39,7 +35,6 @@ class ProductModel{
     "size":size,
     "description":description,
     "images":images,
-    "image":image,
     "uploadedTime":uploadedTime,
     "productId":productId,
     "categoryId":categoryId,
@@ -51,7 +46,6 @@ class ProductModel{
     List?size,
     String?description,
     List?images,
-    String?image,
     DateTime?uploadedTime,
     String ?productId,
     String ?categoryId,
@@ -63,7 +57,6 @@ class ProductModel{
       size: size??this.size,
       description: description??this.description,
       images: images??this.images,
-      image: image??this.image,
       uploadedTime: uploadedTime??this.uploadedTime as DateTime,
       productId: productId??this.productId,
       categoryId: categoryId??this.categoryId,

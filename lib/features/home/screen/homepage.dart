@@ -159,7 +159,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       backgroundColor: ColorConst.primaryColor,
                                       content: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.spaceAround,
                                         children: [
                                           InkWell(
                                             onTap: () {
@@ -342,9 +342,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Login()
+                                    builder: (context) => Login()
                                   ),
-                                      (route) => false,
+                                  (route) => false,
                                 );
                               },
                               child: Container(
@@ -353,7 +353,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 decoration: BoxDecoration(
                                   color: ColorConst.thirdColor,
                                   borderRadius:
-                                  BorderRadius.circular(width * 0.04),
+                                      BorderRadius.circular(width * 0.04),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black.withOpacity(0.13),
@@ -364,11 +364,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 ),
                                 child: Center(
                                     child: Text(
-                                      "Yes",
-                                      style: TextStyle(
-                                          color: ColorConst.primaryColor,
-                                          fontWeight: FontWeight.w500),
-                                    )),
+                                  "Yes",
+                                  style: TextStyle(
+                                      color: ColorConst.primaryColor,
+                                      fontWeight: FontWeight.w500),
+                                )),
                               ),
                             ),
                             SizedBox(
@@ -384,7 +384,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 decoration: BoxDecoration(
                                   color: ColorConst.primaryColor,
                                   borderRadius:
-                                  BorderRadius.circular(width * 0.04),
+                                      BorderRadius.circular(width * 0.04),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black.withOpacity(0.13),
@@ -453,7 +453,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   width: width * 0.7,
                   height: height * 0.065,
                   child: TextFormField(
-                    // onChanged: (value) => filterItems(value),
+                      // onChanged: (value) => filterItems(value),
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
@@ -464,7 +464,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius:
-                              BorderRadius.circular(width * 0.03)))),
+                                  BorderRadius.circular(width * 0.03)))),
                 ),
                 Container(
                   width: width * 0.15,
@@ -511,112 +511,112 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: height * 0.03,
             ),
             ref.watch(StreamProduct(widget.id)).when(
-              data: (data) => GridView.builder(
-                physics: BouncingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.5,
-                    crossAxisSpacing: width * 0.04,
-                    mainAxisSpacing: width * 0.01),
-                itemCount: data.length,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Stack(
-                        alignment: Alignment.topRight,
+                  data: (data) => GridView.builder(
+                    physics: BouncingScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.5,
+                        crossAxisSpacing: width * 0.04,
+                        mainAxisSpacing: width * 0.01),
+                    itemCount: data.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailedDress(
-                                        detail: data[index],
-                                      )));
-                            },
-                            child: Container(
-                                child: Image.network(
-                                  data[index].image,
-                                ),
-                                width: width * 0.425,
-                                height: height * 0.3,
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(width * 0.05),
-                                    image: DecorationImage(
-                                        image: AssetImage(ImageConstant.bg),
-                                        fit: BoxFit.cover),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color:
-                                          Colors.black.withOpacity(0.1),
-                                          blurRadius: 4,
-                                          spreadRadius: 2,
-                                          offset: Offset(0, 3))
-                                    ])),
-                          ),
-                          Positioned(
-                              right: width * 0.05,
-                              top: width * 0.04,
-                              child: GestureDetector(
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              GestureDetector(
                                 onTap: () {
-                                  if (currentUserModel!.favourites
-                                      .contains(data[index].productId)) {
-                                    currentUserModel!.favourites
-                                        .remove(data[index].productId);
-
-                                  }
-                                  else {
-                                    currentUserModel!.favourites
-                                        .add(data[index].productId);
-                                  }
-                                  updatefavourites(detail: currentUserModel!);
-
-                                  setState(() {});
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DetailedDress(
+                                                detail: data[index],
+                                              )));
                                 },
-                                child: Icon(
-                                  currentUserModel!.favourites .contains(data[index].productId)
-                                      ? Icons.favorite
-                                      : Icons.favorite_outline,
-                                  color: ColorConst.sixth,
-                                ),
-                              ))
-                        ],
-                      ),
-                      SizedBox(
-                        height: height * 0.02,
-                      ),
-                      Text(
-                        data[index].name,
-                        style: TextStyle(
-                            color: ColorConst.secondary,
-                            fontWeight: FontWeight.w500,
-                            fontSize: width * 0.037),
-                      ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            SvgConstant.rupees,
-                            width: width * 0.04,
+                                child: Container(
+                                    child: Image.network(
+                                      data[index].images[0],
+                                    ),
+                                    width: width * 0.425,
+                                    height: height * 0.3,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(width * 0.05),
+                                        image: DecorationImage(
+                                            image: AssetImage(ImageConstant.bg),
+                                            fit: BoxFit.cover),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
+                                              blurRadius: 4,
+                                              spreadRadius: 2,
+                                              offset: Offset(0, 3))
+                                        ])),
+                              ),
+                              Positioned(
+                                  right: width * 0.05,
+                                  top: width * 0.04,
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        if (currentUserModel!.favourites
+                                            .contains(data[index].productId)) {
+                                          currentUserModel!.favourites
+                                              .remove(data[index].productId);
+
+                                        }
+                                        else {
+                                          currentUserModel!.favourites
+                                              .add(data[index].productId);
+                                        }
+                                        updatefavourites(detail: currentUserModel!);
+
+                                        setState(() {});
+                                      },
+                                      child: Icon(
+                                            currentUserModel!.favourites .contains(data[index].productId)
+                                            ? Icons.favorite
+                                            : Icons.favorite_outline,
+                                        color: ColorConst.sixth,
+                                      ),
+                                  ))
+                            ],
+                          ),
+                          SizedBox(
+                            height: height * 0.02,
                           ),
                           Text(
-                            data[index].prize.toString(),
+                            data[index].name,
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: width * 0.04),
+                                color: ColorConst.secondary,
+                                fontWeight: FontWeight.w500,
+                                fontSize: width * 0.037),
+                          ),
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                SvgConstant.rupees,
+                                width: width * 0.04,
+                              ),
+                              Text(
+                               data[index].prize.toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: width * 0.04),
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
-                  );
-                },
-              ),
-              error: (error, stackTrace) => Text(error.toString()),
-              loading: () => CircularProgressIndicator(),
-            )
+                      );
+                    },
+                  ),
+                  error: (error, stackTrace) => Text(error.toString()),
+                  loading: () => CircularProgressIndicator(),
+                )
           ],
         ),
       ),

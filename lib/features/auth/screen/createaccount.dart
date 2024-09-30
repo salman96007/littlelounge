@@ -30,6 +30,7 @@ class _CreatAccountState extends ConsumerState<CreatAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:false,
       body: Column(
         children: [
           Container(

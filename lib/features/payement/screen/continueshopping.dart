@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/constant/imageconstant.dart';
+import 'package:littlelounge/features/home/screen/welcomepage.dart';
 
 import '../../../main.dart';
 
@@ -59,19 +60,24 @@ class _ContinueshoppingState extends ConsumerState<Continueshopping> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    height: height*0.07,
-                    width: width*0.88,
-                    child: Center(
-                      child: Text("Continue Shopping",style: TextStyle(
-                        fontSize: width*0.04,
-                        color: ColorConst.primaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),),
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(width*0.07),
-                      color: ColorConst.thirdColor,
+                  GestureDetector(
+                    onTap:() {
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>WelcomPage(),), (route) => false,);
+                    },
+                    child: Container(
+                      height: height*0.07,
+                      width: width*0.88,
+                      child: Center(
+                        child: Text("Continue Shopping",style: TextStyle(
+                          fontSize: width*0.04,
+                          color: ColorConst.primaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),),
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(width*0.07),
+                        color: ColorConst.thirdColor,
+                      ),
                     ),
                   )
                 ],

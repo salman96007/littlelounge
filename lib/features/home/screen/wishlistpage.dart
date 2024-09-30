@@ -117,7 +117,7 @@ class _WishListPageState extends ConsumerState<WishListPage> {
                                             },
                                             child: Container(
                                                 child: Image.network(
-                                                  data.image.toString(),
+                                                  data.images[0].toString(),
                                                 ),
                                                 width: width * 0.425,
                                                 height: height * 0.3,
