@@ -14,7 +14,6 @@ class Continueshopping extends ConsumerStatefulWidget {
   @override
   ConsumerState<Continueshopping> createState() => _ContinueshoppingState();
 }
-
 class _ContinueshoppingState extends ConsumerState<Continueshopping> {
   @override
   Widget build(BuildContext context) {

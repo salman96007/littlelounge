@@ -29,7 +29,6 @@ class _WishListPageState extends ConsumerState<WishListPage> {
         .watch(ControllerProvider)
         .updatedfavourite(detail.copyWith(favourites: detail.favourites));
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

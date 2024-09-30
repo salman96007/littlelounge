@@ -18,7 +18,6 @@ class CartPage extends ConsumerStatefulWidget {
   final ProductModel detail;
   const CartPage({super.key,
     required this.detail
-
   });
 
   @override

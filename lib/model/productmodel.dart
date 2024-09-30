@@ -8,7 +8,6 @@ class ProductModel{
   DateTime uploadedTime;
   String productId;
   String categoryId;
-
   ProductModel({
     required this.name,
     required this.prize,

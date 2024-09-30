@@ -90,8 +90,6 @@ class _HomePageState extends ConsumerState<HomePage> {
         .updatedfavourite(detail.copyWith(favourites: detail.favourites));
   }
 
-
-
   @override
   @override
   Widget build(BuildContext context) {

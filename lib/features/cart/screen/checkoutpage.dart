@@ -33,7 +33,6 @@ class _CartPageState extends ConsumerState<CheckoutPage> {
   int count = 1;
   double totalP=0;
 
-
   add(){
     count++;
     setState(() {
