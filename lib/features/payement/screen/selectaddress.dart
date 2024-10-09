@@ -31,7 +31,7 @@ class Selectaddress extends ConsumerStatefulWidget {
 }
 
 class _SelectaddressState extends ConsumerState<Selectaddress> {
-  String radio="";
+  String selectedAddress="";
  var data1;
 
 
@@ -49,7 +49,17 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
       ),
       bottomSheet:InkWell(
         onTap: () {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CheckoutPage(
+                data: selectedAddress,
+                details: widget.data1,
+                selectedsize: widget.selectedsize.toString(),
+              ),
+            ),
+          );
+
         },
         child: Container(
           height:height*0.07,
@@ -79,9 +89,9 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                   boxShadow: [
                     BoxShadow(
                         color: ColorConst.secondary.withOpacity(0.13),
-                        blurRadius: 7,
+                        blurRadius: 5,
                         spreadRadius: 3,
-                        offset: Offset(0, 4)
+                        offset: Offset(0, 2)
                     )
                   ],
                 ),
@@ -97,112 +107,108 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
                         fontSize: width*0.045
 
                     ),),
-
                   ],
                 ),
               ),
             ),
-            ref.watch(userStreamProvider).when(
-              data: (data) => ListView.separated(
-                itemCount: data.address.length,
-                scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return  GestureDetector(
-                    onTap: () {
-
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                          CheckoutPage( data:data.address[index]["address"],details: widget.data1,selectedsize:widget.selectedsize.toString(),)));
-                    },
-                    child: Container(
-                      height:height*0.16,
-                      width:width*1,
-                      decoration:BoxDecoration(
-                          border:Border.all(
-                              color: ColorConst.twentyColor,
-                              width:width*0.002
-                          )
-                      ),
-                      child:Row(
-                        crossAxisAlignment:CrossAxisAlignment.start,
-                        children: [
-                          Radio(
-                            activeColor: ColorConst.seventh,
-                            value: data.address[index],
-                            groupValue: radio,
-                            onChanged: (value) {
-                              radio=  data.address[index].toString();
-                              setState(() {
-                                radio=value.toString();
-                                print(radio);
-                                print(";;;;;;;;;;;;;;;;;;");
-                              });
-                            },),
-                          SizedBox(width:width*0.03,),
-                          Column(
-                            crossAxisAlignment:CrossAxisAlignment.start,
-                            mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                            children: [
-
-                              Text(data.address[index]["name"],style:TextStyle(
-                                  fontWeight:FontWeight.w500,
-                                  fontSize:width*0.045
-                              ),),
-                              Container(
-                                height:height*0.1,
-                                width:width*0.75,
-                                //color:Colors.black,
-                                child:   Column(
-                                  children: [
-                                    Text(data.address[index]["address"],style:TextStyle(
-                                      fontWeight:FontWeight.w400,
-                                      fontSize:width*0.04,
-                                    ),),
-                                    Row(
-                                      children: [
-                                        Text(data.address[index]["city"],style:TextStyle(
-                                          fontWeight:FontWeight.w400,
-                                          fontSize:width*0.04,
-                                        ),),
-                                        Text(",",style:TextStyle(
-                                          fontWeight:FontWeight.w400,
-                                          fontSize:width*0.04,
-                                        ),),
-
-                                        Text(data.address[index]["country"],style:TextStyle(
-                                          fontWeight:FontWeight.w400,
-                                          fontSize:width*0.04,
-                                        ),),
-                                      ],
-                                    )
-                                  ],
-                                ),
-
-                              ),
-                              Text(data.address[index]["phone number"],style:TextStyle(
-                                  fontWeight:FontWeight.w400,
-                                  fontSize:width*0.04
-                              ),),
-                            ],
-                          ),
-                         // InkWell(
-                         //   onTap: () {
-                         //
-                         //
-                         //   },
-                         //     child: Icon(CupertinoIcons.delete,color:ColorConst.sixth,))
-                        ],
+            SizedBox(height:height*0.01),
+         ref.watch(userStreamProvider).when(
+      data: (data) => ListView.separated(
+        itemCount: data.address.length,
+        scrollDirection: Axis.vertical,
+        physics: BouncingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return Container(
+            height: height * 0.16,
+            width: width * 1,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: ColorConst.twentyColor,
+                width: width * 0.002,
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Radio<String>(
+                  activeColor: ColorConst.seventh,
+                  value: data.address[index].toString(), // The address value
+                  groupValue: selectedAddress, // Selected address
+                  onChanged: (String? value) {
+                    setState(() {
+                      selectedAddress = value!; // Update the selected address
+                    });
+                  },
+                ),
+                SizedBox(width: width * 0.03),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      data.address[index]["name"],
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: width * 0.045,
                       ),
                     ),
-                  );
-                },
-                separatorBuilder:(context, index) {
-                  return SizedBox();
-                },
-              ),
-              error: (error, stackTrace) => Text(error.toString()),
-              loading: () => CircularProgressIndicator(),)
+                    Expanded(
+                      child: Container(
+                        //height: height * 0.08,
+                        width: width * 0.78,
+                        child: Column(
+                          crossAxisAlignment:CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              data.address[index]["address"],textAlign:TextAlign.start,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: width * 0.04,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "${data.address[index]["city"]},",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: width * 0.04,
+                                  ),
+                                ),
+                                Text(
+                                  data.address[index]["town"],
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: width * 0.04,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              data.address[index]["phone number"],
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: width * 0.04,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox();
+        },
+      ),
+      error: (error, stackTrace) => Text(error.toString()),
+      loading: () => CircularProgressIndicator(),
+    )
 
           ],
         ),
@@ -212,3 +218,4 @@ class _SelectaddressState extends ConsumerState<Selectaddress> {
     );
   }
 }
+
