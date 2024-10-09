@@ -25,7 +25,7 @@ class EditAddresspage extends ConsumerStatefulWidget {
 class _EditAddresspageState extends ConsumerState<EditAddresspage> {
 
   TextEditingController nameController=TextEditingController();
-  TextEditingController countryController=TextEditingController();
+  TextEditingController townController=TextEditingController();
   TextEditingController cityController=TextEditingController();
   TextEditingController phoneNumberController=TextEditingController();
   TextEditingController addressController=TextEditingController();
@@ -48,7 +48,7 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
       backgroundColor: ColorConst.primaryColor,
       appBar: AppBar(
         backgroundColor: ColorConst.primaryColor,
-        title: Text("Add delivery address",style: GoogleFonts.inter(
+        title: Text("Edit delivery address",style: GoogleFonts.inter(
             fontWeight:FontWeight.w400,
             color: ColorConst.secondary
         ),),
@@ -122,7 +122,7 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
                             fontSize:width*0.043
                         ),),
                         TextFormField(
-                          controller: countryController,
+                          controller: townController,
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
@@ -323,14 +323,14 @@ class _EditAddresspageState extends ConsumerState<EditAddresspage> {
                       onTap: (){
                         Map <String, dynamic>add={
                           "name":nameController.text.trim(),
-                          "country":countryController.text.trim(),
+                          "town":townController.text.trim(),
                           "city":cityController.text.trim(),
                           "phone number:":phoneNumberController.text.trim(),
                           "address":addressController.text.trim(),
                         };
                         addressadd(detail:currentUserModel!,adreess: add);
                         Navigator.push(context, MaterialPageRoute(builder: (context) =>CheckoutPage(data: '',
-                          details: widget.details, selectedsize: '',),));
+                             details: widget.details, selectedsize: '',),));
                       },
                       child: Container(
                         height: height*0.07,

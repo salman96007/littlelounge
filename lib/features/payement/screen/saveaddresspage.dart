@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:littlelounge/constant/colorconstant.dart';
 import 'package:littlelounge/features/cart/screen/checkoutpage.dart';
 import 'package:littlelounge/features/payement/screen/continueshopping.dart';
@@ -33,7 +34,7 @@ class Saveaddresspage extends ConsumerStatefulWidget {
 
 class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
   TextEditingController nameController=TextEditingController();
-  TextEditingController countryController=TextEditingController();
+  TextEditingController townController=TextEditingController();
   TextEditingController cityController=TextEditingController();
   TextEditingController phoneNumberController=TextEditingController();
   TextEditingController addressController=TextEditingController();
@@ -131,7 +132,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                             fontSize:width*0.043
                         ),),
                         TextFormField(
-                          controller: countryController,
+                          controller: townController,
                           keyboardType:TextInputType.text,
                           textInputAction:TextInputAction.next,
                           style:TextStyle(
@@ -210,7 +211,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
               SizedBox(height:height*0.015),
               SizedBox(
                 width:width*0.88,
-                height:height*0.11,
+                height:height*0.12,
                 //color:Colors.red,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,8 +222,9 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                         fontWeight: FontWeight.w500,
                         fontSize:width*0.043
                     ),),
-                    TextFormField(
+                    IntlPhoneField(
                       controller:phoneNumberController,
+                      initialCountryCode: 'IN',
                       keyboardType:TextInputType.number,
                       textInputAction:TextInputAction.next,
                       inputFormatters: [
@@ -336,7 +338,7 @@ class _SaveaddresspageState extends ConsumerState<Saveaddresspage> {
                       onTap: (){
                         Map <String,dynamic>add={
                           "name":nameController.text.trim(),
-                          "country":countryController.text.trim(),
+                          "town":townController.text.trim(),
                           "city":cityController.text.trim(),
                           "phone number":phoneNumberController.text.trim(),
                           "address":addressController.text.trim(),

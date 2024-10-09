@@ -44,7 +44,7 @@ dependencies:
   flutter_credit_card: ^4.0.1
   image_picker: ^1.0.7
   pinput: ^2.3.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   gradient_mask: ^0.0.2
   device_preview: ^1.2.0
   flutter_pannable_rating_bar: ^2.7.2+1
@@ -58,11 +58,9 @@ dependencies:
   flutter_flip_card: ^0.0.6
   smooth_page_indicator: ^1.1.0
   lottie: ^3.1.2
-  shared_preferences: ^2.2.2
-
-
-
-
+  shared_preferences: ^2.3.2
+  intl_phone_field: ^3.2.0
+  http: ^1.2.2
 
 
 
